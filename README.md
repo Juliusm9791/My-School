@@ -1,2 +1,1 @@
 # My-School
-My-School
