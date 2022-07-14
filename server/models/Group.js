@@ -13,10 +13,10 @@ const groupSchema = new Schema({
         required: true,
         default: false,
     },
-    faculty: {
+    student: {
         type: Boolean,
         required: true,
-        student: false,
+        default: false,
     },
 });
 
