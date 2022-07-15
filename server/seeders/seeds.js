@@ -18,9 +18,9 @@ db.once('open', async () => {
   await Group.deleteMany();
 
   const groups = await Group.insertMany([
-    { faculty: true, parent: false, stutent: false },
-    { faculty: false, parent: true, stutent: false },
-    { faculty: false, parent: false, stutent: true },
+    { groupName:"faculty"},
+    { groupName:"parent"},
+    { groupName:"student"},
 
   ]);
   console.log("group  seeded");
@@ -39,8 +39,8 @@ db.once('open', async () => {
       avatar: "",
       email: "toddtrulock@gmail.com",
       password: "12345678",
-      groupName: groups[0]._id,
-      depNames: departments[0]._id
+      groupId: groups[0]._id,
+      departmentId: departments[0]._id
 
     },
     {
@@ -51,8 +51,8 @@ db.once('open', async () => {
       avatar: "",
       email: "todd@gmail.com",
       password: "12345678",
-      groupName: groups[1]._id,
-      depNames: departments[1]._id
+      groupId: groups[1]._id,
+      departmentId: departments[1]._id
     }
     ]);
  
@@ -96,8 +96,8 @@ db.once('open', async () => {
       description: "description for post1",
       pictures: "",
       userId: users[0]._id,
-      comments: comments[0]._id,
-      reactions: reactions[0]._id
+      commentId: comments[0]._id,
+      reactionId: reactions[0]._id
     },
 
     {
@@ -105,16 +105,16 @@ db.once('open', async () => {
       description: "description for post2",
       pictures: "",
       userId: users[1]._id,
-      comments: comments[0]._id,
-      reactions:  reactions[0]._id
+      commentId: comments[0]._id,
+      reactionId:  reactions[0]._id
     },
     {
       title: "post3",
       description: "description for post",
       pictures: "",
       userId: users[0]._id,
-      comments: comments[0]._id,
-      reactions: reactions[0]._id
+      commentId: comments[0]._id,
+      reactionId: reactions[0]._id
     },
 
   ]);

@@ -1,44 +1,42 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+
+ type Department{
+  _id: ID
+  depName: String!
+
+ }
+ type Group{
+  _id: ID
+  groupName: String!
+
+ }
   type User {
-    _id: ID!
+    _id: ID
     firstName: String!
+    middleName:String
     lastName: String!
+    avatar: String
     email: String!
     password: String!
-    winingAuctions: [Auction]
-    watchlistAuctions: [Auction]
-    homeCity: String
+    departmentId: [Department]
+    groupId: [Group]
+    
   }
 
-  type Auction {
-    _id: ID!
-    auctionEndDate: String!
-    originalFlight_Id: Int!
-    aircraftCompany: String!
-    aircraftPicture: String
-    aircraftSeats: Int!
-    aircraftModel: String!
-    aircraftTailNum: String!
-    arrvAirportCity: String!
-    arrvAirportIata: String
-    arrvAirportIcao: String
-    arrvLocal: String!
-    deptAirportCity: String!
-    deptAirportIata: String
-    deptAirportIcao: String
-    deptLocal: String!
-    originalPrice: String!
-    currentBid: Float!
-    bidsHistory: [Bid]
-    latestBidUser: User
+  type Reaction {
+    _id: ID
+    noLike: Boolean
+    like: Boolean
+    userId:User
   }
 
-  type Bid {
-    bidTime: String!
-    bidAmount: Float
-    bidUser: User
+  type Comment{
+    _id:ID
+    comment: String!
+    userId: User
+    reactionId: [Reaction]
   }
 
   type Auth {
@@ -46,48 +44,46 @@ const typeDefs = gql`
     user: User
   }
 
-  type Order {
+  type Post {
     _id: ID
-    purchaseDate: String
-    products: [Auction]
+    title: String!
+    description: String!
+    pictures: String
+    userId: User
+    commentId:[Comment]
+    reactionId:[Reaction]
   }
 
   type Query {
     users: [User]
     user(_id: ID!): User
     me: User
-    auction(_id: ID!): Auction
-    auctions: [Auction]
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
+    posts(title: String, user: ID): [Post]
+    post(_id: ID!): Post
+
   }
 
-  type Checkout {
-    session: ID
-  }
+
 
   type Mutation {
     addUser(
       firstName: String!
+      middleName:String
       lastName: String!
+      avatar: String
       email: String!
       password: String!
     ): Auth
     updateUser(
-      firstName: String
-      lastName: String
-      email: String
-      password: String
+      firstName: String!
+      middleName:String
+      lastName: String!
+      avatar: String
+      email: String!
+      password: String!
     ): User
     login(email: String!, password: String!): Auth
-    saveflight(winingAuctions: ID!): User
-    saveToWatchlist(watchAuctions: ID!): User
-    deleteFromWatchlist(_id: ID!): User
-    updateBid(_id: ID!, currentBid: Float!): Auction
-    updateLatestBidUser(auctions: ID!): Auction
-    deleteflight(auctionId: ID!, remuserId: ID!): User
-    updateBidHistory(bidAmount: Float!, auctionId: ID!): Auction
-    addOrder(products: [ID]!): Order
+   
   }
 `;
 
