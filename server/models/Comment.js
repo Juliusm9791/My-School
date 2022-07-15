@@ -11,7 +11,7 @@ const commentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  reactions: [
+  reactionId: [
     {
       type: Schema.Types.ObjectId,
       ref: "Reaction",

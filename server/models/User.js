@@ -36,13 +36,13 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    depNames: [
+    departmentId: [
       {
         type: Schema.Types.ObjectId,
         ref: "Department",
       },
     ],
-    groupName: [
+    groupId: [
       {
         type: Schema.Types.ObjectId,
         ref: "Group",
