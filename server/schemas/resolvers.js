@@ -26,8 +26,9 @@ const resolvers = {
        
     },
     me: async (parent, args, context) => {
+      console.log(context.user)
       if (context.user) {
-        return await User.findOne({ _id: context.user._id })
+        return await User.findById( context.user._id )
         .populate("departmentId")
         .populate("groupId");
       }
@@ -53,6 +54,34 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addPost: async (parents, args, context) => {
+      console.log(context)
+      const newPost = await Post.create({
+        
+        title: args.title,
+        description: args.description,
+        pictures: args.pictures,
+        commentId: args.commentId,
+        reactionId: args.ReactionId,
+        userId:  context.user._id,
+      })
+      
+      console.log("ADD PRODUCT ARGSSS", args);
+      return newPost;
+    },
+    updatePost: async (parent, args, context) => {
+      if (context.user) {
+        return await Post.findByIdAndUpdate(args._id, 
+          {title: args.title,
+           description: args.description,
+          pictures:args.pictures},
+          {
+          new: true,
+        });
+      }
+
+      throw new AuthenticationError("Not logged in");
     },
     
    

@@ -83,7 +83,21 @@ const typeDefs = gql`
       password: String!
     ): User
     login(email: String!, password: String!): Auth
-   
+    addPost(
+      userId: ID
+      title: String!
+      description: String
+      pictures: String
+      commentId: ID
+      reactionId: ID
+    ): Post
+    updatePost(
+      _id:ID!
+      title: String!
+      description: String
+      pictures: String
+     
+    ): Post
   }
 `;
 
