@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDrawerContainer } from '@angular/material/sidenav/';
 
 // Material Form Controls
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -62,7 +61,6 @@ import { MatTableModule } from '@angular/material/table';
     MatToolbarModule,
     MatCardModule,
     MatDividerModule,
-    MatDrawerContainer,
     MatExpansionModule,
     MatGridListModule,
     MatListModule,
@@ -121,7 +119,6 @@ import { MatTableModule } from '@angular/material/table';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    MatDrawerContainer,
   ],
 })
 export class MaterialModule {}
