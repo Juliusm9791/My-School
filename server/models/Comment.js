@@ -17,6 +17,9 @@ const commentSchema = new Schema({
       ref: "Reaction",
     },
   ],
+},
+{
+  timestamps: true
 });
 
 const Comment = mongoose.model("Comment", commentSchema);

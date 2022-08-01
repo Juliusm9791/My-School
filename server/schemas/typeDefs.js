@@ -37,6 +37,8 @@ const typeDefs = gql`
     comment: String!
     userId: User
     reactionId: [Reaction]
+    createdAt: String!
+    updatedAt: String
   }
 
   type Auth {
@@ -52,6 +54,8 @@ const typeDefs = gql`
     userId: User
     commentId:[Comment]
     reactionId:[Reaction]
+    createdAt: String!
+    updatedAt: String
   }
 
   type Query {

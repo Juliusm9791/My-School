@@ -1,0 +1,17 @@
+<div *ngIf="loading">
+    Loading...
+</div>
+<div *ngIf="error">
+    Error :(
+</div>
+<div *ngIf="posts">
+    <div *ngFor="let post of posts">
+        <h1>{{ post.title }} by {{post.userId.firstName}} on {{post.createdAt | date:'short'}}</h1>
+        <p>{{ post.description }}</p>
+        <div *ngIf="post.commentId">
+            <div class="comment" *ngFor="let comment of post.commentId">
+                <p>{{comment.comment}}</p>
+            </div>
+        </div>
+    </div>
+</div>
