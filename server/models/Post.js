@@ -33,6 +33,9 @@ const postSchema = new Schema({
       ref: "Reaction",
     },
   ],
+},
+{
+  timestamps: true
 });
 
 const Post = mongoose.model("Post", postSchema);
