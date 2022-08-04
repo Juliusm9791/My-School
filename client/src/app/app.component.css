@@ -3,3 +3,7 @@ h1 {
   background-color: bisque;
   text-align: center;
 }
+a{
+  padding: 5px;
+  text-decoration: none;
+}
