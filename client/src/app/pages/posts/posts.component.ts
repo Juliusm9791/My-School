@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Apollo, gql} from 'apollo-angular';
+import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
   posts: any[] = [];
@@ -17,21 +17,26 @@ export class PostsComponent implements OnInit {
     this.apollo
       .watchQuery({
         query: gql`
-          {
-            posts {
+        {
+          posts {
+            _id
+            title
+            description
+            createdAt
+            commentId {
               _id
-              title
-              description
-              createdAt
-              commentId {
-                _id
-                comment
-              }
-              userId{
+              comment
+              userId {
                 firstName
+                lastName
               }
+              createdAt
+            }
+            userId{
+              firstName
             }
           }
+        }
         `,
       })
       .valueChanges.subscribe((result: any) => {
@@ -41,5 +46,4 @@ export class PostsComponent implements OnInit {
         this.error = result.error;
       });
   }
-  }
-
+}
