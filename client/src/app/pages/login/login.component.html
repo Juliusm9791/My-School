@@ -1,43 +1,26 @@
-<form (ngSubmit)="submit()" #myForm="ngForm">
-<div class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="pat@example.com"  [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
-</div>
-<div class="example-container">
-    <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-  </div>
-  <div class="example-container">
-    <button type="submit">
-        Submit
-    </button>
-</div>
-</form>
-  <!-- <form (ngSubmit)="submit()" #myForm="ngForm">
-    <h1 class="text-center">Login</h1>
-    <div class="my-4">
-        <label class="w-full" for="email">Email </label>
-        <input type="email" name="email" id="email" class="p-2 rounded border w-full" placeholder="Email"
-            [(ngModel)]="email" #email="ngModel" required>
-    
-        <div class="my-4">
-            <label class="w-full" for="password">Password </label>
-            <input type="password" name="password" id="password" class="p-2 rounded border w-full"
-                placeholder="Password" [(ngModel)]="password" #password="ngModel" required>
-        </div>
-       
-        <div class="my-4">
-            <input [disabled]="myForm.invalid" type="submit"
-                class="w-full bg-black text-white hover:bg-white hover:text-black hover:border p-2 rounded">
-        </div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" required>
+          <mat-error *ngIf="loginForm.controls.email.invalid">{{getErrorMessage('email')}}</mat-error>
+        </mat-form-field>
     </div>
-</form>
-   -->
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+            <mat-error *ngIf="loginForm.controls.password.invalid">{{getErrorMessage('password')}}</mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+      </div>
+      <div class="example-container">
+        <button type="submit">
+            Submit
+        </button>
+    </div>
+    </form>
+    <a *ngIf="me" (click)="logout()" routerLink="/">Logout</a>
+   
