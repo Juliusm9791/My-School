@@ -1,16 +1,19 @@
-<mat-card class="example-card">
-  <mat-card-title>{{ post.title }}</mat-card-title>
-  <mat-card-subtitle
-    >{{ post.userId.firstName }} posted on
-    {{ post.createdAt | date: "short" }}</mat-card-subtitle
-  >
+<mat-card>
+  <mat-card-title>
+    <div class="postTitle">
+      <h2>{{ post.title }}</h2>
+    </div>
+  </mat-card-title>
+
+  <mat-card-subtitle>
+    <h4>
+      {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
+      {{ post.createdAt | date: "short" }}
+    </h4>
+  </mat-card-subtitle>
   <mat-card-content>
     <p>{{ post.description }}</p>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat adipisci
-      ut veniam, odit dolor deserunt, cupiditate officiis sapiente similique
-      velit officia magni amet, eius autem quae ullam! Ullam, labore dolore!
-    </p>
+
     <div *ngIf="post.commentId">
       <div class="comment" *ngFor="let comment of post.commentId">
         <app-comments [comment]="comment"></app-comments>
