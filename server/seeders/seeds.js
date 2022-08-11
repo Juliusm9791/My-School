@@ -22,7 +22,7 @@ db.once('open', async () => {
   console.log("group seeded");
 
   await User.deleteMany();
-  const users = await User.insertMany([
+  const users = await User.create([
     {
       firstName: "Todd",
       middleName: "bbla",

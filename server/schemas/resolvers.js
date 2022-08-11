@@ -28,8 +28,7 @@ const resolvers = {
       return await User.find({}).populate("departmentId").populate("groupId");
     },
     me: async (parent, args, context) => {
-      console.log(context.user);
-      if (context.user) {
+      if ("me",context.user) {
         return await User.findById(context.user._id)
           .populate("departmentId")
           .populate("groupId");
@@ -110,13 +109,11 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-
       if (!user) {
         throw new AuthenticationError("Incorrect credentials");
       }
 
       const correctPw = await user.isCorrectPassword(password);
-
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
       }
