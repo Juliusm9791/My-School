@@ -30,7 +30,8 @@
       <mat-nav-list>
         <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
         <div class="vertical">
-          <a routerLink="/login">Login</a>
+          <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
+          <a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a>
           <a routerLink="/signup">Signup</a>
           <a routerLink="/posts">Posts</a>
         </div>
