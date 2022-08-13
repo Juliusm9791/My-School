@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/account/login/login.component';
 import { PostsComponent } from './pages/posts/posts.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import { SignupComponent } from './pages/account/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -14,17 +14,17 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-     pathMatch: 'full',
+    pathMatch: 'full',
   },
   {
     path: 'signup',
     component: SignupComponent,
-     pathMatch: 'full',
+    pathMatch: 'full',
   },
   {
     path: 'posts',
     component: PostsComponent,
-     pathMatch: 'full',
+    pathMatch: 'full',
   },
 
   // CREATE ROUTES FOR CALLING COMPONENTS HERE
