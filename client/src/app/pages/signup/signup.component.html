@@ -1,57 +1,65 @@
 <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-    <div class="example-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Enter your First Name</mat-label>
-          <input matInput placeholder="First Name" formControlName="firstName" required>
-          <mat-error *ngIf="signUpForm.controls.firstName.invalid">{{getErrorMessage('firstName')}}</mat-error>
-        </mat-form-field>
-    </div>
-    <div class="example-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Enter your Middle Name</mat-label>
-          <input matInput placeholder="Middle Name" formControlName="middleName" >
-          <mat-error *ngIf="signUpForm.controls.middleName.invalid">{{getErrorMessage('middleName')}}</mat-error>
-        </mat-form-field>
-    </div>
-    <div class="example-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Enter Last Name</mat-label>
-          <input matInput placeholder="Last Name" formControlName="lastName" required>
-          <mat-error *ngIf="signUpForm.controls.lastName.invalid">{{getErrorMessage('lastName')}}</mat-error>
-        </mat-form-field>
-    </div>
-    <div class="example-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Enter your email</mat-label>
-          <input matInput placeholder="pat@example.com" formControlName="email" required>
-          <mat-error *ngIf="signUpForm.controls.email.invalid">{{getErrorMessage('email')}}</mat-error>
-        </mat-form-field>
-    </div>
-    <div class="example-container">
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
-            <mat-error *ngIf="signUpForm.controls.password.invalid">{{getErrorMessage('password')}}</mat-error>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-      </div>
-      <div class="example-container">
-        <mat-form-field appearance="fill">
-            <mat-label>Confirm your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordConfirm" required>
-            <mat-error *ngIf="signUpForm.controls.passwordConfirm.invalid">{{getErrorMessage('passwordConfirm')}}</mat-error>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-      </div>
-      <div class="example-container">
-        <button type="submit">
-            Submit
-        </button>
-    </div>
-    </form>
-   
-   
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your First Name</mat-label>
+      <input matInput placeholder="First Name" formControlName="firstName" required>
+      <mat-error *ngIf="signUpForm.controls.firstName.invalid">{{getErrorMessage('firstName')}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your Middle Name</mat-label>
+      <input matInput placeholder="Middle Name" formControlName="middleName">
+      <mat-error *ngIf="signUpForm.controls.middleName.invalid">{{getErrorMessage('middleName')}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Last Name</mat-label>
+      <input matInput placeholder="Last Name" formControlName="lastName" required>
+      <mat-error *ngIf="signUpForm.controls.lastName.invalid">{{getErrorMessage('lastName')}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" formControlName="email" required>
+      <mat-error *ngIf="signUpForm.controls.email.invalid">{{getErrorMessage('email')}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <mat-error *ngIf="signUpForm.controls.password.invalid">{{getErrorMessage('password')}}</mat-error>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordConfirm" required>
+      <mat-error *ngIf="signUpForm.controls.passwordConfirm.invalid">{{getErrorMessage('passwordConfirm')}}</mat-error>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="example-container">
+    <button type="submit">
+      Submit
+    </button>
+  </div>
+</form>
+<a routerLink="/login">
+  <div class="navTab">
+    <img class="navIcon" />
+    <h2>LOGIN</h2>
+  </div>
+</a>
+<!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
+<a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a> -->

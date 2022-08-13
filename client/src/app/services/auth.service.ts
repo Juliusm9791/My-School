@@ -38,13 +38,14 @@ export class AuthService {
     this.getToken();
     if (this.token && !this.isTokenExpired(this.token)) {
       this.isLoggedIn = true
+      this.changeLoggedIn.emit(this.isLoggedIn)
     }
   }
 
   isTokenExpired(token: any) {
     try {
       const decoded: any = decode(token);
-      if (decoded.exp < Date.now() / 1000) {
+      if (decoded.exp < Date.now() / 100000) {
         return true;
       } else return false;
     } catch (err) {

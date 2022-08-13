@@ -1,33 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Apollo, gql } from 'apollo-angular';
-
-const SIGNUP = gql`
-mutation addUser(
-  $firstName: String!
-  $middleName:String
-  $lastName: String!
-  $email: String!
-  $password: String!
-) {
-  addUser(
-    firstName: $firstName
-    middleName: $middleName
-    lastName: $lastName
-    email: $email
-    password: $password
-  ) {
-    user {
-      _id
-      firstName
-      lastName
-      email
-    }
-    token
-  }
-}
-`;
-
+import { GraphqlQueryService } from 'src/app/services/graphql/graphql-query.service';
+import { SIGNUP } from '../../services/graphql/mutations'
 
 @Component({
   selector: 'app-signup',
@@ -37,23 +12,20 @@ mutation addUser(
 export class SignupComponent implements OnInit {
 
 
-  constructor(private apollo: Apollo)  { }
-  
-  // loading = true;
-   error: any;
-    signUpData: any;
-  // token: any = null;
-  // me: any;
+  constructor(private mutationService: GraphqlQueryService) { }
+
+  error: any;
+  signUpData: any;
 
   hide = true;
   signUpForm = new FormGroup({
-    firstName: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
     middleName: new FormControl(''),
-    lastName: new FormControl(''),
+    lastName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl(''),
-    passwordConfirm: new FormControl(''),
-    
+    password: new FormControl('', [Validators.required]),
+    passwordConfirm: new FormControl('', [Validators.required]),
+
   });
 
   getErrorMessage(msg: string) {
@@ -72,24 +44,13 @@ export class SignupComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-onSubmit(){
-  this.apollo.mutate({
-    mutation: SIGNUP,
-    variables: {
+  onSubmit() {
+    this.mutationService.mutation(SIGNUP, {
       firstName: this.signUpForm.controls.firstName.value,
       middleName: this.signUpForm.controls.middleName.value,
       lastName: this.signUpForm.controls.lastName.value,
       email: this.signUpForm.controls.email.value,
       password: this.signUpForm.controls.password.value
-    }
-  }).subscribe(({ data }) => {
-    console.log('got data', data);
-    this.signUpData = data;
-    // this.login(this.loginData.login.token);
-   
-  }, (error) => {
-    console.log('login error', error);
-  });
-
-}
+    })
+  }
 }

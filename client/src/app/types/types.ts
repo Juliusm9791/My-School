@@ -1,6 +1,6 @@
 export interface Me {
     _id: string,  
-    fullName: string;
+    firstName: string;
     middlName: string;
     lastName: string;
     email: string;

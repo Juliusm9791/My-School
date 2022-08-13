@@ -1,25 +1,48 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<ng-container *ngIf="isLoggedIn;then data_content else login_content"></ng-container>
+
+<ng-template #login_content>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="example-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Enter your email</mat-label>
-          <input matInput placeholder="pat@example.com" formControlName="email" required>
-          <mat-error *ngIf="loginForm.controls.email.invalid">{{getErrorMessage('email')}}</mat-error>
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="email" required>
+        <mat-error *ngIf="loginForm.controls.email.invalid">{{getErrorMessage('email')}}</mat-error>
+      </mat-form-field>
     </div>
     <div class="example-container">
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
-            <mat-error *ngIf="loginForm.controls.password.invalid">{{getErrorMessage('password')}}</mat-error>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-      </div>
-      <div class="example-container">
-        <button type="submit">
-            Submit
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <mat-error *ngIf="loginForm.controls.password.invalid">{{getErrorMessage('password')}}</mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
+      </mat-form-field>
     </div>
-    </form>
-   
+    <div class="example-container">
+      <button type="submit">
+        Submit
+      </button>
+    </div>
+    <a routerLink="/signup">
+      <div class="navTab">
+        <img class="navIcon" />
+        <h2>SIGNUP</h2>
+      </div>
+    </a>
+  </form>
+</ng-template>
+
+<ng-template #data_content>
+
+  <ng-container *ngIf="loading;then spinner_content else profile_content"></ng-container>
+
+  <ng-template #spinner_content>LOADING...</ng-template>
+
+  <ng-template #profile_content>
+    <h1>Hello {{me.me.firstName}} {{me.me.lastName}}</h1>
+    <a routerLink="/" (click)="logout()">Logout</a>
+  </ng-template>
+
+</ng-template>
