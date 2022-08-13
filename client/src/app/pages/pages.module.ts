@@ -7,6 +7,7 @@ import { PostComponent } from './posts/post/post.component';
 import { LoginComponent } from './login/login.component';
 import { CommentsComponent } from './posts/post/comments/comments.component';
 import { SignupComponent } from './signup/signup.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { SignupComponent } from './signup/signup.component';
     CommentsComponent,
     SignupComponent,
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, AppRoutingModule],
   exports: [HomeComponent, PostsComponent, LoginComponent, SignupComponent],
 })
 export class PagesModule {}

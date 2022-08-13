@@ -1,32 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Apollo, gql } from 'apollo-angular';
 import { AuthService } from 'src/app/services/auth.service';
-import { Me } from "../types/types"
+import { Me } from "../../types/types"
+import { LoginService } from './login.service';
 
-
-const LOGIN = gql`
-mutation login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-    token
-    user {
-      _id
-    }
-  }
-}
-`;
-
-const QUERY_ME = gql`
-  query user {
-    me {
-      _id
-      firstName
-      middleName
-      lastName
-      email
-    }
-  }
-`;
 
 @Component({
   selector: 'app-login',
@@ -38,17 +15,19 @@ export class LoginComponent implements OnInit {
   loading: boolean = true;
   error: any;
   loginData: any;
-  me: Me = {} as Me;
+  me: any;
 
   hide = true;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean;
 
-  constructor(private apollo: Apollo, private auth: AuthService) {
-    this.isLoggedIn = this.auth.isLoggedIn;
+  constructor(private authService: AuthService, private loginService: LoginService) {
+    this.isLoggedIn = authService.isLoggedIn;
+    this.loading = loginService.loading;
+    this.error = loginService.error
   }
 
   getErrorMessage(msg: string) {
@@ -66,36 +45,20 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  ngOnInit(): void { }
-
-  onSubmit() {
-    this.apollo.mutate({
-      mutation: LOGIN,
-      variables: {
-        email: this.loginForm.controls.email.value,
-        password: this.loginForm.controls.password.value
-      }
-    }).subscribe(({ data }) => {
-      console.log('got data', data);
-      this.loginData = data;
-      this.auth.login(this.loginData.login.token);
-      this.queryMe();
-    }, (error) => {
-      console.log('login error', error);
+  ngOnInit(): void {
+    this.authService.changeLoggedIn.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
     });
   }
 
-  queryMe() {
-    this.apollo
-      .watchQuery({
-        query: QUERY_ME,
-      })
-      .valueChanges.subscribe((result: any) => {
-        this.me = result?.data?.me;
-        console.log(this.me);
-        this.loading = result.loading;
-        this.error = result.error;
-      });
+  onSubmit() {
+    this.loginService.userLogin({
+      email: this.loginForm.controls.email.value,
+      password: this.loginForm.controls.password.value
+    })
   }
 
+  logout() {
+    this.authService.logout()
+  }
 }

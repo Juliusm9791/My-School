@@ -1,4 +1,4 @@
-<!-- <div class="container" [class.is-mobile]="mobileQuery.matches">
+<div class="container" [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -10,17 +10,10 @@
     </h1>
   </mat-toolbar>
 
-  <mat-sidenav-container
-    class="sidenav-container"
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-  >
-    <mat-sidenav
-      #snav
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56"
-    >
-      <mat-nav-list> --!>
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
         <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
 
 
@@ -62,13 +55,13 @@
             </a>
           </div>
 
-  <!--      <div class="vertical">
+          <!--      <div class="vertical">
           <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
           <a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a>
           <a routerLink="/signup">Signup</a>
-          <a routerLink="/posts">Posts</a>  --!>
+          <a routerLink="/posts">Posts</a>  -->
 
-  <!--      </div>
+        </div>
       </mat-nav-list>
     </mat-sidenav>
 
@@ -77,4 +70,5 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div> --!>
+</div>
+-->
