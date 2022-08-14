@@ -5,9 +5,11 @@ import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './posts/post/post.component';
 import { CommentsComponent } from './posts/post/comments/comments.component';
-import { SignupComponent } from './account/signup/signup.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { AccountComponent } from './account/account.component';
+import { LoginComponent } from './account/login/login.component';
+import { SignupComponent } from './account/signup/signup.component';
+import { ProfileComponent } from './account/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -15,10 +17,13 @@ import { AccountComponent } from './account/account.component';
     PostsComponent,
     PostComponent,
     AccountComponent,
-    CommentsComponent,
+    LoginComponent,
     SignupComponent,
+    ProfileComponent,
+    CommentsComponent,
+
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule],
-  exports: [HomeComponent, PostsComponent, AccountComponent, SignupComponent],
+  exports: [HomeComponent, PostsComponent, AccountComponent],
 })
 export class PagesModule {}

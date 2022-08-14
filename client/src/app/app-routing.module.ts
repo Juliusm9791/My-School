@@ -4,6 +4,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/account/login/login.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { SignupComponent } from './pages/account/signup/signup.component';
+import { AccountComponent } from './pages/account/account.component';
+import { ProfileComponent } from './pages/account/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -12,13 +14,23 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'login',
+    path: 'account',
+    component: AccountComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'account/login',
     component: LoginComponent,
     pathMatch: 'full',
   },
   {
-    path: 'signup',
+    path: 'account/signup',
     component: SignupComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'account/profile',
+    component: ProfileComponent,
     pathMatch: 'full',
   },
   {
@@ -27,13 +39,6 @@ const routes: Routes = [
     pathMatch: 'full',
   },
 
-  // CREATE ROUTES FOR CALLING COMPONENTS HERE
-  // EXAMPLE
-  // {
-  //   path: '/register',
-  //   component: RegistrationComponent,
-  //   pathMatch: 'full',
-  // },
 ];
 
 @NgModule({

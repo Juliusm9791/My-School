@@ -1,6 +1,4 @@
-<ng-container *ngIf="isLoggedIn;then data_content else login_content"></ng-container>
 
-<ng-template #login_content>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="example-container">
       <mat-form-field appearance="fill">
@@ -25,24 +23,11 @@
         Submit
       </button>
     </div>
-    <a routerLink="/signup">
+    <a routerLink="/account/signup">
       <div class="navTab">
         <img class="navIcon" />
         <h2>SIGNUP</h2>
       </div>
     </a>
-  </form>
-</ng-template>
+  </form> 
 
-<ng-template #data_content>
-
-  <ng-container *ngIf="loading;then spinner_content else profile_content"></ng-container>
-
-  <ng-template #spinner_content>LOADING...</ng-template>
-
-  <ng-template #profile_content>
-    <h1>Hello {{me.me.firstName}} {{me.me.lastName}}</h1>
-    <a routerLink="/" (click)="logout()">Logout</a>
-  </ng-template>
-
-</ng-template>

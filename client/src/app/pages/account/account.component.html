@@ -1,1 +1,6 @@
-<p>account works!</p>
+<!-- <ng-container *ngIf="isLoggedIn">
+<app-profile></app-profile>
+</ng-container> -->
+<ng-container *ngIf="isLoggedIn; then profile else login"></ng-container>
+<ng-template #profile><app-profile></app-profile></ng-template>
+<ng-template #login><app-login></app-login></ng-template>
