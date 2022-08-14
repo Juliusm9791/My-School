@@ -7,7 +7,7 @@ import decode from "jwt-decode";
 export class AuthService {
   token: any;
   isLoggedIn: boolean = false;
-  
+
   constructor() { }
 
   @Output() changeLoggedIn: EventEmitter<boolean> = new EventEmitter();
@@ -39,6 +39,8 @@ export class AuthService {
     if (this.token && !this.isTokenExpired(this.token)) {
       this.isLoggedIn = true
       this.changeLoggedIn.emit(this.isLoggedIn)
+    } else {
+      this.isLoggedIn = false;
     }
   }
 

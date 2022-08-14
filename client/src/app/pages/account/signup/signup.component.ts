@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Apollo, gql } from 'apollo-angular';
 import { GraphqlQueryService } from 'src/app/services/graphql/graphql-query.service';
 import { SIGNUP } from '../../../services/graphql/mutations';
 

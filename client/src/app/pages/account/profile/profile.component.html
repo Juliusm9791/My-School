@@ -1,1 +1,8 @@
-<p>profile works!</p>
+<ng-container *ngIf="loading; then spinner_content else profile_content"></ng-container>
+
+<ng-template #spinner_content>LOADING...</ng-template>
+
+<ng-template #profile_content>
+    <h1>Hello {{me.firstName}} {{me.lastName}}</h1>
+    <a routerLink="/" (click)="logout()">Logout</a>
+</ng-template>

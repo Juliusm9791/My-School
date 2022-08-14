@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
-import { Me } from '../../../types/types';
 import { LoginService } from './login.service';
 
 @Component({
@@ -20,13 +18,10 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
-  isLoggedIn: boolean;
 
   constructor(
-    private authService: AuthService,
     private loginService: LoginService
   ) {
-    this.isLoggedIn = authService.isLoggedIn;
     this.loading = loginService.loading;
     this.error = loginService.error;
   }
@@ -49,9 +44,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.changeLoggedIn.subscribe((isLoggedIn) => {
-      this.isLoggedIn = isLoggedIn;
-    });
   }
 
   onSubmit() {
@@ -61,7 +53,4 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.authService.logout();
-  }
 }
