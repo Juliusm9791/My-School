@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { GraphqlQueryService } from 'src/app/services/graphql/graphql-query.service';
-import { SIGNUP } from '../../../services/graphql/mutations';
+import { SignupService } from './signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +8,7 @@ import { SIGNUP } from '../../../services/graphql/mutations';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private mutationService: GraphqlQueryService) {}
+  constructor(private signUpService: SignupService) {}
 
   error: any;
   signUpData: any;
@@ -42,7 +41,7 @@ export class SignupComponent implements OnInit {
   }
   ngOnInit(): void {}
   onSubmit() {
-    this.mutationService.mutation(SIGNUP, {
+    this.signUpService.userSignup( {
       firstName: this.signUpForm.controls.firstName.value,
       middleName: this.signUpForm.controls.middleName.value,
       lastName: this.signUpForm.controls.lastName.value,
