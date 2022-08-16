@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services//auth/auth.service';
-import { LoginService } from '../login/login.service';
+import { LoginSignupService } from '../login-signup.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,11 +12,11 @@ export class ProfileComponent implements OnInit {
   me: any;
   loading: boolean = true;
 
-  constructor(private authService: AuthService, private loginService: LoginService) { }
+  constructor(private authService: AuthService, private loginSignupService: LoginSignupService) { }
 
   ngOnInit(): void {
-    this.loginService.queryMe();
-    this.loginService.changeLoading.subscribe((me) => {
+    this.loginSignupService.queryMe();
+    this.loginSignupService.changeLoading.subscribe((me) => {
       this.me = me.me;
       this.loading =me.loading;
     });

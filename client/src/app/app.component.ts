@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { LoginService } from './pages/account/login/login.service';
+import { LoginSignupService } from './pages/account/login-signup.service';
 import { AuthService } from './services/auth/auth.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private authService: AuthService, private loginService: LoginService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private authService: AuthService, private loginSignupService: LoginSignupService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -27,7 +27,7 @@ export class AppComponent implements OnDestroy, OnInit {
     this.authService.changeLoggedIn.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
-    this.loginService.changeLoading.subscribe((me) => {
+    this.loginSignupService.changeLoading.subscribe((me) => {
       this.me = me.me;
       this.loading =me.loading;
     });
