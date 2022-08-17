@@ -38,9 +38,10 @@ export class AuthService {
     this.getToken();
     if (this.token && !this.isTokenExpired(this.token)) {
       this.isLoggedIn = true
-      this.changeLoggedIn.emit(this.isLoggedIn)
+      this.changeLoggedIn.emit(this.isLoggedIn);
     } else {
       this.isLoggedIn = false;
+      this.changeLoggedIn.emit(this.isLoggedIn);
     }
   }
 
