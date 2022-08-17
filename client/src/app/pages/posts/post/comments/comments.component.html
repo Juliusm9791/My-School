@@ -1,14 +1,30 @@
 <mat-card>
   <mat-card-subtitle>
-    {{ comment.userId.firstName }}
-    {{ comment.userId.lastName }}
-    {{ comment.createdAt | date: "short" }}
+    <div class="commentHeader">
+      <h4>
+        {{ comment.userId.firstName }}
+        {{ comment.userId.lastName }} -
+        {{ comment.createdAt | date: "short" }}
+      </h4>
+      <mat-card-actions>
+        <div class="commentReactions">
+          <div class="likes">
+            Num
+            <button mat-icon-button>
+              <mat-icon id="likeIcon">thumb_up_alt</mat-icon>
+            </button>
+          </div>
+          <div class="comments">
+            Num
+            <button mat-icon-button>
+              <mat-icon id="commentIcon">chat_bubble</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card-actions>
+    </div>
   </mat-card-subtitle>
   <mat-card-content>
     <p>{{ comment.comment }}</p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
 </mat-card>

@@ -10,9 +10,16 @@
     </h1>
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
+  <mat-sidenav-container
+    class="sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
       <mat-nav-list>
         <div class="nav">
           <div class="vertical-nav">
@@ -48,16 +55,14 @@
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/account.png" />
                 <ng-container *ngIf="isLoggedIn && !loading">
-                  <h2>Hello {{me.firstName}}</h2>
+                  <h2>Hello {{ me.firstName }}</h2>
                 </ng-container>
                 <ng-container *ngIf="!isLoggedIn">
-                  <h2>LOGIN/SIGN-UP</h2>
+                  <h2>LOGIN / SIGN-UP</h2>
                 </ng-container>
               </div>
             </a>
-            
           </div>
-
         </div>
       </mat-nav-list>
     </mat-sidenav>
