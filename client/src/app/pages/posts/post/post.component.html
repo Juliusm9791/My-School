@@ -22,16 +22,25 @@
   </mat-card-content>
   <mat-divider inset></mat-divider>
   <mat-card-actions>
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
-    </button>
-
-    <button mat-icon-button>
-      <mat-icon>comment</mat-icon>
-    </button>
-
-    <button mat-icon-button>
-      <mat-icon>share</mat-icon>
-    </button>
+    <div class="postReactions">
+      <div class="likes">
+        Num
+        <button id="likeIcon" mat-icon-button>
+          <mat-icon>thumb_up_alt</mat-icon>
+        </button>
+      </div>
+      <div class="comments">
+        Num
+        <button id="commentIcon" mat-icon-button>
+          <mat-icon>chat_bubble</mat-icon>
+        </button>
+      </div>
+      <div class="shares">
+        Num
+        <button id="shareIcon" mat-icon-button>
+          <mat-icon id="shareAdjust">reply</mat-icon>
+        </button>
+      </div>
+    </div>
   </mat-card-actions>
 </mat-card>
