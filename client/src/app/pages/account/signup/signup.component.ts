@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SignupService } from './signup.service';
+import { SIGNUP } from 'src/app/services/graphql/mutations';
+import { LoginSignupService } from '../login-signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,10 +9,18 @@ import { SignupService } from './signup.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private signUpService: SignupService) {}
+  constructor(private loginSignupService: LoginSignupService) { }
 
   error: any;
   signUpData: any;
+  errorMessages: any = {
+    firstName: "First Name",
+    middleName: "Middle Name",
+    lastName: "Last Name",
+    email: "Email",
+    password: "Password",
+    passwordConfirm: "Confirm Password"
+  };
 
   hide = true;
   signUpForm = new FormGroup({
@@ -24,24 +33,18 @@ export class SignupComponent implements OnInit {
   });
 
   getErrorMessage(msg: string) {
-    if (msg === 'email') {
-      if (this.signUpForm.controls.email.hasError('required')) {
-        return `You must enter an ${msg}`;
+    if (this.errorMessages.hasOwnProperty(msg)) {
+      if (this.signUpForm.controls.email.hasError('email')) {
+        return 'Not a valid email'
       }
+      return (`${this.errorMessages[msg]} is required field`)
     }
-    if (msg === 'password') {
-      if (this.signUpForm.controls.password.hasError('required')) {
-        return `You must enter a ${msg}`;
-      }
-    }
-
-    return this.signUpForm.controls.email.hasError('email')
-      ? 'Not a valid email'
-      : '';
+    return null;
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void { }
   onSubmit() {
-    this.signUpService.userSignup( {
+    this.loginSignupService.userLoginSignup(SIGNUP, {
       firstName: this.signUpForm.controls.firstName.value,
       middleName: this.signUpForm.controls.middleName.value,
       lastName: this.signUpForm.controls.lastName.value,
