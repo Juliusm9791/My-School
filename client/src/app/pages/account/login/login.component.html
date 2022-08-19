@@ -1,33 +1,56 @@
-
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="example-container">
+<div class="registerPage">
+  <form class="registerForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="email-field">
       <mat-form-field appearance="fill">
-        <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" formControlName="email" required>
-        <mat-error *ngIf="loginForm.controls.email.invalid">{{getErrorMessage('email')}}</mat-error>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="loginForm.controls.email.invalid">{{
+          getErrorMessage("email")
+        }}</mat-error>
       </mat-form-field>
     </div>
-    <div class="example-container">
+
+    <div class="password-field">
       <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
-        <mat-error *ngIf="loginForm.controls.password.invalid">{{getErrorMessage('password')}}</mat-error>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          required
+        />
+        <mat-error *ngIf="loginForm.controls.password.invalid">{{
+          getErrorMessage("password")
+        }}</mat-error>
+
+        <button
+          id="hidePswd"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
       </mat-form-field>
     </div>
-    <div class="example-container">
-      <button type="submit">
-        Submit
-      </button>
-    </div>
-    <a routerLink="/account/signup">
-      <div class="navTab">
-        <img class="navIcon" />
-        <h2>SIGNUP</h2>
-      </div>
-    </a>
-  </form> 
 
+    <div class="register-switch">
+      <h5>
+        No account? Click
+        <a id="sign-up" routerLink="/account/signup"> here </a>to sign-up
+        instead.
+      </h5>
+    </div>
+
+    <div class="submitBtn">
+      <button type="submit">SUBMIT</button>
+    </div>
+  </form>
+</div>
