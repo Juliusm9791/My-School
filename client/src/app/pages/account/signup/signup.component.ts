@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SIGNUP } from 'src/app/services/graphql/mutations';
 import { LoginSignupService } from '../login-signup.service';
 
@@ -9,7 +10,7 @@ import { LoginSignupService } from '../login-signup.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private loginSignupService: LoginSignupService) { }
+  constructor(private loginSignupService: LoginSignupService, private router: Router) { }
 
   error: any;
   signUpData: any;
@@ -31,6 +32,7 @@ export class SignupComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     passwordConfirm: new FormControl('', [Validators.required]),
   });
+  passwordMacthed: boolean = true;
 
   getErrorMessage(msg: string) {
     if (this.errorMessages.hasOwnProperty(msg)) {
@@ -43,7 +45,13 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void { }
+
   onSubmit() {
+    if (this.signUpForm.controls.password.value !== this.signUpForm.controls.passwordConfirm.value) {
+      this.passwordMacthed = false;
+      return;
+    }
+
     this.loginSignupService.userLoginSignup(SIGNUP, {
       firstName: this.signUpForm.controls.firstName.value,
       middleName: this.signUpForm.controls.middleName.value,
@@ -51,5 +59,7 @@ export class SignupComponent implements OnInit {
       email: this.signUpForm.controls.email.value,
       password: this.signUpForm.controls.password.value,
     });
+
+    this.router.navigate(['/account/profile'])
   }
 }

@@ -11,7 +11,7 @@ import { AuthService } from './services/auth/auth.service';
 export class AppComponent implements OnDestroy, OnInit {
   title = 'client';
   mobileQuery: MediaQueryList;
-  isLoggedIn: any;
+  isLoggedIn: boolean = false;
   me: any;
   loading: boolean = true;
 
@@ -24,21 +24,22 @@ export class AppComponent implements OnDestroy, OnInit {
   }
   ngOnInit(): void {
     this.authService.loggedIn();
-    this.authService.changeLoggedIn.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-    });
-    this.loginSignupService.changeLoading.subscribe((me) => {
-      this.me = me.me;
-      this.loading =me.loading;
-    });
+    this.isLoggedIn = this.authService.isLoggedIn;
+
+    if (this.isLoggedIn) {
+      this.loginSignupService.queryMe();
+      this.loginSignupService.changeMe.subscribe((me) => {
+        this.me = me;
+      });
+      this.loginSignupService.changeLoading.subscribe((loading) => {
+        this.loading = loading;
+      });
+    }
+
   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  logout() {
-    this.authService.logout()
   }
 
 }

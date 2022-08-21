@@ -9,22 +9,20 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class AccountComponent implements OnInit {
 
-  isLoggedIn: boolean;
+  isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
-    this.isLoggedIn = this.authService.isLoggedIn
   }
   
   ngOnInit(): void {
     this.authService.loggedIn()
-    this.authService.changeLoggedIn.subscribe((isLoggedIn) => {
-      this.isLoggedIn = isLoggedIn;
-    });
-    // if (this.isLoggedIn) {
-    //   this.router.navigate(['/account/profile'])
-    // } else {
-    //   this.router.navigate(['/account/login'])
-    // }
+    this.isLoggedIn = this.authService.isLoggedIn;
+
+    if (this.isLoggedIn) {
+      this.router.navigate(['/account/profile'])
+    } else {
+      this.router.navigate(['/account/login'])
+    }
   }
 
 }

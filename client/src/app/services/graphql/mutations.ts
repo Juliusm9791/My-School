@@ -6,6 +6,10 @@ mutation login($email: String!, $password: String!) {
     token
     user {
       _id
+      firstName
+      middleName
+      lastName
+      email
     }
   }
 }
@@ -29,6 +33,7 @@ mutation addUser(
     user {
       _id
       firstName
+      middleName
       lastName
       email
     }

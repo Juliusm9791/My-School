@@ -10,20 +10,20 @@ export class AuthService {
 
   constructor() { }
 
-  @Output() changeLoggedIn: EventEmitter<boolean> = new EventEmitter();
+  // @Output() changeLoggedIn: EventEmitter<boolean> = new EventEmitter();
 
   login(idToken: any): void {
     // Saves user token to localStorage
     localStorage.setItem("id_token", idToken);
     this.isLoggedIn = true
-    this.changeLoggedIn.emit(this.isLoggedIn)
+    // this.changeLoggedIn.emit(this.isLoggedIn)
   }
 
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem("id_token");
     this.isLoggedIn = false
-    this.changeLoggedIn.emit(this.isLoggedIn)
+    // this.changeLoggedIn.emit(this.isLoggedIn)
   }
 
   getProfile() {
@@ -38,10 +38,10 @@ export class AuthService {
     this.getToken();
     if (this.token && !this.isTokenExpired(this.token)) {
       this.isLoggedIn = true
-      this.changeLoggedIn.emit(this.isLoggedIn);
+      // this.changeLoggedIn.emit(this.isLoggedIn);
     } else {
       this.isLoggedIn = false;
-      this.changeLoggedIn.emit(this.isLoggedIn);
+      // this.changeLoggedIn.emit(this.isLoggedIn);
     }
   }
 

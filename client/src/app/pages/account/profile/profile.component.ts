@@ -8,22 +8,28 @@ import { LoginSignupService } from '../login-signup.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  isLoggedIn: any;
+  isLoggedIn: boolean = false;
   me: any;
   loading: boolean = true;
 
-  constructor(private authService: AuthService, private loginSignupService: LoginSignupService) { }
+  constructor(private authService: AuthService, private loginSignupService: LoginSignupService) {
+
+  }
 
   ngOnInit(): void {
-    this.loginSignupService.queryMe();
-    this.loginSignupService.changeLoading.subscribe((me) => {
-      this.me = me.me;
-      this.loading =me.loading;
+    this.authService.loggedIn();
+    this.isLoggedIn = this.authService.isLoggedIn;
+    this.loginSignupService.changeMe.subscribe((me) => {
+      this.me = me;
+    });
+    this.loginSignupService.changeLoading.subscribe((loading) => {
+      this.loading = loading;
     });
   }
 
   logout() {
     this.authService.logout();
+    this.authService.loggedIn();
   }
 
 }
