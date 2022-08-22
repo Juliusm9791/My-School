@@ -20,23 +20,19 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
-  errorMessages: any = {
+  inputErrorMessages: any = {
     email: "Email",
     password: "Password",
   };
 
-  constructor(
-    private loginSignupService: LoginSignupService, private router: Router) {
-    this.loading = loginSignupService.loading;
-    this.error = loginSignupService.error;
-  }
+  constructor(private loginSignupService: LoginSignupService, private router: Router) { }
 
   getErrorMessage(msg: string) {
-    if (this.errorMessages.hasOwnProperty(msg)) {
+    if (this.inputErrorMessages.hasOwnProperty(msg)) {
       if (this.loginForm.controls.email.hasError('email')) {
         return 'Not a valid email'
       }
-      return (`${this.errorMessages[msg]} is required field`)
+      return (`${this.inputErrorMessages[msg]} is required field`)
     }
     return null;
   }
@@ -51,7 +47,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.router.navigate(['/account/profile'])
-    
+
   }
 
 }

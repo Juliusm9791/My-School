@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   error: any;
   signUpData: any;
-  errorMessages: any = {
+  inputErrorMessages: any = {
     firstName: "First Name",
     middleName: "Middle Name",
     lastName: "Last Name",
@@ -35,11 +35,11 @@ export class SignupComponent implements OnInit {
   passwordMacthed: boolean = true;
 
   getErrorMessage(msg: string) {
-    if (this.errorMessages.hasOwnProperty(msg)) {
+    if (this.inputErrorMessages.hasOwnProperty(msg)) {
       if (this.signUpForm.controls.email.hasError('email')) {
         return 'Not a valid email'
       }
-      return (`${this.errorMessages[msg]} is required field`)
+      return (`${this.inputErrorMessages[msg]} is required field`)
     }
     return null;
   }

@@ -21,19 +21,23 @@ export class AppComponent implements OnDestroy, OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.authService.changeLoggedIn.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+    });
+    this.loginSignupService.changeLoading.subscribe((loading) => {
+      this.loading = loading;
+    });
+    this.loginSignupService.changeMe.subscribe((me) => {
+      this.me = me;
+    });
   }
   ngOnInit(): void {
     this.authService.loggedIn();
-    this.isLoggedIn = this.authService.isLoggedIn;
+    this.isLoggedIn = this.authService.isLoggedin;
 
     if (this.isLoggedIn) {
       this.loginSignupService.queryMe();
-      this.loginSignupService.changeMe.subscribe((me) => {
-        this.me = me;
-      });
-      this.loginSignupService.changeLoading.subscribe((loading) => {
-        this.loading = loading;
-      });
+      this.me = this.loginSignupService.getMe;
     }
 
   }

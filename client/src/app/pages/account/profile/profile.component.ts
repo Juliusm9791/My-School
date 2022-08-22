@@ -10,15 +10,13 @@ import { LoginSignupService } from '../login-signup.service';
 export class ProfileComponent implements OnInit {
   isLoggedIn: boolean = false;
   me: any;
+  error: any;
   loading: boolean = true;
 
   constructor(private authService: AuthService, private loginSignupService: LoginSignupService) {
-
-  }
-
-  ngOnInit(): void {
-    this.authService.loggedIn();
-    this.isLoggedIn = this.authService.isLoggedIn;
+    this.authService.changeLoggedIn.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+    });
     this.loginSignupService.changeMe.subscribe((me) => {
       this.me = me;
     });
@@ -27,9 +25,18 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    this.isLoggedIn = this.authService.isLoggedin;
+    if (!this.isLoggedIn) {
+      return
+    }
+    this.loading = this.loginSignupService.isLoading;
+    this.me = this.loginSignupService.getMe;
+  }
+
   logout() {
     this.authService.logout();
-    this.authService.loggedIn();
+    this.loginSignupService.deleteMe()
   }
 
 }

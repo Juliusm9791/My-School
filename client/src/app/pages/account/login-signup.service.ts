@@ -10,10 +10,8 @@ import { Me } from 'src/app/types/types';
 })
 export class LoginSignupService {
 
-  loading: boolean = true;
-  error: any;
-  // signUpRespond: any;
-  me: any;
+  private loading: boolean = true;
+  private me: Me = {} as Me;
 
   constructor(private apollo: Apollo, private authService: AuthService) { }
 
@@ -26,7 +24,7 @@ export class LoginSignupService {
       mutation: mutationType,
       variables: { ...variables }
     }).subscribe((result: any) => {
-      console.log('got data2', result);
+      console.log('got data', result);
       this.loading = result.loading;
       let userData: any;
       if (mutationDefinition === "addUser") {
@@ -51,11 +49,24 @@ export class LoginSignupService {
       })
       .valueChanges.subscribe((result: any) => {
         this.me = result?.data?.me;
-        console.log(this.me)
+        console.log("query me data ", this.me)
         this.loading = result.loading;
         this.changeLoading.emit(this.loading)
         this.changeMe.emit(this.me)
-        this.error = result.error;
+      }, (error) => {
+        console.log('query me error', error);
       });
   }
+  get getMe() {
+    return this.me
+  }
+
+  get isLoading() {
+    return this.loading
+  }
+
+  deleteMe() {
+    this.me = {} as Me;
+  }
+
 }
