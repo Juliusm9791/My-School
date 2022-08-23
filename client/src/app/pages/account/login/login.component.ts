@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LOGIN } from 'src/app/services/graphql/mutations';
 import { LoginSignupService } from '../login-signup.service';
 
@@ -19,24 +20,19 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
-  errorMessages: any = {
+  inputErrorMessages: any = {
     email: "Email",
     password: "Password",
   };
 
-  constructor(
-    private loginSignupService: LoginSignupService
-  ) {
-    this.loading = loginSignupService.loading;
-    this.error = loginSignupService.error;
-  }
+  constructor(private loginSignupService: LoginSignupService, private router: Router) { }
 
   getErrorMessage(msg: string) {
-    if (this.errorMessages.hasOwnProperty(msg)) {
+    if (this.inputErrorMessages.hasOwnProperty(msg)) {
       if (this.loginForm.controls.email.hasError('email')) {
         return 'Not a valid email'
       }
-      return (`${this.errorMessages[msg]} is required field`)
+      return (`${this.inputErrorMessages[msg]} is required field`)
     }
     return null;
   }
@@ -49,6 +45,9 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value,
     });
+
+    this.router.navigate(['/account/profile'])
+
   }
 
 }

@@ -2,6 +2,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { QUERY_ME } from 'src/app/services/graphql/queries';
+// import { QUERY_ME } from 'src/app/services/graphql/queries';
 import { Me } from 'src/app/types/types';
 
 @Injectable({
@@ -9,25 +10,33 @@ import { Me } from 'src/app/types/types';
 })
 export class LoginSignupService {
 
-  loading: boolean = true;
-  error: any;
-  signUpRespond: any;
-  me: any;
+  private loading: boolean = true;
+  private me: Me = {} as Me;
 
   constructor(private apollo: Apollo, private authService: AuthService) { }
 
-  @Output() changeLoading: EventEmitter<any> = new EventEmitter();
+  @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
+  @Output() changeMe: EventEmitter<any> = new EventEmitter();
 
   userLoginSignup(mutationType: any, variables: any) {
     let mutationDefinition = mutationType.definitions[0].name.value;
     this.apollo.mutate({
       mutation: mutationType,
       variables: { ...variables }
-    }).subscribe(({ data }) => {
-      console.log('got data2', data);
-      this.signUpRespond = data;
-      this.authService.login(mutationDefinition === "addUser" ? this.signUpRespond.addUser.token : 
-      mutationDefinition === "login" ? this.signUpRespond.login.token : new Error('Something went wrong during login!'));
+    }).subscribe((result: any) => {
+      console.log('got data', result);
+      this.loading = result.loading;
+      let userData: any;
+      if (mutationDefinition === "addUser") {
+        userData = result.data.addUser;
+      } else if (mutationDefinition === "login") {
+        userData = result.data.login;
+      }
+      this.me = userData.user
+      this.authService.login(mutationDefinition === "addUser" ? result.data.addUser.token :
+        mutationDefinition === "login" ? result.data.login.token : new Error('Something went wrong during login!'));
+      this.changeLoading.emit(this.loading)
+      this.changeMe.emit(this.me)
     }, (error) => {
       console.log('login error', error);
     });
@@ -40,10 +49,24 @@ export class LoginSignupService {
       })
       .valueChanges.subscribe((result: any) => {
         this.me = result?.data?.me;
-        console.log(this.me)
+        console.log("query me data ", this.me)
         this.loading = result.loading;
-        this.changeLoading.emit({ me: this.me, loading: this.loading })
-        this.error = result.error;
+        this.changeLoading.emit(this.loading)
+        this.changeMe.emit(this.me)
+      }, (error) => {
+        console.log('query me error', error);
       });
   }
+  get getMe() {
+    return this.me
+  }
+
+  get isLoading() {
+    return this.loading
+  }
+
+  deleteMe() {
+    this.me = {} as Me;
+  }
+
 }
