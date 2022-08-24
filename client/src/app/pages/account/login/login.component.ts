@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginSignupService: LoginSignupService, private router: Router) {
     this.loginSignupService.changeLoading.subscribe((loading) => {
-      console.log(this.loading, "subscribe")
       this.loading = loading;
     });
   }
@@ -41,21 +40,21 @@ export class LoginComponent implements OnInit {
     return null;
   }
 
-  ngOnInit(): void {
-    this.loading = this.loginSignupService.isLoading;
-    console.log(this.loading, "on init")
-    if (!this.loading) {
-      this.router.navigate(['/account/profile'])
-    } else {
-      this.router.navigate(['/account/login'])
-    }
-  }
+  ngOnInit(): void { }
 
   onSubmit() {
     this.loginSignupService.userLoginSignup(LOGIN, {
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value,
     });
+
+    setTimeout(() => {
+      if (!this.loading) {
+         this.router.navigate(['/account/profile'])
+       } else {
+         this.router.navigate(['/account/login'])
+       }
+    }, 500);
   }
 
 }
