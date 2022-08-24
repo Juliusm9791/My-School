@@ -2,7 +2,6 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { QUERY_ME } from 'src/app/services/graphql/queries';
-// import { QUERY_ME } from 'src/app/services/graphql/queries';
 import { Me } from 'src/app/types/types';
 
 @Injectable({
