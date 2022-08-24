@@ -5,27 +5,25 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  styleUrls: ['./account.component.css'],
 })
 export class AccountComponent implements OnInit {
-
   isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
-       this.authService.changeLoggedIn.subscribe((loggedIn) => {
+    this.authService.changeLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
   }
-  
+
   ngOnInit(): void {
-    this.authService.loggedIn()
+    this.authService.loggedIn();
     this.isLoggedIn = this.authService.isLoggedIn;
 
     if (this.isLoggedIn) {
-      this.router.navigate(['/account/profile'])
+      this.router.navigate(['/account/profile']);
     } else {
-      this.router.navigate(['/account/login'])
+      this.router.navigate(['/account/login']);
     }
   }
-
 }
