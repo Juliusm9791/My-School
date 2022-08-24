@@ -19,7 +19,7 @@ export class AccountComponent implements OnInit {
   
   ngOnInit(): void {
     this.authService.loggedIn()
-    this.isLoggedIn = this.authService.isLoggedin;
+    this.isLoggedIn = this.authService.isLoggedIn;
 
     if (this.isLoggedIn) {
       this.router.navigate(['/account/profile'])
