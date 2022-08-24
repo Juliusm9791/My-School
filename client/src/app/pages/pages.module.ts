@@ -10,6 +10,7 @@ import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './account/login/login.component';
 import { SignupComponent } from './account/signup/signup.component';
 import { ProfileComponent } from './account/profile/profile.component';
+import { HeroComponent } from './home/hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { ProfileComponent } from './account/profile/profile.component';
     SignupComponent,
     ProfileComponent,
     CommentsComponent,
-
+    HeroComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule],
   exports: [HomeComponent, PostsComponent, AccountComponent],
