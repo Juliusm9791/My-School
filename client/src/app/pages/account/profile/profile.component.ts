@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedin;
+    this.isLoggedIn = this.authService.isLoggedIn;
     if (!this.isLoggedIn) {
       return
     }

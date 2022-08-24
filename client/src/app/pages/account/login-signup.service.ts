@@ -16,7 +16,7 @@ export class LoginSignupService {
   constructor(private apollo: Apollo, private authService: AuthService) { }
 
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
-  @Output() changeMe: EventEmitter<any> = new EventEmitter();
+  @Output() changeMe: EventEmitter<Me> = new EventEmitter();
 
   userLoginSignup(mutationType: any, variables: any) {
     let mutationDefinition = mutationType.definitions[0].name.value;
@@ -26,6 +26,8 @@ export class LoginSignupService {
     }).subscribe((result: any) => {
       console.log('got data', result);
       this.loading = result.loading;
+      this.changeLoading.emit(this.loading);
+      console.log(this.loading, "login service")
       let userData: any;
       if (mutationDefinition === "addUser") {
         userData = result.data.addUser;
@@ -35,7 +37,6 @@ export class LoginSignupService {
       this.me = userData.user
       this.authService.login(mutationDefinition === "addUser" ? result.data.addUser.token :
         mutationDefinition === "login" ? result.data.login.token : new Error('Something went wrong during login!'));
-      this.changeLoading.emit(this.loading)
       this.changeMe.emit(this.me)
     }, (error) => {
       console.log('login error', error);

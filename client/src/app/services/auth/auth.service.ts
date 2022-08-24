@@ -54,7 +54,7 @@ export class AuthService {
     this.token = localStorage.getItem("id_token");
   }
 
-  get isLoggedin() {
+  get isLoggedIn() {
     return this.isUserLoggedIn;
   }
 

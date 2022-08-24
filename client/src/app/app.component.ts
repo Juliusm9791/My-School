@@ -33,7 +33,7 @@ export class AppComponent implements OnDestroy, OnInit {
   }
   ngOnInit(): void {
     this.authService.loggedIn();
-    this.isLoggedIn = this.authService.isLoggedin;
+    this.isLoggedIn = this.authService.isLoggedIn;
 
     if (this.isLoggedIn) {
       this.loginSignupService.queryMe();

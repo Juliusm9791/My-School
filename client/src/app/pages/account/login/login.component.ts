@@ -11,21 +11,25 @@ import { LoginSignupService } from '../login-signup.service';
 })
 export class LoginComponent implements OnInit {
   loading: boolean = true;
-  error: any;
   loginData: any;
-  me: any;
-
   hide = true;
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
+
   inputErrorMessages: any = {
     email: "Email",
     password: "Password",
   };
 
-  constructor(private loginSignupService: LoginSignupService, private router: Router) { }
+  constructor(private loginSignupService: LoginSignupService, private router: Router) {
+    this.loginSignupService.changeLoading.subscribe((loading) => {
+      console.log(this.loading, "subscribe")
+      this.loading = loading;
+    });
+  }
 
   getErrorMessage(msg: string) {
     if (this.inputErrorMessages.hasOwnProperty(msg)) {
@@ -38,6 +42,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = this.loginSignupService.isLoading;
+    console.log(this.loading, "on init")
+    if (!this.loading) {
+      this.router.navigate(['/account/profile'])
+    } else {
+      this.router.navigate(['/account/login'])
+    }
   }
 
   onSubmit() {
@@ -45,9 +56,6 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value,
     });
-
-    this.router.navigate(['/account/profile'])
-
   }
 
 }
