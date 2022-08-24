@@ -1,11 +1,12 @@
-<h2>Banner</h2>
 <ngu-carousel
   [inputs]="carouselBanner"
   [dataSource]="carouselTileItems$ | async"
   (onMove)="onmoveFn($event)"
   [trackBy]="trackCarousel"
 >
-  <button NguCarouselPrev class="leftRs">&lt;</button>
+  <button NguCarouselPrev class="leftRs">
+    <mat-icon id="leftArrow">keyboard_arrow_left</mat-icon>
+  </button>
 
   <ngu-item
     *nguCarouselDef="let item; index as i; let ani = animate"
@@ -16,5 +17,7 @@
     </div>
   </ngu-item>
 
-  <button NguCarouselNext class="rightRs">&gt;</button>
+  <button NguCarouselNext class="rightRs">
+    <mat-icon id="rightArrow">keyboard_arrow_right</mat-icon>
+  </button>
 </ngu-carousel>

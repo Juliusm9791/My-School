@@ -32,7 +32,7 @@ export class HeroComponent {
     load: 2,
     custom: 'banner',
     loop: true,
-    touch: true, // touch is not currently in active for vertical carousel, will enable it in future build
+    touch: true,
     vertical: {
       enabled: false,
       height: 400,
