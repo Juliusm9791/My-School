@@ -44,6 +44,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
+import { NguCarouselModule } from '@ngu/carousel';
+
 
 @NgModule({
   declarations: [],
@@ -86,6 +88,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
+    NguCarouselModule,
   ],
   exports: [
     MatAutocompleteModule,
@@ -125,6 +128,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
+    NguCarouselModule,
   ],
 })
 export class MaterialModule {}

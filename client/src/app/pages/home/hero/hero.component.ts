@@ -63,7 +63,7 @@ export class HeroComponent {
     console.log(data);
   }
 
-  trackCarousel(_, item) {
+  trackCarousel(_: any, item: any) {
     return item;
   }
 }
