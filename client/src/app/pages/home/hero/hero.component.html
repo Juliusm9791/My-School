@@ -1,0 +1,31 @@
+<ngu-carousel
+  [inputs]="carouselBanner"
+  [dataSource]="carouselTileItems$ | async"
+  (onMove)="onmoveFn($event)"
+  [trackBy]="trackCarousel"
+>
+  <button NguCarouselPrev class="leftRs">
+    <mat-icon id="leftArrow">keyboard_arrow_left</mat-icon>
+  </button>
+
+  <ngu-item
+    *nguCarouselDef="let item; index as i; let ani = animate"
+    [@slider]="ani"
+  >
+    <div class="bannerStyle" [style.background]="'url(' + item + ')'">
+      <h1>{{ i + 1 }}</h1>
+    </div>
+  </ngu-item>
+
+  <button NguCarouselNext class="rightRs">
+    <mat-icon id="rightArrow">keyboard_arrow_right</mat-icon>
+  </button>
+
+  <!-- <ul class="myPoint" NguCarouselPoint>
+    <li
+      *ngFor="let j of myCarousel.pointNumbers; let j = index"
+      [class.active]="j == myCarousel.activePoint"
+      (click)="myCarousel.moveTo(j)"
+    ></li>
+  </ul> -->
+</ngu-carousel>

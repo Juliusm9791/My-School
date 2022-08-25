@@ -1,0 +1,60 @@
+.registerPage {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.email-field,
+.password-field,
+.submitBtn,
+.register-switch {
+  margin-top: 10px;
+  text-align: center;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+#sign-up {
+  text-decoration: none;
+}
+
+.submitBtn button {
+  margin-top: 15px;
+  width: 100px;
+  padding: 10px 15px;
+  background-color: #f29c55;
+  color: white;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  border-radius: 2px;
+}
+
+.submitBtn button:hover {
+  background-color: #e6924d;
+}
+
+.mat-form-field {
+  width: 300px;
+}
+
+.mat-form-field-underline {
+  background-color: #4050b2;
+}
+
+#hidePswd {
+  color: #4050b2;
+}
+
+.register-switch a {
+  color: #4050b2;
+}
+
+.register-switch a:hover {
+  color: #f29c55;
+}

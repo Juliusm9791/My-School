@@ -1,42 +1,42 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+  type Department {
+    _id: ID
+    depName: String!
+  }
 
- type Department{
-  _id: ID
-  depName: String!
+  type Group {
+    _id: ID
+    groupName: String!
+  }
 
- }
- type Group{
-  _id: ID
-  groupName: String!
-
- }
   type User {
     _id: ID
     firstName: String!
-    middleName:String
+    middleName: String
     lastName: String!
     avatar: String
     email: String!
     password: String!
     departmentId: [Department]
     groupId: [Group]
-    
   }
 
   type Reaction {
     _id: ID
     noLike: Boolean
     like: Boolean
-    userId:User
+    userId: User
   }
 
-  type Comment{
-    _id:ID
+  type Comment {
+    _id: ID
     comment: String!
     userId: User
     reactionId: [Reaction]
+    createdAt: String!
+    updatedAt: String
   }
 
   type Auth {
@@ -50,8 +50,10 @@ const typeDefs = gql`
     description: String!
     pictures: String
     userId: User
-    commentId:[Comment]
-    reactionId:[Reaction]
+    commentId: [Comment]
+    reactionId: [Reaction]
+    createdAt: String!
+    updatedAt: String
   }
 
   type Query {
@@ -60,15 +62,13 @@ const typeDefs = gql`
     me: User
     posts(title: String, user: ID): [Post]
     post(_id: ID!): Post
-
+    faculties: [Group]
   }
-
-
 
   type Mutation {
     addUser(
       firstName: String!
-      middleName:String
+      middleName: String
       lastName: String!
       avatar: String
       email: String!
@@ -76,7 +76,7 @@ const typeDefs = gql`
     ): Auth
     updateUser(
       firstName: String!
-      middleName:String
+      middleName: String
       lastName: String!
       avatar: String
       email: String!
@@ -92,11 +92,10 @@ const typeDefs = gql`
       reactionId: ID
     ): Post
     updatePost(
-      _id:ID!
+      _id: ID!
       title: String!
       description: String
       pictures: String
-     
     ): Post
   }
 `;

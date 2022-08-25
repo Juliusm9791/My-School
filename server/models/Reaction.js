@@ -11,7 +11,7 @@ const reactionSchema = new Schema({
     type: Boolean,
     required: false,
   },
-   userId: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
