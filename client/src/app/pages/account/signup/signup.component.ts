@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { SIGNUP } from 'src/app/services/graphql/mutations';
 import { LoginSignupService } from '../login-signup.service';
 
@@ -10,7 +9,7 @@ import { LoginSignupService } from '../login-signup.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private loginSignupService: LoginSignupService, private router: Router) {
+  constructor(private loginSignupService: LoginSignupService) {
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
@@ -20,12 +19,12 @@ export class SignupComponent implements OnInit {
   error: any;
   signUpData: any;
   inputErrorMessages: any = {
-    firstName: "First Name",
-    middleName: "Middle Name",
-    lastName: "Last Name",
-    email: "Email",
-    password: "Password",
-    passwordConfirm: "Confirm Password"
+    firstName: 'First Name',
+    middleName: 'Middle Name',
+    lastName: 'Last Name',
+    email: 'Email',
+    password: 'Password',
+    passwordConfirm: 'Confirm Password',
   };
 
   hide = true;
@@ -42,18 +41,21 @@ export class SignupComponent implements OnInit {
   getErrorMessage(msg: string) {
     if (this.inputErrorMessages.hasOwnProperty(msg)) {
       if (this.signUpForm.controls.email.hasError('email')) {
-        return 'Not a valid email'
+        return 'Not a valid email';
       }
-      return (`${this.inputErrorMessages[msg]} is required field`)
+      return `${this.inputErrorMessages[msg]} is required field`;
     }
     return null;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onSubmit() {
-    if (this.signUpForm.controls.password.value !== this.signUpForm.controls.passwordConfirm.value ||
-      this.signUpForm.controls.email.errors) {
+    if (
+      this.signUpForm.controls.password.value !==
+        this.signUpForm.controls.passwordConfirm.value ||
+      this.signUpForm.controls.email.errors
+    ) {
       this.passwordMacthed = false;
       return;
     }
@@ -65,12 +67,5 @@ export class SignupComponent implements OnInit {
       email: this.signUpForm.controls.email.value,
       password: this.signUpForm.controls.password.value,
     });
-    setTimeout(() => {
-      if (!this.loading) {
-        this.router.navigate(['/account/profile'])
-      } else {
-        this.router.navigate(['/account/singup'])
-      }
-    }, 500);
   }
 }

@@ -28,7 +28,7 @@ const resolvers = {
       return await User.find({}).populate("departmentId").populate("groupId");
     },
     me: async (parent, args, context) => {
-      if ("me",context.user) {
+      if (("me", context.user)) {
         return await User.findById(context.user._id)
           .populate("departmentId")
           .populate("groupId");
@@ -46,10 +46,7 @@ const resolvers = {
         .populate("reactionId");
     },
     faculties: async (parent, args) => {
-    
-      return await Group.find({})
-
-        
+      return await Group.find({});
     },
   },
 

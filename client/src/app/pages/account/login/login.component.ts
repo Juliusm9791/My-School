@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LOGIN } from 'src/app/services/graphql/mutations';
 import { LoginSignupService } from '../login-signup.service';
 
@@ -11,7 +10,6 @@ import { LoginSignupService } from '../login-signup.service';
 })
 export class LoginComponent implements OnInit {
   loading: boolean = true;
-  loginData: any;
   hide = true;
 
   loginForm = new FormGroup({
@@ -20,11 +18,11 @@ export class LoginComponent implements OnInit {
   });
 
   inputErrorMessages: any = {
-    email: "Email",
-    password: "Password",
+    email: 'Email',
+    password: 'Password',
   };
 
-  constructor(private loginSignupService: LoginSignupService, private router: Router) {
+  constructor(private loginSignupService: LoginSignupService) {
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
@@ -33,28 +31,19 @@ export class LoginComponent implements OnInit {
   getErrorMessage(msg: string) {
     if (this.inputErrorMessages.hasOwnProperty(msg)) {
       if (this.loginForm.controls.email.hasError('email')) {
-        return 'Not a valid email'
+        return 'Not a valid email';
       }
-      return (`${this.inputErrorMessages[msg]} is required field`)
+      return `${this.inputErrorMessages[msg]} is required field`;
     }
     return null;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   onSubmit() {
     this.loginSignupService.userLoginSignup(LOGIN, {
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value,
     });
-
-    setTimeout(() => {
-      if (!this.loading) {
-         this.router.navigate(['/account/profile'])
-       } else {
-         this.router.navigate(['/account/login'])
-       }
-    }, 500);
   }
-
 }

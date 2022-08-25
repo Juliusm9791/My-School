@@ -1,8 +1,14 @@
-const db = require('../config/connection');
-const { User, Comment, Department, Group, Post, Reaction } = require('../models');
+const db = require("../config/connection");
+const {
+  User,
+  Comment,
+  Department,
+  Group,
+  Post,
+  Reaction,
+} = require("../models");
 
-db.once('open', async () => {
-
+db.once("open", async () => {
   await Department.deleteMany();
   const departments = await Department.insertMany([
     { depName: "Sciences" },
@@ -31,7 +37,7 @@ db.once('open', async () => {
       email: "toddtrulock@gmail.com",
       password: "12345678",
       groupId: groups[0]._id,
-      departmentId: departments[0]._id
+      departmentId: departments[0]._id,
     },
     {
       firstName: "olsen",
@@ -41,11 +47,11 @@ db.once('open', async () => {
       email: "todd@gmail.com",
       password: "12345678",
       groupId: groups[1]._id,
-      departmentId: departments[1]._id
-    }
+      departmentId: departments[1]._id,
+    },
   ]);
 
-  console.log('users seeded');
+  console.log("users seeded");
 
   await Reaction.deleteMany();
   const reactions = await Reaction.insertMany([
@@ -60,18 +66,19 @@ db.once('open', async () => {
     {
       comment: "good",
       userId: users[0]._id,
-      reactionId: reactions[0]._id
+      reactionId: reactions[0]._id,
     },
     {
       comment: "comment on post",
       userId: users[1]._id,
-      reactionId: reactions[0]._id
+      reactionId: reactions[0]._id,
     },
     {
       comment: "yooo",
       userId: users[0]._id,
-      reactionId: reactions[0]._id
-    }]);
+      reactionId: reactions[0]._id,
+    },
+  ]);
 
   console.log("comments seeded");
 
@@ -83,7 +90,7 @@ db.once('open', async () => {
       pictures: "",
       userId: users[0]._id,
       commentId: comments[0]._id,
-      reactionId: reactions[0]._id
+      reactionId: reactions[0]._id,
     },
     {
       title: "post2",
@@ -91,7 +98,7 @@ db.once('open', async () => {
       pictures: "",
       userId: users[1]._id,
       commentId: comments[1]._id,
-      reactionId: reactions[0]._id
+      reactionId: reactions[0]._id,
     },
     {
       title: "post3",
@@ -99,7 +106,7 @@ db.once('open', async () => {
       pictures: "",
       userId: users[0]._id,
       commentId: comments[2]._id,
-      reactionId: reactions[0]._id
+      reactionId: reactions[0]._id,
     },
   ]);
 

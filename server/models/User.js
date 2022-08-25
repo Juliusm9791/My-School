@@ -4,52 +4,50 @@ const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
 // const Auction = require('./Auction');
 
-const userSchema = new Schema(
-  {
-    firstName: {
-      type: String,
-      required: true,
-      trim: true,
+const userSchema = new Schema({
+  firstName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  middleName: {
+    type: String,
+    required: false,
+    trim: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  avatar: {
+    type: String,
+    required: false,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/.+@.+\..+/, "Must use a valid email address"],
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5,
+  },
+  departmentId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Department",
     },
-    middleName: {
-      type: String,
-      required: false,
-      trim: true
+  ],
+  groupId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Group",
     },
-    lastName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    avatar: {
-      type: String,
-      required: false,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      match: [/.+@.+\..+/, "Must use a valid email address"],
-    },
-    password: {
-      type: String,
-      required: true,
-      minlength: 5,
-    },
-    departmentId: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Department",
-      },
-    ],
-    groupId: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Group",
-      },
-    ],
-  }
-);
+  ],
+});
 
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
