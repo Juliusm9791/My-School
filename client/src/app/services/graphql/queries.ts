@@ -11,3 +11,12 @@ query user {
   }
 }
 `;
+
+export const QUERY_FACULTIES = gql` 
+query faculties {
+  faculties {
+    _id
+  groupName
+
+  }
+}`;

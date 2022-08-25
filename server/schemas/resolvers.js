@@ -45,6 +45,12 @@ const resolvers = {
         })
         .populate("reactionId");
     },
+    faculties: async (parent, args) => {
+    
+      return await Group.find({})
+
+        
+    },
   },
 
   Mutation: {
