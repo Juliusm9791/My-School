@@ -6,6 +6,7 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { SignupComponent } from './pages/account/signup/signup.component';
 import { AccountComponent } from './pages/account/account.component';
 import { ProfileComponent } from './pages/account/profile/profile.component';
+import { FacultyComponent } from './pages/faculty/faculty.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
   {
     path: 'posts',
     component: PostsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'faculty',
+    component: FacultyComponent,
     pathMatch: 'full',
   },
 
