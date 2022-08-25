@@ -3,28 +3,28 @@ import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GraphqlQueryService {
-
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) {}
 
   query(queryRequest: any) {
-    return this.apollo.query({
-      query: queryRequest,
-    }).pipe(map((m) => m));
+    return this.apollo
+      .query({
+        query: queryRequest,
+      })
+      .pipe(map((m) => m));
   }
 
   mutation(mutationRequest: any, mutationVariable: any) {
-    return this.apollo.mutate({
-      mutation: mutationRequest,
-      variables: { ...mutationVariable }
-    }).pipe(map((m) => m.data
-    ));
+    return this.apollo
+      .mutate({
+        mutation: mutationRequest,
+        variables: { ...mutationVariable },
+      })
+      .pipe(map((m) => m.data));
   }
-
 }
-
 
 // async onSubmit() {
 //   const lodinRespond$ = this.queryService.mutation(LOGIN, {

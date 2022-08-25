@@ -44,7 +44,6 @@ const routes: Routes = [
     component: FacultyComponent,
     pathMatch: 'full',
   },
-
 ];
 
 @NgModule({

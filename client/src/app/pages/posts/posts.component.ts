@@ -17,26 +17,26 @@ export class PostsComponent implements OnInit {
     this.apollo
       .watchQuery({
         query: gql`
-        {
-          posts {
-            _id
-            title
-            description
-            createdAt
-            commentId {
+          {
+            posts {
               _id
-              comment
+              title
+              description
+              createdAt
+              commentId {
+                _id
+                comment
+                userId {
+                  firstName
+                  lastName
+                }
+                createdAt
+              }
               userId {
                 firstName
-                lastName
               }
-              createdAt
-            }
-            userId{
-              firstName
             }
           }
-        }
         `,
       })
       .valueChanges.subscribe((result: any) => {

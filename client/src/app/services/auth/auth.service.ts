@@ -1,36 +1,36 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import decode from "jwt-decode";
+import decode from 'jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private token: any;
   private isUserLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor() {}
 
   @Output() changeLoggedIn: EventEmitter<boolean> = new EventEmitter();
 
   login(idToken: any): void {
     // Saves user token to localStorage
-    localStorage.setItem("id_token", idToken);
-    this.isUserLoggedIn = true
-    this.changeLoggedIn.emit(this.isUserLoggedIn)
+    localStorage.setItem('id_token', idToken);
+    this.isUserLoggedIn = true;
+    this.changeLoggedIn.emit(this.isUserLoggedIn);
   }
 
   logout() {
     // Clear user token and profile data from localStorage
-    localStorage.removeItem("id_token");
-    this.isUserLoggedIn = false
-    this.changeLoggedIn.emit(this.isUserLoggedIn)
+    localStorage.removeItem('id_token');
+    this.isUserLoggedIn = false;
+    this.changeLoggedIn.emit(this.isUserLoggedIn);
   }
 
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     this.getToken();
     if (this.token && !this.isTokenExpired(this.token)) {
-      this.isUserLoggedIn = true
+      this.isUserLoggedIn = true;
       this.changeLoggedIn.emit(this.isUserLoggedIn);
     } else {
       this.isUserLoggedIn = false;
@@ -51,11 +51,10 @@ export class AuthService {
 
   private getToken() {
     // Retrieves the user token from localStorage
-    this.token = localStorage.getItem("id_token");
+    this.token = localStorage.getItem('id_token');
   }
 
   get isLoggedIn() {
     return this.isUserLoggedIn;
   }
-
 }
