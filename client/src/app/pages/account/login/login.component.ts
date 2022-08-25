@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LOGIN } from 'src/app/services/graphql/mutations';
 import { LoginSignupService } from '../login-signup.service';
 
@@ -23,10 +22,7 @@ export class LoginComponent implements OnInit {
     password: 'Password',
   };
 
-  constructor(
-    private loginSignupService: LoginSignupService,
-    private router: Router
-  ) {
+  constructor(private loginSignupService: LoginSignupService) {
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
@@ -49,13 +45,5 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value,
     });
-
-    setTimeout(() => {
-      if (!this.loading) {
-        this.router.navigate(['/account/profile']);
-      } else {
-        this.router.navigate(['/account/login']);
-      }
-    }, 500);
   }
 }

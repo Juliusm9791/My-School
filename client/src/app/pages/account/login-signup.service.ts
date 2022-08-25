@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { QUERY_ME } from 'src/app/services/graphql/queries';
@@ -11,7 +12,11 @@ export class LoginSignupService {
   private loading: boolean = true;
   private me: Me = {} as Me;
 
-  constructor(private apollo: Apollo, private authService: AuthService) {}
+  constructor(
+    private apollo: Apollo,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeMe: EventEmitter<Me> = new EventEmitter();
@@ -44,6 +49,7 @@ export class LoginSignupService {
               : new Error('Something went wrong during login!')
           );
           this.changeMe.emit(this.me);
+          !this.loading && this.router.navigate(['/account/profile']);
         },
         (error) => {
           console.log('login error', error);
@@ -63,6 +69,7 @@ export class LoginSignupService {
           this.loading = result.loading;
           this.changeLoading.emit(this.loading);
           this.changeMe.emit(this.me);
+          !this.loading && this.router.navigate(['/account/profile']);
         },
         (error) => {
           console.log('query me error', error);
