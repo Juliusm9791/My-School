@@ -1,12 +1,15 @@
-.bannerStyle h1 {
-  min-height: 700px;
+.bannerStyle {
+  min-height: 600px;
   max-height: 300px;
   text-align: center;
   line-height: 300px;
 }
 
-h1 {
-  visibility: hidden;
+.bannerStyle {
+  width: 100% !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
 .leftRs {
@@ -52,4 +55,25 @@ h1 {
   scale: 1.6;
 }
 
-// test
+.myPoint {
+  list-style-type: none;
+  text-align: center;
+  padding: 12px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.myPoint li {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.55);
+  padding: 4px;
+  margin: 0 3px;
+  transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: 0.4s;
+}
+.myPoint li.active {
+  background: #6b6b6b;
+  transform: scale(1.2);
+}

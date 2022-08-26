@@ -2,25 +2,27 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const commentSchema = new Schema({
-  comment: {
-    type: String,
-    required: true,
-  },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
-  reactionId: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Reaction",
+const commentSchema = new Schema(
+  {
+    comment: {
+      type: String,
+      required: true,
     },
-  ],
-},
-{
-  timestamps: true
-});
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    reactionId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Reaction",
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Comment = mongoose.model("Comment", commentSchema);
 

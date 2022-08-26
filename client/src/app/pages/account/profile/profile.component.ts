@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services//auth/auth.service';
+import { Me } from 'src/app/types/types';
 import { LoginSignupService } from '../login-signup.service';
-
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
   isLoggedIn: boolean = false;
-  me: any;
+  me: Me = {} as Me;
   error: any;
   loading: boolean = true;
 
-  constructor(private authService: AuthService, private loginSignupService: LoginSignupService) {
+  constructor(
+    private authService: AuthService,
+    private loginSignupService: LoginSignupService
+  ) {
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
@@ -29,7 +32,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn;
     if (!this.isLoggedIn) {
-      return
+      return;
     }
     this.loading = this.loginSignupService.isLoading;
     this.me = this.loginSignupService.getMe;
@@ -37,7 +40,6 @@ export class ProfileComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.loginSignupService.deleteMe()
+    this.loginSignupService.deleteMe();
   }
-
 }
