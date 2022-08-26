@@ -12,6 +12,7 @@ import { SignupComponent } from './account/signup/signup.component';
 import { ProfileComponent } from './account/profile/profile.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { FacultyComponent } from './faculty/faculty.component';
+import { DepartmentsComponent } from './departments/departments.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { FacultyComponent } from './faculty/faculty.component';
     CommentsComponent,
     HeroComponent,
     FacultyComponent,
+    DepartmentsComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule],
-  exports: [HomeComponent, PostsComponent, AccountComponent, FacultyComponent],
+  exports: [HomeComponent, PostsComponent, AccountComponent, FacultyComponent, DepartmentsComponent],
 })
 export class PagesModule {}

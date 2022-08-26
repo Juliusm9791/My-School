@@ -7,6 +7,7 @@ import { SignupComponent } from './pages/account/signup/signup.component';
 import { AccountComponent } from './pages/account/account.component';
 import { ProfileComponent } from './pages/account/profile/profile.component';
 import { FacultyComponent } from './pages/faculty/faculty.component';
+import { DepartmentsComponent } from './pages/departments/departments.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,11 @@ const routes: Routes = [
   {
     path: 'faculty',
     component: FacultyComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'departments',
+    component: DepartmentsComponent,
     pathMatch: 'full',
   },
 

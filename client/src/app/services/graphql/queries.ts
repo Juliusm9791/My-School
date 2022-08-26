@@ -20,3 +20,12 @@ query faculties {
 
   }
 }`;
+export const QUERY_DEPARTMENTS = gql` 
+query departments {
+  departments {
+    _id
+  depName
+
+  }
+}
+`

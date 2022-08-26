@@ -51,6 +51,12 @@ const resolvers = {
 
         
     },
+    departments: async (parent, args) => {
+    
+      return await Department.find({})
+
+        
+    },
   },
 
   Mutation: {

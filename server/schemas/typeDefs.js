@@ -65,7 +65,7 @@ const typeDefs = gql`
     posts(title: String, user: ID): [Post]
     post(_id: ID!): Post
     faculties: [Group]
-
+    departments: [Department]
   }
 
 
