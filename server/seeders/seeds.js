@@ -56,6 +56,9 @@ db.once("open", async () => {
   await Reaction.deleteMany();
   const reactions = await Reaction.insertMany([
     { like: true, noLike: false, userId: users[0]._id },
+    { like: true, noLike: false, userId: users[0]._id },
+    { like: true, noLike: false, userId: users[1]._id },
+
     { like: false, noLike: true, userId: users[1]._id },
   ]);
 
@@ -89,8 +92,8 @@ db.once("open", async () => {
       description: "description for post1",
       pictures: "",
       userId: users[0]._id,
-      commentId: comments[0]._id,
-      reactionId: reactions[0]._id,
+      commentId: [comments[0]._id, comments[1]._id],
+      reactionId: [reactions[0]._id, reactions[1]._id],
     },
     {
       title: "post2",

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import { Post } from 'src/app/types/types';
 
 @Component({
   selector: 'app-posts',
@@ -7,7 +8,7 @@ import { Apollo, gql } from 'apollo-angular';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-  posts: any[] = [];
+  posts: Post[] = [];
   loading = true;
   error: any;
 
@@ -23,10 +24,20 @@ export class PostsComponent implements OnInit {
               title
               description
               createdAt
+              reactionId {
+                _id
+                like
+                userId {
+                  _id
+                  firstName
+                  lastName
+                }
+              }
               commentId {
                 _id
                 comment
                 userId {
+                  _id
                   firstName
                   lastName
                 }
@@ -34,6 +45,7 @@ export class PostsComponent implements OnInit {
               }
               userId {
                 firstName
+                lastName
               }
             }
           }
@@ -45,5 +57,14 @@ export class PostsComponent implements OnInit {
         this.loading = result.loading;
         this.error = result.error;
       });
+  }
+  countLikes(post: Post) {
+    let count: number = 0;
+    post.reactionId.forEach((element: any) => {
+      if (element.like) {
+        count++;
+      }
+    });
+    return count;
   }
 }

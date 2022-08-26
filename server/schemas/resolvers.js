@@ -39,11 +39,15 @@ const resolvers = {
       return await Post.find({})
         .populate("userId")
         .populate("commentId")
+        .populate("reactionId")
+        .populate({
+          path: "reactionId",
+          populate: "userId",
+        })
         .populate({
           path: "commentId",
           populate: "userId",
         })
-        .populate("reactionId");
     },
     faculties: async (parent, args) => {
       return await Group.find({});
