@@ -49,10 +49,7 @@ const resolvers = {
       return await Group.find({});
     },
     departments: async (parent, args) => {
-    
-      return await Department.find({})
-
-        
+      return await Department.find({});
     },
   },
 

@@ -24,3 +24,8 @@ export interface Faculty {
   _id: string;
   groupName: string;
 }
+
+export interface Department {
+  _id: string;
+  depName: string;
+}
