@@ -48,6 +48,12 @@ const resolvers = {
     faculties: async (parent, args) => {
       return await Group.find({});
     },
+    departments: async (parent, args) => {
+    
+      return await Department.find({})
+
+        
+    },
   },
 
   Mutation: {

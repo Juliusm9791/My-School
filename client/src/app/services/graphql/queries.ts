@@ -9,8 +9,7 @@ export const QUERY_ME = gql`
       lastName
       email
     }
-  }
-`;
+  }`;
 
 export const QUERY_FACULTIES = gql`
   query faculties {
@@ -18,5 +17,13 @@ export const QUERY_FACULTIES = gql`
       _id
       groupName
     }
+  }`;
+
+export const QUERY_DEPARTMENTS = gql` 
+query departments {
+  departments {
+    _id
+  depName
   }
-`;
+}`;
+
