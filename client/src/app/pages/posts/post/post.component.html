@@ -24,13 +24,13 @@
   <mat-card-actions>
     <div class="postReactions">
       <div class="likes">
-        Num
+        {{countLikes}}
         <button id="likeIcon" mat-icon-button>
           <mat-icon>thumb_up_alt</mat-icon>
         </button>
       </div>
       <div class="comments">
-        Num
+        You have {{post.commentId.length}}
         <button id="commentIcon" mat-icon-button>
           <mat-icon>chat_bubble</mat-icon>
         </button>
