@@ -1,3 +1,8 @@
 #home {
   margin: 30px;
 }
+
+#home {
+  margin: 30px auto;
+  max-width: 800px;
+}
