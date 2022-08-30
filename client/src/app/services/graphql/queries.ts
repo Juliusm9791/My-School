@@ -26,4 +26,38 @@ query departments {
   depName
   }
 }`;
+export const QUERY_POSTS = gql` 
+query posts {
+  posts {
+    _id
+    title
+    description
+    createdAt
+    reactionId {
+      _id
+      like
+      userId {
+        _id
+        firstName
+        lastName
+      }
+    }
+    commentId {
+      _id
+      comment
+      userId {
+        _id
+        firstName
+        lastName
+      }
+      createdAt
+    }
+    userId {
+      firstName
+      lastName
+    }
+  
+}
+}`;
+
 
