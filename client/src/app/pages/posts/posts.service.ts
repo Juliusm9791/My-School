@@ -40,4 +40,13 @@ export class PostsService {
   get posts(){
     return this._posts
   }
+  countLikes(post: Post) {
+    let count: number = 0;
+    post.reactionId.forEach((element: any) => {
+      if (element.like) {
+        count++;
+      }
+    });
+    return count;
+  }
 }
