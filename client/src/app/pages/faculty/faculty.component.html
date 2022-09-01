@@ -1,4 +1,10 @@
-<p>faculty works!</p>
+<h1>FACULTIES</h1>
+<div class="facultyContainer">
 <ng-container *ngFor="let faculty of faculties">
-  <h1>{{ faculty.groupName }}</h1>
+  
+  <mat-card class="facultyCard" >
+    <mat-card-title>{{ faculty.groupName }}</mat-card-title>
+   
+  </mat-card>
 </ng-container>
+</div>

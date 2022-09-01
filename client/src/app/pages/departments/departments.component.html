@@ -1,4 +1,10 @@
-<p>departments works!</p>
+<h1>DEPARTMENTS</h1>
+<div class="deptContainer">
 <ng-container *ngFor="let department of departments">
-  <h1>{{ department.depName }}</h1>
+  
+  <mat-card class="deptCard" >
+    <mat-card-title>{{ department.depName }}</mat-card-title>
+   
+  </mat-card>
 </ng-container>
+</div>

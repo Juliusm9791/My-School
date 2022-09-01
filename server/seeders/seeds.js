@@ -16,9 +16,15 @@ db.once("open", async () => {
 	await Department.deleteMany();
 	// create 3 departments
 	const departments = await Department.insertMany([
-		{ depName: "Sciences" },
-		{ depName: "Literature" },
-		{ depName: "Sports" },
+		{ depName: "Administration" },
+		{ depName: "Health" },
+		{ depName: "English" },
+		{ depName: "Math" },
+		{ depName: "Science" },
+		{ depName: "Art" },
+		{ depName: "Athletics" },
+		{ depName: "Extra-Curriculum" },
+		{ depName: "Transportation" },
 	]);
 
 	console.log("departments seeded");

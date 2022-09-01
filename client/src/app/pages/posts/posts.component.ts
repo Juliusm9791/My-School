@@ -14,6 +14,7 @@ export class PostsComponent implements OnInit {
   loading: boolean = true;
   error: any;
 
+
   constructor(private postsService: PostsService) {
    
     this.postsService.changePosts.subscribe((posts) => {
@@ -29,15 +30,9 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.postsService.queryPosts();
   }
-  
-  
-  countLikes(post: Post) {
-    let count: number = 0;
-    post.reactionId.forEach((element: any) => {
-      if (element.like) {
-        count++;
-      }
-    });
-    return count;
+  likes( comment:any){
+    return this.postsService.countLikes(comment)
   }
+  
+  
 } 

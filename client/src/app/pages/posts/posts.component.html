@@ -6,6 +6,6 @@
 </div>
 <div *ngIf="posts">
     <ng-container *ngFor="let singlepost of posts">
-        <app-post [post]="singlepost" [countLikes]="countLikes(singlepost)"></app-post>
+        <app-post [post]="singlepost" [countLikes]="likes(singlepost)"></app-post>
     </ng-container>
 </div>
