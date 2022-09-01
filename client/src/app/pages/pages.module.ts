@@ -14,6 +14,7 @@ import { HeroComponent } from './home/hero/hero.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { DemoModule } from './calendar/calendar.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     DepartmentsComponent,
     CalendarComponent,
   ],
-  imports: [CommonModule, SharedModule, AppRoutingModule],
+  imports: [CommonModule, SharedModule, AppRoutingModule, DemoModule],
   exports: [
     HomeComponent,
     PostsComponent,
