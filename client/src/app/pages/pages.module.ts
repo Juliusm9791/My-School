@@ -13,6 +13,7 @@ import { ProfileComponent } from './account/profile/profile.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { DepartmentsComponent } from './departments/departments.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,16 @@ import { DepartmentsComponent } from './departments/departments.component';
     HeroComponent,
     FacultyComponent,
     DepartmentsComponent,
+    CalendarComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule],
-  exports: [HomeComponent, PostsComponent, AccountComponent, FacultyComponent, DepartmentsComponent],
+  exports: [
+    HomeComponent,
+    PostsComponent,
+    AccountComponent,
+    FacultyComponent,
+    DepartmentsComponent,
+    CalendarComponent,
+  ],
 })
 export class PagesModule {}

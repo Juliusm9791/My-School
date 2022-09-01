@@ -9,7 +9,7 @@ import { ProfileComponent } from './pages/account/profile/profile.component';
 import { FacultyComponent } from './pages/faculty/faculty.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
 import { AuthGuard } from './services/auth/auth.guard';
-
+import { CalendarComponent } from './pages/calendar/calendar.component';
 
 const routes: Routes = [
   {
@@ -51,6 +51,11 @@ const routes: Routes = [
   {
     path: 'departments',
     component: DepartmentsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent,
     pathMatch: 'full',
   },
 ];
