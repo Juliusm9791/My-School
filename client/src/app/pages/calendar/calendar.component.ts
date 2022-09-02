@@ -42,12 +42,11 @@ const colors: Record<string, EventColor> = {
 @Component({
   selector: 'app-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: ['./calendar.component.css'],
-  templateUrl: '<p>Test</p>',
+  styleUrls: ['./calendar.component.css'],
+  template: '<p>Test</p>',
 })
 export class CalendarComponent {
-  @ViewChild('modalContent', { static: true })
-  modalContent!: TemplateRef<any>;
+  @ViewChild('modalContent', { static: true }) modalContent: any;
 
   view: CalendarView = CalendarView.Month;
 
