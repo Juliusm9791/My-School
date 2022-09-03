@@ -10,6 +10,8 @@ import { FacultyComponent } from './pages/faculty/faculty.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { CalendarComponent } from './pages/calendar/calendar.component';
+import { PostDetailsComponent } from './pages/posts/post-details/post-details.component';
+
 
 const routes: Routes = [
   {
@@ -40,6 +42,12 @@ const routes: Routes = [
   {
     path: 'posts',
     component: PostsComponent,
+    canActivate: [AuthGuard],
+    pathMatch: 'full',
+  },
+  {
+    path: 'post-details',
+    component: PostDetailsComponent,
     canActivate: [AuthGuard],
     pathMatch: 'full',
   },
