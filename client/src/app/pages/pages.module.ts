@@ -14,6 +14,7 @@ import { HeroComponent } from './home/hero/hero.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { DemoModule } from './calendar/calendar.module';
+import { PostDetailsComponent } from './posts/post-details/post-details.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DemoModule } from './calendar/calendar.module';
     HeroComponent,
     FacultyComponent,
     DepartmentsComponent,
+    PostDetailsComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule],
   exports: [
@@ -36,6 +38,7 @@ import { DemoModule } from './calendar/calendar.module';
     AccountComponent,
     FacultyComponent,
     DepartmentsComponent,
+    PostDetailsComponent,
   ],
 })
 export class PagesModule {}
