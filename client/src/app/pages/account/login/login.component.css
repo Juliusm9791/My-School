@@ -1,5 +1,5 @@
 .registerPage {
-  margin-top: 100px;
+  margin-top: 80px;
   text-align: center;
 }
 
@@ -7,8 +7,13 @@
 .password-field,
 .submitBtn,
 .register-switch {
-  margin-top: 10px;
   text-align: center;
+}
+
+.submitBtn {
+  margin-top: 5px;
+  font-size: 13pt;
+  font-weight: 700;
 }
 
 input.example-right-align::-webkit-outer-spin-button,
@@ -57,4 +62,10 @@ input.example-right-align {
 
 .register-switch a:hover {
   color: #f29c55;
+}
+
+mat-label {
+  font-size: 12pt;
+  color: rgb(84, 84, 84);
+  margin: 10px auto;
 }

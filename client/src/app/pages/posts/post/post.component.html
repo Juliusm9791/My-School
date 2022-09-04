@@ -1,48 +1,48 @@
-<mat-card>
-  <mat-card-title>
-    <div class="postTitle">
-      <a routerLink="/post-details">
+<a id="post-card" routerLink="/post-details">
+  <mat-card>
+    <mat-card-title>
+      <div class="postTitle">
         <h2>{{ post.title }}</h2>
-      </a>
-    </div>
-  </mat-card-title>
+      </div>
+    </mat-card-title>
 
-  <mat-card-subtitle>
-    <h4>
-      {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
-      {{ post.createdAt | date: "short" }}
-    </h4>
-  </mat-card-subtitle>
-  <mat-card-content>
-    <p>{{ post.description }}</p>
+    <mat-card-subtitle>
+      <h4>
+        {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
+        {{ post.createdAt | date: "short" }}
+      </h4>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p>{{ post.description }}</p>
 
-    <div *ngIf="post.commentId">
-      <div class="comment" *ngFor="let comment of post.commentId">
-        <app-comments [comment]="comment"></app-comments>
+      <!-- <div *ngIf="post.commentId">
+        <div class="comment" *ngFor="let comment of post.commentId">
+          <app-comments [comment]="comment"></app-comments>
+        </div>
+      </div> -->
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <div class="postReactions">
+        <div class="likes">
+          {{ countLikes }}
+          <button id="likeIcon" mat-icon-button>
+            <mat-icon>thumb_up_alt</mat-icon>
+          </button>
+        </div>
+        <div class="comments">
+          {{ post.commentId.length }}
+          <button id="commentIcon" mat-icon-button>
+            <mat-icon>chat_bubble</mat-icon>
+          </button>
+        </div>
+        <div class="shares">
+          <!-- {{ post.shareId.length }} -->
+          <button id="shareIcon" mat-icon-button>
+            <mat-icon id="shareAdjust">reply</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
-  </mat-card-content>
-  <mat-divider inset></mat-divider>
-  <mat-card-actions>
-    <div class="postReactions">
-      <div class="likes">
-        {{countLikes}}
-        <button id="likeIcon" mat-icon-button>
-          <mat-icon>thumb_up_alt</mat-icon>
-        </button>
-      </div>
-      <div class="comments">
-        You have {{post.commentId.length}}
-        <button id="commentIcon" mat-icon-button>
-          <mat-icon>chat_bubble</mat-icon>
-        </button>
-      </div>
-      <div class="shares">
-        Num
-        <button id="shareIcon" mat-icon-button>
-          <mat-icon id="shareAdjust">reply</mat-icon>
-        </button>
-      </div>
-    </div>
-  </mat-card-actions>
-</mat-card>
+    </mat-card-actions>
+  </mat-card>
+</a>
