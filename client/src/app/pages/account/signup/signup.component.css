@@ -1,5 +1,5 @@
 .registerPage {
-  margin-top: 100px;
+  margin-top: 80px;
   text-align: center;
 }
 
@@ -7,10 +7,17 @@
 .last-name,
 .email-field,
 .password-field,
+.confirm-field,
 .submitBtn,
 .register-switch {
-  margin-top: 10px;
+  margin-top: 0px;
   text-align: center;
+}
+
+.submitBtn {
+  margin-top: 5px;
+  font-size: 13pt;
+  font-weight: 700;
 }
 
 input.example-right-align::-webkit-outer-spin-button,
@@ -55,4 +62,33 @@ input.example-right-align {
 
 .register-switch a:hover {
   color: #f29c55;
+}
+
+.choose-type {
+  margin: 20px 40px 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.type-choices {
+  text-align: left;
+}
+
+mat-label {
+  font-size: 12pt;
+  color: rgb(84, 84, 84);
+  margin: 10px auto;
+}
+
+#type-label {
+  margin-right: 15px;
+}
+
+.type-lables {
+  margin-left: 10px;
+}
+
+.type-row {
+  margin-bottom: 5px;
 }

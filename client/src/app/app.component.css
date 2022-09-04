@@ -1,6 +1,6 @@
 h1,
 a {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .nav {
@@ -20,7 +20,7 @@ a {
 
 #logo {
   width: 60px;
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 .navIcon {
@@ -51,16 +51,6 @@ a {
   margin: 0px 0px 30px 0px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .is-mobile .toolbar {
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
@@ -81,4 +71,16 @@ h1.app-name {
   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
+}
+
+mat-sidenav-content {
+  height: 100vh;
+}
+
+.mat-toolbar.mat-primary {
+  height: 70px;
+}
+
+.mat-icon-button {
+  padding-right: 4px;
 }
