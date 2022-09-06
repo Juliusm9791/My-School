@@ -26,28 +26,28 @@
             <a routerLink="/posts">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/announcements.png" />
-                <h2>ANNOUNCEMENTS</h2>
+                <h1>ANNOUNCEMENTS</h1>
               </div>
             </a>
 
             <a routerLink="/calendar">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/calendar.png" />
-                <h2>EVENT CALENDAR</h2>
+                <h1>EVENT CALENDAR</h1>
               </div>
             </a>
 
             <a routerLink="/departments">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/departments.png" />
-                <h2>DEPARTMENTS</h2>
+                <h1>DEPARTMENTS</h1>
               </div>
             </a>
 
             <a routerLink="/faculty">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/faculty.png" />
-                <h2>FACULTY</h2>
+                <h1>FACULTY</h1>
               </div>
             </a>
 
@@ -55,10 +55,10 @@
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/account.png" />
                 <ng-container *ngIf="isLoggedIn && !loading">
-                  <h2>Hello {{ me.firstName }}</h2>
+                  <h1>Hello {{ me.firstName }}</h1>
                 </ng-container>
                 <ng-container *ngIf="!isLoggedIn">
-                  <h2>LOGIN / SIGN-UP</h2>
+                  <h1>LOGIN / SIGN-UP</h1>
                 </ng-container>
               </div>
             </a>
