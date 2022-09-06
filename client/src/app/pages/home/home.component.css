@@ -3,6 +3,7 @@
   max-width: 800px;
 }
 
-#home h2 {
-  margin-left: 30px;
+#home h1 {
+  font-size: 16pt;
+  margin: 40px 0px 10px 0px;
 }

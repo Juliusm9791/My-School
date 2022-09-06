@@ -1,10 +1,12 @@
-<h1>DEPARTMENTS</h1>
+<h1>DEPARTMENTS:</h1>
 <div class="deptContainer">
-<ng-container *ngFor="let department of departments">
-  
-  <mat-card class="deptCard" >
-    <mat-card-title>{{ department.depName }}</mat-card-title>
-   
-  </mat-card>
-</ng-container>
+  <ng-container *ngFor="let department of departments">
+    <mat-card class="deptCard">
+      <mat-card-title>
+        <h2>
+          {{ department.depName }}
+        </h2>
+      </mat-card-title>
+    </mat-card>
+  </ng-container>
 </div>
