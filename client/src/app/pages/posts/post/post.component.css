@@ -78,6 +78,13 @@ mat-card {
   max-width: 800px;
 }
 
-#post-card {
+.post-card {
   text-decoration: none;
+  cursor: pointer; 
+}
+
+.descriptionShow{
+  color: blue;
+  text-align: right;
+  cursor: pointer; 
 }
