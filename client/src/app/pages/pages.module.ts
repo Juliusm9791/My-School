@@ -13,8 +13,8 @@ import { ProfileComponent } from './account/profile/profile.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { DepartmentsComponent } from './departments/departments.component';
-import { DemoModule } from './calendar/calendar.module';
 import { PostDetailsComponent } from './posts/post-details/post-details.component';
+import { EventCalendarModule } from './calendar/EventCalendar.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { PostDetailsComponent } from './posts/post-details/post-details.componen
     DepartmentsComponent,
     PostDetailsComponent,
   ],
-  imports: [CommonModule, SharedModule, AppRoutingModule],
+  imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
     HomeComponent,
     PostsComponent,
