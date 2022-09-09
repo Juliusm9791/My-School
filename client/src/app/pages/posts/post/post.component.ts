@@ -11,4 +11,10 @@ export class PostComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  postCut(s: string) {
+    const spaceIndex = s.split('').indexOf(' ', 150);
+    const cutlength = s.split('').slice(0, spaceIndex).join('');
+    return cutlength;
+  }
 }

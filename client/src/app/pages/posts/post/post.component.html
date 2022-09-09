@@ -13,7 +13,7 @@
       </h4>
     </mat-card-subtitle>
     <mat-card-content>
-      <p>{{ post.description }}</p>
+      <p>{{ postCut(post.description) }} ...</p>
 
       <!-- <div *ngIf="post.commentId">
         <div class="comment" *ngFor="let comment of post.commentId">
