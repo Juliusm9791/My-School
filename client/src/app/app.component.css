@@ -18,17 +18,16 @@ a {
 }
 
 #logo {
-  width: 60px;
-  padding-top: 5px;
+  width: 50px;
 }
 
 .navIcon {
-  width: 40px;
+  width: 70px;
   height: auto;
 }
 
 .vertical-nav {
-  margin: 20px 10px 20px 22px;
+  margin: 25px 10px 10px 22px;
   display: flex;
   flex-direction: column;
 }
@@ -47,7 +46,12 @@ a {
 .navTab {
   display: flex;
   flex-direction: row;
-  margin: 0px 0px 30px 0px;
+  margin: 0px 0px 20px 0px;
+}
+
+#accountIcon {
+  width: 30px;
+  margin-right: 15px;
 }
 
 .is-mobile .toolbar {
@@ -82,4 +86,51 @@ mat-sidenav-content {
 
 .mat-icon-button {
   padding-right: 4px;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.topBarL,
+.topBarR,
+#loginLink {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+
+#login h2 {
+  font-weight: 200;
+  margin-right: 15px;
+}
+
+#login h2:hover {
+  color: #f98c5a;
+}
+
+#site-search {
+  width: 200px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid rgb(78, 78, 78);
+  box-shadow: inset 1px 1px 1px rgb(98, 98, 98);
+  margin-right: 40px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+#site-search::placeholder {
+  padding-left: 15px;
+  font-size: 14pt;
+  font-weight: 200;
+  color: grey;
 }

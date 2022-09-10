@@ -1,13 +1,31 @@
 <div [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="app-name">
-      <a routerLink="/">
-        <img id="logo" src="../assets/images/my_school_logo.png" />
+    <div class="topBarL">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="app-name">
+        <a routerLink="/">
+          <img id="logo" src="../assets/images/logo.png" />
+        </a>
+      </h1>
+    </div>
+    <div class="topBarR">
+      <input type="search" placeholder="Search" id="site-search" />
+      <a id="loginLink" routerLink="/account">
+        <div id="login">
+          <ng-container *ngIf="isLoggedIn && !loading">
+            <h2>Hello {{ me.firstName }}</h2>
+          </ng-container>
+          <ng-container *ngIf="!isLoggedIn">
+            <h2>Login</h2>
+          </ng-container>
+        </div>
+        <div>
+          <img id="accountIcon" src="../assets/images/account.png" />
+        </div>
       </a>
-    </h1>
+    </div>
   </mat-toolbar>
 
   <mat-sidenav-container
@@ -39,7 +57,7 @@
 
             <a routerLink="/departments">
               <div class="navTab">
-                <img class="navIcon" src="../assets/images/departments.png" />
+                <img class="navIcon" src="../assets/images/department.png" />
                 <h1>DEPARTMENTS</h1>
               </div>
             </a>
@@ -48,18 +66,6 @@
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/faculty.png" />
                 <h1>FACULTY</h1>
-              </div>
-            </a>
-
-            <a routerLink="/account">
-              <div class="navTab">
-                <img class="navIcon" src="../assets/images/account.png" />
-                <ng-container *ngIf="isLoggedIn && !loading">
-                  <h1>Hello {{ me.firstName }}</h1>
-                </ng-container>
-                <ng-container *ngIf="!isLoggedIn">
-                  <h1>LOGIN / SIGN-UP</h1>
-                </ng-container>
               </div>
             </a>
           </div>
