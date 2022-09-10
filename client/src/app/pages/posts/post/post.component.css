@@ -1,6 +1,11 @@
+@font-face {
+  font-family: Grotesk;
+  src: url(../../../../assets/fonts/TypoGroteskRoundedDemo.otf);
+}
+
 h2 {
   margin: auto;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Grotesk;
   font-size: 18pt;
   color: white;
   margin-bottom: 10px;
@@ -46,7 +51,8 @@ h4 {
 }
 
 .likes:hover,
-.comments:hover {
+.comments:hover,
+.shares:hover {
   background-color: rgb(226, 226, 226);
 }
 
@@ -78,13 +84,55 @@ mat-card {
   max-width: 800px;
 }
 
-.post-card {
-  text-decoration: none;
-  cursor: pointer; 
+mat-card-content {
+  margin-bottom: 5px;
 }
 
-.descriptionShow{
+mat-card-content p {
+  margin-bottom: 0px !important;
+}
+
+.descriptionShow {
+  color: #4050b2 !important;
+}
+
+.descriptionShow:hover {
+  color: #f29c55 !important;
+}
+
+.post-card {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.descriptionShow {
   color: blue;
   text-align: right;
-  cursor: pointer; 
+  cursor: pointer;
+}
+
+#defaultImg {
+  width: 152px;
+}
+
+.extraImgs {
+  width: 38px;
+}
+
+.imagesBlock {
+  margin: -20px 20px 13px -20px;
+}
+
+.postContent,
+.subtitleRow {
+  display: flex;
+  flex-direction: row;
+}
+
+#postUserImg {
+  width: 35px;
+}
+
+#postUserDetail {
+  margin: auto 15px;
 }

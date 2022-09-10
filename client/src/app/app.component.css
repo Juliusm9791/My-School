@@ -1,3 +1,13 @@
+@font-face {
+  font-family: ThreeDimensions;
+  src: url(../assets/fonts/CfThreeDimensionsPersonalRegular-V1rz.ttf);
+}
+
+@font-face {
+  font-family: Grotesk;
+  src: url(../assets/fonts/TypoGroteskRoundedDemo.otf);
+}
+
 a {
   color: rgb(255, 255, 255);
 }
@@ -19,6 +29,8 @@ a {
 
 #logo {
   width: 50px;
+  margin-left: 15px;
+  margin-right: 30px;
 }
 
 .navIcon {
@@ -27,14 +39,16 @@ a {
 }
 
 .vertical-nav {
-  margin: 25px 10px 10px 22px;
+  margin: 25px 5px 10px 10px;
   display: flex;
   flex-direction: column;
 }
 
 .vertical-nav h1 {
-  margin: auto 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  margin: auto 15px;
+  font-family: Grotesk;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
   font-size: 16pt;
   color: #4050b2;
 }
@@ -61,7 +75,25 @@ a {
 }
 
 .app-name {
-  margin-left: 8px;
+  font-family: ThreeDimensions;
+  font-size: 20pt;
+  margin-right: 8px;
+}
+
+label {
+  margin-right: 8px;
+}
+
+#schools {
+  width: 260px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid rgb(78, 78, 78);
+  box-shadow: inset 1px 1px 1px rgb(98, 98, 98);
+  color: #4050b2;
+  padding-left: 8px;
+  font-size: 12pt;
+  cursor: pointer !important;
 }
 
 .sidenav-container {
@@ -80,6 +112,12 @@ mat-sidenav-content {
   height: 100vh;
 }
 
+/* mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  overflow-y: hidden;
+} */
+
 .mat-toolbar.mat-primary {
   height: 70px;
 }
@@ -92,6 +130,7 @@ mat-sidenav-content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-left: 20px !important;
 }
 
 .topBarL,
@@ -114,12 +153,17 @@ mat-sidenav-content {
 }
 
 #site-search {
+  /* background-image: url("/assets/images/search.png"); */
   width: 200px;
   height: 35px;
   border-radius: 5px;
   border: 1px solid rgb(78, 78, 78);
   box-shadow: inset 1px 1px 1px rgb(98, 98, 98);
   margin-right: 40px;
+  margin-left: 10px;
+  color: #4050b2;
+  padding-left: 10px;
+  padding-right: 5px;
 }
 
 input:focus,
@@ -129,8 +173,7 @@ select:focus {
 }
 
 #site-search::placeholder {
-  padding-left: 15px;
-  font-size: 14pt;
+  font-size: 12pt;
   font-weight: 200;
-  color: grey;
+  color: rgb(148, 148, 148);
 }

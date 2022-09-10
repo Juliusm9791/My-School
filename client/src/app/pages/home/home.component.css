@@ -1,9 +1,36 @@
+@font-face {
+  font-family: Grotesk;
+  src: url(../../../assets/fonts/TypoGroteskRoundedDemo.otf);
+}
+
 #home {
   margin: 30px auto;
   max-width: 800px;
 }
 
 #home h1 {
+  font-family: Grotesk;
   font-size: 16pt;
+  letter-spacing: 0.1rem;
   margin: 40px 0px 10px 0px;
+  color: #4050b2;
+}
+
+.seeAllBtn button {
+  font-family: Grotesk;
+  font-size: 16pt;
+  margin-top: 5px;
+  font-weight: bolder;
+  letter-spacing: 0.1rem;
+  width: fit-content;
+  padding: 15px;
+  background-color: #f29c55;
+  color: white;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  border-radius: 5px;
+}
+
+.seeAllBtn button:hover {
+  background-color: #e6924d;
 }

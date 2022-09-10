@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Grotesk;
+  src: url(../../../assets/fonts/TypoGroteskRoundedDemo.otf);
+}
+
 h3 {
   margin: 0 0 10px;
 }
@@ -5,4 +10,16 @@ h3 {
 pre {
   background-color: #f5f5f5;
   padding: 15px;
+}
+
+#calendarPage {
+  padding: 50px;
+}
+
+mwl-demo-utils-calendar-header {
+  color: #4050b2;
+  font-family: Grotesk;
+  font-size: 16pt;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
 }
