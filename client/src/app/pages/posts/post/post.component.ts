@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Post } from 'src/app/types/types';
 
 @Component({
   selector: 'app-post',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-  @Input() post: any = {} as any;
+  @Input() post: Post = {} as Post;
   @Input() countLikes: number = 0;
   isFullDescription: boolean = false;
 
@@ -20,7 +21,6 @@ export class PostComponent implements OnInit {
 
   postCut(s: string) {
     const spaceIndex = s.split('').indexOf(' ', 150);
-    const cutlength = s.split('').slice(0, spaceIndex).join('');
-    return cutlength;
+    return s.split('').slice(0, spaceIndex).join('');
   }
 }

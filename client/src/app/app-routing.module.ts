@@ -9,7 +9,7 @@ import { ProfileComponent } from './pages/account/profile/profile.component';
 import { FacultyComponent } from './pages/faculty/faculty.component';
 import { DepartmentsComponent } from './pages/departments/departments.component';
 import { AuthGuard } from './services/auth/auth.guard';
-import { CalendarComponent } from './pages/calendar/calendar.component';
+import { EventCalendarComponent } from './pages/calendar/EventCalendar.component';
 import { PostDetailsComponent } from './pages/posts/post-details/post-details.component';
 
 
@@ -63,7 +63,7 @@ const routes: Routes = [
   },
   {
     path: 'calendar',
-    component: CalendarComponent,
+    component: EventCalendarComponent,
     pathMatch: 'full',
   },
 ];
@@ -71,5 +71,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  bootstrap: [EventCalendarComponent],
 })
 export class AppRoutingModule {}
