@@ -1,11 +1,11 @@
 @font-face {
   font-family: ThreeDimensions;
-  src: url(../assets/fonts/CfThreeDimensionsPersonalRegular-V1rz.ttf);
+  src: url("../assets/fonts/CfThreeDimensionsPersonalRegular-V1rz.ttf");
 }
 
 @font-face {
   font-family: Grotesk;
-  src: url(../assets/fonts/TypoGroteskRoundedDemo.otf);
+  src: url("../assets/fonts/TypoGroteskRoundedDemo.otf");
 }
 
 a {
@@ -111,12 +111,6 @@ label {
 mat-sidenav-content {
   height: 100vh;
 }
-
-/* mat-sidenav-container,
-mat-sidenav-content,
-mat-sidenav {
-  overflow-y: hidden;
-} */
 
 .mat-toolbar.mat-primary {
   height: 70px;

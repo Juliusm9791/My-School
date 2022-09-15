@@ -2,14 +2,13 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { isSameDay, isSameMonth } from 'date-fns';
 
-
 const colors = {
   red: {
     primary: '#ad2121',
     secondary: '#FAE3E3',
   },
   blue: {
-    primary: '#1e90ff',
+    primary: '#4050b2',
     secondary: '#D1E8FF',
   },
   yellow: {

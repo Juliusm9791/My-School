@@ -1,6 +1,6 @@
 @font-face {
   font-family: Grotesk;
-  src: url(../../../assets/fonts/TypoGroteskRoundedDemo.otf);
+  src: url("../../../../assets/fonts/TypoGroteskRoundedDemo.otf");
 }
 
 .registerPage {
