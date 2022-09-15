@@ -42,7 +42,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
     if (this.isLoggedIn) {
       this.loginSignupService.queryMe();
-      this.me = this.loginSignupService.getMe;
+      this.me = this.loginSignupService.me;
     }
   }
 

@@ -10,7 +10,7 @@ import { Me } from 'src/app/types/types';
 })
 export class LoginSignupService {
   private loading: boolean = true;
-  private me: Me = {} as Me;
+  private _me: Me = {} as Me;
 
   constructor(
     private apollo: Apollo,
@@ -40,7 +40,7 @@ export class LoginSignupService {
           } else if (mutationDefinition === 'login') {
             userData = result.data.login;
           }
-          this.me = userData.user;
+          this._me = userData.user;
           this.authService.login(
             mutationDefinition === 'addUser'
               ? result.data.addUser.token
@@ -64,11 +64,11 @@ export class LoginSignupService {
       })
       .valueChanges.subscribe(
         (result: any) => {
-          this.me = result?.data?.me;
-          console.log('query me data ', this.me);
+          this._me = result?.data?.me;
+          console.log('query me data ', this._me);
           this.loading = result.loading;
           this.changeLoading.emit(this.loading);
-          this.changeMe.emit(this.me);
+          this.changeMe.emit(this._me);
           !this.loading && this.router.navigate(['/account/profile']);
         },
         (error) => {
@@ -76,8 +76,8 @@ export class LoginSignupService {
         }
       );
   }
-  get getMe() {
-    return this.me;
+  get me() {
+    return this._me;
   }
 
   get isLoading() {
@@ -85,6 +85,6 @@ export class LoginSignupService {
   }
 
   deleteMe() {
-    this.me = {} as Me;
+    this._me = {} as Me;
   }
 }

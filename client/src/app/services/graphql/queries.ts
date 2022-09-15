@@ -30,6 +30,8 @@ export const QUERY_POSTS = gql`
 query posts {
   posts {
     _id
+    isEvent
+    eventDate
     title
     description
     createdAt
