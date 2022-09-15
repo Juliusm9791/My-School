@@ -83,7 +83,7 @@ db.once("open", async () => {
     fakeUsers.push(fakeUser);
   }
 
-  const users = await User.insertMany(fakeUsers);
+  const users = await User.create(fakeUsers);
 
   console.log("users seeded");
   // REACTIONS
