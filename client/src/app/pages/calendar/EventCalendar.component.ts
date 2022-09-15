@@ -4,6 +4,22 @@ import { CalendarEvent, CalendarView } from 'angular-calendar';
 import { PostsService } from '../posts/posts.service';
 
 
+const colors = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3',
+  },
+  blue: {
+    primary: '#4050b2',
+    secondary: '#D1E8FF',
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA',
+  },
+};
+
+
 @Component({
   selector: 'app-eventCalendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
