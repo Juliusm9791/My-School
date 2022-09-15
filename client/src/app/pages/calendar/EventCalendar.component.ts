@@ -1,6 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
-import { isSameDay, isSameMonth } from 'date-fns';
+// import { isSameDay, isSameMonth } from 'date-fns';
+import { PostsService } from '../posts/posts.service';
+
 
 const colors = {
   red: {
@@ -17,35 +19,23 @@ const colors = {
   },
 };
 
+
 @Component({
   selector: 'app-eventCalendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './EventCalendar.component.html',
   styleUrls: ['./EventCalendar.component.css'],
-
-  // template: '<p>Test</p>',
 })
-export class EventCalendarComponent {
+
+export class EventCalendarComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
+  events: CalendarEvent<{ id: string }>[]  = [];
 
   viewDate: Date = new Date();
+  constructor(private postsService: PostsService) {
+    this.events = this.postsService.filterEvents();
+  }
 
-  events: CalendarEvent<{ id: number }>[] = [
-    {
-      title: 'Event 1',
-      color: colors.yellow,
-      start: new Date(),
-      meta: {
-        id: 1,
-      },
-    },
-    {
-      title: 'Event 2',
-      color: colors.blue,
-      start: new Date(),
-      meta: {
-        id: 2,
-      },
-    },
-  ];
+  ngOnInit(): void {}
+
 }

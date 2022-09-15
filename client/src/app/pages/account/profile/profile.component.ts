@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services//auth/auth.service';
 import { Me } from 'src/app/types/types';
 import { LoginSignupService } from '../login-signup.service';
@@ -16,7 +17,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private loginSignupService: LoginSignupService
+    private loginSignupService: LoginSignupService,
+    private router: Router
   ) {
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
@@ -31,11 +33,13 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn;
+    console.log(this.isLoggedIn)
     if (!this.isLoggedIn) {
-      return;
+      this.router.navigate(['/']);
+      ;
     }
     this.loading = this.loginSignupService.isLoading;
-    this.me = this.loginSignupService.getMe;
+    this.me = this.loginSignupService.me;
   }
 
   logout() {

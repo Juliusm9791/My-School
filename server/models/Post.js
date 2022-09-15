@@ -4,6 +4,15 @@ const { Schema } = mongoose;
 
 const postSchema = new Schema(
   {
+    isEvent: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    eventDate: {
+      type: Date,
+      required: false,
+    },
     title: {
       type: String,
       required: true,

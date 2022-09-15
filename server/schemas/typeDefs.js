@@ -46,6 +46,8 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
+    isEvent: Boolean!
+    eventDate: String
     title: String!
     description: String!
     pictures: String
