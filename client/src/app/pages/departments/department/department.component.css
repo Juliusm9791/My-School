@@ -1,7 +1,6 @@
 .deptCard {
   background-color: #f29c55;
   margin: 20px;
-  width: 25%;
   height: 110px;
   display: flex;
   justify-content: center;
@@ -17,21 +16,21 @@ h1 {
 }
 
 h2 {
-    font-size: 16pt;
-    color: white;
-    line-height: 20pt;
-    margin: auto;
-    font-weight: 900;
-  }
-  @media only screen and (max-width: 1000px) {
-    h2 {
-      font-size: 12pt;
-    }
-  
-    .deptCard {
-      margin: 10px;
-      width: 35%;
-      height: 70px;
-    }
+  font-size: 16pt;
+  color: white;
+  line-height: 20pt;
+  margin: auto;
+  font-weight: 900;
+}
 
+@media only screen and (max-width: 1000px) {
+  h2 {
+    font-size: 12pt;
   }
+
+  .deptCard {
+    margin: 10px;
+    height: 70px;
+  }
+
+}

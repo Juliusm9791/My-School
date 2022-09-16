@@ -45,7 +45,13 @@ export class AppComponent implements OnDestroy, OnInit {
       this.me = this.loginSignupService.me;
     }
   }
-
+  onActivate(event: any) {
+    document.querySelector<any>('mat-sidenav-content').scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
