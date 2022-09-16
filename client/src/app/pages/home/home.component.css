@@ -20,6 +20,7 @@
   font-family: Grotesk;
   font-size: 16pt;
   margin-top: 5px;
+  margin-bottom: 30px;
   font-weight: bolder;
   letter-spacing: 0.1rem;
   width: fit-content;
@@ -34,10 +35,12 @@
 .seeAllBtn button:hover {
   background-color: #e6924d;
 }
-.deptContainer {
+.homeDeptContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: auto 40px;
-  margin-bottom: 100px;
+}
+
+app-department {
+  width: 30%;
 }
