@@ -1,12 +1,6 @@
 <h1>DEPARTMENTS:</h1>
 <div class="deptContainer">
-  <ng-container *ngFor="let department of departments">
-    <mat-card class="deptCard">
-      <mat-card-title>
-        <h2>
-          {{ department.depName }}
-        </h2>
-      </mat-card-title>
-    </mat-card>
+  <ng-container *ngFor="let sinleDepartment of departments">
+    <app-department class="deptCard" [department]="sinleDepartment"></app-department>
   </ng-container>
 </div>

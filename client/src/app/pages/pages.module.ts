@@ -15,6 +15,7 @@ import { FacultyComponent } from './faculty/faculty.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { PostDetailsComponent } from './posts/post-details/post-details.component';
 import { EventCalendarModule } from './calendar/EventCalendar.module';
+import { DepartmentComponent } from './departments/department/department.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { EventCalendarModule } from './calendar/EventCalendar.module';
     FacultyComponent,
     DepartmentsComponent,
     PostDetailsComponent,
+    DepartmentComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
