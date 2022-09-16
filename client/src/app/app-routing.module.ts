@@ -39,6 +39,11 @@ const routes: Routes = [
     component: ProfileComponent,
     pathMatch: 'full',
   },
+  // {
+  //   path: 'account/profile/addpost',
+  //   component: AddPostForm,
+  //   pathMatch: 'full',
+  // },
   {
     path: 'posts',
     component: PostsComponent,

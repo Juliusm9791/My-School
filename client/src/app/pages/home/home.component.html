@@ -15,3 +15,9 @@
     <button type="submit" [routerLink]="['posts']">SEE ALL</button>
   </div>
 </div>
+
+<div class="deptContainer" >
+  <ng-container *ngFor="let sinleDepartment of departments">
+    <app-department [department]="sinleDepartment"></app-department>
+  </ng-container>
+</div>
