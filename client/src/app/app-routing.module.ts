@@ -11,6 +11,7 @@ import { DepartmentsComponent } from './pages/departments/departments.component'
 import { AuthGuard } from './services/auth/auth.guard';
 import { EventCalendarComponent } from './pages/calendar/EventCalendar.component';
 import { PostDetailsComponent } from './pages/posts/post-details/post-details.component';
+import { FormPostComponent } from './pages/account/profile/form-post/form-post.component';
 
 
 const routes: Routes = [
@@ -39,11 +40,11 @@ const routes: Routes = [
     component: ProfileComponent,
     pathMatch: 'full',
   },
-  // {
-  //   path: 'account/profile/addpost',
-  //   component: AddPostForm,
-  //   pathMatch: 'full',
-  // },
+   {
+     path: 'account/profile/form-post',
+     component: FormPostComponent,
+     pathMatch: 'full',
+   },
   {
     path: 'posts',
     component: PostsComponent,
