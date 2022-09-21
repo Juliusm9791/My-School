@@ -2,14 +2,14 @@
 
 <div class="registerPage">
     <!-- <form [formGroup]="postForm" (ngSubmit)="onSubmit()"> -->
-        <form>
+        <form  [formGroup]="postForm" (ngSubmit)="onSubmit()">
       <div class="title">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
           <input
             matInput
             placeholder="Title"
-            formControlName="title"
+            formControlName="postTitle"
             required
           />
          
@@ -22,12 +22,12 @@
           <input
             matInput
             placeholder="Description"
-            formControlName="description"
+            formControlName="postDescription"
             required
           />
         </mat-form-field>
       </div>
-      <div class="picture">
+      <!-- <div class="picture">
         <mat-form-field appearance="fill">
           <mat-label>Description</mat-label>
           <input
@@ -42,12 +42,12 @@
            
           />
         </mat-form-field>
-      </div>
+      </div> -->
   
       
-      <!-- <div class="submitBtn">
+      <div class="submitBtn">
         <button type="submit">SUBMIT</button>
-      </div> -->
+      </div>
     </form>
   </div>
   
