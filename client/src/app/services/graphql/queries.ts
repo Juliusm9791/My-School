@@ -9,7 +9,8 @@ export const QUERY_ME = gql`
       lastName
       email
     }
-  }`;
+  }
+`;
 
 export const QUERY_FACULTIES = gql`
   query faculties {
@@ -17,49 +18,84 @@ export const QUERY_FACULTIES = gql`
       _id
       groupName
     }
-  }`;
-
-export const QUERY_DEPARTMENTS = gql` 
-query departments {
-  departments {
-    _id
-  depName
   }
-}`;
-export const QUERY_POSTS = gql` 
-query posts {
-  posts {
-    _id
-    isEvent
-    eventDate
-    title
-    description
-    createdAt
-    reactionId {
+`;
+
+export const QUERY_DEPARTMENTS = gql`
+  query departments {
+    departments {
       _id
-      like
-      userId {
-        _id
-        firstName
-        lastName
-      }
+      depName
     }
-    commentId {
+  }
+`;
+export const QUERY_POSTS = gql`
+  query posts {
+    posts {
       _id
-      comment
-      userId {
-        _id
-        firstName
-        lastName
-      }
+      isEvent
+      eventDate
+      title
+      description
       createdAt
+      reactionId {
+        _id
+        like
+        userId {
+          _id
+          firstName
+          lastName
+        }
+      }
+      commentId {
+        _id
+        comment
+        userId {
+          _id
+          firstName
+          lastName
+        }
+        createdAt
+      }
+      userId {
+        firstName
+        lastName
+      }
     }
-    userId {
-      firstName
-      lastName
+  }
+`;
+export const QUERY_POST = gql`
+  query post($_id: ID!) {
+    post(_id: $_id) {
+      _id
+      isEvent
+      eventDate
+      title
+      description
+      createdAt
+      reactionId {
+        _id
+        like
+        userId {
+          _id
+          firstName
+          lastName
+        }
+      }
+      commentId {
+        _id
+        comment
+        userId {
+          _id
+          firstName
+          lastName
+        }
+        createdAt
+      }
+      userId {
+        firstName
+        lastName
+      }
     }
-  
-}
-}`;
-
-
+  }
+`;

@@ -31,9 +31,9 @@ export class PostsService {
           this.changeLoading.emit(this.loading);
 
           this.changePosts.emit(this._posts);
-          this.changeError.emit(this.error);
         },
         (error) => {
+          this.changeError.emit(this.error);
           console.log('query posts error', error);
         }
       );

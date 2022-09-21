@@ -52,7 +52,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'post-details',
+    path: 'posts/:id',
     component: PostDetailsComponent,
     canActivate: [AuthGuard],
     pathMatch: 'full',

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/types/types';
 
 @Component({
@@ -11,12 +12,16 @@ export class PostComponent implements OnInit {
   @Input() countLikes: number = 0;
   isFullDescription: boolean = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   changeFullDescription() {
     this.isFullDescription = !this.isFullDescription;
+  }
+
+  postDetail(postId: string) {
+    this.router.navigate(['/posts/' + postId]);
   }
 
   postCut(s: string) {

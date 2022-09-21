@@ -49,6 +49,20 @@ const resolvers = {
           populate: "userId",
         })
     },
+    post: async (parent, args, context) => {
+      return await Post.findById(args._id)
+        .populate("userId")
+        .populate("commentId")
+        .populate("reactionId")
+        .populate({
+          path: "reactionId",
+          populate: "userId",
+        })
+        .populate({
+          path: "commentId",
+          populate: "userId",
+        })
+    },
     faculties: async (parent, args) => {
       return await Group.find({});
     },
