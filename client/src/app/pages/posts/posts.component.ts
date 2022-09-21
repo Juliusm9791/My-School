@@ -30,8 +30,8 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.postsService.queryPosts();
   }
-  likes( comment:any){
-    return this.postsService.countLikes(comment)
+  likes( post :Post){
+    return this.postsService.countLikes(post)
   }
   
   
