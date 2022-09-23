@@ -10,7 +10,7 @@ import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './account/login/login.component';
 import { SignupComponent } from './account/signup/signup.component';
 import { ProfileComponent } from './account/profile/profile.component';
-import { HeroComponent } from './home/hero/hero.component';
+// import { HeroComponent } from './home/hero/hero.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { PostDetailsComponent } from './posts/post-details/post-details.component';
@@ -28,7 +28,7 @@ import { FormPostComponent } from './account/profile/form-post/form-post.compone
     SignupComponent,
     ProfileComponent,
     CommentsComponent,
-    HeroComponent,
+    // HeroComponent,
     FacultyComponent,
     DepartmentsComponent,
     PostDetailsComponent,
