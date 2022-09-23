@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node ../server/server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -35,7 +35,7 @@
     "zone.js": "^0.11.8"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.1",
+    "@angular-devkit/build-angular": "^14.2.3",
     "@angular/cli": "~14.0.4",
     "@angular/compiler-cli": "^14.2.0",
     "@types/jasmine": "~4.0.0",
