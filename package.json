@@ -9,7 +9,7 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && cd seeders && node seeds.js",
-    "build": "cd client && npm run build"
+    "build": "cd client && ng build"
   },
   "keywords": [],
   "author": "",
