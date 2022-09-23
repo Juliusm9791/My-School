@@ -1,0 +1,18 @@
+
+.deptContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto 40px;
+  margin-bottom: 100px;
+}
+app-department{
+  width: 30%;
+}
+
+@media only screen and (max-width: 1000px) {
+ 
+  .deptContainer {
+    margin: auto 20px;
+  }
+}

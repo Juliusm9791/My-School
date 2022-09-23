@@ -6,4 +6,7 @@
     <h1>Hello {{me.firstName}} {{me.lastName}}</h1>
     
     <a routerLink="/" (click)="logout()">Logout</a>
+    <div class="seeAllBtn">
+        <button type="submit" [routerLink]="['form-post']">Create Post</button>
+      </div>
 </ng-template>

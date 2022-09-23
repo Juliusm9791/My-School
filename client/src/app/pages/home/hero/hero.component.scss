@@ -1,4 +1,4 @@
-.bannerStyle h1 {
+.bannerStyle {
   min-height: 600px;
   max-height: 300px;
   text-align: center;
@@ -10,10 +10,6 @@
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
-}
-
-h1 {
-  visibility: hidden;
 }
 
 .leftRs {
@@ -68,10 +64,11 @@ h1 {
   overflow: auto;
   box-sizing: border-box;
 }
+
 .myPoint li {
   display: inline-block;
   border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.55);
   padding: 4px;
   margin: 0 3px;
   transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);

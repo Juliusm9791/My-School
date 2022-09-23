@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
+
+import { Post } from 'src/app/types/types';
+import { PostsService } from './posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -7,43 +9,30 @@ import { Apollo, gql } from 'apollo-angular';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-  posts: any[] = [];
-  loading = true;
+  posts: Post[] = [];
+  departmentsService: any;
+  loading: boolean = true;
   error: any;
 
-  constructor(private apollo: Apollo) {}
 
-  ngOnInit() {
-    this.apollo
-      .watchQuery({
-        query: gql`
-          {
-            posts {
-              _id
-              title
-              description
-              createdAt
-              commentId {
-                _id
-                comment
-                userId {
-                  firstName
-                  lastName
-                }
-                createdAt
-              }
-              userId {
-                firstName
-              }
-            }
-          }
-        `,
-      })
-      .valueChanges.subscribe((result: any) => {
-        this.posts = result?.data?.posts;
-        console.log(this.posts);
-        this.loading = result.loading;
-        this.error = result.error;
-      });
+  constructor(private postsService: PostsService) {
+   
+    this.postsService.changePosts.subscribe((posts) => {
+      this.posts = posts;
+    });
+    this.postsService.changeLoading.subscribe((loading) => {
+      this.loading = loading;
+    });
+    this.postsService.changeError.subscribe((error) => {
+      this.error = error;
+    });
   }
-}
+  ngOnInit(): void {
+    this.postsService.queryPosts();
+  }
+  likes( post :Post){
+    return this.postsService.countLikes(post)
+  }
+  
+  
+} 

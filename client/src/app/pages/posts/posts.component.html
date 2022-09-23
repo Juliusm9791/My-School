@@ -1,11 +1,7 @@
-<div *ngIf="loading">
-    Loading...
-</div>
-<div *ngIf="error">
-    Error :(
-</div>
+<div *ngIf="loading"><mat-spinner></mat-spinner></div>
+<div *ngIf="error">Error :(</div>
 <div *ngIf="posts">
-    <ng-container *ngFor="let singlepost of posts">
-        <app-post [post]="singlepost"></app-post>     
-    </ng-container>
+  <ng-container *ngFor="let singlepost of posts">
+    <app-post [post]="singlepost" [countLikes]="likes(singlepost)"></app-post>
+  </ng-container>
 </div>

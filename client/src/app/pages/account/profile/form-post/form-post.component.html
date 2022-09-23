@@ -1,0 +1,56 @@
+<p>form-post works!</p>
+
+<div class="registerPage">
+    <!-- <form [formGroup]="postForm" (ngSubmit)="onSubmit()"> -->
+        <form  [formGroup]="postForm" (ngSubmit)="onSubmit()">
+      <div class="title">
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input
+            matInput
+            placeholder="Title"
+            formControlName="postTitle"
+            required
+          />
+         
+        </mat-form-field>
+      </div>
+  
+      <div class="description">
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            placeholder="Description"
+            formControlName="postDescription"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <!-- <div class="picture">
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <input
+          type="file"
+          #fileInput
+          placeholder="picture"
+          id="uploadFile"
+          
+          name="uploadFile"
+          multiple="multiple"
+          accept="image/*"
+           
+          />
+        </mat-form-field>
+      </div> -->
+  
+      
+      <div class="submitBtn">
+        <button type="submit">SUBMIT</button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
+  <a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a> -->
+  

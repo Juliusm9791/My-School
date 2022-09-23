@@ -46,6 +46,8 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
+    isEvent: Boolean!
+    eventDate: String
     title: String!
     description: String!
     pictures: String
@@ -63,6 +65,7 @@ const typeDefs = gql`
     posts(title: String, user: ID): [Post]
     post(_id: ID!): Post
     faculties: [Group]
+    departments: [Department]
   }
 
   type Mutation {

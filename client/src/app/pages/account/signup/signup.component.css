@@ -1,5 +1,10 @@
+@font-face {
+  font-family: Grotesk;
+  src: url("../../../../assets/fonts/TypoGroteskRoundedDemo.otf");
+}
+
 .registerPage {
-  margin-top: 100px;
+  margin-top: 80px;
   text-align: center;
 }
 
@@ -7,10 +12,17 @@
 .last-name,
 .email-field,
 .password-field,
+.confirm-field,
 .submitBtn,
 .register-switch {
-  margin-top: 10px;
+  margin-top: 0px;
   text-align: center;
+}
+
+.submitBtn {
+  margin-top: 5px;
+  font-size: 13pt;
+  font-weight: 700;
 }
 
 input.example-right-align::-webkit-outer-spin-button,
@@ -27,14 +39,17 @@ input.example-right-align {
 }
 
 .submitBtn button {
+  font-family: Grotesk;
   margin-top: 15px;
-  width: 100px;
+  font-weight: bolder;
+  letter-spacing: 0.1rem;
+  width: fit-content;
   padding: 10px 15px;
   background-color: #f29c55;
   color: white;
   border: 0.5px solid grey;
   box-shadow: 0px 1px 1px rgb(84, 84, 84);
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .submitBtn button:hover {
@@ -55,4 +70,33 @@ input.example-right-align {
 
 .register-switch a:hover {
   color: #f29c55;
+}
+
+.choose-type {
+  margin: 20px 40px 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.type-choices {
+  text-align: left;
+}
+
+mat-label {
+  font-size: 12pt;
+  color: rgb(84, 84, 84);
+  margin: 10px auto;
+}
+
+#type-label {
+  margin-right: 15px;
+}
+
+.type-lables {
+  margin-left: 10px;
+}
+
+.type-row {
+  margin-bottom: 5px;
 }

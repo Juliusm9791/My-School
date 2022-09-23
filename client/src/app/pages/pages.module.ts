@@ -12,6 +12,11 @@ import { SignupComponent } from './account/signup/signup.component';
 import { ProfileComponent } from './account/profile/profile.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { FacultyComponent } from './faculty/faculty.component';
+import { DepartmentsComponent } from './departments/departments.component';
+import { PostDetailsComponent } from './posts/post-details/post-details.component';
+import { EventCalendarModule } from './calendar/EventCalendar.module';
+import { DepartmentComponent } from './departments/department/department.component';
+import { FormPostComponent } from './account/profile/form-post/form-post.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +30,20 @@ import { FacultyComponent } from './faculty/faculty.component';
     CommentsComponent,
     HeroComponent,
     FacultyComponent,
+    DepartmentsComponent,
+    PostDetailsComponent,
+    DepartmentComponent,
+    FormPostComponent,
   ],
-  imports: [CommonModule, SharedModule, AppRoutingModule],
-  exports: [HomeComponent, PostsComponent, AccountComponent, FacultyComponent],
+  imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
+  exports: [
+    HomeComponent,
+    PostsComponent,
+    AccountComponent,
+    FacultyComponent,
+    DepartmentsComponent,
+    PostDetailsComponent,
+    FormPostComponent
+  ],
 })
 export class PagesModule {}

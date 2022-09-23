@@ -7,7 +7,12 @@ import { SignupComponent } from './pages/account/signup/signup.component';
 import { AccountComponent } from './pages/account/account.component';
 import { ProfileComponent } from './pages/account/profile/profile.component';
 import { FacultyComponent } from './pages/faculty/faculty.component';
+import { DepartmentsComponent } from './pages/departments/departments.component';
 import { AuthGuard } from './services/auth/auth.guard';
+import { EventCalendarComponent } from './pages/calendar/EventCalendar.component';
+import { PostDetailsComponent } from './pages/posts/post-details/post-details.component';
+import { FormPostComponent } from './pages/account/profile/form-post/form-post.component';
+
 
 const routes: Routes = [
   {
@@ -35,9 +40,20 @@ const routes: Routes = [
     component: ProfileComponent,
     pathMatch: 'full',
   },
+   {
+     path: 'account/profile/form-post',
+     component: FormPostComponent,
+     pathMatch: 'full',
+   },
   {
     path: 'posts',
     component: PostsComponent,
+    canActivate: [AuthGuard],
+    pathMatch: 'full',
+  },
+  {
+    path: 'posts/:id',
+    component: PostDetailsComponent,
     canActivate: [AuthGuard],
     pathMatch: 'full',
   },
@@ -46,10 +62,21 @@ const routes: Routes = [
     component: FacultyComponent,
     pathMatch: 'full',
   },
+  {
+    path: 'departments',
+    component: DepartmentsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'calendar',
+    component: EventCalendarComponent,
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule],
+  bootstrap: [EventCalendarComponent],
 })
 export class AppRoutingModule {}

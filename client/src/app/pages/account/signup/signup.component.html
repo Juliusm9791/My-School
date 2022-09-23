@@ -95,11 +95,32 @@
       </mat-form-field>
     </div>
 
+    <div class="choose-type">
+      <div id="type-label">
+        <mat-label>Choose user type:</mat-label>
+      </div>
+      <div class="type-choices">
+        <div class="type-row">
+          <input type="radio" id="parent" name="user_type" value="Parent" />
+          <mat-label class="type-lables" for="parent">Parent</mat-label>
+        </div>
+
+        <div class="type-row">
+          <input type="radio" id="student" name="user_type" value="Student" />
+          <mat-label class="type-lables" for="student">Student</mat-label>
+        </div>
+        <div class="type-row">
+          <input type="radio" id="faculty" name="user_type" value="Faculty" />
+          <mat-label class="type-lables" for="faculty">Faculty</mat-label>
+        </div>
+      </div>
+    </div>
+
     <div class="register-switch">
-      <h5>
-        Already have an account? Click
-        <a id="sign-up" routerLink="/account/login"> here </a>to login.
-      </h5>
+      <mat-label>
+        Already have account? Click to
+        <a id="sign-up" routerLink="/account/login"> login</a>.
+      </mat-label>
     </div>
 
     <div class="submitBtn">

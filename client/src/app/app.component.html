@@ -1,13 +1,94 @@
-<div class="container" [class.is-mobile]="mobileQuery.matches">
+<div [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="app-name">
+    <div class="topBarL">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
       <a routerLink="/">
-        <img id="logo" src="../assets/images/my_school_logo.png" />
+        <img id="logo" src="../assets/images/logo.png" />
       </a>
-    </h1>
+      <h1 class="app-name">MY SCHOOL</h1>
+
+      <label for="schools">:</label>
+      <select id="schools" name="schoollist" form="schoolform">
+        <option value="Abbotts Hill Elementary School">
+          Abbotts Hill Elementary School
+        </option>
+        <option value="Alpharetta Elementary School">
+          Alpharetta Elementary School
+        </option>
+        <option value="Alpharetta High School">Alpharetta High School</option>
+        <option value="Asa G. Hilliard Elementary School">
+          Asa G. Hilliard Elementary School
+        </option>
+        <option value="Autrey Mill Middle School">
+          Autrey Mill Middle School
+        </option>
+        <option value="Banneker High School">Banneker High School</option>
+        <option value="Barnwell Elementary School">
+          Barnwell Elementary School
+        </option>
+        <option value="Bear Creek Middle School">
+          Bear Creek Middle School
+        </option>
+        <option value="Birmingham Falls Elementary School">
+          Birmingham Falls Elementary School
+        </option>
+        <option value="Brookview Elementary School">
+          Brookview Elementary School
+        </option>
+        <option value="Cambridge High School">Cambridge High School</option>
+        <option value="Camp Creek Middle School">
+          Camp Creek Middle School
+        </option>
+        <option value="Campbell Elementary School">
+          Campbell Elementary School
+        </option>
+        <option value="Centennial High School">Centennial High School</option>
+        <option value="Chattahoochee High School">
+          Chattahoochee High School
+        </option>
+        <option value="Cliftondale Elementary School">
+          Cliftondale Elementary School
+        </option>
+        <option value="Cogburn Woods Elementary School">
+          Cogburn Woods Elementary School
+        </option>
+        <option value="College Park Elementary School">
+          College Park Elementary School
+        </option>
+        <option value="Conley Hills Elementary School">
+          Conley Hills Elementary School
+        </option>
+        <option value="Crabapple Crossing Elementary School">
+          Crabapple Crossing Elementary School
+        </option>
+        <option value="Crabapple Middle School">Crabapple Middle School</option>
+        <option value="Creek View Elementary School">
+          Creek View Elementary School
+        </option>
+        <option value="Creekside High School">Creekside High School</option>
+      </select>
+    </div>
+
+    <div class="topBarR">
+      <mat-icon id="searchIcon">search</mat-icon>
+      <input type="search" placeholder="Search..." id="site-search" />
+
+      <a id="loginLink" routerLink="/account">
+        <div id="login">
+          <ng-container *ngIf="isLoggedIn && !loading">
+            <h2>Hello {{ me.firstName }}</h2>
+          </ng-container>
+          <ng-container *ngIf="!isLoggedIn">
+            <h2>Login</h2>
+          </ng-container>
+        </div>
+        <div>
+          <img id="accountIcon" src="../assets/images/account.png" />
+        </div>
+      </a>
+    </div>
   </mat-toolbar>
 
   <mat-sidenav-container
@@ -26,40 +107,28 @@
             <a routerLink="/posts">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/announcements.png" />
-                <h2>ANNOUNCEMENTS</h2>
+                <h1>ANNOUNCEMENTS</h1>
               </div>
             </a>
 
             <a routerLink="/calendar">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/calendar.png" />
-                <h2>EVENT CALENDAR</h2>
+                <h1>EVENT CALENDAR</h1>
               </div>
             </a>
 
             <a routerLink="/departments">
               <div class="navTab">
-                <img class="navIcon" src="../assets/images/departments.png" />
-                <h2>DEPARTMENTS</h2>
+                <img class="navIcon" src="../assets/images/department.png" />
+                <h1>DEPARTMENTS</h1>
               </div>
             </a>
 
             <a routerLink="/faculty">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/faculty.png" />
-                <h2>FACULTY</h2>
-              </div>
-            </a>
-
-            <a routerLink="/account">
-              <div class="navTab">
-                <img class="navIcon" src="../assets/images/account.png" />
-                <ng-container *ngIf="isLoggedIn && !loading">
-                  <h2>Hello {{ me.firstName }}</h2>
-                </ng-container>
-                <ng-container *ngIf="!isLoggedIn">
-                  <h2>LOGIN / SIGN-UP</h2>
-                </ng-container>
+                <h1>FACULTY</h1>
               </div>
             </a>
           </div>
@@ -67,7 +136,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

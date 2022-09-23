@@ -1,3 +1,5 @@
+import { ReadFieldFunction } from '@apollo/client/cache/core/types/common';
+
 export interface Me {
   _id: string;
   firstName: string;
@@ -23,4 +25,40 @@ export interface SigninForm {
 export interface Faculty {
   _id: string;
   groupName: string;
+}
+
+export interface Department {
+  _id: string;
+  depName: string;
+}
+
+interface Reaction {
+  _id: string;
+  like: boolean;
+  userId: UserFullName;
+}
+
+interface UserFullName {
+  _id: string;
+  firstName: string;
+  lastName: string;
+}
+
+interface Comment {
+  _id: string;
+  comment: string;
+  userId: UserFullName;
+  createdAt: string;
+}
+
+export interface Post {
+  _id: string;
+  isEvent: boolean;
+  eventDate: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  reactionId: Reaction[];
+  commentId: Comment[];
+  userId: UserFullName;
 }

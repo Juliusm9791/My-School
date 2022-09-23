@@ -39,14 +39,35 @@ const resolvers = {
       return await Post.find({})
         .populate("userId")
         .populate("commentId")
+        .populate("reactionId")
+        .populate({
+          path: "reactionId",
+          populate: "userId",
+        })
         .populate({
           path: "commentId",
           populate: "userId",
         })
-        .populate("reactionId");
+    },
+    post: async (parent, args, context) => {
+      return await Post.findById(args._id)
+        .populate("userId")
+        .populate("commentId")
+        .populate("reactionId")
+        .populate({
+          path: "reactionId",
+          populate: "userId",
+        })
+        .populate({
+          path: "commentId",
+          populate: "userId",
+        })
     },
     faculties: async (parent, args) => {
       return await Group.find({});
+    },
+    departments: async (parent, args) => {
+      return await Department.find({});
     },
   },
 

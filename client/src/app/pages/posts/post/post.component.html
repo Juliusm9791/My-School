@@ -1,42 +1,81 @@
 <mat-card>
-  <mat-card-title>
-    <div class="postTitle">
-      <h2>{{ post.title }}</h2>
-    </div>
-  </mat-card-title>
+  <a class="post-card" (click)="postDetail(post._id)">
+    <mat-card-title>
+      <div class="postTitle">
+        <h2>{{ post.title }}</h2>
+      </div>
+    </mat-card-title>
+  </a>
 
-  <mat-card-subtitle>
-    <h4>
-      {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
-      {{ post.createdAt | date: "short" }}
-    </h4>
-  </mat-card-subtitle>
-  <mat-card-content>
-    <p>{{ post.description }}</p>
-
-    <div *ngIf="post.commentId">
-      <div class="comment" *ngFor="let comment of post.commentId">
-        <app-comments [comment]="comment"></app-comments>
+  <div class="postContent">
+    <div class="imagesBlock">
+      <img
+        id="defaultImg"
+        src="../../../../assets/images/default-placeholder-300x300.png"
+      />
+      <div>
+        <img
+          class="extraImgs"
+          src="../../../../assets/images/default-placeholder-300x300.png"
+        />
+        <img
+          class="extraImgs"
+          src="../../../../assets/images/default-placeholder-300x300.png"
+        />
+        <img
+          class="extraImgs"
+          src="../../../../assets/images/default-placeholder-300x300.png"
+        />
+        <img
+          class="extraImgs"
+          src="../../../../assets/images/default-placeholder-300x300.png"
+        />
       </div>
     </div>
-  </mat-card-content>
+
+    <div>
+      <mat-card-subtitle>
+        <div class="subtitleRow">
+          <img id="postUserImg" src="../../../../assets/images/account.png" />
+          <h4 id="postUserDetail">
+            {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
+            {{ post.createdAt | date: "short" }}
+          </h4>
+        </div>
+      </mat-card-subtitle>
+
+      <mat-card-content *ngIf="!isFullDescription">
+        <p>{{ postCut(post.description) }} ...</p>
+        <p class="descriptionShow" (click)="changeFullDescription()">
+          show more
+        </p>
+      </mat-card-content>
+      <mat-card-content *ngIf="isFullDescription">
+        <p id="description">{{ post.description }}</p>
+        <p class="descriptionShow" (click)="changeFullDescription()">
+          show less
+        </p>
+      </mat-card-content>
+    </div>
+  </div>
+
   <mat-divider inset></mat-divider>
+
   <mat-card-actions>
     <div class="postReactions">
       <div class="likes">
-        Num
+        {{ countLikes }}
         <button id="likeIcon" mat-icon-button>
           <mat-icon>thumb_up_alt</mat-icon>
         </button>
       </div>
       <div class="comments">
-        Num
+        {{ post.commentId.length }}
         <button id="commentIcon" mat-icon-button>
           <mat-icon>chat_bubble</mat-icon>
         </button>
       </div>
       <div class="shares">
-        Num
         <button id="shareIcon" mat-icon-button>
           <mat-icon id="shareAdjust">reply</mat-icon>
         </button>
