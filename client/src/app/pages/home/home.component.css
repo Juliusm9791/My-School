@@ -4,13 +4,14 @@
 }
 
 #home {
-  margin: 30px auto;
+  margin: 45px auto 200px auto;
   max-width: 800px;
 }
 
 #home h1 {
   font-family: Grotesk;
   font-size: 16pt;
+  font-weight: bold;
   letter-spacing: 0.1rem;
   margin: 40px 0px 10px 0px;
   color: #4050b2;
@@ -39,8 +40,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 app-department {
-  width: 30%;
+  width: 45%;
 }

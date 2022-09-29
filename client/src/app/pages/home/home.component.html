@@ -14,10 +14,10 @@
   <div class="seeAllBtn">
     <button type="submit" [routerLink]="['posts']">SEE ALL</button>
   </div>
-
-  <hr>
+  <br />
+  <br />
   <h1>DEPARTMENTS:</h1>
-  <div class="homeDeptContainer" >
+  <div class="homeDeptContainer">
     <ng-container *ngFor="let sinleDepartment of departments">
       <app-department [department]="sinleDepartment"></app-department>
     </ng-container>
@@ -26,4 +26,3 @@
     <button type="submit" [routerLink]="['departments']">SEE ALL</button>
   </div>
 </div>
-
