@@ -1,5 +1,5 @@
 .deptCard {
-  background-color: #f29c55;
+  background-color: #649b5a;
   margin: 20px;
   height: 110px;
   display: flex;
@@ -7,6 +7,10 @@
   align-items: center;
   border-radius: 5px;
   box-shadow: 0px 1px 1px rgb(124, 124, 124);
+}
+
+.deptCard:hover {
+  background-color: #5b9251;
 }
 
 h1 {
@@ -32,5 +36,4 @@ h2 {
     margin: 10px;
     height: 70px;
   }
-
 }

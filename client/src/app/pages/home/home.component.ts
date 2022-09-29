@@ -12,16 +12,19 @@ export class HomeComponent implements OnInit {
   posts: Post[] = [];
   loading: boolean = true;
   error: any;
-  departments: Department[] = []; 
+  departments: Department[] = [];
 
-  constructor(private postsService: PostsService, private departmentService: DepartmentsService) {
+  constructor(
+    private postsService: PostsService,
+    private departmentService: DepartmentsService
+  ) {
     this.departmentService.changeDepartments.subscribe((department) => {
       for (let i = 0; i < 6; i++) {
         this.departments.push(department[i]);
       }
     });
     this.postsService.changePosts.subscribe((posts) => {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 3; i++) {
         this.posts.push(posts[i]);
       }
     });
