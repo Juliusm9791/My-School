@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { ADD_POST } from 'src/app/services/graphql/mutations';
 
@@ -8,7 +9,7 @@ import { ADD_POST } from 'src/app/services/graphql/mutations';
 export class FormPostService {
   loading: boolean = true;
 
-  constructor(private apollo: Apollo,) { }
+  constructor(private apollo: Apollo, private router: Router) { }
   addPost(title: string, description: string) {
     this.apollo
       .mutate({
@@ -32,11 +33,11 @@ export class FormPostService {
           //     : new Error('Something went wrong during login!')
           // );
           // this.changeMe.emit(this.me);
-          // !this.loading && this.router.navigate(['/account/profile']);
+          result && this.router.navigate(['/account/profile']);
         },
         (error) => {
           console.log('add post error', error);
-        }
+        },
       );
 
 

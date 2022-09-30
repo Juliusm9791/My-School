@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services//auth/auth.service';
-import { Me } from 'src/app/types/types';
+import { Me, Post } from 'src/app/types/types';
+import { PostsService } from '../../posts/posts.service';
 import { LoginSignupService } from '../login-signup.service';
 
 @Component({
@@ -14,10 +15,13 @@ export class ProfileComponent implements OnInit {
   me: Me = {} as Me;
   error: any;
   loading: boolean = true;
+  userPostsLoading: boolean = true;
+  userPosts: Post[] = [];
 
   constructor(
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
+    private postsService: PostsService,
     private router: Router
   ) {
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
@@ -29,11 +33,20 @@ export class ProfileComponent implements OnInit {
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
+    this.postsService.changeUserPostsLoading.subscribe((loading) => {
+      this.userPostsLoading = loading;
+    });
+    this.postsService.changeUserPosts.subscribe((userPosts) => {
+      console.log(userPosts)
+      this.userPosts = userPosts;
+    });
   }
 
   ngOnInit(): void {
+    this.postsService.queryUserPosts();
+    this.userPosts = this.postsService.userPosts;
+    console.log(this.userPosts)
     this.isLoggedIn = this.authService.isLoggedIn;
-    console.log(this.isLoggedIn)
     if (!this.isLoggedIn) {
       this.router.navigate(['/']);
       ;
@@ -45,5 +58,8 @@ export class ProfileComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.loginSignupService.deleteMe();
+  }
+  likes( post :Post){
+    return this.postsService.countLikes(post)
   }
 }

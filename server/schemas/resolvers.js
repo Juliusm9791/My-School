@@ -47,7 +47,28 @@ const resolvers = {
         .populate({
           path: "commentId",
           populate: "userId",
+        });
+    },
+    userPosts: async (parent, args, context) => {
+      const allPosts = await Post.find({})
+        .populate("userId")
+        .populate("commentId")
+        .populate("reactionId")
+        .populate({
+          path: "reactionId",
+          populate: "userId",
         })
+        .populate({
+          path: "commentId",
+          populate: "userId",
+        });
+      const userPosts = [];
+      allPosts.forEach((e) => {
+        if (e.userId._id == context.user._id) {
+          userPosts.push(e);
+        }
+      });
+      return userPosts;
     },
     post: async (parent, args, context) => {
       return await Post.findById(args._id)
@@ -61,7 +82,7 @@ const resolvers = {
         .populate({
           path: "commentId",
           populate: "userId",
-        })
+        });
     },
     faculties: async (parent, args) => {
       return await Group.find({});
@@ -79,7 +100,7 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parents, args, context) => {
-      console.log(context);
+      // console.log(context);
       const newPost = await Post.create({
         title: args.title,
         description: args.description,
