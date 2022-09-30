@@ -1,0 +1,28 @@
+<ngu-carousel
+  #myCarousel
+  [inputs]="carouselBanner"
+  [dataSource]="images"
+>
+  <button NguCarouselPrev class="leftRs">
+    <mat-icon id="leftArrow">keyboard_arrow_left</mat-icon>
+  </button>
+
+  <ngu-item
+    *nguCarouselDef="let item; index as i; let ani = animate"
+    [@slider]="ani"
+  >
+    <div class="bannerStyle" [style.background]="'url(' + item + ')'"></div>
+  </ngu-item>
+
+  <button NguCarouselNext class="rightRs">
+    <mat-icon id="rightArrow">keyboard_arrow_right</mat-icon>
+  </button>
+
+  <ul class="myPoint" NguCarouselPoint>
+    <li
+      *ngFor="let i of myCarousel.pointNumbers"
+      [class.active]="i === myCarousel.activePoint"
+      (click)="myCarousel.moveTo(i)"
+    ></li>
+  </ul>
+</ngu-carousel>

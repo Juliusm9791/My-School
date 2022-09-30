@@ -1,0 +1,122 @@
+#profile {
+  margin: 100px auto 200px auto;
+  width: 80%;
+}
+
+#profile h1,
+#profile-header h2,
+.profile-subheader h2 {
+  font-family: Grotesk;
+  font-size: 16pt;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  margin: 40px auto 10px auto;
+  color: #4050b2;
+}
+
+#profile-header,
+.profile-subheader {
+  background-color: #4050b2;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profile-header {
+  margin-top: 30px;
+  border-radius: 7px 7px 0 0;
+}
+
+#profile-header h2,
+.profile-subheader h2,
+.profile-subheader h3 {
+  color: white;
+  margin: 0px 20px;
+}
+
+#profile-header h3,
+.profile-subheader h3 {
+  color: white;
+  font-family: Grotesk;
+  font-size: 14pt;
+  margin: auto;
+  margin-right: 10px;
+  letter-spacing: 0.08rem;
+}
+
+#profile-body a:hover,
+#profile-col a:hover,
+#profile-header h3:hover,
+.profile-subheader h3:hover,
+#profile-details a:hover {
+  color: #f98c5a !important;
+}
+
+#profile-header a:link,
+#profile-header a:active,
+#profile-header a:visited,
+#profile-header a:hover,
+.profile-subheader a:link,
+#profile-details a:link {
+  text-decoration: none;
+}
+
+#profile-container {
+  background-color: rgb(244, 244, 244);
+  border-radius: 5px;
+}
+
+#profile-details {
+  padding: 30px 30px 10px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#profile-col {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-right: 30px;
+}
+
+#profile-body a,
+#profile-col a {
+  margin: 10px 0px 20px 28px;
+  text-decoration: none;
+  color: #4050b2;
+}
+
+#profile-img {
+  margin-top: 15px;
+  width: 130px;
+}
+
+.profile-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex start;
+}
+
+.profile-col h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14pt;
+  margin: 10px;
+  color: rgb(51, 51, 51);
+}
+
+.key h4 {
+  color: #4050b2;
+}
+
+#edit-profile h5 {
+  margin-top: -10px;
+}

@@ -1,0 +1,56 @@
+<div id="profile">
+  <h1>PROFILE:</h1>
+
+  <ng-container
+    *ngIf="loading; then spinner_content; else profile_content"
+  ></ng-container>
+
+  <ng-template #spinner_content>LOADING...</ng-template>
+
+  <ng-template #profile_content>
+    <div id="profile-container">
+      <div id="profile-header">
+        <h2>Hello {{ me.firstName }} {{ me.lastName }}!</h2>
+        <a routerLink="/" (click)="logout()">
+          <h3>Logout</h3>
+        </a>
+      </div>
+      <div id="profile-details">
+        <div>
+          <div class="profile-row">
+            <div id="profile-col">
+              <img
+                id="profile-img"
+                src="../../../../assets/images/account.png"
+              />
+              <a id="update-avatar" href="#">
+                <h5>Update Avatar</h5>
+              </a>
+            </div>
+            <div class="profile-col key">
+              <h4>Name:</h4>
+              <h4>Email:</h4>
+              <h4>School:</h4>
+              <h4>Status:</h4>
+            </div>
+            <div class="profile-col value">
+              <h4>{{ me.firstName }} {{ me.lastName }}</h4>
+              <h4>{{ me.email }}</h4>
+              <h4>Value</h4>
+              <h4>Value</h4>
+            </div>
+          </div>
+        </div>
+        <a id="edit-profile" href="#">
+          <h5>Edit Profile</h5>
+        </a>
+      </div>
+      <div class="profile-subheader">
+        <h2>Your Posts:</h2>
+        <a [routerLink]="['form-post']">
+          <h3>Create Post</h3>
+        </a>
+      </div>
+    </div>
+  </ng-template>
+</div>
