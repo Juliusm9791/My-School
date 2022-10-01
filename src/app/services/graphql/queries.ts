@@ -1,5 +1,40 @@
 import { gql } from 'apollo-angular';
 
+const postBody = `
+{
+  _id
+  isEvent
+  eventDate
+  title
+  description
+  createdAt
+  reactionId {
+    _id
+    like
+    userId {
+      _id
+      firstName
+      lastName
+    }
+  }
+  commentId {
+    _id
+    comment
+    userId {
+      _id
+      firstName
+      lastName
+    }
+    createdAt
+  }
+  userId {
+    firstName
+    lastName
+  }
+}
+}
+`;
+
 export const QUERY_ME = gql`
   query user {
     me {
@@ -31,71 +66,14 @@ export const QUERY_DEPARTMENTS = gql`
 `;
 export const QUERY_POSTS = gql`
   query posts {
-    posts {
-      _id
-      isEvent
-      eventDate
-      title
-      description
-      createdAt
-      reactionId {
-        _id
-        like
-        userId {
-          _id
-          firstName
-          lastName
-        }
-      }
-      commentId {
-        _id
-        comment
-        userId {
-          _id
-          firstName
-          lastName
-        }
-        createdAt
-      }
-      userId {
-        firstName
-        lastName
-      }
-    }
-  }
+    posts ${postBody}
 `;
 export const QUERY_POST = gql`
   query post($_id: ID!) {
-    post(_id: $_id) {
-      _id
-      isEvent
-      eventDate
-      title
-      description
-      createdAt
-      reactionId {
-        _id
-        like
-        userId {
-          _id
-          firstName
-          lastName
-        }
-      }
-      commentId {
-        _id
-        comment
-        userId {
-          _id
-          firstName
-          lastName
-        }
-        createdAt
-      }
-      userId {
-        firstName
-        lastName
-      }
-    }
-  }
+    post(_id: $_id) ${postBody}
+`;
+
+export const QUERY_USER_POSTS = gql`
+  query userPosts {
+    userPosts ${postBody}
 `;

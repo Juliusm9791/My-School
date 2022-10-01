@@ -63,6 +63,7 @@ const typeDefs = gql`
     user(_id: ID!): User
     me: User
     posts(title: String, user: ID): [Post]
+    userPosts: [Post]
     post(_id: ID!): Post
     faculties: [Group]
     departments: [Department]
