@@ -28,6 +28,7 @@ const postBody = `
     createdAt
   }
   userId {
+    _id
     firstName
     lastName
   }
@@ -71,9 +72,4 @@ export const QUERY_POSTS = gql`
 export const QUERY_POST = gql`
   query post($_id: ID!) {
     post(_id: $_id) ${postBody}
-`;
-
-export const QUERY_USER_POSTS = gql`
-  query userPosts {
-    userPosts ${postBody}
 `;

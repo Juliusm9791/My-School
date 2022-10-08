@@ -3,7 +3,6 @@ import { CalendarEvent } from 'angular-calendar';
 import { Apollo } from 'apollo-angular';
 import {
   QUERY_POSTS,
-  QUERY_USER_POSTS,
 } from 'src/app/services/graphql/queries';
 import { Post } from 'src/app/types/types';
 
@@ -12,19 +11,14 @@ import { Post } from 'src/app/types/types';
 })
 export class PostsService {
   loading: boolean = true;
-  loadingUserPost: boolean = true;
   error: any;
   errorUserPost: any;
   private _posts: Post[] = [];
-  private _userPosts: Post[] = [];
-  // departments: any;
 
   constructor(private apollo: Apollo) {}
   @Output() changePosts: EventEmitter<any> = new EventEmitter();
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeError: EventEmitter<any> = new EventEmitter();
-  @Output() changeUserPosts: EventEmitter<any> = new EventEmitter();
-  @Output() changeUserPostsLoading: EventEmitter<boolean> = new EventEmitter();
 
   queryPosts() {
     this.apollo
@@ -47,32 +41,10 @@ export class PostsService {
       );
   }
 
-  queryUserPosts() {
-    this.apollo
-      .watchQuery({
-        query: QUERY_USER_POSTS,
-      })
-      .valueChanges.subscribe(
-        (result: any) => {
-          this._userPosts = result?.data?.userPosts;
-          console.log('query user post data ', this._userPosts);
-          this.loadingUserPost = result.loading;
-          this.changeUserPostsLoading.emit(this.loadingUserPost);
-
-          this.changeUserPosts.emit(this._userPosts);
-        },
-        (error) => {
-          console.log('query user posts error', error);
-        }
-      );
-  }
-
   get posts() {
     return this._posts;
   }
-  get userPosts() {
-    return this._userPosts;
-  }
+
   countLikes(post: Post) {
     let count: number = 0;
     post.reactionId.forEach((element: any) => {
