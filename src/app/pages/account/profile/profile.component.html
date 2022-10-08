@@ -55,7 +55,7 @@
   </ng-template>
   
   <h1>{{ me.firstName }} ANNOUNCEMENTS:</h1>
-  <div *ngIf="userPostsLoading"><mat-spinner></mat-spinner></div>
+  <div *ngIf="postsLoading"><mat-spinner></mat-spinner></div>
   <!-- <div *ngIf="error">Error :(</div> -->
   <div *ngIf="userPosts">
     <ng-container *ngFor="let singlepost of userPosts">

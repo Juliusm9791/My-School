@@ -49,27 +49,7 @@ const resolvers = {
           populate: "userId",
         });
     },
-    userPosts: async (parent, args, context) => {
-      const allPosts = await Post.find({})
-        .populate("userId")
-        .populate("commentId")
-        .populate("reactionId")
-        .populate({
-          path: "reactionId",
-          populate: "userId",
-        })
-        .populate({
-          path: "commentId",
-          populate: "userId",
-        });
-      const userPosts = [];
-      allPosts.forEach((e) => {
-        if (e.userId._id == context.user._id) {
-          userPosts.push(e);
-        }
-      });
-      return userPosts;
-    },
+
     post: async (parent, args, context) => {
       return await Post.findById(args._id)
         .populate("userId")
@@ -130,18 +110,6 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-
-    // deleteflight: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const remUserAucion = await User.findOneAndUpdate(
-    //       { _id: args.remuserId },
-    //       { $pull: { winingAuctions: args.auctionId } },
-    //       { new: true }
-    //     );
-    //     return remUserAucion;
-    //   }
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
 
     updateUser: async (parent, args, context) => {
       if (context.user) {

@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   me: Me = {} as Me;
   error: any;
   loading: boolean = true;
-  userPostsLoading: boolean = true;
+  postsLoading: boolean = true;
   userPosts: Post[] = [];
 
   constructor(
@@ -33,20 +33,18 @@ export class ProfileComponent implements OnInit {
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
-    this.postsService.changeUserPostsLoading.subscribe((loading) => {
-      this.userPostsLoading = loading;
+    this.postsService.changePosts.subscribe((posts:Post[]) => {
+      this.userPosts = posts.filter(post => {return post.userId._id === this.me._id});
     });
-    this.postsService.changeUserPosts.subscribe((userPosts) => {
-      console.log(userPosts)
-      this.userPosts = userPosts;
+    this.postsService.changeLoading.subscribe((loading) => {
+      this.postsLoading = loading;
     });
   }
 
   ngOnInit(): void {
-    this.postsService.queryUserPosts();
-    this.userPosts = this.postsService.userPosts;
-    console.log(this.userPosts)
+    this.postsService.queryPosts();
     this.isLoggedIn = this.authService.isLoggedIn;
+
     if (!this.isLoggedIn) {
       this.router.navigate(['/']);
       ;
