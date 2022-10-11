@@ -1,4 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
+const { PubSub } = require("graphql-subscriptions");
 const {
   User,
   Department,
@@ -7,6 +8,7 @@ const {
   Comment,
   Reaction,
 } = require("../models");
+const pubsub = new PubSub();
 
 const { signToken } = require("../utils/auth");
 
@@ -89,8 +91,16 @@ const resolvers = {
         reactionId: args.ReactionId,
         userId: context.user._id,
       });
+      pubsub.publish('POST_ADDED', {postAdded: {
+        title: args.title,
+        description: args.description,
+        pictures: args.pictures,
+        commentId: args.commentId,
+        reactionId: args.ReactionId,
+        userId: context.user._id,}
+      });
 
-      console.log("ADD PRODUCT ARGSSS", args);
+      console.log("ADD POST", args);
       return newPost;
     },
     updatePost: async (parent, args, context) => {
@@ -135,6 +145,9 @@ const resolvers = {
 
       return { token, user };
     },
+  },
+  Subscription: {
+    postAdded: {subscribe: () => pubsub.asyncIterator('POST_ADDED')},
   },
 };
 
