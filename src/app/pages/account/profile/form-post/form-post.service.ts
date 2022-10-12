@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { ADD_POST } from 'src/app/services/graphql/mutations';
+import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,9 @@ export class FormPostService {
       .mutate({
         mutation: ADD_POST,
         variables: { title: title, description: description },
+        refetchQueries: [{
+          query: QUERY_POSTS,
+        }],
       })
       .subscribe(
         (result: any) => {

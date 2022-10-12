@@ -4,7 +4,6 @@ import {
   ApolloClientOptions,
   ApolloLink,
   InMemoryCache,
-  split,
 } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 import { HttpHeaders } from '@angular/common/http';
