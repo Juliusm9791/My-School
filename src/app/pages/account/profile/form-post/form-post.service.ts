@@ -20,19 +20,6 @@ export class FormPostService {
         (result: any) => {
           console.log('got data', result);
           this.loading = result.loading;
-          // this.changeLoading.emit(this.loading);
-          // console.log(this.loading, 'login service');
-          // let userData: any;
-          console.log(result)
-          // this.post = userData.user;
-          // this.authService.login(
-          //   mutationDefinition === 'addUser'
-          //     ? result.data.addUser.token
-          //     : mutationDefinition === 'login'
-          //     ? result.data.login.token
-          //     : new Error('Something went wrong during login!')
-          // );
-          // this.changeMe.emit(this.me);
           result && this.router.navigate(['/account/profile']);
         },
         (error) => {

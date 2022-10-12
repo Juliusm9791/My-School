@@ -101,6 +101,10 @@ const typeDefs = gql`
       pictures: String
     ): Post
   }
+
+  type Subscription {
+    postAdded: Post
+  }
 `;
 
 module.exports = typeDefs;
