@@ -1,9 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Apollo, gql } from 'apollo-angular';
 import { AuthService } from 'src/app/services//auth/auth.service';
 import { Me, Post } from 'src/app/types/types';
 import { PostsService } from '../../posts/posts.service';
 import { LoginSignupService } from '../login-signup.service';
+
+////////////////////
+const POST_SUB = gql`
+subscription postAdded {
+  postAdded {
+    _id
+    title
+    description
+  }
+}`
+
+///////////////////
 
 @Component({
   selector: 'app-profile',
@@ -22,8 +35,27 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
     private postsService: PostsService,
-    private router: Router
+    private router: Router,
+    apollo: Apollo
   ) {
+
+    ////////////////////////////////////
+    apollo.subscribe({
+      query: POST_SUB,
+      
+      /*
+        accepts options like `errorPolicy` and `fetchPolicy`
+      */
+    }).subscribe((result) => {
+      console.log('New post:', result);
+
+      if (result.data) {
+        console.log('New post:', result.data);
+      }
+    });
+
+//////////////////////////////////////
+
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
@@ -51,6 +83,7 @@ export class ProfileComponent implements OnInit {
     }
     this.loading = this.loginSignupService.isLoading;
     this.me = this.loginSignupService.me;
+    // this.postsService.subscribeToNewComments()
   }
 
   logout() {

@@ -1,10 +1,29 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { Apollo } from 'apollo-angular';
+import { Apollo, gql, QueryRef } from 'apollo-angular';
+import { Observable } from 'rxjs';
 import {
   QUERY_POSTS,
 } from 'src/app/services/graphql/queries';
 import { Post } from 'src/app/types/types';
+
+
+//////////////////////
+const POST_QUERY = gql`
+query posts {
+  posts {
+    title
+    description
+  }
+}`
+const POST_SUB = gql`
+subscription postAdded {
+  postAdded {
+    title
+    description
+  }
+}`
+////////////////////////////
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +33,17 @@ export class PostsService {
   error: any;
   errorUserPost: any;
   private _posts: Post[] = [];
+  postQuery: QueryRef<any, any>;
+  subPost: Observable<any>;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) {
+    this.postQuery = apollo.watchQuery({
+      query: POST_QUERY,
+
+    });
+
+    this.subPost = this.postQuery.valueChanges;
+  }
   @Output() changePosts: EventEmitter<any> = new EventEmitter();
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeError: EventEmitter<any> = new EventEmitter();
@@ -88,4 +116,26 @@ export class PostsService {
     });
     return events;
   }
+
+//   subscribeToNewComments() {
+//     this.postQuery.subscribeToMore({
+//       document: POST_SUB,
+//       updateQuery: (prev, {subscriptionData}) => {
+//         if (!subscriptionData.data) {
+//           console.log(prev)
+//           return prev;
+//         }
+
+//         const newFeedItem = subscriptionData.data;
+// console.log(newFeedItem)
+//         // return {
+//         //   ...prev,
+//         //   entry: {
+//         //     comments: [newFeedItem, ...prev.entry.comments]
+//         //   }
+//         // };
+//       }
+//     })
+//   }
+
 }
