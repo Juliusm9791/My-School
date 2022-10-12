@@ -29,7 +29,6 @@ export class AuthService {
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     this.getToken();
-    console.log(this.isTokenExpired(this.token),"this.isTokenExpired(this.token)")
     if (this.token && !this.isTokenExpired(this.token)) {
       this.isUserLoggedIn = true;
       this.changeLoggedIn.emit(this.isUserLoggedIn);

@@ -1,4 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
+const { PubSub } = require("graphql-subscriptions");
 const {
   User,
   Department,
@@ -7,6 +8,7 @@ const {
   Comment,
   Reaction,
 } = require("../models");
+const pubsub = new PubSub();
 
 const { signToken } = require("../utils/auth");
 
@@ -47,8 +49,9 @@ const resolvers = {
         .populate({
           path: "commentId",
           populate: "userId",
-        })
+        });
     },
+
     post: async (parent, args, context) => {
       return await Post.findById(args._id)
         .populate("userId")
@@ -61,7 +64,7 @@ const resolvers = {
         .populate({
           path: "commentId",
           populate: "userId",
-        })
+        });
     },
     faculties: async (parent, args) => {
       return await Group.find({});
@@ -79,7 +82,7 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parents, args, context) => {
-      console.log(context);
+      // console.log(context);
       const newPost = await Post.create({
         title: args.title,
         description: args.description,
@@ -88,8 +91,16 @@ const resolvers = {
         reactionId: args.ReactionId,
         userId: context.user._id,
       });
+      pubsub.publish('POST_ADDED', {postAdded: {
+        title: args.title,
+        description: args.description,
+        pictures: args.pictures,
+        commentId: args.commentId,
+        reactionId: args.ReactionId,
+        userId: context.user._id,}
+      });
 
-      console.log("ADD PRODUCT ARGSSS", args);
+      console.log("ADD POST", args);
       return newPost;
     },
     updatePost: async (parent, args, context) => {
@@ -109,18 +120,6 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-
-    // deleteflight: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const remUserAucion = await User.findOneAndUpdate(
-    //       { _id: args.remuserId },
-    //       { $pull: { winingAuctions: args.auctionId } },
-    //       { new: true }
-    //     );
-    //     return remUserAucion;
-    //   }
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
 
     updateUser: async (parent, args, context) => {
       if (context.user) {
@@ -146,6 +145,9 @@ const resolvers = {
 
       return { token, user };
     },
+  },
+  Subscription: {
+    postAdded: {subscribe: () => pubsub.asyncIterator('POST_ADDED')},
   },
 };
 

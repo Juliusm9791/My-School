@@ -53,4 +53,13 @@
       </div>
     </div>
   </ng-template>
+  
+  <h1>{{ me.firstName }} ANNOUNCEMENTS:</h1>
+  <div *ngIf="postsLoading"><mat-spinner></mat-spinner></div>
+  <!-- <div *ngIf="error">Error :(</div> -->
+  <div *ngIf="userPosts">
+    <ng-container *ngFor="let singlepost of userPosts">
+      <app-post [post]="singlepost" [countLikes]="likes(singlepost)"></app-post>
+    </ng-container>
+  </div>
 </div>

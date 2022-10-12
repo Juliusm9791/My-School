@@ -1,8 +1,29 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { Apollo } from 'apollo-angular';
-import { QUERY_POSTS } from 'src/app/services/graphql/queries';
+import { Apollo, gql, QueryRef } from 'apollo-angular';
+import { Observable } from 'rxjs';
+import {
+  QUERY_POSTS,
+} from 'src/app/services/graphql/queries';
 import { Post } from 'src/app/types/types';
+
+
+//////////////////////
+const POST_QUERY = gql`
+query posts {
+  posts {
+    title
+    description
+  }
+}`
+const POST_SUB = gql`
+subscription postAdded {
+  postAdded {
+    title
+    description
+  }
+}`
+////////////////////////////
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +31,19 @@ import { Post } from 'src/app/types/types';
 export class PostsService {
   loading: boolean = true;
   error: any;
+  errorUserPost: any;
   private _posts: Post[] = [];
-  // departments: any;
+  postQuery: QueryRef<any, any>;
+  subPost: Observable<any>;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) {
+    this.postQuery = apollo.watchQuery({
+      query: POST_QUERY,
+
+    });
+
+    this.subPost = this.postQuery.valueChanges;
+  }
   @Output() changePosts: EventEmitter<any> = new EventEmitter();
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeError: EventEmitter<any> = new EventEmitter();
@@ -38,9 +68,11 @@ export class PostsService {
         }
       );
   }
+
   get posts() {
     return this._posts;
   }
+
   countLikes(post: Post) {
     let count: number = 0;
     post.reactionId.forEach((element: any) => {
@@ -72,7 +104,9 @@ export class PostsService {
       let date = new Date(+el.eventDate);
       el.isEvent &&
         events.push({
-          title: `${el.title} ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`,
+          title: `${el.title} ${
+            date.getMonth() + 1
+          }/${date.getDate()}/${date.getFullYear()}`,
           color: colors[randomColor],
           start: date,
           meta: {
@@ -82,4 +116,26 @@ export class PostsService {
     });
     return events;
   }
+
+//   subscribeToNewComments() {
+//     this.postQuery.subscribeToMore({
+//       document: POST_SUB,
+//       updateQuery: (prev, {subscriptionData}) => {
+//         if (!subscriptionData.data) {
+//           console.log(prev)
+//           return prev;
+//         }
+
+//         const newFeedItem = subscriptionData.data;
+// console.log(newFeedItem)
+//         // return {
+//         //   ...prev,
+//         //   entry: {
+//         //     comments: [newFeedItem, ...prev.entry.comments]
+//         //   }
+//         // };
+//       }
+//     })
+//   }
+
 }

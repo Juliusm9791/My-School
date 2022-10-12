@@ -1,8 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Apollo, gql } from 'apollo-angular';
 import { AuthService } from 'src/app/services//auth/auth.service';
-import { Me } from 'src/app/types/types';
+import { Me, Post } from 'src/app/types/types';
+import { PostsService } from '../../posts/posts.service';
 import { LoginSignupService } from '../login-signup.service';
+
+////////////////////
+const POST_SUB = gql`
+subscription postAdded {
+  postAdded {
+    _id
+    title
+    description
+  }
+}`
+
+///////////////////
 
 @Component({
   selector: 'app-profile',
@@ -14,12 +28,34 @@ export class ProfileComponent implements OnInit {
   me: Me = {} as Me;
   error: any;
   loading: boolean = true;
+  postsLoading: boolean = true;
+  userPosts: Post[] = [];
 
   constructor(
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
-    private router: Router
+    private postsService: PostsService,
+    private router: Router,
+    apollo: Apollo
   ) {
+
+    ////////////////////////////////////
+    apollo.subscribe({
+      query: POST_SUB,
+      
+      /*
+        accepts options like `errorPolicy` and `fetchPolicy`
+      */
+    }).subscribe((result) => {
+      console.log('New post:', result);
+
+      if (result.data) {
+        console.log('New post:', result.data);
+      }
+    });
+
+//////////////////////////////////////
+
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
@@ -29,21 +65,32 @@ export class ProfileComponent implements OnInit {
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
+    this.postsService.changePosts.subscribe((posts:Post[]) => {
+      this.userPosts = posts.filter(post => {return post.userId._id === this.me._id});
+    });
+    this.postsService.changeLoading.subscribe((loading) => {
+      this.postsLoading = loading;
+    });
   }
 
   ngOnInit(): void {
+    this.postsService.queryPosts();
     this.isLoggedIn = this.authService.isLoggedIn;
-    console.log(this.isLoggedIn)
+
     if (!this.isLoggedIn) {
       this.router.navigate(['/']);
       ;
     }
     this.loading = this.loginSignupService.isLoading;
     this.me = this.loginSignupService.me;
+    // this.postsService.subscribeToNewComments()
   }
 
   logout() {
     this.authService.logout();
     this.loginSignupService.deleteMe();
+  }
+  likes( post :Post){
+    return this.postsService.countLikes(post)
   }
 }
