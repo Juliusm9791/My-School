@@ -50,6 +50,30 @@ const resolvers = {
           path: "commentId",
           populate: "userId",
         });
+<<<<<<< Updated upstream
+=======
+    },
+    userPosts: async (parent, args, context) => {
+      const allPosts = await Post.find({})
+        .populate("userId")
+        .populate("commentId")
+        .populate("reactionId")
+        .populate({
+          path: "reactionId",
+          populate: "userId",
+        })
+        .populate({
+          path: "commentId",
+          populate: "userId",
+        });
+      const userPosts = [];
+      allPosts.forEach((e) => {
+        if (e.userId._id == context.user._id) {
+          userPosts.push(e);
+        }
+      });
+      return userPosts;
+>>>>>>> Stashed changes
     },
 
     post: async (parent, args, context) => {
