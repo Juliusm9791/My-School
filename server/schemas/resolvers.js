@@ -91,13 +91,15 @@ const resolvers = {
         reactionId: args.ReactionId,
         userId: context.user._id,
       });
-      pubsub.publish('POST_ADDED', {postAdded: {
-        title: args.title,
-        description: args.description,
-        pictures: args.pictures,
-        commentId: args.commentId,
-        reactionId: args.ReactionId,
-        userId: context.user._id,}
+      pubsub.publish("POST_ADDED", {
+        postAdded: {
+          title: args.title,
+          description: args.description,
+          pictures: args.pictures,
+          commentId: args.commentId,
+          reactionId: args.ReactionId,
+          userId: context.user._id,
+        },
       });
 
       console.log("ADD POST", args);
@@ -118,6 +120,15 @@ const resolvers = {
         );
       }
 
+      throw new AuthenticationError("Not logged in");
+    },
+
+    deletePost: async (parent, args, context) => {
+      if (context.user) {
+        return await Post.findByIdAndDelete(
+          { _id: args._id }
+        );
+      }
       throw new AuthenticationError("Not logged in");
     },
 
@@ -147,7 +158,7 @@ const resolvers = {
     },
   },
   Subscription: {
-    postAdded: {subscribe: () => pubsub.asyncIterator('POST_ADDED')},
+    postAdded: { subscribe: () => pubsub.asyncIterator("POST_ADDED") },
   },
 };
 

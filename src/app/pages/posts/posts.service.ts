@@ -1,9 +1,8 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 import { Apollo } from 'apollo-angular';
-import {
-  QUERY_POSTS,
-} from 'src/app/services/graphql/queries';
+import { DELETE_POST } from 'src/app/services/graphql/mutations';
+import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 import { Post } from 'src/app/types/types';
 
 @Injectable({
@@ -87,5 +86,27 @@ export class PostsService {
         });
     });
     return events;
+  }
+  deletePost(id: string) {
+    this.apollo
+      .mutate({
+        mutation: DELETE_POST,
+        variables: { _id: id },
+        refetchQueries: [
+          {
+            query: QUERY_POSTS,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('Post Deleted', result);
+          // this.loading = result.loading;
+          // result && this.router.navigate(['/account/profile']);
+        },
+        (error) => {
+          console.log('delete post error', error);
+        }
+      );
   }
 }

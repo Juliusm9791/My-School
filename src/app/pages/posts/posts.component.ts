@@ -13,6 +13,7 @@ export class PostsComponent implements OnInit {
   departmentsService: any;
   loading: boolean = true;
   error: any;
+  private _isUserPosts: boolean = false;
 
 
   constructor(private postsService: PostsService) {
@@ -27,6 +28,10 @@ export class PostsComponent implements OnInit {
       this.error = error;
     });
   }
+  get isUserPosts() {
+    return this._isUserPosts;
+  }
+
   ngOnInit(): void {
     this.postsService.queryPosts();
   }
