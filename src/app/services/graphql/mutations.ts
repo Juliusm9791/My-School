@@ -43,23 +43,17 @@ export const SIGNUP = gql`
 `;
 
 export const ADD_POST = gql`
-mutation addPost(
-  $title: String!
-  $description: String
-
-  
-
-) {
-  addPost(
-    title: $title
-    description: $description
-    
-   
-   
-  ) {
-    title
-    description
-  
+  mutation addPost($title: String!, $description: String) {
+    addPost(title: $title, description: $description) {
+      title
+      description
+    }
   }
-}
-`
+`;
+export const DELETE_POST = gql`
+  mutation deletePost($_id: ID!) {
+    deletePost(_id: $_id) {
+      _id
+    }
+  }
+`;

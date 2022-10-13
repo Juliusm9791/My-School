@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/types/types';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-post',
@@ -11,8 +12,9 @@ export class PostComponent implements OnInit {
   @Input() post: Post = {} as Post;
   @Input() countLikes: number = 0;
   isFullDescription: boolean = false;
+  isLoggedInUsersPosts: boolean = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private postService: PostsService) {}
 
   ngOnInit(): void {}
 
@@ -27,5 +29,14 @@ export class PostComponent implements OnInit {
   postCut(s: string) {
     const spaceIndex = s.split('').indexOf(' ', 150);
     return s.split('').slice(0, spaceIndex).join('');
+  }
+
+  deletePost(id: string) {
+    if (confirm('Are you sure to delete this post')) {
+      this.postService.deletePost(id);
+    }
+  }
+  updatePost(id: string) {
+    console.log(id);
   }
 }

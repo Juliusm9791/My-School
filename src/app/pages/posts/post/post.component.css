@@ -42,7 +42,9 @@ h4 {
 
 .likes,
 .comments,
-.shares {
+.shares,
+.delete,
+.update {
   margin: 5px 10px 5px 0px;
   border-radius: 4px;
   background-color: rgb(234, 234, 234);
@@ -52,7 +54,9 @@ h4 {
 
 .likes:hover,
 .comments:hover,
-.shares:hover {
+.shares:hover,
+.delete:hover,
+.update:hover {
   background-color: rgb(226, 226, 226);
 }
 
@@ -74,6 +78,15 @@ h4 {
 #likeIcon {
   scale: 0.9;
   color: #4050b2;
+  border: none;
+}
+
+#updatePostButton, #deletePostButton{
+  scale: 1.1;
+  color: red;
+  border: none;
+  background-color: transparent;
+  margin-top: 15px;
 }
 
 mat-card-title {
