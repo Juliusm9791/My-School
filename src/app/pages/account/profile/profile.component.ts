@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   loading: boolean = true;
   postsLoading: boolean = true;
   userPosts: Post[] = [];
+  private _isUserPosts: boolean = true;
 
   constructor(
     private authService: AuthService,
@@ -39,6 +40,9 @@ export class ProfileComponent implements OnInit {
     this.postsService.changeLoading.subscribe((loading) => {
       this.postsLoading = loading;
     });
+  }
+  get isUserPosts(){
+    return this._isUserPosts;
   }
 
   ngOnInit(): void {

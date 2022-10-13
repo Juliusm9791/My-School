@@ -11,8 +11,8 @@ import { PostsService } from '../posts.service';
 export class PostComponent implements OnInit {
   @Input() post: Post = {} as Post;
   @Input() countLikes: number = 0;
+  @Input() isUserPosts: boolean = false
   isFullDescription: boolean = false;
-  isLoggedInUsersPosts: boolean = true;
 
   constructor(private router: Router, private postService: PostsService) {}
 
