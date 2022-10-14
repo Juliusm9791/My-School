@@ -1,9 +1,28 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
+
 import { Apollo } from 'apollo-angular';
 import { DELETE_POST } from 'src/app/services/graphql/mutations';
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
+
 import { Post } from 'src/app/types/types';
+
+//////////////////////
+// const POST_QUERY = gql`
+// query posts {
+//   posts {
+//     title
+//     description
+//   }
+// }`
+// const POST_SUB = gql`
+// subscription postAdded {
+//   postAdded {
+//     title
+//     description
+//   }
+// }`
+////////////////////////////
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +32,16 @@ export class PostsService {
   error: any;
   errorUserPost: any;
   private _posts: Post[] = [];
+  postQuery: QueryRef<any, any>;
+  subPost: Observable<any>;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) {
+    this.postQuery = apollo.watchQuery({
+      query: POST_QUERY,
+    });
+
+    this.subPost = this.postQuery.valueChanges;
+  }
   @Output() changePosts: EventEmitter<any> = new EventEmitter();
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeError: EventEmitter<any> = new EventEmitter();
@@ -87,6 +114,7 @@ export class PostsService {
     });
     return events;
   }
+
   deletePost(id: string) {
     this.apollo
       .mutate({
