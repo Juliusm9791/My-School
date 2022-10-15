@@ -1,28 +1,27 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
-import { Apollo, gql, QueryRef } from 'apollo-angular';
-import { Observable } from 'rxjs';
-import {
-  QUERY_POSTS,
-} from 'src/app/services/graphql/queries';
+
+import { Apollo } from 'apollo-angular';
+import { DELETE_POST } from 'src/app/services/graphql/mutations';
+import { QUERY_POSTS } from 'src/app/services/graphql/queries';
+
 import { Post } from 'src/app/types/types';
 
-
 //////////////////////
-const POST_QUERY = gql`
-query posts {
-  posts {
-    title
-    description
-  }
-}`
-const POST_SUB = gql`
-subscription postAdded {
-  postAdded {
-    title
-    description
-  }
-}`
+// const POST_QUERY = gql`
+// query posts {
+//   posts {
+//     title
+//     description
+//   }
+// }`
+// const POST_SUB = gql`
+// subscription postAdded {
+//   postAdded {
+//     title
+//     description
+//   }
+// }`
 ////////////////////////////
 
 @Injectable({
@@ -39,7 +38,6 @@ export class PostsService {
   constructor(private apollo: Apollo) {
     this.postQuery = apollo.watchQuery({
       query: POST_QUERY,
-
     });
 
     this.subPost = this.postQuery.valueChanges;
@@ -117,25 +115,26 @@ export class PostsService {
     return events;
   }
 
-//   subscribeToNewComments() {
-//     this.postQuery.subscribeToMore({
-//       document: POST_SUB,
-//       updateQuery: (prev, {subscriptionData}) => {
-//         if (!subscriptionData.data) {
-//           console.log(prev)
-//           return prev;
-//         }
-
-//         const newFeedItem = subscriptionData.data;
-// console.log(newFeedItem)
-//         // return {
-//         //   ...prev,
-//         //   entry: {
-//         //     comments: [newFeedItem, ...prev.entry.comments]
-//         //   }
-//         // };
-//       }
-//     })
-//   }
-
+  deletePost(id: string) {
+    this.apollo
+      .mutate({
+        mutation: DELETE_POST,
+        variables: { _id: id },
+        refetchQueries: [
+          {
+            query: QUERY_POSTS,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('Post Deleted', result);
+          // this.loading = result.loading;
+          // result && this.router.navigate(['/account/profile']);
+        },
+        (error) => {
+          console.log('delete post error', error);
+        }
+      );
+  }
 }

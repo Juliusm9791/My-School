@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   loading: boolean = true;
   error: any;
   departments: Department[] = [];
+  private _isUserPosts: boolean = false;
 
   constructor(
     private postsService: PostsService,
@@ -35,6 +36,10 @@ export class HomeComponent implements OnInit {
       this.error = error;
     });
   }
+  get isUserPosts() {
+    return this._isUserPosts;
+  }
+
   ngOnInit(): void {
     this.postsService.queryPosts();
     this.departmentService.queryDepartment();

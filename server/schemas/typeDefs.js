@@ -100,6 +100,9 @@ const typeDefs = gql`
       description: String
       pictures: String
     ): Post
+    deletePost(
+      _id: ID!
+    ): Post
   }
 
   type Subscription {

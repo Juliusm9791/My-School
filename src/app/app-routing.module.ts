@@ -12,6 +12,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { EventCalendarComponent } from './pages/calendar/EventCalendar.component';
 import { PostDetailsComponent } from './pages/posts/post-details/post-details.component';
 import { FormPostComponent } from './pages/account/profile/form-post/form-post.component';
+import { DepartmentDetailsComponent } from './pages/departments/department-details/department-details.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,12 @@ const routes: Routes = [
   {
     path: 'departments',
     component: DepartmentsComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'departments/:id',
+    component: DepartmentDetailsComponent,
+    canActivate: [AuthGuard],
     pathMatch: 'full',
   },
   {

@@ -11,6 +11,7 @@
 
 .deptCard:hover {
   background-color: #5b9251;
+  cursor: pointer;
 }
 
 h1 {

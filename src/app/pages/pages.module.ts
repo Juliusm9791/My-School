@@ -17,6 +17,7 @@ import { EventCalendarModule } from './calendar/EventCalendar.module';
 import { DepartmentComponent } from './departments/department/department.component';
 import { FormPostComponent } from './account/profile/form-post/form-post.component';
 import { HeroComponent } from './home/hero/hero.component';
+import { DepartmentDetailsComponent } from './departments/department-details/department-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HeroComponent } from './home/hero/hero.component';
     PostDetailsComponent,
     DepartmentComponent,
     FormPostComponent,
+    DepartmentDetailsComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [

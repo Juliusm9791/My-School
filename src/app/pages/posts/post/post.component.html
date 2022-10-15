@@ -80,6 +80,19 @@
           <mat-icon id="shareAdjust">reply</mat-icon>
         </button>
       </div>
+      <ng-container *ngIf="isUserPosts">
+        <div class="delete">
+          <button id="deletePostButton" (click)="deletePost(post._id)">
+            <mat-icon id="shareAdjust">delete</mat-icon>
+          </button>
+        </div>
+        <div class="update">
+          <button id="updatePostButton" (click)="updatePost(post._id)">
+            <mat-icon id="shareAdjust">edit</mat-icon>
+
+          </button>
+        </div>
+      </ng-container>
     </div>
   </mat-card-actions>
 </mat-card>
