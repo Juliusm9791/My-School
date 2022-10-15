@@ -18,7 +18,7 @@
       <div id="profile-details">
         <div>
           <div class="profile-row">
-            <div id="profile-col">
+            <div id="profile-avatar">
               <img
                 id="profile-img"
                 src="../../../../assets/images/account.png"
@@ -45,25 +45,74 @@
           <h5>Edit Profile</h5>
         </a>
       </div>
-      <div class="profile-subheader">
-        <h2>Your Posts:</h2>
-        <a [routerLink]="['form-post']">
-          <h3>Create Post</h3>
-        </a>
-      </div>
+
+      <section>
+        <div id="notifications-subheader">
+          <h2>Your Notifications:</h2>
+        </div>
+        <div id="notifications-body">
+          <!-- Needs function to hide if announcements exist -->
+          <h5>...You have no notifications</h5>
+        </div>
+      </section>
+
+      <section>
+        <div id="announcements-subheader">
+          <h2>Your Announcements:</h2>
+          <a [routerLink]="['form-post']">
+            <h3>New Post</h3>
+          </a>
+        </div>
+
+        <!-- <div id="create-post-form">
+          <div class="registerPage">
+            <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+              <div class="title">
+                <mat-form-field appearance="fill">
+                  <mat-label>Title</mat-label>
+                  <input
+                    matInput
+                    placeholder="Title"
+                    formControlName="postTitle"
+                    required
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="description">
+                <mat-form-field appearance="fill">
+                  <mat-label>Description</mat-label>
+                  <input
+                    matInput
+                    placeholder="Description"
+                    formControlName="postDescription"
+                    required
+                  />
+                </mat-form-field>
+              </div>
+              <div class="submitBtn">
+                <button type="submit">SUBMIT</button>
+              </div>
+            </form>
+          </div>
+        </div> -->
+
+        <div id="announcements-body">
+          <div *ngIf="postsLoading">
+            <mat-spinner></mat-spinner>
+          </div>
+          <!-- <div *ngIf="error">Error :(</div> -->
+          <div *ngIf="userPosts">
+            <ng-container *ngFor="let singlepost of userPosts">
+              <app-post
+                [post]="singlepost"
+                [countLikes]="likes(singlepost)"
+                [isUserPosts]="isUserPosts"
+              ></app-post>
+            </ng-container>
+          </div>
+        </div>
+      </section>
     </div>
   </ng-template>
-
-  <h1>{{ me.firstName }} ANNOUNCEMENTS:</h1>
-  <div *ngIf="postsLoading"><mat-spinner></mat-spinner></div>
-  <!-- <div *ngIf="error">Error :(</div> -->
-  <div *ngIf="userPosts">
-    <ng-container *ngFor="let singlepost of userPosts">
-      <app-post
-        [post]="singlepost"
-        [countLikes]="likes(singlepost)"
-        [isUserPosts]="isUserPosts"
-      ></app-post>
-    </ng-container>
-  </div>
 </div>

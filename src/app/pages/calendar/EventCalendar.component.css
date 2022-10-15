@@ -3,7 +3,8 @@
   src: url("../../../assets/fonts/TypoGroteskRoundedDemo.otf");
 }
 #calendar h1 {
-  margin: 51px 0px 20px 35px;
+  margin-top: 51px;
+  margin-bottom: 30px;
   font-family: Grotesk;
   letter-spacing: 0.1rem;
   font-weight: bold;
@@ -12,7 +13,8 @@
 }
 
 #calendar {
-  margin-bottom: 200px;
+  margin: 51px auto 200px auto;
+  width: 80%;
 }
 
 h3 {
@@ -22,10 +24,6 @@ h3 {
 pre {
   background-color: #f5f5f5;
   padding: 15px;
-}
-
-#calendarPage {
-  padding: 50px;
 }
 
 mwl-demo-utils-calendar-header {
