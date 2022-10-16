@@ -32,10 +32,20 @@ h4 {
   border-radius: 8px;
   margin: 30px auto;
   padding: 20px;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  border-radius: 8px;
 }
 
-.postReactions {
+.post-actions {
   margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#social-buttons-row,
+#actions-buttons-row {
   display: flex;
   flex-direction: row;
 }
@@ -49,7 +59,8 @@ h4 {
   border-radius: 4px;
   background-color: rgb(234, 234, 234);
   padding: 0px 5px 0px 10px;
-  box-shadow: 0px 1px 0.25px rgb(124, 124, 124);
+  box-shadow: 0px 1px 1px rgb(124, 124, 124);
+  height: 40px;
 }
 
 .likes:hover,
@@ -81,7 +92,16 @@ h4 {
   border: none;
 }
 
-#updatePostButton, #deletePostButton{
+#deleteIcon,
+#editIcon {
+  scale: 0.9;
+  margin: -7px 4px 0 3px;
+  color: #4050b2;
+  border: none;
+}
+
+#updatePostButton,
+#deletePostButton {
   scale: 1.1;
   color: red;
   border: none;
@@ -91,10 +111,6 @@ h4 {
 
 mat-card-title {
   margin-bottom: 20px;
-}
-
-mat-card {
-  max-width: 800px;
 }
 
 mat-card-content {
@@ -132,20 +148,32 @@ mat-card-content p {
   width: 38px;
 }
 
-.imagesBlock {
+#images-block {
   margin: -20px 20px 13px -20px;
+  display: flex;
+  flex-direction: row;
+}
+
+#extra-images {
+  display: flex;
+  flex-direction: column;
 }
 
 .postContent,
 .subtitleRow {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+}
+
+#post-body {
+  width: 100%;
 }
 
 #postUserImg {
   width: 35px;
 }
 
-#postUserDetail {
+.postUserDetail {
   margin: auto 15px;
 }
