@@ -5,20 +5,22 @@ import { ADD_POST } from 'src/app/services/graphql/mutations';
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FormPostService {
   loading: boolean = true;
 
-  constructor(private apollo: Apollo, private router: Router) { }
+  constructor(private apollo: Apollo, private router: Router) {}
   addPost(title: string, description: string) {
     this.apollo
       .mutate({
         mutation: ADD_POST,
         variables: { title: title, description: description },
-        refetchQueries: [{
-          query: QUERY_POSTS,
-        }],
+        refetchQueries: [
+          {
+            query: QUERY_POSTS,
+          },
+        ],
       })
       .subscribe(
         (result: any) => {
@@ -28,9 +30,7 @@ export class FormPostService {
         },
         (error) => {
           console.log('add post error', error);
-        },
+        }
       );
-
-
   }
 }
