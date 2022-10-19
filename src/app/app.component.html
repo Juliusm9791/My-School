@@ -1,79 +1,123 @@
 <div [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="toolbar">
     <div class="topBarL">
-      <button mat-icon-button (click)="snav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <a routerLink="/">
-        <img id="logo" src="../assets/images/logo.png" />
-      </a>
-      <h1 class="app-name">MY SCHOOL</h1>
+      <div id="logo-nav">
+        <button mat-icon-button (click)="snav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <a routerLink="/">
+          <img id="logo" src="../assets/images/logo.png" />
+        </a>
+      </div>
 
-      <label for="schools">:</label>
-      <select id="schools" name="schoollist" form="schoolform">
-        <option value="Abbotts Hill Elementary School">
-          Abbotts Hill Elementary School
-        </option>
-        <option value="Alpharetta Elementary School">
-          Alpharetta Elementary School
-        </option>
-        <option value="Alpharetta High School">Alpharetta High School</option>
-        <option value="Asa G. Hilliard Elementary School">
-          Asa G. Hilliard Elementary School
-        </option>
-        <option value="Autrey Mill Middle School">
-          Autrey Mill Middle School
-        </option>
-        <option value="Banneker High School">Banneker High School</option>
-        <option value="Barnwell Elementary School">
-          Barnwell Elementary School
-        </option>
-        <option value="Bear Creek Middle School">
-          Bear Creek Middle School
-        </option>
-        <option value="Birmingham Falls Elementary School">
-          Birmingham Falls Elementary School
-        </option>
-        <option value="Brookview Elementary School">
-          Brookview Elementary School
-        </option>
-        <option value="Cambridge High School">Cambridge High School</option>
-        <option value="Camp Creek Middle School">
-          Camp Creek Middle School
-        </option>
-        <option value="Campbell Elementary School">
-          Campbell Elementary School
-        </option>
-        <option value="Centennial High School">Centennial High School</option>
-        <option value="Chattahoochee High School">
-          Chattahoochee High School
-        </option>
-        <option value="Cliftondale Elementary School">
-          Cliftondale Elementary School
-        </option>
-        <option value="Cogburn Woods Elementary School">
-          Cogburn Woods Elementary School
-        </option>
-        <option value="College Park Elementary School">
-          College Park Elementary School
-        </option>
-        <option value="Conley Hills Elementary School">
-          Conley Hills Elementary School
-        </option>
-        <option value="Crabapple Crossing Elementary School">
-          Crabapple Crossing Elementary School
-        </option>
-        <option value="Crabapple Middle School">Crabapple Middle School</option>
-        <option value="Creek View Elementary School">
-          Creek View Elementary School
-        </option>
-        <option value="Creekside High School">Creekside High School</option>
-      </select>
+      <div id="logo-select">
+        <div id="title">
+          <h1 id="app-name">MY SCHOOL</h1>
+          <label for="schools">:</label>
+        </div>
+        <select id="schools" name="schoollist" form="schoolform">
+          <option value="Abbotts Hill Elementary School">
+            Abbotts Hill Elementary School
+          </option>
+          <option value="Alpharetta Elementary School">
+            Alpharetta Elementary School
+          </option>
+          <option value="Alpharetta High School">Alpharetta High School</option>
+          <option value="Asa G. Hilliard Elementary School">
+            Asa G. Hilliard Elementary School
+          </option>
+          <option value="Autrey Mill Middle School">
+            Autrey Mill Middle School
+          </option>
+          <option value="Banneker High School">Banneker High School</option>
+          <option value="Barnwell Elementary School">
+            Barnwell Elementary School
+          </option>
+          <option value="Bear Creek Middle School">
+            Bear Creek Middle School
+          </option>
+          <option value="Birmingham Falls Elementary School">
+            Birmingham Falls Elementary School
+          </option>
+          <option value="Brookview Elementary School">
+            Brookview Elementary School
+          </option>
+          <option value="Cambridge High School">Cambridge High School</option>
+          <option value="Camp Creek Middle School">
+            Camp Creek Middle School
+          </option>
+          <option value="Campbell Elementary School">
+            Campbell Elementary School
+          </option>
+          <option value="Centennial High School">Centennial High School</option>
+          <option value="Chattahoochee High School">
+            Chattahoochee High School
+          </option>
+          <option value="Cliftondale Elementary School">
+            Cliftondale Elementary School
+          </option>
+          <option value="Cogburn Woods Elementary School">
+            Cogburn Woods Elementary School
+          </option>
+          <option value="College Park Elementary School">
+            College Park Elementary School
+          </option>
+          <option value="Conley Hills Elementary School">
+            Conley Hills Elementary School
+          </option>
+          <option value="Crabapple Crossing Elementary School">
+            Crabapple Crossing Elementary School
+          </option>
+          <option value="Crabapple Middle School">
+            Crabapple Middle School
+          </option>
+          <option value="Creek View Elementary School">
+            Creek View Elementary School
+          </option>
+          <option value="Creekside High School">Creekside High School</option>
+        </select>
+      </div>
     </div>
 
+    <!-- <div id="logo-select">
+      <mat-form-field appearance="fill">
+        <mat-label id="title">
+          <h1 id="app-name">MY SCHOOL</h1>
+        </mat-label>
+        <mat-select id="schools">
+          <mat-option>Abbotts Hill Elementary School </mat-option>
+          <mat-option>Alpharetta Elementary School </mat-option>
+          <mat-option>Alpharetta High School </mat-option>
+          <mat-option>Asa G. Hilliard Elementary School </mat-option>
+          <mat-option>Autrey Mill Middle School </mat-option>
+          <mat-option>Banneker High School </mat-option>
+          <mat-option>Barnwell Elementary School </mat-option>
+          <mat-option>Bear Creek Middle School </mat-option>
+          <mat-option>Birmingham Falls Elementary School </mat-option>
+          <mat-option>Brookview Elementary School </mat-option>
+          <mat-option>Cambridge High School </mat-option>
+          <mat-option>Camp Creek Middle School </mat-option>
+          <mat-option>Campbell Elementary School </mat-option>
+          <mat-option>Centennial High School </mat-option>
+          <mat-option>Chattahoochee High School </mat-option>
+          <mat-option>Cliftondale Elementary School </mat-option>
+          <mat-option>Cogburn Woods Elementary School </mat-option>
+          <mat-option>College Park Elementary School </mat-option>
+          <mat-option>Conley Hills Elementary School </mat-option>
+          <mat-option>Crabapple Crossing Elementary School </mat-option>
+          <mat-option>Crabapple Middle School </mat-option>
+          <mat-option>Creek View Elementary School </mat-option>
+          <mat-option>Creekside High School </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div> -->
+
     <div class="topBarR">
-      <mat-icon id="searchIcon">search</mat-icon>
-      <input type="search" placeholder="Search..." id="site-search" />
+      <div id="searchBar">
+        <mat-icon id="searchIcon">search</mat-icon>
+        <input type="search" placeholder="Search..." id="site-search" />
+      </div>
 
       <a id="loginLink" routerLink="/account">
         <div id="login">
