@@ -1,53 +1,122 @@
-<p>form-post works!</p>
 
-<div class="registerPage">
-  <!-- <form [formGroup]="postForm" (ngSubmit)="onSubmit()"> -->
-  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-    <div class="title">
-      <mat-form-field appearance="fill">
-        <mat-label>Title</mat-label>
-        <input
-          matInput
-          placeholder="Title"
-          formControlName="postTitle"
-          required
-        />
-      </mat-form-field>
-    </div>
+<div id="createPostForm">
+  <h2>POST NEW ANNOUNCEMENT</h2>
+  <form  [formGroup]="postForm" (ngSubmit)="onSubmit()">
 
-    <div class="description">
-      <mat-form-field appearance="fill">
-        <mat-label>Description</mat-label>
-        <input
-          matInput
-          placeholder="Description"
-          formControlName="postDescription"
-          required
-        />
-      </mat-form-field>
-    </div>
-    <!-- <div class="picture">
+    <div class="formColumn">
+      <div id="title">
         <mat-form-field appearance="fill">
-          <mat-label>Description</mat-label>
+          <mat-label>Title</mat-label>
           <input
-          type="file"
-          #fileInput
-          placeholder="picture"
-          id="uploadFile"
-          
-          name="uploadFile"
-          multiple="multiple"
-          accept="image/*"
-           
+            matInput
+            placeholder="Title"
+            formControlName="postTitle"
+            required
           />
         </mat-form-field>
-      </div> -->
-
-    <div class="submitBtn">
-      <button type="submit">SUBMIT</button>
+      </div>
+      <div id="description">
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+         
+          <textarea matInput
+          placeholder="Description"
+          formControlName="postDescription"
+          required matInput></textarea>
+        </mat-form-field>
+      </div>
     </div>
-  </form>
-</div>
+    
+    <div class="formColumn">
+      <div id="department">
 
-<!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
+        <mat-form-field appearance="fill">
+          <mat-label>Department</mat-label>
+          <mat-select>
+            <mat-option>ENGLISH </mat-option>
+            <mat-option>MATH </mat-option>
+            <mat-option>SCIENCE </mat-option>
+            <mat-option>SOCIAL STUDIES </mat-option>
+            <mat-option>ART </mat-option>
+            <mat-option>MUSIC </mat-option>
+            <mat-option>ATHLETICS </mat-option>
+            <mat-option>HEALTH </mat-option>
+            <mat-option>FOREIGN LANGUAGE </mat-option>
+            <mat-option>LIBRARY </mat-option>
+            <mat-option>GUIDANCE </mat-option>
+            <mat-option>EXTRA-CURRICULARS </mat-option>
+            <mat-option>TRANSPORTATION </mat-option>
+            <mat-option>FOOD SERVICES </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <div id="event">
+        <div>
+          <mat-checkbox id="event-check">Event</mat-checkbox>
+        </div>
+        <!-- <div id="toggleDate">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div> -->
+      </div>
+    </div>
+    
+    <div class="formColumn">
+      <div id="postContent">
+        <div id="images-block">
+          <img
+            id="defaultImg"
+            src="../../../assets/images/default-placeholder-300x300.png"
+          />
+          <div id="extra-images">
+            <img
+              class="extraImgs"
+              src="../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../assets/images/default-placeholder-300x300.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="submitBtn">
+        <button type="submit">SUBMIT</button>
+      </div>
+    </div>
+
+      <!-- <div id="picUpload">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose Files</mat-label>
+            <input
+            type="file"
+            #fileInput
+            placeholder="picture"
+            id="uploadFile"
+            name="uploadFile"
+            multiple="multiple"
+            accept="image/*"
+            />
+          </mat-form-field>
+        </div>   -->
+     
+    </form>
+  </div>
+  
+  <!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
+
   <a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a> -->

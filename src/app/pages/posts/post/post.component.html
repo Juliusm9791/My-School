@@ -66,19 +66,19 @@
   <mat-card-actions>
     <div class="post-actions">
       <div id="social-buttons-row">
-        <div class="likes">
+        <div class="likes" title="Like">
           {{ countLikes }}
           <button id="likeIcon" mat-icon-button>
             <mat-icon>thumb_up_alt</mat-icon>
           </button>
         </div>
-        <div class="comments">
+        <div class="comments" title="Comment">
           {{ post.commentId.length }}
           <button id="commentIcon" mat-icon-button>
             <mat-icon>chat_bubble</mat-icon>
           </button>
         </div>
-        <div class="shares">
+        <div class="shares" title="Share">
           <button id="shareIcon" mat-icon-button>
             <mat-icon id="shareAdjust">reply</mat-icon>
           </button>
@@ -86,12 +86,12 @@
       </div>
       <div id="actions-buttons-row">
         <ng-container *ngIf="isUserPosts">
-          <div class="delete">
+          <div class="delete" title="Delete">
             <button id="deletePostButton" (click)="deletePost(post._id)">
               <mat-icon id="deleteIcon">delete</mat-icon>
             </button>
           </div>
-          <div class="update">
+          <div class="update" title="Edit">
             <button id="updatePostButton" (click)="updatePost(post._id)">
               <mat-icon id="editIcon">edit</mat-icon>
             </button>
