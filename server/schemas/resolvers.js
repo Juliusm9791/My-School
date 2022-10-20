@@ -86,6 +86,7 @@ const resolvers = {
     addPost: async (parents, args, context) => {
       const newPost = await Post.create({
         isEvent: args.isEvent,
+        eventDate: args.eventDate,
         departmentId: args.departmentId,
         title: args.title,
         description: args.description,

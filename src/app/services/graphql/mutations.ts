@@ -47,12 +47,14 @@ export const ADD_POST = gql`
     $title: String!
     $description: String
     $isEvent: Boolean
+    $eventDate: String
     $departmentId: ID
   ) {
     addPost(
       title: $title
       description: $description
       isEvent: $isEvent
+      eventDate: $eventDate
       departmentId: $departmentId
     ) {
       title

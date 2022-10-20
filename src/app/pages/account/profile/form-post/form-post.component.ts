@@ -15,6 +15,7 @@ export class FormPostComponent implements OnInit {
     postTitle: new FormControl('', [Validators.required]),
     postDescription: new FormControl('', [Validators.required]),
     isEvent: new FormControl(false),
+    eventDate: new FormControl(null),
     departmentId: new FormControl(null),
   });
 
@@ -34,11 +35,13 @@ export class FormPostComponent implements OnInit {
     const description: any = this.postForm.controls.postDescription.value;
     const isPostEvent: any = this.postForm.controls.isEvent.value;
     const selectedDepartmentId: any = this.postForm.controls.departmentId.value;
+    const eventDate: any = this.postForm.controls.eventDate.value;
     this.postFormService.addPost(
       title,
       description,
       isPostEvent,
-      selectedDepartmentId
+      selectedDepartmentId,
+      eventDate
     );
     // this.loginSignupService.userLoginSignup(SIGNUP, {
     //   firstName: this.signUpForm.controls.firstName.value,

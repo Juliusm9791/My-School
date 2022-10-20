@@ -90,6 +90,7 @@ const typeDefs = gql`
     addPost(
       userId: ID
       isEvent: Boolean
+      eventDate: String
       title: String!
       description: String
       departmentId: ID
