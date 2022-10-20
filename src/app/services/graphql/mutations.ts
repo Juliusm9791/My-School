@@ -43,10 +43,24 @@ export const SIGNUP = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($title: String!, $description: String) {
-    addPost(title: $title, description: $description) {
+  mutation addPost(
+    $title: String!
+    $description: String
+    $isEvent: Boolean
+    $departmentId: ID
+  ) {
+    addPost(
+      title: $title
+      description: $description
+      isEvent: $isEvent
+      departmentId: $departmentId
+    ) {
       title
       description
+      isEvent
+      departmentId {
+        _id
+      }
     }
   }
 `;

@@ -51,6 +51,7 @@ const typeDefs = gql`
     title: String!
     description: String!
     pictures: String
+    departmentId: Department
     userId: User
     commentId: [Comment]
     reactionId: [Reaction]
@@ -88,8 +89,10 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addPost(
       userId: ID
+      isEvent: Boolean
       title: String!
       description: String
+      departmentId: ID
       pictures: String
       commentId: ID
       reactionId: ID
@@ -100,9 +103,7 @@ const typeDefs = gql`
       description: String
       pictures: String
     ): Post
-    deletePost(
-      _id: ID!
-    ): Post
+    deletePost(_id: ID!): Post
   }
 
   type Subscription {

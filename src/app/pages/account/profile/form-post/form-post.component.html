@@ -1,8 +1,6 @@
-
 <div id="createPostForm">
   <h2>POST NEW ANNOUNCEMENT</h2>
-  <form  [formGroup]="postForm" (ngSubmit)="onSubmit()">
-
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
     <div class="formColumn">
       <div id="title">
         <mat-form-field appearance="fill">
@@ -18,40 +16,37 @@
       <div id="description">
         <mat-form-field appearance="fill">
           <mat-label>Description</mat-label>
-         
-          <textarea matInput
-          placeholder="Description"
-          formControlName="postDescription"
-          required matInput></textarea>
+
+          <textarea
+            matInput
+            placeholder="Description"
+            formControlName="postDescription"
+            required
+            matInput
+          ></textarea>
         </mat-form-field>
       </div>
     </div>
-    
+
     <div class="formColumn">
       <div id="department">
         <mat-form-field appearance="fill">
           <mat-label>Department</mat-label>
-          <mat-select>
-            <mat-option>ENGLISH </mat-option>
-            <mat-option>MATH </mat-option>
-            <mat-option>SCIENCE </mat-option>
-            <mat-option>SOCIAL STUDIES </mat-option>
-            <mat-option>ART </mat-option>
-            <mat-option>MUSIC </mat-option>
-            <mat-option>ATHLETICS </mat-option>
-            <mat-option>HEALTH </mat-option>
-            <mat-option>FOREIGN LANGUAGE </mat-option>
-            <mat-option>LIBRARY </mat-option>
-            <mat-option>GUIDANCE </mat-option>
-            <mat-option>EXTRA-CURRICULARS </mat-option>
-            <mat-option>TRANSPORTATION </mat-option>
-            <mat-option>FOOD SERVICES </mat-option>
+          <mat-select formControlName="departmentId">
+            <mat-option>-- None --</mat-option>
+            <ng-container *ngFor="let depatment of departmentList">
+              <mat-option value="{{ depatment._id }}"
+                >{{ depatment.depName }}
+              </mat-option>
+            </ng-container>
           </mat-select>
         </mat-form-field>
       </div>
       <div id="event">
         <div>
-          <mat-checkbox id="event-check">Event</mat-checkbox>
+          <mat-checkbox id="event-check" formControlName="isEvent"
+            >Event</mat-checkbox
+          >
         </div>
         <!-- <div id="toggleDate">
           <mat-form-field appearance="fill">
@@ -64,7 +59,7 @@
         </div> -->
       </div>
     </div>
-    
+
     <div class="formColumn">
       <div id="postContent">
         <div id="images-block">
@@ -97,7 +92,7 @@
       </div>
     </div>
 
-      <!-- <div id="picUpload">
+    <!-- <div id="picUpload">
           <mat-form-field appearance="fill">
             <mat-label>Choose Files</mat-label>
             <input
@@ -111,10 +106,8 @@
             />
           </mat-form-field>
         </div>   -->
-     
-    </form>
-  </div>
-  
-  <!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
+  </form>
+</div>
+
+<!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
   <a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a> -->
-  

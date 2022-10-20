@@ -6,6 +6,10 @@ const postBody = `
   isEvent
   eventDate
   title
+  departmentId{
+    _id
+    depName
+  }
   description
   createdAt
   reactionId {
