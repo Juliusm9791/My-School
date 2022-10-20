@@ -1,5 +1,3 @@
-import { ReadFieldFunction } from '@apollo/client/cache/core/types/common';
-
 export interface Me {
   _id: string;
   firstName: string;

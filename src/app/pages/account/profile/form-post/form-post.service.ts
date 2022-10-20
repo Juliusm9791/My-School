@@ -16,7 +16,8 @@ export class FormPostService {
     title: string,
     description: string,
     isEvent: boolean,
-    selectedDepartmentId: string
+    selectedDepartmentId: string,
+    eventDate: string
   ) {
     this.apollo
       .mutate({
@@ -25,6 +26,7 @@ export class FormPostService {
           title: title,
           description: description,
           isEvent: isEvent,
+          eventDate: eventDate,
           departmentId: selectedDepartmentId,
         },
 

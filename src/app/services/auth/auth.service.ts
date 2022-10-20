@@ -43,7 +43,10 @@ export class AuthService {
       const decoded: any = decode(token);
       if (decoded.exp < Date.now() / 100000) {
         return true;
-      } else return false;
+      } else {
+        // localStorage.removeItem('id_token');
+        return false;
+      }
     } catch (err) {
       return false;
     }
