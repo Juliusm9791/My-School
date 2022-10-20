@@ -25,7 +25,10 @@ const postSchema = new Schema(
       type: String,
       required: false,
     },
-
+    departmentId: {
+      type: Schema.Types.ObjectId,
+      ref: "Department",
+    },
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",

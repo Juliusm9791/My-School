@@ -57,6 +57,7 @@ export interface Post {
   eventDate: string;
   title: string;
   description: string;
+  departmentId: Department;
   createdAt: string;
   reactionId: Reaction[];
   commentId: Comment[];

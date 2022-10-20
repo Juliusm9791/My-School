@@ -41,6 +41,7 @@ const resolvers = {
       return await Post.find({})
         .populate("userId")
         .populate("commentId")
+        .populate("departmentId")
         .populate("reactionId")
         .populate({
           path: "reactionId",
@@ -56,6 +57,7 @@ const resolvers = {
       return await Post.findById(args._id)
         .populate("userId")
         .populate("commentId")
+        .populate("departmentId")
         .populate("reactionId")
         .populate({
           path: "reactionId",
@@ -82,8 +84,9 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parents, args, context) => {
-      // console.log(context);
       const newPost = await Post.create({
+        isEvent: args.isEvent,
+        departmentId: args.departmentId,
         title: args.title,
         description: args.description,
         pictures: args.pictures,

@@ -11,11 +11,23 @@ export class FormPostService {
   loading: boolean = true;
 
   constructor(private apollo: Apollo, private router: Router) {}
-  addPost(title: string, description: string) {
+
+  addPost(
+    title: string,
+    description: string,
+    isEvent: boolean,
+    selectedDepartmentId: string
+  ) {
     this.apollo
       .mutate({
         mutation: ADD_POST,
-        variables: { title: title, description: description },
+        variables: {
+          title: title,
+          description: description,
+          isEvent: isEvent,
+          departmentId: selectedDepartmentId,
+        },
+
         refetchQueries: [
           {
             query: QUERY_POSTS,

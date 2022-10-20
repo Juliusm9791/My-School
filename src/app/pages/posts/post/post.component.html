@@ -3,6 +3,9 @@
     <mat-card-title>
       <div class="postTitle">
         <h2>{{ post.title }}</h2>
+        <h2 *ngIf="post.departmentId">
+          {{ post.departmentId.depName }}
+        </h2>
       </div>
     </mat-card-title>
   </a>
