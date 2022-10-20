@@ -18,6 +18,7 @@ export class FormPostComponent implements OnInit {
     departmentId: new FormControl(null),
   });
 
+
   constructor(
     private postFormService: FormPostService,
     private departmentsService: DepartmentsService
@@ -40,6 +41,7 @@ export class FormPostComponent implements OnInit {
       isPostEvent,
       selectedDepartmentId
     );
+
     // this.loginSignupService.userLoginSignup(SIGNUP, {
     //   firstName: this.signUpForm.controls.firstName.value,
     //   middleName: this.signUpForm.controls.middleName.value,

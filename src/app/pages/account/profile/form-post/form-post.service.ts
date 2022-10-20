@@ -11,6 +11,7 @@ export class FormPostService {
   loading: boolean = true;
 
   constructor(private apollo: Apollo, private router: Router) {}
+
   addPost(
     title: string,
     description: string,
@@ -26,6 +27,7 @@ export class FormPostService {
           isEvent: isEvent,
           departmentId: selectedDepartmentId,
         },
+
         refetchQueries: [
           {
             query: QUERY_POSTS,

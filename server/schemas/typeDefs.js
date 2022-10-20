@@ -103,11 +103,15 @@ const typeDefs = gql`
       description: String
       pictures: String
     ): Post
+
+    addComment(comment: String!, postId: ID!): Post
+
     deletePost(_id: ID!): Post
   }
 
   type Subscription {
     postAdded: Post
+    commentAdded: Comment
   }
 `;
 

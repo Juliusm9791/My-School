@@ -106,6 +106,27 @@ const resolvers = {
       });
       return newPost;
     },
+    addComment: async (parents, args, context) => {
+      if (context.user) {
+        const newComment = await Comment.create({
+          comment: args.comment,
+          userId: context.user._id,
+        });
+        const updatedPost = await Post.findByIdAndUpdate(
+          { _id: args.postId },
+          { $addToSet: { commentId: newComment._id } },
+          { new: true }
+        );
+        pubsub.publish("COMMENT_ADDED", {
+          commentAdded: {
+            comment: args.comment,
+            userId: context.user._id,
+          },
+        });
+        return updatedPost;
+      }
+      throw new AuthenticationError("Not logged in");
+    },
     updatePost: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndUpdate(
@@ -158,6 +179,7 @@ const resolvers = {
   },
   Subscription: {
     postAdded: { subscribe: () => pubsub.asyncIterator("POST_ADDED") },
+    commentAdded: { subscribe: () => pubsub.asyncIterator("COMMENT_ADDED") },
   },
 };
 
