@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Me, Post } from 'src/app/types/types';
@@ -12,17 +13,22 @@ import { PostDetailsService } from './post-details.service';
   styleUrls: ['./post-details.component.css'],
 })
 export class PostDetailsComponent implements OnInit {
+  postId: any;
   post: Post = {} as Post;
   loading: boolean = true;
   isLoggedIn: boolean = false;
   me: Me = {} as Me;
+
+  commentForm = new FormGroup({
+    comment: new FormControl('', [Validators.required]),
+  });
 
   constructor(
     private postDetailsService: PostDetailsService,
     private route: ActivatedRoute,
     private postsService: PostsService,
     private authService: AuthService,
-    private loginSignupService: LoginSignupService,
+    private loginSignupService: LoginSignupService
   ) {
     this.postDetailsService.changePost.subscribe((post) => {
       this.post = post;
@@ -36,13 +42,21 @@ export class PostDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const postId: any = this.route.snapshot.paramMap.get('id');
-    this.postDetailsService.queryPost(postId);
+    this.postId = this.route.snapshot.paramMap.get('id');
+    this.postDetailsService.queryPost(this.postId);
     this.isLoggedIn = this.authService.isLoggedIn;
     this.me = this.loginSignupService.me;
   }
 
   likes(post: Post) {
     return this.postsService.countLikes(post);
+  }
+
+  onSubmit() {
+    const comment: any = this.commentForm.controls.comment.value;
+
+    console.log(comment, this.postId);
+    this.postDetailsService.addComment(comment, this.postId);
+    this.commentForm.reset();
   }
 }

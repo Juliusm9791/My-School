@@ -101,9 +101,28 @@ const resolvers = {
           userId: context.user._id,
         },
       });
-
-      console.log("ADD POST", args);
       return newPost;
+    },
+    addComment: async (parents, args, context) => {
+      if (context.user) {
+        const newComment = await Comment.create({
+          comment: args.comment,
+          userId: context.user._id,
+        });
+        const updatedPost = await Post.findByIdAndUpdate(
+          { _id: args.postId },
+          { $addToSet: { commentId: newComment._id } },
+          { new: true }
+        );
+        pubsub.publish("COMMENT_ADDED", {
+          commentAdded: {
+            comment: args.comment,
+            userId: context.user._id,
+          },
+        });
+        return updatedPost;
+      }
+      throw new AuthenticationError("Not logged in");
     },
     updatePost: async (parent, args, context) => {
       if (context.user) {
@@ -125,9 +144,7 @@ const resolvers = {
 
     deletePost: async (parent, args, context) => {
       if (context.user) {
-        return await Post.findByIdAndDelete(
-          { _id: args._id }
-        );
+        return await Post.findByIdAndDelete({ _id: args._id });
       }
       throw new AuthenticationError("Not logged in");
     },
@@ -159,6 +176,7 @@ const resolvers = {
   },
   Subscription: {
     postAdded: { subscribe: () => pubsub.asyncIterator("POST_ADDED") },
+    commentAdded: { subscribe: () => pubsub.asyncIterator("COMMENT_ADDED") },
   },
 };
 
