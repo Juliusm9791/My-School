@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
   userPosts: Post[] = [];
   private _isUserPosts: boolean = true;
 
+
   constructor(
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
@@ -43,7 +44,7 @@ export class ProfileComponent implements OnInit {
     ////////////////////////////////////
     apollo.subscribe({
       query: POST_SUB,
-      
+
       /*
         accepts options like `errorPolicy` and `fetchPolicy`
       */
@@ -55,7 +56,7 @@ export class ProfileComponent implements OnInit {
       }
     });
 
-//////////////////////////////////////
+    //////////////////////////////////////
 
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
@@ -66,16 +67,17 @@ export class ProfileComponent implements OnInit {
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
-    this.postsService.changePosts.subscribe((posts:Post[]) => {
-      this.userPosts = posts.filter(post => {return post.userId._id === this.me._id});
+    this.postsService.changePosts.subscribe((posts: Post[]) => {
+      this.userPosts = posts.filter(post => { return post.userId._id === this.me._id });
     });
     this.postsService.changeLoading.subscribe((loading) => {
       this.postsLoading = loading;
     });
   }
-  get isUserPosts(){
+  get isUserPosts() {
     return this._isUserPosts;
   }
+
 
   ngOnInit(): void {
     this.postsService.queryPosts();
@@ -94,7 +96,7 @@ export class ProfileComponent implements OnInit {
     this.authService.logout();
     this.loginSignupService.deleteMe();
   }
-  likes( post :Post){
+  likes(post: Post) {
     return this.postsService.countLikes(post)
   }
 }

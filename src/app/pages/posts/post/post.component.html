@@ -1,8 +1,10 @@
+
 <mat-card>
   <a class="post-card" (click)="postDetail(post._id)">
     <mat-card-title>
       <div class="postTitle">
         <h2>{{ post.title }}</h2>
+        
         <h2 *ngIf="post.departmentId">
           {{ post.departmentId.depName }}
         </h2>
@@ -35,9 +37,10 @@
         />
       </div>
     </div>
-
+    
     <div id="post-body">
       <mat-card-subtitle>
+        
         <div class="subtitleRow">
           <img id="postUserImg" src="../../../../assets/images/account.png" />
           <h4 class="postUserDetail postUserName">
