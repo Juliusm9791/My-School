@@ -56,4 +56,30 @@ export class AppComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
+  schoolList: string[] = [
+    'Abbotts Hill Elementary School',
+    'Alpharetta Elementary School',
+    'Alpharetta High School',
+    'Asa G. Hilliard Elementary School',
+    'Autrey Mill Middle School',
+    'Banneker High School',
+    'Barnwell Elementary School',
+    'Bear Creek Middle School',
+    'Birmingham Falls Elementary School',
+    'Brookview Elementary School',
+    'Cambridge High School',
+    'Camp Creek Middle School',
+    'Campbell Elementary School',
+    'Centennial High School',
+    'Chattahoochee High School',
+    'Cliftondale Elementary School',
+    'Cogburn Woods Elementary School',
+    'College Park Elementary School',
+    'Conley Hills Elementary School',
+    'Crabapple Crossing Elementary School',
+    'Crabapple Middle School',
+    'Creek View Elementary School',
+    'Creekside High School',
+  ];
 }
