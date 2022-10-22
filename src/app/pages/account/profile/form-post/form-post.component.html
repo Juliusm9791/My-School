@@ -11,6 +11,16 @@
             formControlName="postTitle"
             required
           />
+          <em
+            style="color: red"
+            *ngIf="
+              postForm.controls.postTitle.invalid &&
+              postForm.controls.postTitle.dirty &&
+              postForm.controls.postTitle.errors
+            "
+            >Restricted words found:
+            {{ postForm.controls.postTitle.errors["restrictedWords"] }}</em
+          >
         </mat-form-field>
       </div>
       <div id="description">
@@ -24,13 +34,24 @@
             required
             matInput
           ></textarea>
+          <em
+            style="color: red"
+            *ngIf="
+              postForm.controls.postDescription.invalid &&
+              postForm.controls.postDescription.dirty &&
+              postForm.controls.postDescription.errors
+            "
+            >Restricted words found:
+            {{
+              postForm.controls.postDescription.errors["restrictedWords"]
+            }}</em
+          >
         </mat-form-field>
       </div>
     </div>
 
     <div class="formColumn">
       <div id="department">
-
         <mat-form-field appearance="fill">
           <mat-label>Department</mat-label>
           <mat-select formControlName="departmentId">
@@ -42,7 +63,6 @@
             </ng-container>
           </mat-select>
         </mat-form-field>
-
       </div>
       <div id="event">
         <div>
@@ -115,7 +135,6 @@
             />
           </mat-form-field>
         </div>   -->
-
   </form>
 </div>
 
