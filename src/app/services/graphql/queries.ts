@@ -1,9 +1,9 @@
 import { gql } from 'apollo-angular';
-// isEvent
+//
 const postBody = `
 {
   _id
- 
+  isEvent
   eventDate
   title
   departmentId{

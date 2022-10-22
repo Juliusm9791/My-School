@@ -70,9 +70,9 @@
           </div>
           <!-- <div *ngIf="error">Error :(</div> -->
           <div *ngIf="userPosts">
-            <a [routerLink]="['form-post']">
+            <!-- <a [routerLink]="['form-post']">
               <h3>New Post</h3>
-            </a>
+            </a> -->
             <ng-container *ngFor="let singlepost of userPosts">
               <app-post
                 [post]="singlepost"
