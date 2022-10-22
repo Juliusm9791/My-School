@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/types/types';
+import { PostDetailsService } from '../post-details/post-details.service';
 import { PostsService } from '../posts.service';
 
 @Component({
@@ -13,10 +14,21 @@ export class PostComponent implements OnInit {
   @Input() countLikes: number = 0;
   @Input() isUserPosts: boolean = false
   isFullDescription: boolean = false;
+  updatePostData: Post = {} as Post
+  postDataLoading: boolean = true
 
-  constructor(private router: Router, private postService: PostsService) {}
+  constructor(private router: Router, private postService: PostsService, private postDetailsService: PostDetailsService) {
 
-  ngOnInit(): void {}
+    this.postDetailsService.changePost.subscribe((post) => {
+      this.updatePostData = post;
+      console.log(this.updatePostData)
+    });
+    this.postDetailsService.changeLoading.subscribe((loading) => {
+      this.postDataLoading = loading;
+    });
+  }
+
+  ngOnInit(): void { }
 
   changeFullDescription() {
     this.isFullDescription = !this.isFullDescription;
@@ -38,5 +50,6 @@ export class PostComponent implements OnInit {
   }
   updatePost(id: string) {
     console.log(id);
+    this.postDetailsService.queryPost(id)
   }
 }

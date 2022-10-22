@@ -66,6 +66,35 @@ export const ADD_POST = gql`
     }
   }
 `;
+export const UPDATE_POST = gql`
+mutation updatePost(
+  $postId:ID!
+  $title: String!
+  $description: String
+  $isEvent: Boolean
+  $eventDate: String
+  $departmentId: ID
+) {
+  updatePost(
+    _id:$postId
+    title: $title
+    description: $description
+    isEvent: $isEvent
+    eventDate: $eventDate
+    departmentId: $departmentId
+  ) {
+    _id
+    title
+    description
+    isEvent
+    departmentId {
+      _id
+    }
+  }
+}
+
+
+`
 
 export const ADD_COMMENT = gql`
   mutation addComment($comment: String!, $postId: ID!) {
