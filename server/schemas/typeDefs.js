@@ -100,9 +100,15 @@ const typeDefs = gql`
     ): Post
     updatePost(
       _id: ID!
+      userId: ID
+      isEvent: Boolean
+      eventDate: String
       title: String!
       description: String
+      departmentId: ID
       pictures: String
+      commentId: ID
+      reactionId: ID
     ): Post
 
     addComment(comment: String!, postId: ID!): Post
@@ -113,6 +119,7 @@ const typeDefs = gql`
   type Subscription {
     postAdded: Post
     commentAdded: Comment
+    postUpdated: Post
   }
 `;
 

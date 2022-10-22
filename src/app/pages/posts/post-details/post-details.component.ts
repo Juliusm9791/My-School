@@ -18,6 +18,9 @@ export class PostDetailsComponent implements OnInit {
   loading: boolean = true;
   isLoggedIn: boolean = false;
   me: Me = {} as Me;
+  userPosts: Post[] = [];
+  private _isUserPosts: boolean = true;
+  private _moi: any;
 
   commentForm = new FormGroup({
     comment: new FormControl('', [Validators.required]),
@@ -40,7 +43,12 @@ export class PostDetailsComponent implements OnInit {
       this.isLoggedIn = loggedIn;
     });
   }
-
+  get isUserPosts() {
+    return this._isUserPosts;
+  }
+  get moi() {
+    return this.me
+  }
   ngOnInit(): void {
     this.postId = this.route.snapshot.paramMap.get('id');
     this.postDetailsService.queryPost(this.postId);

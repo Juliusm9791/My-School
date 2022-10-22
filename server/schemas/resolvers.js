@@ -133,15 +133,34 @@ const resolvers = {
         return await Post.findByIdAndUpdate(
           args._id,
           {
+            isEvent: args.isEvent,
+            eventDate: args.eventDate,
+            departmentId: args.departmentId,
             title: args.title,
             description: args.description,
             pictures: args.pictures,
+            commentId: args.commentId,
+            reactionId: args.ReactionId,
+            userId: context.user._id,
+            // title: args.title,
+            // description: args.description,
+            // pictures: args.pictures,
           },
           {
             new: true,
           }
         );
       }
+      pubsub.publish("POST_UPDATED", {
+        postUpdated: {
+          title: args.title,
+          description: args.description,
+          pictures: args.pictures,
+          commentId: args.commentId,
+          reactionId: args.ReactionId,
+          userId: context.user._id,
+        },
+      });
 
       throw new AuthenticationError("Not logged in");
     },
