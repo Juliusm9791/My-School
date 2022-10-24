@@ -172,8 +172,33 @@ mat-card-content p {
 
 #postUserImg {
   width: 35px;
+  height: 35px;
 }
 
 .postUserDetail {
-  margin: auto 15px;
+  margin: auto 0px auto 10px;
+}
+
+@media (max-width: 900px) {
+  #defaultImg {
+    width: 120px;
+    height: 120px;
+  }
+
+  .extraImgs {
+    width: 30px;
+  }
+
+  #images-block {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #extra-images {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 700px) {
 }
