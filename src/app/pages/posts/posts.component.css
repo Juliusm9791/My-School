@@ -18,3 +18,10 @@
 .mat-focus-indicator {
   max-width: 1000px;
 }
+
+@media (max-width: 900px) {
+  #announcements {
+    margin: 40px auto 200px auto;
+    width: 95%;
+  }
+}

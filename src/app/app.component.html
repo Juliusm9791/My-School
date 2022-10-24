@@ -1,72 +1,30 @@
 <div [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="toolbar">
     <div class="topBarL">
-      <div id="logo-nav">
-        <button mat-icon-button (click)="snav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <a routerLink="/">
-          <img id="logo" src="../assets/images/logo.png" />
-        </a>
-      </div>
-
-      <div id="logo-select">
-        <!-- <div id="title">
-          <h1 id="app-name">MY SCHOOL</h1>
-          <label for="schools">:</label>
-        </div> -->
-        <mat-select
-          id="schools"
-          id="app-name"
-          name="schoollist"
-          style="color: white"
-          placeholder="MY SCHOOL"
-        >
-          <ng-container *ngFor="let school of schoolList">
-            <mat-option value="{{ school }}">{{ school }} </mat-option>
-          </ng-container>
-        </mat-select>
-      </div>
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- <h1>MY SCHOOL</h1> -->
+      <mat-select id="schools" placeholder="My School" name="schoollist">
+        <ng-container *ngFor="let school of schoolList">
+          <mat-option value="{{ school }}">{{ school }} </mat-option>
+        </ng-container>
+      </mat-select>
     </div>
 
-    <!-- <div id="logo-select">
-      <mat-form-field appearance="fill">
-        <mat-label id="title">
-          <h1 id="app-name">MY SCHOOL</h1>
-        </mat-label>
-        <mat-select id="schools">
-          <mat-option>Abbotts Hill Elementary School </mat-option>
-          <mat-option>Alpharetta Elementary School </mat-option>
-          <mat-option>Alpharetta High School </mat-option>
-          <mat-option>Asa G. Hilliard Elementary School </mat-option>
-          <mat-option>Autrey Mill Middle School </mat-option>
-          <mat-option>Banneker High School </mat-option>
-          <mat-option>Barnwell Elementary School </mat-option>
-          <mat-option>Bear Creek Middle School </mat-option>
-          <mat-option>Birmingham Falls Elementary School </mat-option>
-          <mat-option>Brookview Elementary School </mat-option>
-          <mat-option>Cambridge High School </mat-option>
-          <mat-option>Camp Creek Middle School </mat-option>
-          <mat-option>Campbell Elementary School </mat-option>
-          <mat-option>Centennial High School </mat-option>
-          <mat-option>Chattahoochee High School </mat-option>
-          <mat-option>Cliftondale Elementary School </mat-option>
-          <mat-option>Cogburn Woods Elementary School </mat-option>
-          <mat-option>College Park Elementary School </mat-option>
-          <mat-option>Conley Hills Elementary School </mat-option>
-          <mat-option>Crabapple Crossing Elementary School </mat-option>
-          <mat-option>Crabapple Middle School </mat-option>
-          <mat-option>Creek View Elementary School </mat-option>
-          <mat-option>Creekside High School </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="topBarM">
+      <a routerLink="/">
+        <img id="logo" src="../assets/images/logo.png" />
+      </a>
     </div>
-  </div> -->
 
     <div class="topBarR">
       <div id="searchBar">
-        <mat-icon id="searchIcon">search</mat-icon>
-        <input type="search" placeholder="Search..." id="site-search" />
+        <img id="searchIcon" src="../assets/images/search.png" />
+        <h4>Search...</h4>
+      </div>
+      <div id="searchIconMobile">
+        <img id="searchIcon2" src="../assets/images/search_icon_circle.png" />
       </div>
 
       <a id="loginLink" routerLink="/account">
@@ -80,6 +38,11 @@
         </div>
         <div>
           <img id="accountIcon" src="../assets/images/account.png" />
+        </div>
+        <div id="logoMobile">
+          <a routerLink="/">
+            <img src="../assets/images/logo.png" />
+          </a>
         </div>
       </a>
     </div>
@@ -129,6 +92,7 @@
         </div>
       </mat-nav-list>
     </mat-sidenav>
+
     <mat-sidenav-content>
       <router-outlet (activate)="onActivate($event)"></router-outlet>
     </mat-sidenav-content>
