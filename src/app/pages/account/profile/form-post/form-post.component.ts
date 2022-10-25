@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from 'express';
 import { DepartmentsService } from 'src/app/pages/departments/departments.service';
-import { Department } from 'src/app/types/types';
+import { PostDetailsService } from 'src/app/pages/posts/post-details/post-details.service';
+import { PostsService } from 'src/app/pages/posts/posts.service';
+import { Department, Post } from 'src/app/types/types';
 import { FormPostService } from './form-post.service';
 
 const badWords: string[] = ['foo', 'boo'];
@@ -27,13 +31,28 @@ export class FormPostComponent implements OnInit {
     eventDate: new FormControl(null),
     departmentId: new FormControl(null),
   });
-
+  post: Post = {} as Post
+  postId: any
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private postFormService: FormPostService,
-    private departmentsService: DepartmentsService
-  ) {}
+    private departmentsService: DepartmentsService,
+    private postsService: PostsService
+
+  ) {
+
+    // this.post = this.postsService.singlePost(this.postId)
+
+    //   this.postForm.controls.postTitle.setValue(post.title)
+    //   this.postForm.controls.postDescription.setValue(post.description)
+
+
+  }
 
   ngOnInit() {
+    this.postId = this.route.snapshot.paramMap.get('id');
+    // console.log(this.postService)
     if (this.departmentsService.departments.length === 0)
       this.departmentsService.queryDepartment();
     this.departmentList = this.departmentsService.departments;

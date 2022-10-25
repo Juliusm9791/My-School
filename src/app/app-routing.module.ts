@@ -41,11 +41,16 @@ const routes: Routes = [
     component: ProfileComponent,
     pathMatch: 'full',
   },
-   {
-     path: 'account/profile/form-post',
-     component: FormPostComponent,
-     pathMatch: 'full',
-   },
+  {
+    path: 'account/profile/form-post',
+    component: FormPostComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'account/profile/form-post/:id',
+    component: FormPostComponent,
+    pathMatch: 'full',
+  },
   {
     path: 'posts',
     component: PostsComponent,
@@ -86,4 +91,4 @@ const routes: Routes = [
   exports: [RouterModule],
   bootstrap: [EventCalendarComponent],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

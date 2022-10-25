@@ -19,13 +19,13 @@ export class PostComponent implements OnInit {
 
   constructor(private router: Router, private postService: PostsService, private postDetailsService: PostDetailsService) {
 
-    this.postDetailsService.changePost.subscribe((post) => {
-      this.updatePostData = post;
-      console.log(this.updatePostData)
-    });
-    this.postDetailsService.changeLoading.subscribe((loading) => {
-      this.postDataLoading = loading;
-    });
+    // this.postDetailsService.changePost.subscribe((post) => {
+    //   this.updatePostData = post;
+    //   console.log(this.updatePostData)
+    // });
+    // this.postDetailsService.changeLoading.subscribe((loading) => {
+    //   this.postDataLoading = loading;
+    // });
   }
 
   ngOnInit(): void { }
@@ -50,6 +50,8 @@ export class PostComponent implements OnInit {
   }
   updatePost(id: string) {
     console.log(id);
-    this.postDetailsService.queryPost(id)
+    // this.postDetailsService.queryPost(id)
+    this.router.navigate(['/account/profile/form-post/' + id])
+    this.postService.singlePost(id)
   }
 }

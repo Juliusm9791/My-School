@@ -10,7 +10,10 @@ import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 export class FormPostService {
   loading: boolean = true;
 
-  constructor(private apollo: Apollo, private router: Router) {}
+  constructor(private apollo: Apollo, private router: Router) {
+
+
+  }
 
   addPost(
     title: string,
