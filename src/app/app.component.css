@@ -100,7 +100,8 @@
   top: 0;
 }
 
-#schools {
+#schools,
+.mat-form-field {
   font-family: ThreeDimensions;
   color: white !important;
   font-size: 18pt;
@@ -109,26 +110,17 @@
   cursor: pointer !important;
 }
 
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+/* .ng-tns-c99-0 {
+  height: 90px !important;
+} */
+
 .mat-option {
   font-size: 16px !important;
   margin: 15px 10px;
-}
-
-/* mat-select-placeholder {
-
-} */
-
-.mat-focused .mat-form-field-label {
-  color: rgba(180, 0, 0) !important;
-}
-
-.mat-form-field-outline,
-.mat-form-field-empty.mat-form-field-label,
-.mat-form-field-label,
-.mat-form-field-underline,
-.mat-input-element,
-::placeholder {
-  color: white !important;
 }
 
 .sidenav-container {

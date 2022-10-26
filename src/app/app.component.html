@@ -5,11 +5,13 @@
         <mat-icon>menu</mat-icon>
       </button>
       <!-- <h1>MY SCHOOL</h1> -->
-      <mat-select id="schools" placeholder="My School" name="schoollist">
-        <ng-container *ngFor="let school of schoolList">
-          <mat-option value="{{ school }}">{{ school }} </mat-option>
-        </ng-container>
-      </mat-select>
+      <mat-form-field>
+        <mat-select placeholder="My School" id="schools" name="schoollist">
+          <ng-container *ngFor="let school of schoolList">
+            <mat-option value="{{ school }}">{{ school }} </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
     </div>
 
     <div class="topBarM">

@@ -3,12 +3,11 @@
   src: url("../../../assets/fonts/TypoGroteskRoundedDemo.otf");
 }
 #faculty {
-  margin: 51px auto 200px auto;
+  margin: 40px auto 200px auto;
   width: 80%;
 }
 
 #faculty h1 {
-  margin-top: 51px;
   font-family: Grotesk;
   letter-spacing: 0.1rem;
   font-weight: bold;

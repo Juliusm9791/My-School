@@ -3,7 +3,6 @@
   src: url("../../../assets/fonts/TypoGroteskRoundedDemo.otf");
 }
 #calendar h1 {
-  margin-top: 51px;
   margin-bottom: 30px;
   font-family: Grotesk;
   letter-spacing: 0.1rem;
@@ -13,7 +12,7 @@
 }
 
 #calendar {
-  margin: 51px auto 200px auto;
+  margin: 40px auto 200px auto;
   width: 80%;
 }
 
