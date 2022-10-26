@@ -1,9 +1,10 @@
 <mat-card>
   <a class="post-card" (click)="postDetail(post._id)">
     <mat-card-title>
-      <div class="postTitle">
+      <div id="postTitle">
         <h2>{{ post.title }}</h2>
-
+      </div>
+      <div id="postDepartment">
         <h2 *ngIf="post.departmentId">
           {{ post.departmentId.depName }}
         </h2>
