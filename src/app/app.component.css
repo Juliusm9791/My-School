@@ -110,6 +110,10 @@
   cursor: pointer !important;
 }
 
+.mat-select-placeholder {
+  color: white !important;
+}
+
 ::ng-deep .mat-form-field-underline {
   display: none;
 }

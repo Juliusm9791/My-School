@@ -1,0 +1,19 @@
+<div>
+  {{ post.title }}
+  {{ post.createdAt | date: "short" }}
+
+  <div id="actions-buttons-row">
+    <ng-container *ngIf="isUserPosts">
+      <div class="delete" title="Delete">
+        <button id="deletePostButton" (click)="deletePost(post._id)">
+          <mat-icon id="deleteIcon">delete</mat-icon>
+        </button>
+      </div>
+      <div class="update" title="Edit">
+        <button id="updatePostButton" (click)="updatePost(post._id)">
+          <mat-icon id="editIcon">edit</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

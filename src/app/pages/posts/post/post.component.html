@@ -6,7 +6,7 @@
       </div>
       <div id="postDepartment">
         <h2 *ngIf="post.departmentId">
-          {{ post.departmentId.depName }}
+          {{ post.departmentId.depName | titlecase }}
         </h2>
       </div>
     </mat-card-title>

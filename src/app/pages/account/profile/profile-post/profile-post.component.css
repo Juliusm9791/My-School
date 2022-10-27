@@ -1,0 +1,9 @@
+.delete,
+.update {
+  margin: 5px 10px 5px 0px;
+  border-radius: 4px;
+  background-color: rgb(234, 234, 234);
+  padding: 0px 5px 0px 10px;
+  box-shadow: 0px 1px 1px rgb(124, 124, 124);
+  height: 40px;
+}

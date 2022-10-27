@@ -51,7 +51,6 @@
           <h2>Your Notifications:</h2>
         </div>
         <div id="notifications-body">
-          <!-- Needs function to hide if announcements exist -->
           <h5>...You have no notifications</h5>
         </div>
       </section>
@@ -68,18 +67,17 @@
           <div *ngIf="postsLoading">
             <mat-spinner></mat-spinner>
           </div>
-          <!-- <div *ngIf="error">Error :(</div> -->
+          <div *ngIf="userPosts.length === 0">
+            <h5>...You have no announcements</h5>
+          </div>
           <div *ngIf="userPosts">
-            <!-- <a [routerLink]="['form-post']">
-              <h3>New Post</h3>
-            </a> -->
             <ng-container *ngFor="let singlepost of userPosts">
-              <app-post
+              <app-profile-post
                 [post]="singlepost"
                 [countLikes]="likes(singlepost)"
                 [isUserPosts]="isUserPosts"
               >
-              </app-post>
+              </app-profile-post>
             </ng-container>
           </div>
         </div>
