@@ -101,8 +101,6 @@ export class PostsService {
       .subscribe(
         (result: any) => {
           console.log('Post Deleted', result);
-          // this.loading = result.loading;
-          // result && this.router.navigate(['/account/profile']);
         },
         (error) => {
           console.log('delete post error', error);

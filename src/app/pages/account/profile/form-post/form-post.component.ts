@@ -7,7 +7,7 @@ import { PostsService } from 'src/app/pages/posts/posts.service';
 import { Department, Post } from 'src/app/types/types';
 import { FormPostService } from './form-post.service';
 
-const badWords: string[] = ['foo', 'boo'];
+import { badWordsList } from '../../../../shared/bad-words-list';
 
 @Component({
   selector: 'app-form-post',
@@ -15,22 +15,22 @@ const badWords: string[] = ['foo', 'boo'];
   styleUrls: ['./form-post.component.css'],
 })
 export class FormPostComponent implements OnInit {
-  departmentList: Department[] = [];
-
   postForm = new FormGroup({
     postTitle: new FormControl('', [
       Validators.required,
-      this.restrictedWords(badWords),
+      this.restrictedWords(badWordsList),
     ]),
     postDescription: new FormControl('', [
       Validators.required,
-      this.restrictedWords(badWords),
+      this.restrictedWords(badWordsList),
     ]),
     isEvent: new FormControl(false),
     eventDate: new FormControl(''),
     departmentId: new FormControl(''),
   });
 
+  departmentList: Department[] = [];
+  isLoadingDepartments: boolean = true;
   post: Post = {} as Post;
   postId: any = this.route.snapshot.paramMap.get('id');
   minDate: any = formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en');
@@ -41,6 +41,13 @@ export class FormPostComponent implements OnInit {
     private departmentsService: DepartmentsService,
     private postsService: PostsService
   ) {
+    this.departmentsService.changeDepartmentsLoading.subscribe((loading) => {
+      this.isLoadingDepartments = loading;
+    });
+    this.departmentsService.changeDepartments.subscribe((dep: Department[]) => {
+      this.departmentList = dep;
+    });
+
     this.postForm.controls.eventDate.setValue(
       formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en')
     );
@@ -84,6 +91,8 @@ export class FormPostComponent implements OnInit {
         );
       }
     } else {
+      !this.postForm.controls.isEvent.value &&
+        this.postForm.controls.eventDate.setValue(null);
       console.log(this.postForm);
     }
   }
