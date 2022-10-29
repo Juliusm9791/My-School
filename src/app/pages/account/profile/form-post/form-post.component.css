@@ -1,8 +1,7 @@
 #createPostForm {
-    margin: 50px auto 200px auto;
-    width: fit-content;
+  margin: 50px auto 200px auto;
+  width: fit-content;
 }
-
 
 #createPostForm h2 {
   font-family: Grotesk;
@@ -12,78 +11,87 @@
   color: #4050b2;
 }
 
-
 form {
-    background-color: rgb(244, 244, 244);
-    padding: 30px 30px 30px 0px;
-    display:flex;
-    flex-direction:row;
+  background-color: rgb(244, 244, 244);
+  padding: 30px 30px 30px 0px;
+  display: flex;
+  flex-direction: row;
 }
 
 .submitBtn button {
-    margin-top: 5px;
-    font-size: 13pt;
-    font-weight: 700;
-    font-family: Grotesk;
-    font-weight: bolder;
-    letter-spacing: 0.1rem;
-    margin-top: 15px;
-    width: fit-content;
-    padding: 10px 15px;
-    background-color: #f29c55;
-    color: white;
-    border: 0.5px solid grey;
-    box-shadow: 0px 1px 1px rgb(84, 84, 84);
-    border-radius: 5px;
-  }
+  font-size: 13pt;
+  font-weight: 700;
+  font-family: Grotesk;
+  font-weight: bolder;
+  letter-spacing: 0.1rem;
+  width: fit-content;
+  padding: 10px 15px;
+  background-color: #f29c55;
+  color: white;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  border-radius: 5px;
+}
 
-  .submitBtn {
-    margin-top:10px;
-    text-align: end;
-  }
+h5 {
+  text-decoration: none;
+  color: rgb(125, 125, 125);
+  margin: 0px;
+  margin-top: 8px;
+  text-align: right;
+}
+
+.submitOrUpdate {
+  margin-left: 25px;
+}
+
+.submitBtn {
+  margin-top: 10px;
+  text-align: end;
+}
 
 .submitBtn button:hover {
-    background-color: #e6924d;
-  }
+  background-color: #e6924d;
+}
 
-.formColumn  {
-    display: flex;
-    flex-direction: column;
-    margin-left: 30px;
-  }
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
 
 #title mat-form-field,
 #description mat-form-field {
-    width:350px;
-  }
+  width: 350px;
+}
 
 #description mat-form-field,
 .ng-tns-c99-6 {
-    height: 150px;
-  }
+  height: 150px;
+}
 
 #defaultImg {
-    width: 180px;
-  }
-  
+  width: 180px;
+}
+
 .extraImgs {
-    width: 45px;
-  }
-  
+  width: 45px;
+}
+
 #images-block {
-    margin: 0px;
-    display: flex;
-    flex-direction: row;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
 }
-  
+
 #extra-images {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-  
+
 #postContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: right;
 }

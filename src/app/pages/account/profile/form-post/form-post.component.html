@@ -81,7 +81,6 @@
               type="datetime-local"
               [min]="minDate"
             />
-            <mat-hint>MM/DD/YYYY HH/MM/AM-PM</mat-hint>
           </mat-form-field>
         </div>
       </div>
@@ -114,13 +113,14 @@
           </div>
         </div>
       </div>
+      <h5>Add up to 5 photos</h5>
       <div class="submitBtn">
-        <button (click)="handleCancel()">CANCEL</button>
+        <button id="cancel" (click)="handleCancel()">CANCEL</button>
         <ng-container *ngIf="!postId">
-          <button type="submit">SUBMIT</button>
+          <button class="submitOrUpdate" type="submit">SUBMIT</button>
         </ng-container>
         <ng-container *ngIf="postId">
-          <button type="submit">UPDATE</button>
+          <button class="submitOrUpdate" type="submit">UPDATE</button>
         </ng-container>
       </div>
     </div>

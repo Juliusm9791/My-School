@@ -60,8 +60,8 @@ h3 {
 }
 
 h5 {
-  margin: auto;
   font-family: Grotesk;
   font-size: 12pt;
   color: white;
+  margin: auto 0;
 }
