@@ -94,6 +94,26 @@ export class FormPostComponent implements OnInit {
       !this.postForm.controls.isEvent.value &&
         this.postForm.controls.eventDate.setValue(null);
       console.log(this.postForm);
+      const postId: any = this.postId
+      console.log(postId, "hhhhh")
+      const titleUpdate: any = this.postForm.controls.postTitle.value;
+      console.log(titleUpdate)
+      const descriptionUpdate: any = this.postForm.controls.postDescription.value;
+      const isPostEventUpdate: any = this.postForm.controls.isEvent.value;
+      const selectedDepartmentIdUpdate: any =
+        this.postForm.controls.departmentId.value;
+      const eventDateUpdate: any = this.postForm.controls.eventDate.value;
+      this.postFormService.updatePost(
+        postId,
+        titleUpdate,
+        descriptionUpdate,
+        isPostEventUpdate,
+        selectedDepartmentIdUpdate,
+        eventDateUpdate)
+
+
+
+
     }
   }
   restrictedWords(words: string[]) {
