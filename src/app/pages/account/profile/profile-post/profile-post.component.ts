@@ -24,4 +24,7 @@ export class ProfilePostComponent implements OnInit {
   updatePost(id: string) {
     this.router.navigate(['/account/profile/form-post/' + id]);
   }
+  postDetail(postId: string) {
+    this.router.navigate(['/posts/' + postId]);
+  }
 }
