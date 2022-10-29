@@ -13,6 +13,7 @@ export class DepartmentsService {
 
   constructor(private apollo: Apollo) {}
   @Output() changeDepartments: EventEmitter<any> = new EventEmitter();
+  @Output() changeDepartmentsLoading: EventEmitter<any> = new EventEmitter();
 
   queryDepartment() {
     this.apollo
@@ -24,7 +25,7 @@ export class DepartmentsService {
           this._departments = result?.data?.departments;
           console.log('query department data ', this._departments);
           this.loading = result.loading;
-          // this.changeLoading.emit(this.loading)
+          this.changeDepartmentsLoading.emit(this.loading);
           this.changeDepartments.emit(this._departments);
         },
         (error) => {
@@ -32,7 +33,7 @@ export class DepartmentsService {
         }
       );
   }
-  get departments(){
-    return this._departments
+  get departments() {
+    return this._departments;
   }
 }

@@ -14,9 +14,10 @@
           <em
             style="color: red"
             *ngIf="
+              postForm.controls.postTitle.value !== '' &&
+              postForm.controls.postTitle.errors &&
               postForm.controls.postTitle.invalid &&
-              postForm.controls.postTitle.dirty &&
-              postForm.controls.postTitle.errors
+              postForm.controls.postTitle.dirty
             "
             >Restricted words found:
             {{ postForm.controls.postTitle.errors["restrictedWords"] }}</em
@@ -37,6 +38,7 @@
           <em
             style="color: red"
             *ngIf="
+              postForm.controls.postDescription.value !== '' &&
               postForm.controls.postDescription.invalid &&
               postForm.controls.postDescription.dirty &&
               postForm.controls.postDescription.errors
