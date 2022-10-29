@@ -1,8 +1,16 @@
-<div>
-  {{ post.title }}
-  {{ post.createdAt | date: "short" }}
+<div class="profile-post">
+  <a href="#">
+    <div class="post-title-row">
+      <h3>
+        {{ post.title }}
+      </h3>
+      <h5>
+        {{ post.createdAt | date: "short" }}
+      </h5>
+    </div>
+  </a>
 
-  <div id="actions-buttons-row">
+  <div class="actions-buttons-row">
     <ng-container *ngIf="isUserPosts">
       <div class="delete" title="Delete">
         <button id="deletePostButton" (click)="deletePost(post._id)">
