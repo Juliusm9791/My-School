@@ -1,10 +1,7 @@
 <div *ngIf="loading"><mat-spinner></mat-spinner></div>
 
 <mat-card *ngIf="!loading">
-
-  
-    
-  <mat-card-title  >
+  <mat-card-title>
     <div class="postTitle">
       <h2>{{ post.title }}</h2>
     </div>
@@ -36,7 +33,7 @@
       </div>
     </div>
 
-    <div>
+    <div id="post-body">
       <mat-card-subtitle>
         <div class="subtitleRow">
           <img id="postUserImg" src="../../../../assets/images/account.png" />
@@ -50,21 +47,24 @@
       <mat-card-content>
         <p id="description">{{ post.description }}</p>
         <ng-container *ngIf="post.commentId">
-          <hr />
+          <hr style="margin: 15px 0" />
           <div class="comment" *ngFor="let comment of post.commentId">
             <app-comments [comment]="comment"></app-comments>
           </div>
         </ng-container>
-        <hr />
+
         <ng-container *ngIf="isLoggedIn">
           <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
             <mat-form-field id="commentField" appearance="fill">
               <mat-label>{{ me.firstName }} leave a comment</mat-label>
               <textarea matInput formControlName="comment"></textarea>
             </mat-form-field>
-            <button type="submit">Send</button>
+            <div class="submitBtnRow">
+              <button class="comment-submit" type="submit">SUBMIT</button>
+            </div>
           </form>
         </ng-container>
+
         <ng-container *ngIf="!isLoggedIn">
           <a routerLink="/account/login">Leave a comment</a>
         </ng-container>
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <mat-divider inset></mat-divider>
+  <hr />
 
   <mat-card-actions>
     <div class="postReactions">
