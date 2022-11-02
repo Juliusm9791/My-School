@@ -14,18 +14,6 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-
-    //     const user = await User.findById(args._id)
-    //       .populate("departmentId")
-    //       .populate("groupId");
-
-    //     return user;
-    //   }
-
-    //   throw new AuthenticationError("Not logged in");
-    // },
     users: async () => {
       return await User.find({}).populate("departmentId").populate("groupId");
     },
@@ -142,9 +130,6 @@ const resolvers = {
             commentId: args.commentId,
             reactionId: args.ReactionId,
             userId: context.user._id,
-            // title: args.title,
-            // description: args.description,
-            // pictures: args.pictures,
           },
           {
             new: true,
@@ -167,7 +152,16 @@ const resolvers = {
 
     deletePost: async (parent, args, context) => {
       if (context.user) {
-        return await Post.findByIdAndDelete({ _id: args._id });
+        return await Post.findByIdAndDelete(
+          { _id: args._id },
+          async (err, post) => {
+            await Comment.deleteMany({
+              _id: {
+                $in: post.commentId,
+              },
+            });
+          }
+        );
       }
       throw new AuthenticationError("Not logged in");
     },
