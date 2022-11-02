@@ -117,10 +117,22 @@
       <div class="submitBtn">
         <button id="cancel" (click)="handleCancel()">CANCEL</button>
         <ng-container *ngIf="!postId">
-          <button class="submitOrUpdate" type="submit">SUBMIT</button>
+          <button
+            class="submitOrUpdate"
+            type="submit"
+            [disabled]="!postForm.valid"
+          >
+            SUBMIT
+          </button>
         </ng-container>
         <ng-container *ngIf="postId">
-          <button class="submitOrUpdate" type="submit">UPDATE</button>
+          <button
+            class="submitOrUpdate"
+            type="submit"
+            [disabled]="!postForm.valid"
+          >
+            UPDATE
+          </button>
         </ng-container>
       </div>
     </div>
