@@ -11,7 +11,7 @@ import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 export class FormPostService {
   loading: boolean = true;
 
-  constructor(private apollo: Apollo, private router: Router) { }
+  constructor(private apollo: Apollo, private router: Router) {}
 
   addPost(
     title: string,
@@ -50,7 +50,7 @@ export class FormPostService {
   }
 
   updatePost(
-    postId: String,
+    postId: string,
     title: string,
     description: string,
     isEvent: boolean,
@@ -68,12 +68,11 @@ export class FormPostService {
           eventDate: eventDate,
           departmentId: selectedDepartmentId,
         },
-
-        // refetchQueries: [
-        //   {
-        //     query: QUERY_POSTS,
-        //   },
-        // ],
+        refetchQueries: [
+          {
+            query: QUERY_POSTS,
+          },
+        ],
       })
       .subscribe(
         (result: any) => {
@@ -86,9 +85,4 @@ export class FormPostService {
         }
       );
   }
-
-
-
-
-
 }

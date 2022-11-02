@@ -138,13 +138,6 @@ const resolvers = {
             departmentId: args.departmentId,
             title: args.title,
             description: args.description,
-            pictures: args.pictures,
-            commentId: args.commentId,
-            reactionId: args.ReactionId,
-            userId: context.user._id,
-            // title: args.title,
-            // description: args.description,
-            // pictures: args.pictures,
           },
           {
             new: true,

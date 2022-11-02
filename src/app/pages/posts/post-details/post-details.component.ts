@@ -6,6 +6,7 @@ import { Me, Post } from 'src/app/types/types';
 import { LoginSignupService } from '../../account/login-signup.service';
 import { PostsService } from '../posts.service';
 import { PostDetailsService } from './post-details.service';
+import { badWordsList, restrictedWords } from '../../../shared/bad-words-list';
 
 @Component({
   selector: 'app-post-details',
@@ -21,9 +22,11 @@ export class PostDetailsComponent implements OnInit {
   userPosts: Post[] = [];
   private _isUserPosts: boolean = true;
 
-
   commentForm = new FormGroup({
-    comment: new FormControl('', [Validators.required]),
+    comment: new FormControl('', [
+      Validators.required,
+      restrictedWords(badWordsList),
+    ]),
   });
 
   constructor(
@@ -59,10 +62,11 @@ export class PostDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    const comment: any = this.commentForm.controls.comment.value;
-
-    console.log(comment, this.postId);
-    this.postDetailsService.addComment(comment, this.postId);
-    this.commentForm.reset();
+    let comment: any = this.commentForm.controls.comment.value;
+    if (comment !== '' || null) {
+      this.postDetailsService.addComment(comment, this.postId);
+      this.commentForm.reset();
+      this.commentForm.controls.comment.markAsUntouched();
+    }
   }
 }
