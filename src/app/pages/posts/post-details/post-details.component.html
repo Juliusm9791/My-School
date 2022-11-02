@@ -58,9 +58,26 @@
             <mat-form-field id="commentField" appearance="fill">
               <mat-label>{{ me.firstName }} leave a comment</mat-label>
               <textarea matInput formControlName="comment"></textarea>
+              <em
+                style="color: red"
+                *ngIf="
+                  commentForm.controls.comment.value !== '' &&
+                  commentForm.controls.comment.errors &&
+                  commentForm.controls.comment.invalid &&
+                  commentForm.controls.comment.dirty
+                "
+                >Restricted words found:
+                {{ commentForm.controls.comment.errors["restrictedWords"] }}</em
+              >
             </mat-form-field>
             <div class="submitBtnRow">
-              <button class="comment-submit" type="submit">SUBMIT</button>
+              <button
+                class="comment-submit"
+                type="submit"
+                [disabled]="!commentForm.controls.comment.valid"
+              >
+                SUBMIT
+              </button>
             </div>
           </form>
         </ng-container>

@@ -7,7 +7,10 @@ import { PostsService } from 'src/app/pages/posts/posts.service';
 import { Department, Post } from 'src/app/types/types';
 import { FormPostService } from './form-post.service';
 
-import { badWordsList } from '../../../../shared/bad-words-list';
+import {
+  badWordsList,
+  restrictedWords,
+} from '../../../../shared/bad-words-list';
 
 @Component({
   selector: 'app-form-post',
@@ -18,11 +21,11 @@ export class FormPostComponent implements OnInit {
   postForm = new FormGroup({
     postTitle: new FormControl('', [
       Validators.required,
-      this.restrictedWords(badWordsList),
+      restrictedWords(badWordsList),
     ]),
     postDescription: new FormControl('', [
       Validators.required,
-      this.restrictedWords(badWordsList),
+      restrictedWords(badWordsList),
     ]),
     isEvent: new FormControl(false),
     eventDate: new FormControl(''),
@@ -74,14 +77,13 @@ export class FormPostComponent implements OnInit {
   }
 
   onSubmit() {
+    let title: any = this.postForm.controls.postTitle.value;
+    let description: any = this.postForm.controls.postDescription.value;
+    let isPostEvent: any = this.postForm.controls.isEvent.value;
+    let selectedDepartmentId: any = this.postForm.controls.departmentId.value;
+    let eventDate: any = this.postForm.controls.eventDate.value;
     if (!this.postId) {
       if (this.postForm.valid) {
-        const title: any = this.postForm.controls.postTitle.value;
-        const description: any = this.postForm.controls.postDescription.value;
-        const isPostEvent: any = this.postForm.controls.isEvent.value;
-        const selectedDepartmentId: any =
-          this.postForm.controls.departmentId.value;
-        const eventDate: any = this.postForm.controls.eventDate.value;
         this.postFormService.addPost(
           title,
           description,
@@ -91,44 +93,20 @@ export class FormPostComponent implements OnInit {
         );
       }
     } else {
-      !this.postForm.controls.isEvent.value &&
-        this.postForm.controls.eventDate.setValue(null);
-      console.log(this.postForm);
-      const postId: any = this.postId
-      console.log(postId, "hhhhh")
-      const titleUpdate: any = this.postForm.controls.postTitle.value;
-      console.log(titleUpdate)
-      const descriptionUpdate: any = this.postForm.controls.postDescription.value;
-      const isPostEventUpdate: any = this.postForm.controls.isEvent.value;
-      const selectedDepartmentIdUpdate: any =
-        this.postForm.controls.departmentId.value;
-      const eventDateUpdate: any = this.postForm.controls.eventDate.value;
-      this.postFormService.updatePost(
-        postId,
-        titleUpdate,
-        descriptionUpdate,
-        isPostEventUpdate,
-        selectedDepartmentIdUpdate,
-        eventDateUpdate)
-
-
-
-
+      if (this.postForm.valid) {
+        !this.postForm.controls.isEvent.value && (eventDate = null);
+        this.postFormService.updatePost(
+          this.postId,
+          title,
+          description,
+          isPostEvent,
+          selectedDepartmentId,
+          eventDate
+        );
+      }
     }
   }
-  restrictedWords(words: string[]) {
-    return (control: FormControl): { [key: string]: any } | null => {
-      if (!words) return null;
 
-      let invalidWords = words
-        .map((w) => (control.value.includes(w) ? w : null))
-        .filter((w) => w != null);
-
-      return invalidWords && invalidWords.length > 0
-        ? { restrictedWords: invalidWords.join(', ') }
-        : null;
-    };
-  }
   handleCancel() {
     this.router.navigate(['/account/profile/']);
   }

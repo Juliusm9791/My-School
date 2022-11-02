@@ -39,7 +39,6 @@ export class PostDetailsService {
   }
 
   addComment(comment: string, postId: string) {
-    console.log(comment, postId);
     this.apollo
       .mutate({
         mutation: ADD_COMMENT,
