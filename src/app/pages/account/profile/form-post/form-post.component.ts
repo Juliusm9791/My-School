@@ -7,10 +7,7 @@ import { PostsService } from 'src/app/pages/posts/posts.service';
 import { Department, Post } from 'src/app/types/types';
 import { FormPostService } from './form-post.service';
 
-import {
-  badWordsList,
-  restrictedWords,
-} from '../../../../shared/bad-words-list';
+import { restrictedWords } from '../../../../shared/bad-words-list';
 
 @Component({
   selector: 'app-form-post',
@@ -19,13 +16,10 @@ import {
 })
 export class FormPostComponent implements OnInit {
   postForm = new FormGroup({
-    postTitle: new FormControl('', [
-      Validators.required,
-      restrictedWords(badWordsList),
-    ]),
+    postTitle: new FormControl('', [Validators.required, restrictedWords()]),
     postDescription: new FormControl('', [
       Validators.required,
-      restrictedWords(badWordsList),
+      restrictedWords(),
     ]),
     isEvent: new FormControl(false),
     eventDate: new FormControl(''),

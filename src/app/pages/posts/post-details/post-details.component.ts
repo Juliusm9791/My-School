@@ -6,7 +6,7 @@ import { Me, Post } from 'src/app/types/types';
 import { LoginSignupService } from '../../account/login-signup.service';
 import { PostsService } from '../posts.service';
 import { PostDetailsService } from './post-details.service';
-import { badWordsList, restrictedWords } from '../../../shared/bad-words-list';
+import { restrictedWords } from '../../../shared/bad-words-list';
 
 @Component({
   selector: 'app-post-details',
@@ -23,10 +23,7 @@ export class PostDetailsComponent implements OnInit {
   private _isUserPosts: boolean = true;
 
   commentForm = new FormGroup({
-    comment: new FormControl('', [
-      Validators.required,
-      restrictedWords(badWordsList),
-    ]),
+    comment: new FormControl('', [Validators.required, restrictedWords()]),
   });
 
   constructor(
