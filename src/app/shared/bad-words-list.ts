@@ -1,11 +1,11 @@
 import { FormControl } from '@angular/forms';
 
-export function restrictedWords(words: string[]) {
+export function restrictedWords() {
   return (control: FormControl): { [key: string]: any } | null => {
-    if (!words) return null;
+    if (!badWordsList) return null;
 
-    let invalidWords = words
-      .map((w) => (control.value.includes(w) ? w : null))
+    let invalidWords = badWordsList
+      .map((w) => (control.value?.includes(w) ? w : null))
       .filter((w) => w != null);
 
     return invalidWords && invalidWords.length > 0
@@ -13,7 +13,7 @@ export function restrictedWords(words: string[]) {
       : null;
   };
 }
-export const badWordsList = [
+const badWordsList = [
   '2 girls 1 cup',
   '2g1c',
   '4r5e',
