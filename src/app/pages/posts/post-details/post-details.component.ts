@@ -23,7 +23,7 @@ export class PostDetailsComponent implements OnInit {
   private _isUserPosts: boolean = true;
 
   commentForm = new FormGroup({
-    comment: new FormControl('', [Validators.required, restrictedWords()]),
+    comment: new FormControl(null, [Validators.required, restrictedWords()]),
   });
 
   constructor(
@@ -52,6 +52,7 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.queryPost(this.postId);
     this.isLoggedIn = this.authService.isLoggedIn;
     this.me = this.loginSignupService.me;
+    console.log(this.commentForm);
   }
 
   likes(post: Post) {
@@ -59,11 +60,11 @@ export class PostDetailsComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.commentForm);
     let comment: any = this.commentForm.controls.comment.value;
     if (comment !== '' || null) {
       this.postDetailsService.addComment(comment, this.postId);
       this.commentForm.reset();
-      this.commentForm.controls.comment.markAsUntouched();
     }
   }
 }
