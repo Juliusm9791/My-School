@@ -60,7 +60,6 @@ export class PostDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.commentForm);
     let comment: any = this.commentForm.controls.comment.value;
     if (comment !== '' || null) {
       this.postDetailsService.addComment(comment, this.postId);
