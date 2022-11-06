@@ -29,7 +29,7 @@ export class PostComponent implements OnInit {
   }
 
   postCut(s: string) {
-    const spaceIndex = s.split('').indexOf(' ', 150);
+    const spaceIndex = s.split('').indexOf(' ', 300);
     return s.split('').slice(0, spaceIndex).join('');
   }
 
