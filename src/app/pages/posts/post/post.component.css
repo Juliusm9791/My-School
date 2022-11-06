@@ -16,20 +16,25 @@ mat-card-title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #f29c55;
-  padding: 5px 20px;
-  margin: -20px -20px 0px -20px;
+  background-color: #ffbc83;
+  background-image: linear-gradient(182deg, #ffbc83 0%, #f29c55 84%);
+  padding: 5px 10px 5px 15px;
+  margin: -20px -10px 0px -10px;
   border-radius: 8px 8px 0px 0px;
 }
 
+mat-card-title:hover {
+  background-color: #f29c55;
+  background-image: linear-gradient(183deg, #f29c55 60%, #ea8935 100%);
+}
+
 #postDepartment h2 {
-  background-color: white;
+  background-color: rgb(240, 240, 240);
   color: #4050b2;
   font-family: Grotesk;
   font-size: 14pt;
   letter-spacing: 0.08rem;
   margin: auto;
-  margin-right: 5px;
   padding: 3px 10px;
   border: 0.5px solid grey;
   box-shadow: 0px 1px 1px rgb(84, 84, 84);
@@ -56,7 +61,7 @@ h4 {
   background-color: rgb(244, 244, 244);
   border-radius: 8px;
   margin: 30px auto;
-  padding: 20px;
+  padding: 20px 10px 20px 10px;
   border: 0.5px solid grey;
   box-shadow: 0px 1px 1px rgb(84, 84, 84);
   border-radius: 8px;
@@ -82,18 +87,10 @@ h4 {
 .update {
   margin: 5px 10px 5px 0px;
   border-radius: 4px;
-  background-color: rgb(234, 234, 234);
+  background-color: rgb(240, 240, 240);
   padding: 0px 5px 0px 10px;
   box-shadow: 0px 1px 1px rgb(124, 124, 124);
   height: 40px;
-}
-
-.likes:hover,
-.comments:hover,
-.shares:hover,
-.delete:hover,
-.update:hover {
-  background-color: rgb(226, 226, 226);
 }
 
 #shareIcon {
@@ -125,6 +122,14 @@ h4 {
   border: none;
 }
 
+#likeIcon:hover,
+#commentIcon:hover,
+#shareIcon:hover,
+#deleteIcon:hover,
+#editIcon:hover {
+  color: #f98c5a;
+}
+
 #updatePostButton,
 #deletePostButton {
   scale: 1.1;
@@ -132,6 +137,10 @@ h4 {
   border: none;
   background-color: transparent;
   margin-top: 15px;
+}
+
+mat-card-subtitle {
+  margin-bottom: 5px !important;
 }
 
 mat-card-content {
@@ -170,18 +179,63 @@ mat-card-content p {
 }
 
 #images-block {
-  margin: 0px 20px 13px -20px;
+  margin: 0px 20px 13px -10px;
   display: flex;
   flex-direction: row;
 }
 
-#extra-images {
+#event-card {
+  margin-top: -40px;
+  margin-left: 15px;
+  height: fit-content;
+  border-radius: 4px;
+  background-color: rgb(240, 240, 240);
+  padding: 0px 10px 10px 10px;
+  box-shadow: 0px 1px 1px rgb(124, 124, 124);
+}
+
+#event-card-icon {
+  width: 40px;
+  margin-left: -10px;
+}
+
+#extra-images,
+.event-card-column {
   display: flex;
   flex-direction: column;
 }
 
+#event-card h3 {
+  color: #4050b2;
+  font-family: Grotesk;
+  font-size: 14pt;
+  letter-spacing: 0.08rem;
+  margin: auto 0px;
+  padding-left: 5px;
+}
+
+#event-card h3:hover {
+  color: #f98c5a !important;
+}
+
+.event-card-column {
+  width: 55px;
+}
+
+.event-values h4 {
+  color: black !important;
+}
+
+.event-card-column h4 {
+  font-size: 9pt;
+  line-height: 14pt;
+  margin: 0px;
+}
+
 .postContent,
-.subtitleRow {
+.subtitleRow,
+#post-body-row,
+.event-card-row {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -190,6 +244,14 @@ mat-card-content p {
 #post-body {
   width: 100%;
   margin-top: 10px;
+}
+
+.event-card-column h4 {
+  margin-bottom: 0px;
+}
+
+#post-body-row {
+  justify-content: space-between;
 }
 
 #postUserImg {

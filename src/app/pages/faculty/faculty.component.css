@@ -15,22 +15,19 @@
   color: #4050b2;
 }
 
-.facultyCard {
-  margin: 10px;
-  width: 30%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.31) 0px 5px 15px;
-}
 .facultyContainer {
+  background-color: rgb(244, 244, 244);
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 100px;
-  justify-content: space-evenly;
+  flex-direction: column;
+  margin-top: 30px;
 }
-h1 {
-  margin: 20px 0px 0px 20px;
+
+.faculty-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#faculty-avatar {
+  width: 55px;
 }

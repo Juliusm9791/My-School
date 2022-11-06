@@ -137,6 +137,12 @@ mat-sidenav-content {
   justify-content: space-between;
   padding-left: 20px !important;
   height: 56px !important;
+  background-color: #3e5bb3;
+  background-image: linear-gradient(
+    180deg,
+    #3e5bb3 16%,
+    #2a4fae 100%
+  ) !important;
 }
 
 .topBarL,
