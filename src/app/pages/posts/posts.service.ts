@@ -111,4 +111,8 @@ export class PostsService {
   singlePost(id: string) {
     return this._posts.filter((post) => post._id === id)[0];
   }
+
+  departmentPosts(id: string) {
+    return this._posts.filter((post) => post.departmentId?._id === id && post);
+  }
 }
