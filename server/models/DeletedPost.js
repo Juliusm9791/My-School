@@ -2,12 +2,8 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const postSchema = new Schema(
+const deletedPostSchema = new Schema(
   {
-    isVisible: {
-      type: Boolean,
-      default: true,
-    },
     isEvent: {
       type: Boolean,
       required: true,
@@ -63,6 +59,6 @@ const postSchema = new Schema(
   }
 );
 
-const Post = mongoose.model("Post", postSchema);
+const DeletedPost = mongoose.model("DeletedPost", deletedPostSchema);
 
-module.exports = Post;
+module.exports = DeletedPost;

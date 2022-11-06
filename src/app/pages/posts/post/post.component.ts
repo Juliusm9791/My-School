@@ -41,4 +41,8 @@ export class PostComponent implements OnInit {
   updatePost(id: string) {
     this.router.navigate(['/account/profile/form-post/' + id]);
   }
+  //temp function to add an hour to event start date
+  addHour(date: string) {
+    return new Date(+date + 3600000);
+  }
 }
