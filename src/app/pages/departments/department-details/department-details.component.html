@@ -1,5 +1,10 @@
-<mat-card>
-  <mat-card-title>
-    <h2>Department details ...</h2>
-  </mat-card-title>
-</mat-card>
+<div *ngIf="departmentPosts.length === 0">
+  <h2>No posts from this department</h2>
+</div>
+
+<div *ngIf="departmentPosts.length > 0">
+  <h2>{{ departmentPosts[0].departmentId.depName }} Department Posts</h2>
+  <ng-container *ngFor="let singlepost of departmentPosts">
+    <app-post [post]="singlepost" [countLikes]="likes(singlepost)"></app-post>
+  </ng-container>
+</div>
