@@ -65,27 +65,29 @@
               </p> -->
           </mat-card-content>
         </div>
-        <div id="event-card">
-          <div class="event-card-row">
-            <img
-              id="event-card-icon"
-              src="../../../../assets/images/calendar.png"
-            />
-            <h3>Event</h3>
-          </div>
-          <div class="event-card-row">
-            <div class="event-card-column">
-              <h4>DATE:</h4>
-              <h4>START:</h4>
-              <h4>END:</h4>
+        <ng-container *ngIf="post.isEvent">
+          <div id="event-card">
+            <div class="event-card-row">
+              <img
+                id="event-card-icon"
+                src="../../../../assets/images/calendar.png"
+              />
+              <h3>Event</h3>
             </div>
-            <div class="event-card-column event-values">
-              <h4>00/00/00</h4>
-              <h4>00:00 PM</h4>
-              <h4>00:00 PM</h4>
+            <div class="event-card-row">
+              <div class="event-card-column">
+                <h4>DATE:</h4>
+                <h4>START:</h4>
+                <h4>END:</h4>
+              </div>
+              <div class="event-card-column event-values">
+                <h4>{{ post.eventDate | date: "shortDate" }}</h4>
+                <h4>{{ post.eventDate | date: "shortTime" }}</h4>
+                <h4>{{ addHour(post.eventDate) | date: "shortTime" }}</h4>
+              </div>
             </div>
           </div>
-        </div>
+        </ng-container>
       </div>
     </div>
   </div>
