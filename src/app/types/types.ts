@@ -51,8 +51,11 @@ interface Comment {
 
 export interface Post {
   _id: string;
+  isVisible: boolean;
   isEvent: boolean;
   eventDate: string;
+  eventEndDate: string;
+  eventLocation: string;
   title: string;
   description: string;
   departmentId: Department;

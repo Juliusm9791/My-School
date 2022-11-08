@@ -1,4 +1,4 @@
-<div class="profile-post">
+<div class="profile-post" [ngClass]="!post.isVisible ? 'notVisible' : null">
   <a routerLink="/posts/{{ post._id }}" routerLinkActive="active">
     <div class="post-title-row">
       <h3>

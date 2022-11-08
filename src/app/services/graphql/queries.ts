@@ -4,7 +4,10 @@ const postBody = `
 {
   _id
   isEvent
+  isVisible
   eventDate
+  eventEndDate
+  eventLocation
   title
   departmentId{
     _id

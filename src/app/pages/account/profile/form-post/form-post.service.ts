@@ -14,20 +14,26 @@ export class FormPostService {
   constructor(private apollo: Apollo, private router: Router) {}
 
   addPost(
+    isVisible: boolean,
     title: string,
     description: string,
     isEvent: boolean,
     selectedDepartmentId: string,
-    eventDate: string
+    eventDate: string,
+    eventEndDate: string,
+    eventLocation: string
   ) {
     this.apollo
       .mutate({
         mutation: ADD_POST,
         variables: {
+          isVisible: isVisible,
           title: title,
           description: description,
           isEvent: isEvent,
           eventDate: eventDate,
+          eventEndDate: eventEndDate,
+          eventLocation: eventLocation,
           departmentId: selectedDepartmentId,
         },
 
@@ -51,21 +57,27 @@ export class FormPostService {
 
   updatePost(
     postId: string,
+    isVisible: boolean,
     title: string,
     description: string,
     isEvent: boolean,
     selectedDepartmentId: string,
-    eventDate: string
+    eventDate: string,
+    eventEndDate: string,
+    eventLocation: string
   ) {
     this.apollo
       .mutate({
         mutation: UPDATE_POST,
         variables: {
           postId: postId,
+          isVisible: isVisible,
           title: title,
           description: description,
           isEvent: isEvent,
           eventDate: eventDate,
+          eventEndDate: eventEndDate,
+          eventLocation: eventLocation,
           departmentId: selectedDepartmentId,
         },
         refetchQueries: [

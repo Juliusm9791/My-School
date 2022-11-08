@@ -46,15 +46,21 @@ export const ADD_POST = gql`
   mutation addPost(
     $title: String!
     $description: String
-    $isEvent: Boolean
+    $isVisible: Boolean!
+    $isEvent: Boolean!
     $eventDate: String
+    $eventEndDate: String
+    $eventLocation: String
     $departmentId: ID
   ) {
     addPost(
       title: $title
       description: $description
+      isVisible: $isVisible
       isEvent: $isEvent
       eventDate: $eventDate
+      eventEndDate: $eventEndDate
+      eventLocation: $eventLocation
       departmentId: $departmentId
     ) {
       title
@@ -71,16 +77,22 @@ export const UPDATE_POST = gql`
     $postId: ID!
     $title: String!
     $description: String
-    $isEvent: Boolean
+    $isVisible: Boolean!
+    $isEvent: Boolean!
     $eventDate: String
+    $eventEndDate: String
+    $eventLocation: String
     $departmentId: ID
   ) {
     updatePost(
       _id: $postId
       title: $title
       description: $description
+      isVisible: $isVisible
       isEvent: $isEvent
       eventDate: $eventDate
+      eventEndDate: $eventEndDate
+      eventLocation: $eventLocation
       departmentId: $departmentId
     ) {
       title

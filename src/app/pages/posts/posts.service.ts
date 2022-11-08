@@ -74,6 +74,7 @@ export class PostsService {
     this._posts.forEach((el) => {
       let date = new Date(+el.eventDate);
       el.isEvent &&
+        el.isVisible &&
         events.push({
           title: `${el.title} ${
             date.getMonth() + 1

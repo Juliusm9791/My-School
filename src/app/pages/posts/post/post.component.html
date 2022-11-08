@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="post.isVisible">
   <a class="post-card" (click)="postDetail(post._id)">
     <mat-card-title>
       <div id="postTitle">
@@ -77,13 +77,17 @@
             <div class="event-card-row">
               <div class="event-card-column">
                 <h4>DATE:</h4>
-                <h4>START:</h4>
-                <h4>END:</h4>
+                <h4>HOUR:</h4>
+                <hr style="margin: 2px" />
+                <h4>DATE:</h4>
+                <h4>HOUR:</h4>
               </div>
               <div class="event-card-column event-values">
                 <h4>{{ post.eventDate | date: "shortDate" }}</h4>
                 <h4>{{ post.eventDate | date: "shortTime" }}</h4>
-                <h4>{{ addHour(post.eventDate) | date: "shortTime" }}</h4>
+                <hr style="margin: 2px" />
+                <h4>{{ post.eventEndDate | date: "shortDate" }}</h4>
+                <h4>{{ post.eventEndDate | date: "shortTime" }}</h4>
               </div>
             </div>
           </div>
