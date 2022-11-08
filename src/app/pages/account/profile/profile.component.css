@@ -37,7 +37,7 @@ section {
 #notifications-subheader {
   background-color: #3e5bb3;
   background-image: linear-gradient(180deg, #3e5bb3 16%, #2a4fae 100%);
-  padding: 15px 15px 15px 20px;
+  padding: 10px 10px 10px 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
