@@ -22,7 +22,13 @@ export class FormPostComponent implements OnInit {
       restrictedWords(),
     ]),
     isEvent: new FormControl(false),
+    isVisible: new FormControl(false),
     eventDate: new FormControl(''),
+    eventEndDate: new FormControl(''),
+    eventLocation: new FormControl('', [
+      Validators.required,
+      restrictedWords(),
+    ]),
     departmentId: new FormControl(''),
   });
 
@@ -48,7 +54,7 @@ export class FormPostComponent implements OnInit {
     this.postForm.controls.eventDate.setValue(
       formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en')
     );
-    this.postForm.controls.eventDate.setValue(
+    this.postForm.controls.eventEndDate.setValue(
       formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en')
     );
     if (this.postId) {
@@ -57,9 +63,14 @@ export class FormPostComponent implements OnInit {
       this.postForm.controls.postTitle.setValue(this.post.title);
       this.postForm.controls.postDescription.setValue(this.post.description);
       this.postForm.controls.isEvent.setValue(this.post.isEvent);
+      this.postForm.controls.isVisible.setValue(this.post.isVisible);
       this.postForm.controls.departmentId.setValue(this.post.departmentId._id);
+      this.postForm.controls.eventLocation.setValue(this.post.eventLocation);
       this.postForm.controls.eventDate.setValue(
         formatDate(this.post.eventDate, 'yyyy-MM-ddTHH:mm', 'en')
+      );
+      this.postForm.controls.eventEndDate.setValue(
+        formatDate(this.post.eventEndDate, 'yyyy-MM-ddTHH:mm', 'en')
       );
     }
   }
@@ -71,31 +82,40 @@ export class FormPostComponent implements OnInit {
   }
 
   onSubmit() {
+    let isPostVisible: any = this.postForm.controls.isVisible.value;
     let title: any = this.postForm.controls.postTitle.value;
     let description: any = this.postForm.controls.postDescription.value;
     let isPostEvent: any = this.postForm.controls.isEvent.value;
     let selectedDepartmentId: any = this.postForm.controls.departmentId.value;
     let eventDate: any = this.postForm.controls.eventDate.value;
+    let eventEndDate: any = this.postForm.controls.eventEndDate.value;
+    let eventLocation: any = this.postForm.controls.eventLocation.value;
     if (!this.postId) {
-      if (this.postForm.valid) {
+      if (this.postForm.valid && eventDate < eventEndDate) {
         this.postFormService.addPost(
+          isPostVisible,
           title,
           description,
           isPostEvent,
           selectedDepartmentId,
-          eventDate
+          eventDate,
+          eventEndDate,
+          eventLocation
         );
       }
     } else {
-      if (this.postForm.valid) {
+      if (this.postForm.valid && eventDate < eventEndDate) {
         !this.postForm.controls.isEvent.value && (eventDate = null);
         this.postFormService.updatePost(
           this.postId,
+          isPostVisible,
           title,
           description,
           isPostEvent,
           selectedDepartmentId,
-          eventDate
+          eventDate,
+          eventEndDate,
+          eventLocation
         );
       }
     }

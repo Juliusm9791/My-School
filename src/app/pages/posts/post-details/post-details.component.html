@@ -1,115 +1,123 @@
 <div *ngIf="loading"><mat-spinner></mat-spinner></div>
 
-<mat-card *ngIf="!loading">
-  <mat-card-title>
-    <div class="postTitle">
-      <h2>{{ post.title }}</h2>
-    </div>
-  </mat-card-title>
-
-  <div class="postContent">
-    <div class="imagesBlock">
-      <img
-        id="defaultImg"
-        src="../../../../assets/images/default-placeholder-300x300.png"
-      />
-      <div>
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
+<ng-container *ngIf="post.isVisible">
+  <mat-card *ngIf="!loading">
+    <mat-card-title>
+      <div class="postTitle">
+        <h2>{{ post.title }}</h2>
       </div>
-    </div>
+    </mat-card-title>
 
-    <div id="post-body">
-      <mat-card-subtitle>
-        <div class="subtitleRow">
-          <img id="postUserImg" src="../../../../assets/images/account.png" />
-          <h4 id="postUserDetail">
-            {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
-            {{ post.createdAt | date: "short" }}
-          </h4>
+    <div class="postContent">
+      <div class="imagesBlock">
+        <img
+          id="defaultImg"
+          src="../../../../assets/images/default-placeholder-300x300.png"
+        />
+        <div>
+          <img
+            class="extraImgs"
+            src="../../../../assets/images/default-placeholder-300x300.png"
+          />
+          <img
+            class="extraImgs"
+            src="../../../../assets/images/default-placeholder-300x300.png"
+          />
+          <img
+            class="extraImgs"
+            src="../../../../assets/images/default-placeholder-300x300.png"
+          />
+          <img
+            class="extraImgs"
+            src="../../../../assets/images/default-placeholder-300x300.png"
+          />
         </div>
-      </mat-card-subtitle>
+      </div>
 
-      <mat-card-content>
-        <p id="description">{{ post.description }}</p>
-        <ng-container *ngIf="post.commentId">
-          <hr style="margin: 15px 0" />
-          <div class="comment" *ngFor="let comment of post.commentId">
-            <app-comments [comment]="comment"></app-comments>
+      <div id="post-body">
+        <mat-card-subtitle>
+          <div class="subtitleRow">
+            <img id="postUserImg" src="../../../../assets/images/account.png" />
+            <h4 id="postUserDetail">
+              {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
+              {{ post.createdAt | date: "short" }}
+            </h4>
           </div>
-        </ng-container>
+        </mat-card-subtitle>
 
-        <ng-container *ngIf="isLoggedIn">
-          <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
-            <mat-form-field id="commentField" appearance="fill">
-              <mat-label>{{ me.firstName }} leave a comment</mat-label>
-              <textarea matInput formControlName="comment"></textarea>
-              <em
-                style="color: red"
-                *ngIf="
-                  commentForm.controls.comment.value !== '' &&
-                  commentForm.controls.comment.errors &&
-                  commentForm.controls.comment.invalid &&
-                  commentForm.controls.comment.dirty
-                "
-                >Restricted words found:
-                {{ commentForm.controls.comment.errors["restrictedWords"] }}</em
-              >
-            </mat-form-field>
-            <div class="submitBtnRow">
-              <button
-                class="comment-submit"
-                type="submit"
-                [disabled]="!commentForm.controls.comment.valid"
-              >
-                SUBMIT
-              </button>
+        <mat-card-content>
+          <p id="description">{{ post.description }}</p>
+          <ng-container *ngIf="post.commentId">
+            <hr style="margin: 15px 0" />
+            <div class="comment" *ngFor="let comment of post.commentId">
+              <app-comments [comment]="comment"></app-comments>
             </div>
-          </form>
-        </ng-container>
+          </ng-container>
 
-        <ng-container *ngIf="!isLoggedIn">
-          <a routerLink="/account/login">Leave a comment</a>
-        </ng-container>
-      </mat-card-content>
+          <ng-container *ngIf="isLoggedIn">
+            <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+              <mat-form-field id="commentField" appearance="fill">
+                <mat-label>{{ me.firstName }} leave a comment</mat-label>
+                <textarea matInput formControlName="comment"></textarea>
+                <em
+                  style="color: red"
+                  *ngIf="
+                    commentForm.controls.comment.value !== '' &&
+                    commentForm.controls.comment.errors &&
+                    commentForm.controls.comment.invalid &&
+                    commentForm.controls.comment.dirty
+                  "
+                  >Restricted words found:
+                  {{
+                    commentForm.controls.comment.errors["restrictedWords"]
+                  }}</em
+                >
+              </mat-form-field>
+              <div class="submitBtnRow">
+                <button
+                  class="comment-submit"
+                  type="submit"
+                  [disabled]="!commentForm.controls.comment.valid"
+                >
+                  SUBMIT
+                </button>
+              </div>
+            </form>
+          </ng-container>
+
+          <ng-container *ngIf="!isLoggedIn">
+            <a routerLink="/account/login">Leave a comment</a>
+          </ng-container>
+        </mat-card-content>
+      </div>
     </div>
-  </div>
 
-  <hr />
+    <hr />
 
-  <mat-card-actions>
-    <div class="postReactions">
-      <div class="likes">
-        {{ likes(post) }}
-        <button id="likeIcon" mat-icon-button>
-          <mat-icon>thumb_up_alt</mat-icon>
-        </button>
+    <mat-card-actions>
+      <div class="postReactions">
+        <div class="likes">
+          {{ likes(post) }}
+          <button id="likeIcon" mat-icon-button>
+            <mat-icon>thumb_up_alt</mat-icon>
+          </button>
+        </div>
+        <div class="comments">
+          {{ post.commentId.length }}
+          <button id="commentIcon" mat-icon-button>
+            <mat-icon>chat_bubble</mat-icon>
+          </button>
+        </div>
+        <div class="shares">
+          <button id="shareIcon" mat-icon-button>
+            <mat-icon id="shareAdjust">reply</mat-icon>
+          </button>
+        </div>
       </div>
-      <div class="comments">
-        {{ post.commentId.length }}
-        <button id="commentIcon" mat-icon-button>
-          <mat-icon>chat_bubble</mat-icon>
-        </button>
-      </div>
-      <div class="shares">
-        <button id="shareIcon" mat-icon-button>
-          <mat-icon id="shareAdjust">reply</mat-icon>
-        </button>
-      </div>
-    </div>
-  </mat-card-actions>
-</mat-card>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
+
+<ng-container *ngIf="!post.isVisible">
+  <h1>The Post Is Not Visible</h1>
+</ng-container>

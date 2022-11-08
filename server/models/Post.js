@@ -6,7 +6,7 @@ const postSchema = new Schema(
   {
     isVisible: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     isEvent: {
       type: Boolean,
@@ -23,7 +23,7 @@ const postSchema = new Schema(
     },
     eventLocation: {
       type: String,
-      required: true,
+      required: false,
     },
     title: {
       type: String,

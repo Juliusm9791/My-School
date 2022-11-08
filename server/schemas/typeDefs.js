@@ -46,8 +46,11 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
+    isVisible: Boolean!
     isEvent: Boolean!
     eventDate: String
+    eventEndDate: String
+    eventLocation: String
     title: String!
     description: String!
     pictures: String
@@ -89,8 +92,11 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addPost(
       userId: ID
-      isEvent: Boolean
+      isVisible: Boolean!
+      isEvent: Boolean!
       eventDate: String
+      eventEndDate: String
+      eventLocation: String
       title: String!
       description: String
       departmentId: ID
@@ -101,8 +107,11 @@ const typeDefs = gql`
     updatePost(
       _id: ID!
       userId: ID
-      isEvent: Boolean
+      isVisible: Boolean!
+      isEvent: Boolean!
       eventDate: String
+      eventEndDate: String
+      eventLocation: String
       title: String!
       description: String
       departmentId: ID

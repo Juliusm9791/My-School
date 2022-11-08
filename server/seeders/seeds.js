@@ -151,6 +151,7 @@ db.once("open", async () => {
 
   const posts = await Post.insertMany([
     {
+      isVisible: true,
       title: "English 203 Extra Credit Opportunities",
       departmentId: departments[1].id,
       description:
@@ -162,6 +163,7 @@ db.once("open", async () => {
     },
 
     {
+      isVisible: true,
       title: "Bus stop chaperone",
       departmentId: departments[13].id,
       description:
@@ -172,6 +174,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "Device Distribution",
       departmentId: departments[0].id,
       description:
@@ -182,6 +185,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "Open House",
       departmentId: departments[0].id,
       description:
@@ -192,6 +196,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "Masks and Hand washing",
       departmentId: departments[8].id,
       description:
@@ -202,6 +207,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "School Nutrition",
       departmentId: departments[14].id,
       description:
@@ -212,6 +218,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "PTA MEETING",
       departmentId: departments[0].id,
       description:
@@ -222,6 +229,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "FGO THEME AND MISSION FOR THE YEAR:",
       departmentId: departments[12].id,
       description:
@@ -232,6 +240,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "School Pictures",
       departmentId: departments[0].id,
       description:
@@ -242,6 +251,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "Biology 1 Quiz",
       departmentId: departments[3].id,
       description:
@@ -252,6 +262,7 @@ db.once("open", async () => {
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
+      isVisible: true,
       title: "Calculus Project",
       departmentId: departments[2].id,
       description:

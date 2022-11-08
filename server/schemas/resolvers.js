@@ -73,21 +73,26 @@ const resolvers = {
     },
     addPost: async (parents, args, context) => {
       const newPost = await Post.create({
+        isVisible: args.isVisible,
         isEvent: args.isEvent,
         eventDate: args.eventDate,
+        eventEndDate: args.eventEndDate,
+        eventLocation: args.eventLocation,
         departmentId: args.departmentId,
         title: args.title,
         description: args.description,
-        pictures: args.pictures,
         commentId: args.commentId,
         reactionId: args.ReactionId,
         userId: context.user._id,
       });
       pubsub.publish("POST_ADDED", {
         postAdded: {
+          isVisible: args.isVisible,
           title: args.title,
           description: args.description,
-          pictures: args.pictures,
+          eventDate: args.eventDate,
+          eventEndDate: args.eventEndDate,
+          eventLocation: args.eventLocation,
           commentId: args.commentId,
           reactionId: args.ReactionId,
           userId: context.user._id,
@@ -121,8 +126,11 @@ const resolvers = {
         return await Post.findByIdAndUpdate(
           args._id,
           {
+            isVisible: args.isVisible,
             isEvent: args.isEvent,
             eventDate: args.eventDate,
+            eventEndDate: args.eventEndDate,
+            eventLocation: args.eventLocation,
             departmentId: args.departmentId,
             title: args.title,
             description: args.description,
@@ -134,9 +142,12 @@ const resolvers = {
       }
       pubsub.publish("POST_UPDATED", {
         postUpdated: {
+          isVisible: args.isVisible,
           title: args.title,
           description: args.description,
-          pictures: args.pictures,
+          eventDate: args.eventDate,
+          eventEndDate: args.eventEndDate,
+          eventLocation: args.eventLocation,
           commentId: args.commentId,
           reactionId: args.ReactionId,
           userId: context.user._id,
