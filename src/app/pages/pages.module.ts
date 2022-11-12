@@ -19,6 +19,7 @@ import { FormPostComponent } from './account/profile/form-post/form-post.compone
 import { HeroComponent } from './home/hero/hero.component';
 import { DepartmentDetailsComponent } from './departments/department-details/department-details.component';
 import { ProfilePostComponent } from './account/profile/profile-post/profile-post.component';
+import { ProfileEditComponent } from './account/profile/profile-edit/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,8 @@ import { ProfilePostComponent } from './account/profile/profile-post/profile-pos
     DepartmentDetailsComponent,
     ProfilePostComponent,
     ProfilePostComponent,
+    ProfileEditComponent,
+    ProfileEditComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
@@ -50,6 +53,7 @@ import { ProfilePostComponent } from './account/profile/profile-post/profile-pos
     PostDetailsComponent,
     FormPostComponent,
     ProfilePostComponent,
+    ProfileEditComponent,
   ],
 })
 export class PagesModule {}

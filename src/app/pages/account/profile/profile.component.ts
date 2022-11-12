@@ -8,13 +8,14 @@ import { LoginSignupService } from '../login-signup.service';
 
 ////////////////////
 const POST_SUB = gql`
-subscription postAdded {
-  postAdded {
-    _id
-    title
-    description
+  subscription postAdded {
+    postAdded {
+      _id
+      title
+      description
+    }
   }
-}`
+`;
 
 ///////////////////
 
@@ -32,7 +33,6 @@ export class ProfileComponent implements OnInit {
   userPosts: Post[] = [];
   private _isUserPosts: boolean = true;
 
-
   constructor(
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
@@ -40,21 +40,22 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     apollo: Apollo
   ) {
-
     ////////////////////////////////////
-    apollo.subscribe({
-      query: POST_SUB,
+    apollo
+      .subscribe({
+        query: POST_SUB,
 
-      /*
+        /*
         accepts options like `errorPolicy` and `fetchPolicy`
       */
-    }).subscribe((result) => {
-      console.log('New post:', result);
+      })
+      .subscribe((result) => {
+        console.log('New post:', result);
 
-      if (result.data) {
-        console.log('New post:', result.data);
-      }
-    });
+        if (result.data) {
+          console.log('New post:', result.data);
+        }
+      });
 
     //////////////////////////////////////
 
@@ -68,7 +69,9 @@ export class ProfileComponent implements OnInit {
       this.loading = loading;
     });
     this.postsService.changePosts.subscribe((posts: Post[]) => {
-      this.userPosts = posts.filter(post => { return post.userId._id === this.me._id });
+      this.userPosts = posts.filter((post) => {
+        return post.userId._id === this.me._id;
+      });
     });
     this.postsService.changeLoading.subscribe((loading) => {
       this.postsLoading = loading;
@@ -78,14 +81,12 @@ export class ProfileComponent implements OnInit {
     return this._isUserPosts;
   }
 
-
   ngOnInit(): void {
     this.postsService.queryPosts();
     this.isLoggedIn = this.authService.isLoggedIn;
 
     if (!this.isLoggedIn) {
       this.router.navigate(['/']);
-      ;
     }
     this.loading = this.loginSignupService.isLoading;
     this.me = this.loginSignupService.me;
@@ -97,6 +98,10 @@ export class ProfileComponent implements OnInit {
     this.loginSignupService.deleteMe();
   }
   likes(post: Post) {
-    return this.postsService.countLikes(post)
+    return this.postsService.countLikes(post);
+  }
+
+  profileEdit(id: string) {
+    this.router.navigate(['/profile/' + id]);
   }
 }
