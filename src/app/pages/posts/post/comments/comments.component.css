@@ -28,6 +28,11 @@ h4 {
   padding-bottom: 2px;
 }
 
+#commentIcon:hover,
+#likeIcon:hover {
+  color: #f98c5a;
+}
+
 .commentHeader {
   display: flex;
   flex-direction: row;
@@ -41,10 +46,15 @@ h4 {
   margin: auto 15px;
 }
 
+p {
+  font-size: 12pt;
+  line-height: 16pt;
+}
+
 mat-card {
   padding: 0px;
   box-shadow: none;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 mat-card-content {
