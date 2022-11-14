@@ -6,65 +6,66 @@
   ></ng-container> -->
 
   <!-- <ng-template #spinner_content>LOADING...</ng-template> -->
+  <!-- 
+  <ng-template #profile_content> -->
+  <div id="profile-container">
+    <div id="profile-header">
+      <h2>Please complete your profile!</h2>
+    </div>
+    <div id="profile-details">
+      <div>
+        <div class="profile-row">
+          <div id="profile-avatar">
+            <img id="profile-img" src="../../../../assets/images/account.png" />
+            <a id="update-avatar" href="#">
+              <h5>Update Avatar</h5>
+            </a>
+          </div>
+          <div class="profile-col">
+            <mat-form-field appearance="fill">
+              <mat-label>First Name:</mat-label>
+              <input matInput />
+            </mat-form-field>
 
-  <ng-template #profile_content>
-    <div id="profile-container">
-      <div id="profile-header">
-        <h2>Please complete your profile!</h2>
-      </div>
-      <div id="profile-details">
-        <div>
-          <div class="profile-row">
-            <div id="profile-avatar">
-              <img
-                id="profile-img"
-                src="../../../../assets/images/account.png"
-              />
-              <a id="update-avatar" href="#">
-                <h5>Update Avatar</h5>
-              </a>
-            </div>
-            <div class="profile-col key">
-              <h4>First Name:</h4>
-              <h4>Last Name:</h4>
-              <h4>Email:</h4>
-              <h4>School:</h4>
-              <h4>Group:</h4>
-            </div>
-            <div class="profile-col value">
-              <mat-form-field appearance="fill">
-                <mat-label>First Name</mat-label>
-                <input matInput value="First Name" />
-              </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Last Name:</mat-label>
+              <input matInput />
+            </mat-form-field>
 
-              <mat-form-field appearance="fill">
-                <mat-label>Last Name</mat-label>
-                <input matInput value="Last Name" />
-              </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Email Address:</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div class="profile-col">
+            <mat-form-field appearance="fill">
+              <mat-label>School:</mat-label>
+              <input matInput />
+            </mat-form-field>
 
-              <mat-form-field appearance="fill">
-                <mat-label>Email Address</mat-label>
-                <input matInput value="Email Address" />
-              </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Group:</mat-label>
+              <input matInput />
+            </mat-form-field>
 
-              <mat-form-field appearance="fill">
-                <mat-label>School</mat-label>
-                <input matInput value="School" />
-              </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Department:</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div class="profile-col bio">
+            <mat-form-field id="bio-input" appearance="fill">
+              <mat-label>About:</mat-label>
+              <textarea matInput></textarea>
+            </mat-form-field>
 
-              <mat-form-field appearance="fill">
-                <mat-label>Group</mat-label>
-                <input matInput value="Group" />
-              </mat-form-field>
-
-              <!-- <h4>Value</h4>
-              <h4>Value</h4>
-              <h4>Value</h4>
-              <h4>Value</h4> -->
+            <div class="submitBtn">
+              <button type="submit">SUBMIT</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </ng-template>
+  </div>
+  <!-- </ng-template> -->
 </div>
