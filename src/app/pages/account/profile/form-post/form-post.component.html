@@ -2,11 +2,6 @@
   <h2>NEW ANNOUNCEMENT</h2>
   <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
     <div class="formColumn">
-      <div>
-        <mat-checkbox id="visibility-check" formControlName="isVisible"
-          >Post Visible</mat-checkbox
-        >
-      </div>
       <div id="title">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
@@ -55,8 +50,16 @@
           >
         </mat-form-field>
       </div>
-    </div>
 
+      <div>
+        <mat-checkbox
+          color="primary"
+          id="visibility-check"
+          formControlName="isVisible"
+          >Save as Draft</mat-checkbox
+        >
+      </div>
+    </div>
     <div class="formColumn">
       <div id="department">
         <mat-form-field appearance="fill">
@@ -73,7 +76,10 @@
       </div>
       <div id="event">
         <div>
-          <mat-checkbox id="event-check" formControlName="isEvent"
+          <mat-checkbox
+            color="primary"
+            id="event-check"
+            formControlName="isEvent"
             >Event</mat-checkbox
           >
         </div>
