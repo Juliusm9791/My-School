@@ -1,0 +1,127 @@
+#profile {
+  margin: 40px auto 200px auto;
+  width: 80%;
+}
+
+#profile-container {
+  background-color: rgb(244, 244, 244);
+  border-radius: 5px;
+  padding-bottom: 50px;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  border-radius: 8px;
+}
+
+#profile h1,
+#profile-header h2 {
+  font-family: Grotesk;
+  font-size: 16pt;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  color: #4050b2;
+}
+
+#profile-header {
+  background-color: #3e5bb3;
+  background-image: linear-gradient(180deg, #3e5bb3 16%, #2a4fae 100%);
+  padding: 10px 10px 10px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profile-header {
+  border-radius: 7px 7px 0 0;
+}
+
+#profile-header h2 {
+  color: white;
+  margin: 0px 10px;
+}
+
+/* Log out and Create Post buttons */
+/* #profile-header h3,
+  #announcements-subheader h3,
+  #notifications-subheader h3 {
+    background-color: rgb(255, 255, 255);
+    color: #4050b2;
+    font-family: Grotesk;
+    font-size: 14pt;
+    letter-spacing: 0.08rem;
+    margin: auto;
+    margin-right: 5px;
+    padding: 3px 10px;
+    border: 0.5px solid grey;
+    box-shadow: 0px 1px 1px rgb(84, 84, 84);
+    border-radius: 5px;
+  } */
+
+#profile-details {
+  padding: 10px 40px 0px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#profile-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.profile-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex start;
+  align-items: left;
+  margin: 20px 0 0 0;
+}
+
+#update-avatar h5,
+#edit-profile h5 {
+  margin: 10px 0px 10px 0px;
+  text-decoration: none;
+  color: #4050b2;
+}
+
+#edit-profile h5 {
+  margin-right: 15px;
+}
+
+#profile-img {
+  margin-top: 15px;
+  width: 130px;
+}
+
+.profile-col h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  margin: 10px 0 0 10px;
+  color: rgb(51, 51, 51);
+}
+
+.key h4 {
+  color: #4050b2;
+}
+
+#profile-avatar h5:hover,
+#profile-header h3:hover,
+#edit-profile h5:hover {
+  color: #f98c5a !important;
+}
+
+#profile-header a:link,
+#profile-header a:active,
+#profile-header a:visited,
+#profile-header a:hover,
+#profile-details a:link {
+  text-decoration: none;
+}

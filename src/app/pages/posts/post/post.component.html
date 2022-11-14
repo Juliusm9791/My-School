@@ -1,7 +1,7 @@
 <mat-card *ngIf="post.isVisible">
   <a class="post-card" (click)="postDetail(post._id)">
     <mat-card-title>
-      <div id="postTitle">
+      <div>
         <h2>{{ post.title }}</h2>
       </div>
       <div id="postDepartment">
@@ -12,7 +12,7 @@
     </mat-card-title>
   </a>
 
-  <div class="postContent">
+  <div class="post-content">
     <div id="images-block">
       <img
         id="defaultImg"
@@ -50,21 +50,15 @@
           </h4>
         </div>
       </mat-card-subtitle>
+
       <div id="post-body-row">
         <div>
-          <mat-card-content *ngIf="!isFullDescription">
-            <p>{{ postCut(post.description) }} ...</p>
-            <!-- <p class="descriptionShow" (click)="changeFullDescription()">
-                show more
-              </p> -->
-          </mat-card-content>
-          <mat-card-content *ngIf="isFullDescription">
+          <mat-card-content>
             <p id="description">{{ post.description }}</p>
-            <!-- <p class="descriptionShow" (click)="changeFullDescription()">
-                show less
-              </p> -->
           </mat-card-content>
         </div>
+
+        <!-- EVENT CARD -->
         <ng-container *ngIf="post.isEvent">
           <div id="event-card">
             <div class="event-card-row">
