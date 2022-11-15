@@ -72,6 +72,16 @@ export const QUERY_DEPARTMENTS = gql`
     }
   }
 `;
+
+export const QUERY_GRADES = gql`
+  query grades {
+    grades {
+      _id
+      gradeName
+    }
+  }
+`;
+
 export const QUERY_POSTS = gql`
   query posts {
     posts ${postBody}

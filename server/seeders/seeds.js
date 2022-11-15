@@ -73,10 +73,9 @@ db.once("open", async () => {
     email: "testemail@gmail.com",
     password: "12345678",
     groupId: groups[Math.floor(Math.random() * groups.length)]._id,
-    departmentId:
-      departments[Math.floor(Math.random() * departments.length)]._id,
+    departmentId: departments[Math.floor(Math.random() * departments.length)]._id,
     gradeId: grades[Math.floor(Math.random()* grades.length)]._id,
-    aboutme: "test",
+    aboutMe: "test",
     address: "123 Test St, Test",
     phoneNumber: "123-456-7890"
   };
@@ -99,7 +98,7 @@ db.once("open", async () => {
       groupId: groups[randomGroup]._id,
       departmentId: departments[randomDept]._id,
       gradeId: grades[Math.floor(Math.random()* grades.length)]._id,
-      aboutme: faker.lorem.paragraph,
+      aboutMe: faker.lorem.paragraph,
       phoneNumber: faker.phone.number,
       address: faker.address.streetAddress
     };

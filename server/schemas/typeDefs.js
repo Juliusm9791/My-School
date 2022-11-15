@@ -24,9 +24,9 @@ const typeDefs = gql`
     avatar: String
     email: String!
     password: String!
-    aboutme: String
+    aboutMe: String
     address: String
-    phoneNumber: Int
+    phoneNumber: String
     departmentId: [Department]
     groupId: [Group]
     gradeId: [Grade]
