@@ -1,0 +1,32 @@
+<!-- <ng-container *ngIf="!isSearching; then searching; else results"></ng-container> -->
+
+<!-- <ng-template #searching><mat-spinner></mat-spinner></ng-template> -->
+
+<!-- <ng-template #results> -->
+<ng-container
+  *ngIf="
+    searchResults.searchInDescription.length === 0 &&
+      searchResults.searchInTitle.length === 0;
+    then noResults;
+    else displayResults
+  "
+></ng-container>
+<ng-template #noResults>
+  <h1>No results found for {{ searchResults.searchInput }}</h1>
+</ng-template>
+
+<ng-template #displayResults>
+  <h1>Serach results for {{ searchResults.searchInput }}</h1>
+  <ng-container *ngFor="let title of searchResults.searchInTitle">
+    <a routerLink="/posts/{{ title._id }}" routerLinkActive="active">{{
+      title.title
+    }}</a>
+  </ng-container>
+  <hr />
+  <ng-container *ngFor="let description of searchResults.searchInDescription">
+    <a routerLink="/posts/{{ description._id }}" routerLinkActive="active">{{
+      descriptionCut(description.description, searchResults.searchInput)
+    }}</a>
+  </ng-container>
+</ng-template>
+<!-- </ng-template> -->

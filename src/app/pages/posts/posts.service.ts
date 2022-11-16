@@ -3,7 +3,7 @@ import { CalendarEvent } from 'angular-calendar';
 import { Apollo } from 'apollo-angular';
 import { DELETE_POST } from 'src/app/services/graphql/mutations';
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
-import { Post } from 'src/app/types/types';
+import { Post, searchResults } from 'src/app/types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -13,12 +13,14 @@ export class PostsService {
   error: any;
   errorUserPost: any;
   private _posts: Post[] = [];
+  // isSearching: boolean = true;
+  topSearchResults: searchResults = {} as searchResults;
 
   constructor(private apollo: Apollo) {}
   @Output() changePosts: EventEmitter<any> = new EventEmitter();
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeError: EventEmitter<any> = new EventEmitter();
-
+  // @Output() changeisSearching: EventEmitter<boolean> = new EventEmitter();
   queryPosts() {
     this.apollo
       .watchQuery({
@@ -115,5 +117,25 @@ export class PostsService {
 
   departmentPosts(id: string) {
     return this._posts.filter((post) => post.departmentId?._id === id && post);
+  }
+
+  searchInPost(searchInput: string) {
+    let term = searchInput.toLowerCase();
+    let resultsTitle: Post[] = [];
+    let resultsDescription: Post[] = [];
+    this._posts.forEach((post) => {
+      let matchingTitle = post.title.toLowerCase().includes(term);
+      let matchingDescription = post.description.toLowerCase().includes(term);
+      matchingTitle && resultsTitle.push(post);
+      matchingDescription && resultsDescription.push(post);
+    });
+
+    this.topSearchResults = {
+      searchInput: searchInput,
+      searchInTitle: resultsTitle,
+      searchInDescription: resultsDescription,
+    };
+    // console.log(this.isSearching);
+    // this.changeisSearching.emit(false);
   }
 }

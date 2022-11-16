@@ -64,3 +64,9 @@ export interface Post {
   commentId: Comment[];
   userId: UserFullName;
 }
+
+export interface searchResults {
+  searchInput: string;
+  searchInTitle: Post[];
+  searchInDescription: Post[];
+}
