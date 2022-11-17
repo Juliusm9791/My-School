@@ -59,10 +59,11 @@ export class AppComponent implements OnDestroy, OnInit {
     });
   }
   topSearch() {
-    this.topSearchInput.value &&
+    if (this.topSearchInput.value) {
       this.postsService.searchInPost(this.topSearchInput.value);
-    this.topSearchInput.reset();
-    this.router.navigate(['/search']);
+      this.topSearchInput.reset();
+      this.router.navigate(['/search']);
+    }
   }
 
   ngOnDestroy(): void {

@@ -21,6 +21,7 @@ import { DepartmentDetailsComponent } from './departments/department-details/dep
 import { ProfilePostComponent } from './account/profile/profile-post/profile-post.component';
 import { ProfileEditComponent } from './account/profile/profile-edit/profile-edit/profile-edit.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { HighlightPipe } from './pipes/highlight.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     ProfileEditComponent,
     ProfileEditComponent,
     SearchResultsComponent,
+    HighlightPipe,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [

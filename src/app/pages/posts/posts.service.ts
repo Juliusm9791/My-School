@@ -20,7 +20,8 @@ export class PostsService {
   @Output() changePosts: EventEmitter<any> = new EventEmitter();
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeError: EventEmitter<any> = new EventEmitter();
-  // @Output() changeisSearching: EventEmitter<boolean> = new EventEmitter();
+  @Output() changeSearchResults: EventEmitter<searchResults> =
+    new EventEmitter();
   queryPosts() {
     this.apollo
       .watchQuery({
@@ -135,7 +136,6 @@ export class PostsService {
       searchInTitle: resultsTitle,
       searchInDescription: resultsDescription,
     };
-    // console.log(this.isSearching);
-    // this.changeisSearching.emit(false);
+    this.changeSearchResults.emit(this.topSearchResults);
   }
 }
