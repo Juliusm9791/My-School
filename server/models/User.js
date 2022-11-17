@@ -37,15 +37,15 @@ const userSchema = new Schema({
   },
   aboutMe: {
     type: String,
-    required: false
+    required: false,
   },
   address: {
     type: String,
-    required: false
+    required: false,
   },
   phoneNumber: {
     type: String,
-    required: true
+    required: false,
   },
   departmentId: [
     {
@@ -64,7 +64,7 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Grade",
     },
-  ]
+  ],
 });
 
 // set up pre-save middleware to create password

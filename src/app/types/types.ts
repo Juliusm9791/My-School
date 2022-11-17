@@ -49,6 +49,11 @@ interface Comment {
   createdAt: string;
 }
 
+interface Grade {
+  _id: string;
+  gradeName: string;
+}
+
 export interface Post {
   _id: string;
   isVisible: boolean;
@@ -63,6 +68,7 @@ export interface Post {
   reactionId: Reaction[];
   commentId: Comment[];
   userId: UserFullName;
+  gradeId: Grade[];
 }
 
 export interface searchResults {

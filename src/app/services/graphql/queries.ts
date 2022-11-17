@@ -39,6 +39,10 @@ const postBody = `
     firstName
     lastName
   }
+  gradeId {
+    _id
+    gradeName
+  }
 }
 }
 `;
