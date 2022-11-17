@@ -1,6 +1,9 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginSignupService } from './pages/account/login-signup.service';
+import { PostsService } from './pages/posts/posts.service';
 import { AuthService } from './services/auth/auth.service';
 
 @Component({
@@ -9,6 +12,7 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnDestroy, OnInit {
+  topSearchInput = new FormControl('');
   title = 'client';
   mobileQuery: MediaQueryList;
   isLoggedIn: boolean = false;
@@ -21,7 +25,9 @@ export class AppComponent implements OnDestroy, OnInit {
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private authService: AuthService,
-    private loginSignupService: LoginSignupService
+    private loginSignupService: LoginSignupService,
+    private postsService: PostsService,
+    private router: Router
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -51,6 +57,13 @@ export class AppComponent implements OnDestroy, OnInit {
       left: 0,
       behavior: 'smooth',
     });
+  }
+  topSearch() {
+    if (this.topSearchInput.value) {
+      this.postsService.searchInPost(this.topSearchInput.value);
+      this.topSearchInput.reset();
+      this.router.navigate(['/search']);
+    }
   }
 
   ngOnDestroy(): void {

@@ -20,6 +20,8 @@ import { HeroComponent } from './home/hero/hero.component';
 import { DepartmentDetailsComponent } from './departments/department-details/department-details.component';
 import { ProfilePostComponent } from './account/profile/profile-post/profile-post.component';
 import { ProfileEditComponent } from './account/profile/profile-edit/profile-edit/profile-edit.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { HighlightPipe } from './pipes/highlight.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { ProfileEditComponent } from './account/profile/profile-edit/profile-edi
     ProfilePostComponent,
     ProfileEditComponent,
     ProfileEditComponent,
+    SearchResultsComponent,
+    HighlightPipe,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
@@ -54,6 +58,7 @@ import { ProfileEditComponent } from './account/profile/profile-edit/profile-edi
     FormPostComponent,
     ProfilePostComponent,
     ProfileEditComponent,
+    SearchResultsComponent,
   ],
 })
 export class PagesModule {}
