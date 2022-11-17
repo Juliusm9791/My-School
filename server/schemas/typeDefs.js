@@ -5,6 +5,11 @@ const typeDefs = gql`
     _id: ID
     depName: String!
   }
+  
+  type Grade {
+    _id: ID
+    gradeName: String!
+  }
 
   type Group {
     _id: ID
@@ -19,8 +24,12 @@ const typeDefs = gql`
     avatar: String
     email: String!
     password: String!
+    aboutMe: String
+    address: String
+    phoneNumber: String
     departmentId: [Department]
     groupId: [Group]
+    gradeId: [Grade]
   }
 
   type Reaction {
@@ -55,6 +64,7 @@ const typeDefs = gql`
     description: String!
     pictures: String
     departmentId: Department
+    gradeId: [Grade]
     userId: User
     commentId: [Comment]
     reactionId: [Reaction]
@@ -70,6 +80,7 @@ const typeDefs = gql`
     post(_id: ID!): Post
     faculties: [Group]
     departments: [Department]
+    grades: [Grade]
   }
 
   type Mutation {

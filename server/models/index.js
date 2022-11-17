@@ -5,6 +5,7 @@ const Reaction = require("./Reaction");
 const Comment = require("./Comment");
 const Department = require("./Department");
 const DeletedPost = require("./DeletedPost");
+const Grade = require("./Grade");
 
 module.exports = {
   User,
@@ -14,4 +15,5 @@ module.exports = {
   Comment,
   Department,
   DeletedPost,
+  Grade
 };

@@ -57,6 +57,12 @@ const postSchema = new Schema(
         ref: "Reaction",
       },
     ],
+    gradeId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Grade",
+      },
+    ]
   },
   {
     timestamps: true,

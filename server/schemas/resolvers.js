@@ -7,6 +7,7 @@ const {
   Post,
   Comment,
   Reaction,
+  Grade,
 } = require("../models");
 const pubsub = new PubSub();
 
@@ -21,6 +22,7 @@ const resolvers = {
       if (("me", context.user)) {
         return await User.findById(context.user._id)
           .populate("departmentId")
+          .populate("gradeId")
           .populate("groupId");
       }
       throw new AuthenticationError("You need to be logged in!");
@@ -31,6 +33,7 @@ const resolvers = {
         .populate("commentId")
         .populate("departmentId")
         .populate("reactionId")
+        .populate("gradeId")
         .populate({
           path: "reactionId",
           populate: "userId",
@@ -47,6 +50,7 @@ const resolvers = {
         .populate("commentId")
         .populate("departmentId")
         .populate("reactionId")
+        .populate("gradeId")
         .populate({
           path: "reactionId",
           populate: "userId",
@@ -62,6 +66,9 @@ const resolvers = {
     departments: async (parent, args) => {
       return await Department.find({});
     },
+    grades: async (parent, args) => {
+      return await Grade.find({});
+    }
   },
 
   Mutation: {
