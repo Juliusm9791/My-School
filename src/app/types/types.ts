@@ -1,8 +1,14 @@
 export interface Me {
   _id: string;
   firstName: string;
-  middlName: string;
   lastName: string;
+  aboutMe: string;
+  address: string;
+  phoneNumber: string;
+  gradeId: Grade[];
+  groupId: string[];
+  departmentId: Department[];
+  password: string;
   email: string;
 }
 
@@ -49,7 +55,7 @@ interface Comment {
   createdAt: string;
 }
 
-interface Grade {
+export interface Grade {
   _id: string;
   gradeName: string;
 }
