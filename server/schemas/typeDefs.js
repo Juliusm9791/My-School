@@ -92,13 +92,18 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    updateUser(
-      firstName: String!
+    updateMe(
+      firstName: String
       middleName: String
-      lastName: String!
+      lastName: String
       avatar: String
-      email: String!
-      password: String!
+      email: String
+      password: String
+      aboutMe: String
+      address: String
+      phoneNumber: String
+      gradeId: [ID]
+      departmentId: [ID]
     ): User
     login(email: String!, password: String!): Auth
     addPost(

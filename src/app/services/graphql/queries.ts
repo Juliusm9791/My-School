@@ -48,13 +48,28 @@ const postBody = `
 `;
 
 export const QUERY_ME = gql`
-  query user {
+  query Query {
     me {
       _id
-      firstName
-      middleName
-      lastName
+      aboutMe
+      address
       email
+      firstName
+      lastName
+      gradeId {
+        _id
+        gradeName
+      }
+      departmentId {
+        _id
+        depName
+      }
+      groupId {
+        _id
+        groupName
+      }
+      password
+      phoneNumber
     }
   }
 `;
