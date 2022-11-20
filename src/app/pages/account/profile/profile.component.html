@@ -34,7 +34,9 @@
               <h4>{{ me.firstName }} {{ me.lastName }}</h4>
               <h4>{{ me.email }}</h4>
               <h4>Value</h4>
-              <h4>Value</h4>
+              <ng-container *ngFor="let group of me.groupId">
+                <h4>{{ group.groupName }}</h4>
+              </ng-container>
             </div>
           </div>
         </div>

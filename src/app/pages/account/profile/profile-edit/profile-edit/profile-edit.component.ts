@@ -24,6 +24,8 @@ export class ProfileEditComponent implements OnInit {
     phoneNumber: new FormControl(''),
     // gradeId: new FormControl(''),
     departmentId: new FormControl(''),
+    groupId: new FormControl(''),
+    gradeId: new FormControl(''),
     aboutMe: new FormControl(''),
   });
 
@@ -84,10 +86,7 @@ export class ProfileEditComponent implements OnInit {
     // let eventEndDate: any = this.profileForm.controls.eventEndDate.value;
     // let eventLocation: any = this.profileForm.controls.eventLocation.value;
 
-    this.profileFormService.updateProfile(
-      firstName,
-      lastName,
-    );
+    this.profileFormService.updateProfile(firstName, lastName);
   }
 
   // handleCancel() {

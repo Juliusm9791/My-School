@@ -33,7 +33,7 @@ export class PostsService {
           console.log('query post data ', this._posts);
           this.loading = result.loading;
           this.changeLoading.emit(this.loading);
-
+          // this._posts.reverse();
           this.changePosts.emit(this._posts);
         },
         (error) => {

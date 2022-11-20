@@ -56,6 +56,9 @@ export const QUERY_ME = gql`
       email
       firstName
       lastName
+      aboutMe
+      phoneNumber
+      address
       gradeId {
         _id
         gradeName
