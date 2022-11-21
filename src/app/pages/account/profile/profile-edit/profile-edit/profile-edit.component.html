@@ -12,7 +12,11 @@
     <div id="profile-header">
       <h2>Please complete your profile!</h2>
     </div>
-    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" id="profile-details">
+    <form
+      [formGroup]="profileForm"
+      (ngSubmit)="onSubmit()"
+      id="profile-details"
+    >
       <div>
         <div class="profile-row">
           <div id="profile-avatar">
@@ -69,9 +73,30 @@
               <mat-select formControlName="departmentId">
                 <mat-option>-- None --</mat-option>
                 <ng-container *ngFor="let depatment of departmentList">
-                  <mat-option value="{{ depatment._id }}">{{ depatment.depName }}
+                  <mat-option value="{{ depatment._id }}"
+                    >{{ depatment.depName }}
                   </mat-option>
                 </ng-container>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Group:</mat-label>
+              <mat-select formControlName="groupId">
+                <mat-option>-- None --</mat-option>
+                <!-- <ng-container *ngFor="let depatment of departmentList">
+                  <mat-option value="{{ depatment._id }}">{{ depatment.depName }}
+                  </mat-option>
+                </ng-container> -->
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Grade:</mat-label>
+              <mat-select formControlName="gradeId">
+                <mat-option>-- None --</mat-option>
+                <!-- <ng-container *ngFor="let depatment of departmentList">
+                  <mat-option value="{{ depatment._id }}">{{ depatment.depName }}
+                  </mat-option>
+                </ng-container> -->
               </mat-select>
             </mat-form-field>
           </div>
@@ -79,8 +104,7 @@
           <div class="profile-col bio">
             <mat-form-field id="bio-input" appearance="fill">
               <mat-label>About:</mat-label>
-              <textarea matInput formControlName="aboutMe">
-              </textarea>
+              <textarea matInput formControlName="aboutMe"> </textarea>
             </mat-form-field>
 
             <div class="submitBtn">

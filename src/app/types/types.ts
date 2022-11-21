@@ -1,3 +1,7 @@
+interface Group {
+  groupName: string;
+}
+
 export interface Me {
   _id: string;
   firstName: string;
@@ -6,7 +10,7 @@ export interface Me {
   address: string;
   phoneNumber: string;
   gradeId: Grade[];
-  groupId: string[];
+  groupId: Group[];
   departmentId: Department[];
   password: string;
   email: string;

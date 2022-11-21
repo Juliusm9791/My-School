@@ -73,11 +73,12 @@ db.once("open", async () => {
     email: "testemail@gmail.com",
     password: "12345678",
     groupId: groups[Math.floor(Math.random() * groups.length)]._id,
-    departmentId: departments[Math.floor(Math.random() * departments.length)]._id,
-    gradeId: grades[Math.floor(Math.random()* grades.length)]._id,
+    departmentId:
+      departments[Math.floor(Math.random() * departments.length)]._id,
+    gradeId: grades[Math.floor(Math.random() * grades.length)]._id,
     aboutMe: "test",
     address: "123 Test St, Test",
-    phoneNumber: "123-456-7890"
+    phoneNumber: "123-456-7890",
   };
   fakeUsers.push(testUser);
 
@@ -97,10 +98,10 @@ db.once("open", async () => {
       password: "12345678",
       groupId: groups[randomGroup]._id,
       departmentId: departments[randomDept]._id,
-      gradeId: grades[Math.floor(Math.random()* grades.length)]._id,
-      aboutMe: faker.lorem.paragraph,
-      phoneNumber: faker.phone.number,
-      address: faker.address.streetAddress
+      gradeId: grades[Math.floor(Math.random() * grades.length)]._id,
+      aboutMe: faker.lorem.paragraph(),
+      phoneNumber: faker.phone.number(),
+      address: faker.address.streetAddress(),
     };
 
     fakeUsers.push(fakeUser);
@@ -173,7 +174,7 @@ db.once("open", async () => {
   await Post.deleteMany();
 
   let applyAllGrades = [];
-  grades.map(grade => applyAllGrades.push(grade._id));
+  grades.map((grade) => applyAllGrades.push(grade._id));
 
   const posts = await Post.insertMany([
     {
