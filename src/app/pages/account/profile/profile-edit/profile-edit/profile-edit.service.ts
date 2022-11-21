@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { UPDATE_ME } from 'src/app/services/graphql/mutations';
@@ -15,6 +15,10 @@ export class FormProfileService {
   updateProfile(
     firstName: string,
     lastName: string,
+    email: string,
+    address: string,
+    phoneNumber: string,
+    aboutMe: string
   ) {
     this.apollo
       .mutate({
@@ -22,6 +26,10 @@ export class FormProfileService {
         variables: {
           firstName: firstName,
           lastName: lastName,
+          email: email,
+          address: address,
+          phoneNumber: phoneNumber,
+          aboutMe: aboutMe
         },
 
         refetchQueries: [
@@ -41,4 +49,5 @@ export class FormProfileService {
         }
       );
   }
-}
+};
+

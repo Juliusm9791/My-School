@@ -52,22 +52,6 @@
             </mat-form-field>
           </div>
           <div class="profile-col">
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Grade:</mat-label>
-              <mat-select formControlName="gradeId">
-                <mat-option>-- None --</mat-option>
-                <ng-container *ngFor="let grade of gradeList">
-                  <mat-option value="{{ grade._id }}">{{ grade.gradeName }}
-                  </mat-option>
-                </ng-container>
-              </mat-select>
-            </mat-form-field> -->
-
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Group:</mat-label>
-              <input matInput />
-            </mat-form-field> -->
-
             <mat-form-field appearance="fill">
               <mat-label>Department:</mat-label>
               <mat-select formControlName="departmentId">
@@ -79,24 +63,36 @@
                 </ng-container>
               </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
               <mat-label>Group:</mat-label>
               <mat-select formControlName="groupId">
                 <mat-option>-- None --</mat-option>
-                <!-- <ng-container *ngFor="let depatment of departmentList">
-                  <mat-option value="{{ depatment._id }}">{{ depatment.depName }}
+                <ng-container *ngFor="let faculty of facultyList">
+                  <mat-option value="{{ faculty._id }}">{{ faculty.groupName }}
                   </mat-option>
-                </ng-container> -->
+                </ng-container>
+              </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Groups:</mat-label>
+              <mat-select formControlName="groupId" multiple>
+                <mat-option *ngFor="let faculty of facultyList" value="{{faculty._id}}">{{faculty.groupName}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
               <mat-label>Grade:</mat-label>
               <mat-select formControlName="gradeId">
                 <mat-option>-- None --</mat-option>
-                <!-- <ng-container *ngFor="let depatment of departmentList">
-                  <mat-option value="{{ depatment._id }}">{{ depatment.depName }}
+                <ng-container *ngFor="let grade of gradeList">
+                  <mat-option value="{{ grade._id }}">{{ grade.gradeName }}
                   </mat-option>
-                </ng-container> -->
+                </ng-container>
+              </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Grades:</mat-label>
+              <mat-select formControlName="gradeId" multiple>
+                <mat-option *ngFor="let grade of gradeList" value="{{grade._id}}">{{grade.gradeName}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
