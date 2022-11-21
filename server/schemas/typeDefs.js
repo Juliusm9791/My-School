@@ -102,6 +102,7 @@ const typeDefs = gql`
       aboutMe: String
       address: String
       phoneNumber: String
+      groupId: [ID]
       gradeId: [ID]
       departmentId: [ID]
     ): User

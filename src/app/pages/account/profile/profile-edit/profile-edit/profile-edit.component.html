@@ -52,7 +52,7 @@
             </mat-form-field>
           </div>
           <div class="profile-col">
-            <mat-form-field appearance="fill">
+            <!-- <mat-form-field appearance="fill">
               <mat-label>Department:</mat-label>
               <mat-select formControlName="departmentId">
                 <mat-option>-- None --</mat-option>
@@ -61,6 +61,12 @@
                     >{{ depatment.depName }}
                   </mat-option>
                 </ng-container>
+              </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Departments:</mat-label>
+              <mat-select formControlName="departmentId" multiple>
+                <mat-option *ngFor="let department of departmentList" value="{{department._id}}">{{department.depName}}</mat-option>
               </mat-select>
             </mat-form-field>
             <!-- <mat-form-field appearance="fill">

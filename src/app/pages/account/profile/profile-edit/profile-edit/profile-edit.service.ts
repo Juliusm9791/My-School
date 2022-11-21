@@ -18,7 +18,10 @@ export class FormProfileService {
     email: string,
     address: string,
     phoneNumber: string,
-    aboutMe: string
+    aboutMe: string,
+    departmentId: string [],
+    groupId: string [],
+    gradeId: string []
   ) {
     this.apollo
       .mutate({
@@ -29,7 +32,10 @@ export class FormProfileService {
           email: email,
           address: address,
           phoneNumber: phoneNumber,
-          aboutMe: aboutMe
+          aboutMe: aboutMe,
+          departmentId: departmentId,
+          groupId: groupId,
+          gradeId: gradeId
         },
 
         refetchQueries: [

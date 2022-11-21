@@ -72,8 +72,11 @@ export class ProfileEditComponent implements OnInit {
     this.profileForm.controls.emailAddress.setValue(this.me.email);
     this.profileForm.controls.address.setValue(this.me.address);
     this.profileForm.controls.phoneNumber.setValue(this.me.phoneNumber);
+    
+    let department: any = [];
+    this.me.departmentId.map(id => department.push(id._id));
     this.profileForm.controls.departmentId.setValue(
-      this.me.departmentId[0]._id
+      department
     );
 
     let group: any = [];
@@ -112,10 +115,13 @@ export class ProfileEditComponent implements OnInit {
     let email: any = this.profileForm.controls.emailAddress.value;
     let address: any = this.profileForm.controls.address.value;
     let phoneNumber: any = this.profileForm.controls.phoneNumber.value;
-    // let departmentId: any = this.profileForm.controls.departmentId.value;
+    let departmentId: any = this.profileForm.controls.departmentId.value;
+    let groupId: any = this.profileForm.controls.groupId.value;
+    let gradeId: any = this.profileForm.controls.gradeId.value;
     let aboutMe: any = this.profileForm.controls.aboutMe.value;
 
-    this.profileFormService.updateProfile(firstName, lastName, email, address, phoneNumber, aboutMe);
+    console.log(groupId);
+    this.profileFormService.updateProfile(firstName, lastName, email, address, phoneNumber, aboutMe, departmentId, groupId, gradeId);
   }
 
   // handleCancel() {
