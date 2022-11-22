@@ -72,35 +72,29 @@ export class ProfileEditComponent implements OnInit {
     this.profileForm.controls.emailAddress.setValue(this.me.email);
     this.profileForm.controls.address.setValue(this.me.address);
     this.profileForm.controls.phoneNumber.setValue(this.me.phoneNumber);
-    
+
     let department: any = [];
-    this.me.departmentId.map(id => department.push(id._id));
-    this.profileForm.controls.departmentId.setValue(
-      department
-    );
+    this.me.departmentId.forEach((id) => department.push(id._id));
+    this.profileForm.controls.departmentId.setValue(department);
 
     let group: any = [];
-    this.me.groupId.map(id => group.push(id._id));
-    this.profileForm.controls.groupId.setValue(
-      group
-    );
+    this.me.groupId.forEach((id) => group.push(id._id));
+    this.profileForm.controls.groupId.setValue(group);
 
     let grade: any = [];
-    this.me.gradeId.map(id => grade.push(id._id));
-    this.profileForm.controls.gradeId.setValue(
-      grade
-    );
+    this.me.gradeId.forEach((id) => grade.push(id._id));
+    this.profileForm.controls.gradeId.setValue(grade);
     this.profileForm.controls.aboutMe.setValue(this.me.aboutMe);
   }
 
   ngOnInit() {
-    if (this.departmentsService.departments.length === 0) 
+    if (this.departmentsService.departments.length === 0)
       this.departmentsService.queryDepartment();
     this.departmentList = this.departmentsService.departments;
 
     if (this.gradesService.grades.length === 0) {
       this.gradesService.queryGrade();
-    };
+    }
     this.gradeList = this.gradesService.grades;
 
     if (this.facultiesService.faculties.length === 0) {
@@ -121,7 +115,17 @@ export class ProfileEditComponent implements OnInit {
     let aboutMe: any = this.profileForm.controls.aboutMe.value;
 
     console.log(groupId);
-    this.profileFormService.updateProfile(firstName, lastName, email, address, phoneNumber, aboutMe, departmentId, groupId, gradeId);
+    this.profileFormService.updateProfile(
+      firstName,
+      lastName,
+      email,
+      address,
+      phoneNumber,
+      aboutMe,
+      departmentId,
+      groupId,
+      gradeId
+    );
   }
 
   // handleCancel() {
