@@ -9,6 +9,7 @@ import { PostsService } from '../posts/posts.service';
   styleUrls: ['home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  homeCalendar: boolean = true;
   posts: Post[] = [];
   loading: boolean = true;
   error: any;
