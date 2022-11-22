@@ -126,15 +126,33 @@ export const DELETE_POST = gql`
 `;
 
 export const UPDATE_ME = gql`
-mutation UpdateMe($firstName: String!, $lastName: String!, $avatar: String, $email: String, $password: String, $aboutMe: String, $address: String, $phoneNumber: String, $gradeId: [ID], $departmentId: [ID]) {
-  updateMe(firstName: $firstName, lastName: $lastName, avatar: $avatar, email: $email, password: $password, aboutMe: $aboutMe, address: $address, phoneNumber: $phoneNumber, gradeId: $gradeId, departmentId: $departmentId) {
+  mutation UpdateMe(
+    $firstName: String!
+    $lastName: String!
+    $avatar: String
+    $email: String
+    $password: String
+    $aboutMe: String
+    $address: String
+    $phoneNumber: String
+    $gradeId: [ID]
+    $departmentId: [ID]
+    $groupId: [ID]
+  ) {
+    updateMe(
+      firstName: $firstName
+      lastName: $lastName
+      avatar: $avatar
+      email: $email
+      password: $password
+      aboutMe: $aboutMe
+      address: $address
+      phoneNumber: $phoneNumber
+      gradeId: $gradeId
+      departmentId: $departmentId
+      groupId: $groupId
+    ) {
       _id
-      firstName
-      lastName
-      email
-      phoneNumber
-      address
-      aboutMe
     }
   }
 `;
