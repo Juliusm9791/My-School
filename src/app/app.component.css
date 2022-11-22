@@ -53,7 +53,7 @@
 
 .vertical-nav h1,
 #login h2 {
-  margin: auto 10px;
+  margin: auto 10px auto 20px;
   font-family: Grotesk;
   letter-spacing: 0.1rem;
   font-weight: bold;
@@ -96,7 +96,7 @@
 .mat-form-field {
   font-family: ThreeDimensions;
   color: white !important;
-  font-size: 18pt;
+  font-size: 20pt;
   width: fit-content;
   margin-left: 15px;
   cursor: pointer !important;
@@ -173,47 +173,73 @@ mat-sidenav-content {
   text-align: center;
 }
 
-#searchBar {
-  display: flex;
-  flex-direction: row;
-  width: 180px;
-  height: 40px;
-  border-radius: 5px;
-  border: 0.5px solid rgb(78, 78, 78);
-  box-shadow: inset 1px 1px 1px rgb(98, 98, 98);
-  margin-right: 20px;
-  background-color: white;
-  color: #4050b2;
-  padding-left: 10px;
-  padding-right: 5px;
-}
-
-#searchIcon {
-  padding-top: 8px;
+#searchIcon,
+#searchIcon2 {
+  cursor: pointer;
   height: 35px;
   width: auto;
-  margin-right: 5px;
+  margin-right: -37px;
 }
 
 #searchIcon2 {
-  padding-top: 5px;
-  height: 35px;
-  width: auto;
-  margin-right: 5px;
   display: none;
+  width: 30px;
+  height: auto;
+  margin-right: 5px;
+  padding-bottom: 1px;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+/* Top search Search  */
+
+form {
+  color: #555;
+  display: flex;
+  height: 40px;
+  padding: 2px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: white;
+}
+
+input[type="search"] {
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit;
+}
+
+input[type="search"]::placeholder {
+  color: #bbb;
+}
+
+button[type="submit"] {
+  text-indent: -999px;
+  overflow: hidden;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat center;
+
+  cursor: pointer;
+  opacity: 0.01;
+}
+
+/* button[type="submit"]:hover {
+
+} */
+
+button[type="submit"]:focus,
+input[type="search"]:focus {
   outline: none;
-}
-
-#searchBar h4 {
-  padding: 4px 0 0 3px;
-  font-size: 12pt;
-  font-weight: 200;
-  color: rgb(148, 148, 148);
 }
 
 .mat-nav-list {
@@ -226,18 +252,12 @@ select:focus {
     align-items: flex-end;
   }
 
-  #searchBar,
   #login h2 {
     display: none;
   }
 
-  #searchIcon2 {
-    display: inline-block;
-  }
-
   #accountIcon {
-    margin-right: 0px;
-    margin-left: 20px;
+    margin: 0px 0px 5px 20px;
   }
 
   .toolbar {
@@ -262,19 +282,23 @@ select:focus {
   }
 
   #searchIcon2 {
+    display: inline;
     width: 25px;
-    height: auto;
-    padding-top: 0;
+    padding-bottom: 3px;
+  }
+
+  form {
+    display: none;
   }
 
   #accountIcon {
     width: 25px;
-    margin-left: 5px;
-    padding-top: 6px;
+    margin: 6px 0px 0px 5px;
   }
 
   .toolbar {
-    padding-left: 10px !important;
+    padding-left: 6px !important;
+    padding-right: 10px !important;
   }
 
   .mat-icon-button {
@@ -307,56 +331,4 @@ select:focus {
     font-size: 14pt;
     margin-left: 5px;
   }
-}
-
-/* Top search Search  */
-
-form {
-  color: #555;
-  display: flex;
-  height: 40px;
-  padding: 2px;
-  border: 1px solid currentColor;
-  border-radius: 5px;
-  margin: 7px 0 0 5px;
-  background-color: white;
-}
-
-input[type="search"] {
-  border: none;
-  background: transparent;
-  margin: 0;
-  padding: 7px 8px;
-  font-size: 14px;
-  color: inherit;
-  border: 1px solid transparent;
-  border-radius: inherit;
-}
-
-input[type="search"]::placeholder {
-  color: #bbb;
-}
-
-button[type="submit"] {
-  text-indent: -999px;
-  overflow: hidden;
-  width: 40px;
-  padding: 0;
-  margin: 0;
-  border: 1px solid transparent;
-  border-radius: inherit;
-  background: transparent
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
-    no-repeat center;
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-button[type="submit"]:hover {
-  opacity: 1;
-}
-
-button[type="submit"]:focus,
-input[type="search"]:focus {
-  outline: none;
 }
