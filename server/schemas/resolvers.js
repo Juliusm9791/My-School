@@ -29,6 +29,7 @@ const resolvers = {
     },
     posts: async (parent, args) => {
       return await Post.find({})
+        .sort({ createdAt: "desc" })
         .populate("userId")
         .populate("commentId")
         .populate("departmentId")
@@ -68,7 +69,7 @@ const resolvers = {
     },
     grades: async (parent, args) => {
       return await Grade.find({});
-    }
+    },
   },
 
   Mutation: {

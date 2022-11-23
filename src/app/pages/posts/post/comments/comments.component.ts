@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommentsService } from './comments.service';
 
 @Component({
   selector: 'app-comments',
@@ -7,7 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CommentsComponent implements OnInit {
   @Input() comment: any = {};
-  constructor() {}
+
+  constructor(private commentsService: CommentsService) {}
 
   ngOnInit(): void {}
+
+  attachUserName(fName: string, lName: string) {
+    this.commentsService.attachUserNameService(`${fName} ${lName}`);
+  }
 }
