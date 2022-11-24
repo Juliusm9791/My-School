@@ -2,12 +2,14 @@
   *ngIf="(searchResults | json) != '{}'; then results; else searching"
 ></ng-container>
 
-<ng-template #searching
-  ><mat-spinner></mat-spinner>
-  <button routerLink="/" routerLinkActive="active">
-    Back to home page
-  </button></ng-template
->
+<ng-template #searching>
+  <div id="searchLoading">
+    <mat-spinner></mat-spinner>
+    <div class="backBtn">
+      <button routerLink="/" routerLinkActive="active">EXIT SEARCH</button>
+    </div>
+  </div>
+</ng-template>
 
 <ng-template #results>
   <ng-container
@@ -18,33 +20,45 @@
       else displayResults
     "
   ></ng-container>
+
   <ng-template #noResults>
-    <h1>No results found for {{ searchResults.searchInput }}</h1>
-    <hr />
+    <div class="searchResults">
+      <div class="resultsHeader">
+        <h2>NO RESULTS FOR:</h2>
+        <h3>{{ searchResults.searchInput }}</h3>
+      </div>
+    </div>
   </ng-template>
 
   <ng-template #displayResults>
-    <h1>Serach results for {{ searchResults.searchInput }}</h1>
-    <ng-container *ngFor="let title of searchResults.searchInTitle">
-      <a
-        routerLink="/posts/{{ title._id }}"
-        routerLinkActive="active"
-        innerHTML="{{ title.title | highlight: searchResults.searchInput }}"
-      >
-      </a>
-    </ng-container>
-    <hr />
-    <ng-container *ngFor="let description of searchResults.searchInDescription">
-      <a
-        routerLink="/posts/{{ description._id }}"
-        routerLinkActive="active"
-        innerHTML="{{
-          descriptionCut(description.description, searchResults.searchInput)
-            | highlight: searchResults.searchInput
-        }}"
-      >
-      </a>
+    <div class="searchResults">
+      <div class="resultsHeader">
+        <h2>SEARCH RESULTS FOR:</h2>
+        <h3>{{ searchResults.searchInput }}</h3>
+      </div>
+      <ng-container *ngFor="let title of searchResults.searchInTitle">
+        <a
+          routerLink="/posts/{{ title._id }}"
+          routerLinkActive="active"
+          innerHTML="{{ title.title | highlight: searchResults.searchInput }}"
+        >
+        </a>
+      </ng-container>
       <hr />
-    </ng-container>
+      <ng-container
+        *ngFor="let description of searchResults.searchInDescription"
+      >
+        <a
+          routerLink="/posts/{{ description._id }}"
+          routerLinkActive="active"
+          innerHTML="{{
+            descriptionCut(description.description, searchResults.searchInput)
+              | highlight: searchResults.searchInput
+          }}"
+        >
+        </a>
+        <hr />
+      </ng-container>
+    </div>
   </ng-template>
 </ng-template>
