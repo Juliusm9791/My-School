@@ -54,3 +54,8 @@ ul {
 /* .mat-form-field-wrapper .ng-tns-c99-2 {
   background-color: white !important;
 } */
+
+mark {
+  color: white !important;
+  background-color: #f98c5a !important;
+}
