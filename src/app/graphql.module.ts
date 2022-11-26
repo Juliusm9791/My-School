@@ -29,7 +29,7 @@ import { getMainDefinition } from '@apollo/client/utilities';
         // });
         const http = httpLink.create({ uri: '/graphql' });
 
-        // Create a WebSocket link:
+        // Create a WebSocket link: 1
         const ws = new WebSocketLink({
           uri: `ws://localhost:3001/graphql`,
           options: {
