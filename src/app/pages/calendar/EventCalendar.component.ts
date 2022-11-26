@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  Input,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { CalendarEvent, CalendarView } from 'angular-calendar';
 // import { isSameDay, isSameMonth } from 'date-fns';
@@ -11,6 +16,7 @@ import { PostsService } from '../posts/posts.service';
   styleUrls: ['./EventCalendar.component.css'],
 })
 export class EventCalendarComponent implements OnInit {
+  @Input() homeCalendar: boolean = false;
   view: CalendarView = CalendarView.Month;
   events: CalendarEvent<{ id: string }>[] = [];
 
