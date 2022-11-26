@@ -24,12 +24,12 @@ import { getMainDefinition } from '@apollo/client/utilities';
     {
       provide: APOLLO_OPTIONS,
       useFactory(httpLink: HttpLink): ApolloClientOptions<any> {
-        const http = httpLink.create({
-          uri: 'http://localhost:3001/graphql',
-        });
-        // const http = httpLink.create({uri: '/graphql'});
+        // const http = httpLink.create({
+        //   uri: 'http://localhost:3001/graphql',
+        // });
+        const http = httpLink.create({ uri: '/graphql' });
 
-        // Create a WebSocket link:
+        // Create a WebSocket link: 1
         const ws = new WebSocketLink({
           uri: `ws://localhost:3001/graphql`,
           options: {
@@ -48,16 +48,16 @@ import { getMainDefinition } from '@apollo/client/utilities';
 
         const link = middleware.concat(http).split(
           // split based on operation type
-          ({query}) => {
+          ({ query }) => {
             const data = getMainDefinition(query);
             return (
-              data.kind === 'OperationDefinition' && data.operation === 'subscription'
+              data.kind === 'OperationDefinition' &&
+              data.operation === 'subscription'
             );
           },
           ws,
-          http,
+          http
         );
-
 
         return {
           link,
