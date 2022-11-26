@@ -7,6 +7,7 @@ import { LoginSignupService } from '../../account/login-signup.service';
 import { PostsService } from '../posts.service';
 import { PostDetailsService } from './post-details.service';
 import { restrictedWords } from '../../../shared/bad-words-list';
+import { CommentsService } from '../post/comments/comments.service';
 
 @Component({
   selector: 'app-post-details',
@@ -23,7 +24,7 @@ export class PostDetailsComponent implements OnInit {
   private _isUserPosts: boolean = true;
 
   commentForm = new FormGroup({
-    comment: new FormControl(null, [Validators.required, restrictedWords()]),
+    comment: new FormControl('', [Validators.required, restrictedWords()]),
   });
 
   constructor(
@@ -31,8 +32,12 @@ export class PostDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private postsService: PostsService,
     private authService: AuthService,
-    private loginSignupService: LoginSignupService
+    private loginSignupService: LoginSignupService,
+    private commentsService: CommentsService
   ) {
+    this.commentsService.changeUserNameComment.subscribe((user) => {
+      this.commentForm.controls.comment.setValue(user);
+    });
     this.postDetailsService.changePost.subscribe((post) => {
       this.post = post;
     });
@@ -42,6 +47,7 @@ export class PostDetailsComponent implements OnInit {
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
+    console.log(this.commentForm.controls.comment);
   }
   get isUserPosts() {
     return this._isUserPosts;
@@ -52,7 +58,6 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.queryPost(this.postId);
     this.isLoggedIn = this.authService.isLoggedIn;
     this.me = this.loginSignupService.me;
-    console.log(this.commentForm);
   }
 
   likes(post: Post) {
