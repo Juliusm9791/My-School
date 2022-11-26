@@ -30,10 +30,8 @@ export class LoginSignupService {
       })
       .subscribe(
         (result: any) => {
-          console.log('got data', result);
+          console.log('got login/singup', result);
           this.loading = result.loading;
-          this.changeLoading.emit(this.loading);
-          console.log(this.loading, 'login service');
           let userData: any;
           if (mutationDefinition === 'addUser') {
             userData = result.data.addUser;
@@ -48,11 +46,12 @@ export class LoginSignupService {
               ? result.data.login.token
               : new Error('Something went wrong during login!')
           );
-          this.changeMe.emit(this.me);
-          !this.loading && this.router.navigate(['/account/profile']);
         },
         (error) => {
           console.log('login error', error);
+        },
+        () => {
+          this.queryMe();
         }
       );
   }
