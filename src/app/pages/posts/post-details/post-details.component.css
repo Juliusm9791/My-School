@@ -19,10 +19,11 @@
 
 .comment-row {
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
 }
 
-.comment-row .comment {
+.comment-row,
+app-comments {
   width: -webkit-fill-available;
 }
 
@@ -289,7 +290,7 @@ mat-card-content p {
 #postUserImg,
 #commentUserImg {
   width: 65px;
-  height: auto;
+  height: 65px;
 }
 
 #commentUserImg {

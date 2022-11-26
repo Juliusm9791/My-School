@@ -127,16 +127,12 @@
 
   <div id="comments-section">
     <!-- EXISTING COMMENTS -->
-    <div class="comment-row">
-      <div>
+    <ng-container *ngIf="post.commentId">
+      <div class="comment comment-row" *ngFor="let comment of post.commentId">
         <img id="commentUserImg" src="../../../../assets/images/account.png" />
+        <app-comments [comment]="comment"></app-comments>
       </div>
-      <ng-container *ngIf="post.commentId">
-        <div class="comment" *ngFor="let comment of post.commentId">
-          <app-comments [comment]="comment"></app-comments>
-        </div>
-      </ng-container>
-    </div>
+    </ng-container>
 
     <!-- COMMENT FORM -->
     <ng-container *ngIf="isLoggedIn">
