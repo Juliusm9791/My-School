@@ -1,10 +1,19 @@
-import { ReadFieldFunction } from '@apollo/client/cache/core/types/common';
+interface Group {
+  _id: string
+  groupName: string;
+}
 
 export interface Me {
   _id: string;
   firstName: string;
-  middlName: string;
   lastName: string;
+  aboutMe: string;
+  address: string;
+  phoneNumber: string;
+  gradeId: Grade[];
+  groupId: Group[];
+  departmentId: Department[];
+  password: string;
   email: string;
 }
 
@@ -51,14 +60,30 @@ interface Comment {
   createdAt: string;
 }
 
+export interface Grade {
+  _id: string;
+  gradeName: string;
+}
+
 export interface Post {
   _id: string;
+  isVisible: boolean;
   isEvent: boolean;
   eventDate: string;
+  eventEndDate: string;
+  eventLocation: string;
   title: string;
   description: string;
+  departmentId: Department;
   createdAt: string;
   reactionId: Reaction[];
   commentId: Comment[];
   userId: UserFullName;
+  gradeId: Grade[];
+}
+
+export interface searchResults {
+  searchInput: string;
+  searchInTitle: Post[];
+  searchInDescription: Post[];
 }

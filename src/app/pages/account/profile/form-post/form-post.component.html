@@ -1,9 +1,8 @@
-<p>form-post works!</p>
-
-<div class="registerPage">
-    <!-- <form [formGroup]="postForm" (ngSubmit)="onSubmit()"> -->
-        <form  [formGroup]="postForm" (ngSubmit)="onSubmit()">
-      <div class="title">
+<div id="createPostForm">
+  <h2>NEW ANNOUNCEMENT</h2>
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <div class="formColumn">
+      <div id="title">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
           <input
@@ -12,45 +11,197 @@
             formControlName="postTitle"
             required
           />
-         
+          <em
+            style="color: red"
+            *ngIf="
+              postForm.controls.postTitle.value !== '' &&
+              postForm.controls.postTitle.errors &&
+              postForm.controls.postTitle.invalid &&
+              postForm.controls.postTitle.dirty
+            "
+            >Restricted words found:
+            {{ postForm.controls.postTitle.errors["restrictedWords"] }}</em
+          >
         </mat-form-field>
       </div>
-  
-      <div class="description">
+      <div id="description">
         <mat-form-field appearance="fill">
           <mat-label>Description</mat-label>
-          <input
+
+          <textarea
             matInput
             placeholder="Description"
             formControlName="postDescription"
             required
-          />
+            matInput
+          ></textarea>
+          <em
+            style="color: red"
+            *ngIf="
+              postForm.controls.postDescription.value !== '' &&
+              postForm.controls.postDescription.invalid &&
+              postForm.controls.postDescription.dirty &&
+              postForm.controls.postDescription.errors
+            "
+            >Restricted words found:
+            {{
+              postForm.controls.postDescription.errors["restrictedWords"]
+            }}</em
+          >
         </mat-form-field>
       </div>
-      <!-- <div class="picture">
+
+      <div>
+        <mat-checkbox
+          color="primary"
+          id="visibility-check"
+          formControlName="isVisible"
+          >Save as Draft</mat-checkbox
+        >
+      </div>
+    </div>
+    <div class="formColumn">
+      <div id="department">
         <mat-form-field appearance="fill">
-          <mat-label>Description</mat-label>
-          <input
-          type="file"
-          #fileInput
-          placeholder="picture"
-          id="uploadFile"
-          
-          name="uploadFile"
-          multiple="multiple"
-          accept="image/*"
-           
-          />
+          <mat-label>Department</mat-label>
+          <mat-select formControlName="departmentId">
+            <mat-option>-- None --</mat-option>
+            <ng-container *ngFor="let depatment of departmentList">
+              <mat-option value="{{ depatment._id }}"
+                >{{ depatment.depName }}
+              </mat-option>
+            </ng-container>
+          </mat-select>
         </mat-form-field>
-      </div> -->
-  
-      
-      <div class="submitBtn">
-        <button type="submit">SUBMIT</button>
       </div>
-    </form>
-  </div>
-  
-  <!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
+      <div id="event">
+        <div>
+          <mat-checkbox
+            color="primary"
+            id="event-check"
+            formControlName="isEvent"
+            >Event</mat-checkbox
+          >
+        </div>
+        <div id="toggleDate" *ngIf="postForm.controls.isEvent.value">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose Event Start Date</mat-label>
+            <input
+              matInput
+              formControlName="eventDate"
+              type="datetime-local"
+              [min]="minDate"
+            />
+          </mat-form-field>
+        </div>
+        <div id="toggleDate" *ngIf="postForm.controls.isEvent.value">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose Event End Date</mat-label>
+            <input
+              matInput
+              formControlName="eventEndDate"
+              type="datetime-local"
+              [min]="minDate"
+            />
+          </mat-form-field>
+        </div>
+        <div id="eventLocation" *ngIf="postForm.controls.isEvent.value">
+          <mat-form-field appearance="fill">
+            <mat-label>Event Location</mat-label>
+
+            <textarea
+              matInput
+              placeholder="Event location"
+              formControlName="eventLocation"
+              required
+              matInput
+            ></textarea>
+            <em
+              style="color: red"
+              *ngIf="
+                postForm.controls.eventLocation.value !== '' &&
+                postForm.controls.eventLocation.invalid &&
+                postForm.controls.eventLocation.dirty &&
+                postForm.controls.eventLocation.errors
+              "
+              >Restricted words found:
+              {{
+                postForm.controls.eventLocation.errors["restrictedWords"]
+              }}</em
+            >
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="formColumn">
+      <div id="postContent">
+        <div id="images-block">
+          <img
+            id="defaultImg"
+            src="../../../assets/images/default-placeholder-300x300.png"
+          />
+          <div id="extra-images">
+            <img
+              class="extraImgs"
+              src="../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../assets/images/default-placeholder-300x300.png"
+            />
+          </div>
+        </div>
+      </div>
+      <h5>Add up to 5 photos</h5>
+      <div class="submitBtn">
+        <button id="cancel" (click)="handleCancel()">CANCEL</button>
+        <ng-container *ngIf="!postId">
+          <button
+            class="submitOrUpdate"
+            type="submit"
+            [disabled]="!postForm.valid"
+          >
+            SUBMIT
+          </button>
+        </ng-container>
+        <ng-container *ngIf="postId">
+          <button
+            class="submitOrUpdate"
+            type="submit"
+            [disabled]="!postForm.valid"
+          >
+            UPDATE
+          </button>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- <div id="picUpload">
+          <mat-form-field appearance="fill">
+            <mat-label>Choose Files</mat-label>
+            <input
+            type="file"
+            #fileInput
+            placeholder="picture"
+            id="uploadFile"
+            name="uploadFile"
+            multiple="multiple"
+            accept="image/*"
+            />
+          </mat-form-field>
+        </div>   -->
+  </form>
+</div>
+
+<!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
+
   <a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a> -->
-  

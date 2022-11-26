@@ -7,6 +7,7 @@ const {
   Post,
   Comment,
   Reaction,
+  Grade,
 } = require("../models");
 const pubsub = new PubSub();
 
@@ -14,18 +15,6 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-
-    //     const user = await User.findById(args._id)
-    //       .populate("departmentId")
-    //       .populate("groupId");
-
-    //     return user;
-    //   }
-
-    //   throw new AuthenticationError("Not logged in");
-    // },
     users: async () => {
       return await User.find({}).populate("departmentId").populate("groupId");
     },
@@ -33,15 +22,19 @@ const resolvers = {
       if (("me", context.user)) {
         return await User.findById(context.user._id)
           .populate("departmentId")
+          .populate("gradeId")
           .populate("groupId");
       }
       throw new AuthenticationError("You need to be logged in!");
     },
     posts: async (parent, args) => {
       return await Post.find({})
+        .sort({ createdAt: "desc" })
         .populate("userId")
         .populate("commentId")
+        .populate("departmentId")
         .populate("reactionId")
+        .populate("gradeId")
         .populate({
           path: "reactionId",
           populate: "userId",
@@ -56,7 +49,9 @@ const resolvers = {
       return await Post.findById(args._id)
         .populate("userId")
         .populate("commentId")
+        .populate("departmentId")
         .populate("reactionId")
+        .populate("gradeId")
         .populate({
           path: "reactionId",
           populate: "userId",
@@ -72,6 +67,9 @@ const resolvers = {
     departments: async (parent, args) => {
       return await Department.find({});
     },
+    grades: async (parent, args) => {
+      return await Grade.find({});
+    },
   },
 
   Mutation: {
@@ -82,43 +80,87 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parents, args, context) => {
-      // console.log(context);
       const newPost = await Post.create({
+        isVisible: args.isVisible,
+        isEvent: args.isEvent,
+        eventDate: args.eventDate,
+        eventEndDate: args.eventEndDate,
+        eventLocation: args.eventLocation,
+        departmentId: args.departmentId,
         title: args.title,
         description: args.description,
-        pictures: args.pictures,
         commentId: args.commentId,
         reactionId: args.ReactionId,
         userId: context.user._id,
       });
       pubsub.publish("POST_ADDED", {
         postAdded: {
+          isVisible: args.isVisible,
           title: args.title,
           description: args.description,
-          pictures: args.pictures,
+          eventDate: args.eventDate,
+          eventEndDate: args.eventEndDate,
+          eventLocation: args.eventLocation,
           commentId: args.commentId,
           reactionId: args.ReactionId,
           userId: context.user._id,
         },
       });
-
-      console.log("ADD POST", args);
       return newPost;
+    },
+    addComment: async (parents, args, context) => {
+      if (context.user) {
+        const newComment = await Comment.create({
+          comment: args.comment,
+          userId: context.user._id,
+        });
+        const updatedPost = await Post.findByIdAndUpdate(
+          { _id: args.postId },
+          { $addToSet: { commentId: newComment._id } },
+          { new: true }
+        );
+        pubsub.publish("COMMENT_ADDED", {
+          commentAdded: {
+            comment: args.comment,
+            userId: context.user._id,
+          },
+        });
+        return updatedPost;
+      }
+      throw new AuthenticationError("Not logged in");
     },
     updatePost: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndUpdate(
           args._id,
           {
+            isVisible: args.isVisible,
+            isEvent: args.isEvent,
+            eventDate: args.eventDate,
+            eventEndDate: args.eventEndDate,
+            eventLocation: args.eventLocation,
+            departmentId: args.departmentId,
             title: args.title,
             description: args.description,
-            pictures: args.pictures,
           },
           {
             new: true,
           }
         );
       }
+      pubsub.publish("POST_UPDATED", {
+        postUpdated: {
+          isVisible: args.isVisible,
+          title: args.title,
+          description: args.description,
+          eventDate: args.eventDate,
+          eventEndDate: args.eventEndDate,
+          eventLocation: args.eventLocation,
+          commentId: args.commentId,
+          reactionId: args.ReactionId,
+          userId: context.user._id,
+        },
+      });
 
       throw new AuthenticationError("Not logged in");
     },
@@ -126,13 +168,20 @@ const resolvers = {
     deletePost: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndDelete(
-          { _id: args._id }
+          { _id: args._id },
+          async (err, post) => {
+            await Comment.deleteMany({
+              _id: {
+                $in: post.commentId,
+              },
+            });
+          }
         );
       }
       throw new AuthenticationError("Not logged in");
     },
 
-    updateUser: async (parent, args, context) => {
+    updateMe: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
           new: true,
@@ -159,6 +208,7 @@ const resolvers = {
   },
   Subscription: {
     postAdded: { subscribe: () => pubsub.asyncIterator("POST_ADDED") },
+    commentAdded: { subscribe: () => pubsub.asyncIterator("COMMENT_ADDED") },
   },
 };
 

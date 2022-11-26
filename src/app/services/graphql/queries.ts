@@ -1,11 +1,18 @@
 import { gql } from 'apollo-angular';
-
+//
 const postBody = `
 {
   _id
   isEvent
+  isVisible
   eventDate
+  eventEndDate
+  eventLocation
   title
+  departmentId{
+    _id
+    depName
+  }
   description
   createdAt
   reactionId {
@@ -32,18 +39,40 @@ const postBody = `
     firstName
     lastName
   }
+  gradeId {
+    _id
+    gradeName
+  }
 }
 }
 `;
 
 export const QUERY_ME = gql`
-  query user {
+  query Query {
     me {
       _id
-      firstName
-      middleName
-      lastName
+      aboutMe
+      address
       email
+      firstName
+      lastName
+      aboutMe
+      phoneNumber
+      address
+      gradeId {
+        _id
+        gradeName
+      }
+      departmentId {
+        _id
+        depName
+      }
+      groupId {
+        _id
+        groupName
+      }
+      password
+      phoneNumber
     }
   }
 `;
@@ -65,6 +94,16 @@ export const QUERY_DEPARTMENTS = gql`
     }
   }
 `;
+
+export const QUERY_GRADES = gql`
+  query grades {
+    grades {
+      _id
+      gradeName
+    }
+  }
+`;
+
 export const QUERY_POSTS = gql`
   query posts {
     posts ${postBody}

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Me, Post } from 'src/app/types/types';
 import { LoginSignupService } from '../../account/login-signup.service';
 import { PostsService } from '../posts.service';
 import { PostDetailsService } from './post-details.service';
+import { restrictedWords } from '../../../shared/bad-words-list';
+import { CommentsService } from '../post/comments/comments.service';
 
 @Component({
   selector: 'app-post-details',
@@ -12,10 +15,17 @@ import { PostDetailsService } from './post-details.service';
   styleUrls: ['./post-details.component.css'],
 })
 export class PostDetailsComponent implements OnInit {
+  postId: any;
   post: Post = {} as Post;
   loading: boolean = true;
   isLoggedIn: boolean = false;
   me: Me = {} as Me;
+  userPosts: Post[] = [];
+  private _isUserPosts: boolean = true;
+
+  commentForm = new FormGroup({
+    comment: new FormControl('', [Validators.required, restrictedWords()]),
+  });
 
   constructor(
     private postDetailsService: PostDetailsService,
@@ -23,7 +33,11 @@ export class PostDetailsComponent implements OnInit {
     private postsService: PostsService,
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
+    private commentsService: CommentsService
   ) {
+    this.commentsService.changeUserNameComment.subscribe((user) => {
+      this.commentForm.controls.comment.setValue(user);
+    });
     this.postDetailsService.changePost.subscribe((post) => {
       this.post = post;
     });
@@ -33,16 +47,28 @@ export class PostDetailsComponent implements OnInit {
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });
+    console.log(this.commentForm.controls.comment);
+  }
+  get isUserPosts() {
+    return this._isUserPosts;
   }
 
   ngOnInit(): void {
-    const postId: any = this.route.snapshot.paramMap.get('id');
-    this.postDetailsService.queryPost(postId);
+    this.postId = this.route.snapshot.paramMap.get('id');
+    this.postDetailsService.queryPost(this.postId);
     this.isLoggedIn = this.authService.isLoggedIn;
     this.me = this.loginSignupService.me;
   }
 
   likes(post: Post) {
     return this.postsService.countLikes(post);
+  }
+
+  onSubmit() {
+    let comment: any = this.commentForm.controls.comment.value;
+    if (comment !== '' || null) {
+      this.postDetailsService.addComment(comment, this.postId);
+      this.commentForm.reset();
+    }
   }
 }

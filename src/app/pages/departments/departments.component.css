@@ -4,11 +4,11 @@
 }
 
 #departments {
-  margin-bottom: 200px;
+  margin: 40px auto 200px auto;
+  width: 80%;
 }
 
 #departments h1 {
-  margin: 53px 0px 20px 35px;
   font-family: Grotesk;
   letter-spacing: 0.1rem;
   font-weight: bold;
@@ -20,11 +20,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: auto 40px;
-  margin-bottom: 100px;
 }
+
 app-department {
-  width: 30%;
+  width: 33%;
 }
 
 @media only screen and (max-width: 1000px) {

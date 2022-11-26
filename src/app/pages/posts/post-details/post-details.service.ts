@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ADD_COMMENT } from 'src/app/services/graphql/mutations';
 import { QUERY_POST } from 'src/app/services/graphql/queries';
 import { Post } from '../../../types/types';
 
@@ -36,7 +37,35 @@ export class PostDetailsService {
         }
       );
   }
-  get post(){
+
+  addComment(comment: string, postId: string) {
+    this.apollo
+      .mutate({
+        mutation: ADD_COMMENT,
+        variables: { comment: comment, postId: postId },
+        refetchQueries: [
+          {
+            query: QUERY_POST,
+            variables: {
+              _id: postId,
+            },
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('got comment', result);
+          this.loading = result.loading;
+          result && this.queryPost(postId);
+          // result && this.router.navigate(['/account/profile']);
+        },
+        (error) => {
+          console.log('add comment error', error);
+        }
+      );
+  }
+
+  get post() {
     return this._post;
   }
 }

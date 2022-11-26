@@ -1,0 +1,121 @@
+<div id="profile">
+  <h1>EDIT PROFILE:</h1>
+  <!-- 
+  <ng-container
+    *ngIf="loading; then spinner_content; else profile_content"
+  ></ng-container> -->
+
+  <!-- <ng-template #spinner_content>LOADING...</ng-template> -->
+  <!-- 
+  <ng-template #profile_content> -->
+  <div id="profile-container">
+    <div id="profile-header">
+      <h2>Please complete your profile!</h2>
+    </div>
+    <form
+      [formGroup]="profileForm"
+      (ngSubmit)="onSubmit()"
+      id="profile-details"
+    >
+      <div>
+        <div class="profile-row">
+          <div id="profile-avatar">
+            <img id="profile-img" src="../../../../assets/images/account.png" />
+            <a id="update-avatar" href="#">
+              <h5>Update Avatar</h5>
+            </a>
+          </div>
+          <div class="profile-col">
+            <mat-form-field appearance="fill">
+              <mat-label>First Name:</mat-label>
+              <input matInput formControlName="firstName" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Last Name:</mat-label>
+              <input matInput formControlName="lastName" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email Address:</mat-label>
+              <input matInput formControlName="emailAddress" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Address:</mat-label>
+              <input matInput formControlName="address" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Phone Number:</mat-label>
+              <input matInput formControlName="phoneNumber" />
+            </mat-form-field>
+          </div>
+          <div class="profile-col">
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Department:</mat-label>
+              <mat-select formControlName="departmentId">
+                <mat-option>-- None --</mat-option>
+                <ng-container *ngFor="let depatment of departmentList">
+                  <mat-option value="{{ depatment._id }}"
+                    >{{ depatment.depName }}
+                  </mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Departments:</mat-label>
+              <mat-select formControlName="departmentId" multiple>
+                <mat-option *ngFor="let department of departmentList" value="{{department._id}}">{{department.depName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Group:</mat-label>
+              <mat-select formControlName="groupId">
+                <mat-option>-- None --</mat-option>
+                <ng-container *ngFor="let faculty of facultyList">
+                  <mat-option value="{{ faculty._id }}">{{ faculty.groupName }}
+                  </mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Groups:</mat-label>
+              <mat-select formControlName="groupId" multiple>
+                <mat-option *ngFor="let faculty of facultyList" value="{{faculty._id}}">{{faculty.groupName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Grade:</mat-label>
+              <mat-select formControlName="gradeId">
+                <mat-option>-- None --</mat-option>
+                <ng-container *ngFor="let grade of gradeList">
+                  <mat-option value="{{ grade._id }}">{{ grade.gradeName }}
+                  </mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Grades:</mat-label>
+              <mat-select formControlName="gradeId" multiple>
+                <mat-option *ngFor="let grade of gradeList" value="{{grade._id}}">{{grade.gradeName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="profile-col bio">
+            <mat-form-field id="bio-input" appearance="fill">
+              <mat-label>About:</mat-label>
+              <textarea matInput formControlName="aboutMe"> </textarea>
+            </mat-form-field>
+
+            <div class="submitBtn">
+              <button type="submit">SUBMIT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- </ng-template> -->
+</div>

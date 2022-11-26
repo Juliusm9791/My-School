@@ -11,8 +11,10 @@ import { PostsService } from '../posts.service';
 export class PostComponent implements OnInit {
   @Input() post: Post = {} as Post;
   @Input() countLikes: number = 0;
-  @Input() isUserPosts: boolean = false
+  @Input() isUserPosts: boolean = false;
   isFullDescription: boolean = false;
+  updatePostData: Post = {} as Post;
+  postDataLoading: boolean = true;
 
   constructor(private router: Router, private postService: PostsService) {}
 
@@ -27,7 +29,7 @@ export class PostComponent implements OnInit {
   }
 
   postCut(s: string) {
-    const spaceIndex = s.split('').indexOf(' ', 150);
+    const spaceIndex = s.split('').indexOf(' ', 300);
     return s.split('').slice(0, spaceIndex).join('');
   }
 
@@ -37,6 +39,6 @@ export class PostComponent implements OnInit {
     }
   }
   updatePost(id: string) {
-    console.log(id);
+    this.router.navigate(['/account/profile/form-post/' + id]);
   }
 }

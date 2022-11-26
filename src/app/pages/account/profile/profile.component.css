@@ -1,23 +1,43 @@
 #profile {
-  margin: 100px auto 200px auto;
+  margin: 40px auto 200px auto;
   width: 80%;
+}
+
+#profile-container {
+  background-color: rgb(244, 244, 244);
+  border-radius: 5px;
+  padding-bottom: 50px;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  border-radius: 8px;
 }
 
 #profile h1,
 #profile-header h2,
-.profile-subheader h2 {
+#announcements-subheader h2,
+#notifications-subheader h2 {
   font-family: Grotesk;
   font-size: 16pt;
   font-weight: bold;
   letter-spacing: 0.1rem;
-  margin: 40px auto 10px auto;
   color: #4050b2;
 }
 
+section {
+  margin: 20px 40px 10px 40px;
+  background-color: white;
+  min-height: 130px;
+  border-radius: 8px;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+}
+
 #profile-header,
-.profile-subheader {
-  background-color: #4050b2;
-  padding: 15px;
+#announcements-subheader,
+#notifications-subheader {
+  background-color: #3e5bb3;
+  background-image: linear-gradient(180deg, #3e5bb3 16%, #2a4fae 100%);
+  padding: 10px 10px 10px 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,51 +45,42 @@
 }
 
 #profile-header {
-  margin-top: 30px;
+  border-radius: 7px 7px 0 0;
+}
+
+#announcements-subheader,
+#notifications-subheader {
+  background-color: #6fa465;
+  background-image: linear-gradient(180deg, #6fa465 69%, #649b5a 100%);
   border-radius: 7px 7px 0 0;
 }
 
 #profile-header h2,
-.profile-subheader h2,
-.profile-subheader h3 {
+#announcements-subheader h2,
+#notifications-subheader h2 {
   color: white;
-  margin: 0px 20px;
+  margin: 0px 10px;
 }
 
+/* Log out and Create Post buttons */
 #profile-header h3,
-.profile-subheader h3 {
-  color: white;
+#announcements-subheader h3,
+#notifications-subheader h3 {
+  background-color: rgb(255, 255, 255);
+  color: #4050b2;
   font-family: Grotesk;
   font-size: 14pt;
-  margin: auto;
-  margin-right: 10px;
   letter-spacing: 0.08rem;
-}
-
-#profile-body a:hover,
-#profile-col a:hover,
-#profile-header h3:hover,
-.profile-subheader h3:hover,
-#profile-details a:hover {
-  color: #f98c5a !important;
-}
-
-#profile-header a:link,
-#profile-header a:active,
-#profile-header a:visited,
-#profile-header a:hover,
-.profile-subheader a:link,
-#profile-details a:link {
-  text-decoration: none;
-}
-
-#profile-container {
-  background-color: rgb(244, 244, 244);
+  margin: auto;
+  margin-right: 5px;
+  padding: 3px 10px;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
   border-radius: 5px;
 }
 
 #profile-details {
-  padding: 30px 30px 10px 30px;
+  padding: 10px 40px 0px 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -81,18 +92,35 @@
   justify-content: flex-start;
 }
 
-#profile-col {
+#profile-avatar {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  margin-right: 30px;
+  align-items: center;
+  margin-right: 20px;
 }
 
-#profile-body a,
-#profile-col a {
-  margin: 10px 0px 20px 28px;
+.profile-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex start;
+  align-items: left;
+  margin: 20px 0 0 0;
+}
+
+#update-avatar h5,
+#edit-profile h5 {
+  margin: 10px 0px 10px 0px;
   text-decoration: none;
   color: #4050b2;
+}
+
+#edit-profile h5 {
+  margin-right: 15px;
+}
+
+section h5 {
+  color: grey;
+  margin: 20px 0 0 20px;
 }
 
 #profile-img {
@@ -100,16 +128,10 @@
   width: 130px;
 }
 
-.profile-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex start;
-}
-
 .profile-col h4 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14pt;
-  margin: 10px;
+  font-size: 12pt;
+  margin: 10px 0 0 10px;
   color: rgb(51, 51, 51);
 }
 
@@ -117,6 +139,26 @@
   color: #4050b2;
 }
 
-#edit-profile h5 {
-  margin-top: -10px;
+#profile-avatar h5:hover,
+#profile-header h3:hover,
+#announcements-subheader h3:hover,
+#notifications-subheader h3:hover,
+#edit-profile h5:hover {
+  color: #f98c5a !important;
+}
+
+#profile-header a:link,
+#profile-header a:active,
+#profile-header a:visited,
+#profile-header a:hover,
+#announcements-subheader a:link,
+#notifications-subheader a:link,
+#profile-details a:link {
+  text-decoration: none;
+}
+
+#announcements-body,
+#notifications-body {
+  margin: 40px auto 50px auto;
+  width: 85%;
 }

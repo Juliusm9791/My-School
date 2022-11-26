@@ -35,6 +35,18 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  aboutMe: {
+    type: String,
+    required: false,
+  },
+  address: {
+    type: String,
+    required: false,
+  },
+  phoneNumber: {
+    type: String,
+    required: false,
+  },
   departmentId: [
     {
       type: Schema.Types.ObjectId,
@@ -45,6 +57,12 @@ const userSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Group",
+    },
+  ],
+  gradeId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Grade",
     },
   ],
 });

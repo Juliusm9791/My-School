@@ -13,7 +13,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
 body {
@@ -45,4 +45,17 @@ code {
 ol,
 ul {
   list-style: none;
+}
+
+.mat-select-placeholder {
+  color: white !important;
+}
+
+/* .mat-form-field-wrapper .ng-tns-c99-2 {
+  background-color: white !important;
+} */
+
+mark {
+  color: white !important;
+  background-color: #f98c5a !important;
 }

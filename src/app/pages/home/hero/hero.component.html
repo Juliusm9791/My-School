@@ -1,11 +1,7 @@
-<ngu-carousel
-  #myCarousel
-  [inputs]="carouselBanner"
-  [dataSource]="images"
->
-  <button NguCarouselPrev class="leftRs">
+<ngu-carousel #myCarousel [inputs]="carouselBanner" [dataSource]="images">
+  <!-- <button NguCarouselPrev class="leftRs">
     <mat-icon id="leftArrow">keyboard_arrow_left</mat-icon>
-  </button>
+  </button> -->
 
   <ngu-item
     *nguCarouselDef="let item; index as i; let ani = animate"

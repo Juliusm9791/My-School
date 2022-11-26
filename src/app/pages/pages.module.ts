@@ -18,6 +18,10 @@ import { DepartmentComponent } from './departments/department/department.compone
 import { FormPostComponent } from './account/profile/form-post/form-post.component';
 import { HeroComponent } from './home/hero/hero.component';
 import { DepartmentDetailsComponent } from './departments/department-details/department-details.component';
+import { ProfilePostComponent } from './account/profile/profile-post/profile-post.component';
+import { ProfileEditComponent } from './account/profile/profile-edit/profile-edit/profile-edit.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { HighlightPipe } from './pipes/highlight.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,12 @@ import { DepartmentDetailsComponent } from './departments/department-details/dep
     DepartmentComponent,
     FormPostComponent,
     DepartmentDetailsComponent,
+    ProfilePostComponent,
+    ProfilePostComponent,
+    ProfileEditComponent,
+    ProfileEditComponent,
+    SearchResultsComponent,
+    HighlightPipe,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
@@ -45,7 +55,10 @@ import { DepartmentDetailsComponent } from './departments/department-details/dep
     FacultyComponent,
     DepartmentsComponent,
     PostDetailsComponent,
-    FormPostComponent
+    FormPostComponent,
+    ProfilePostComponent,
+    ProfileEditComponent,
+    SearchResultsComponent,
   ],
 })
 export class PagesModule {}

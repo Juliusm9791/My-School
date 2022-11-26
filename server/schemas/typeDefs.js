@@ -5,6 +5,11 @@ const typeDefs = gql`
     _id: ID
     depName: String!
   }
+  
+  type Grade {
+    _id: ID
+    gradeName: String!
+  }
 
   type Group {
     _id: ID
@@ -19,8 +24,12 @@ const typeDefs = gql`
     avatar: String
     email: String!
     password: String!
+    aboutMe: String
+    address: String
+    phoneNumber: String
     departmentId: [Department]
     groupId: [Group]
+    gradeId: [Grade]
   }
 
   type Reaction {
@@ -46,11 +55,16 @@ const typeDefs = gql`
 
   type Post {
     _id: ID
+    isVisible: Boolean!
     isEvent: Boolean!
     eventDate: String
+    eventEndDate: String
+    eventLocation: String
     title: String!
     description: String!
     pictures: String
+    departmentId: Department
+    gradeId: [Grade]
     userId: User
     commentId: [Comment]
     reactionId: [Reaction]
@@ -66,6 +80,7 @@ const typeDefs = gql`
     post(_id: ID!): Post
     faculties: [Group]
     departments: [Department]
+    grades: [Grade]
   }
 
   type Mutation {
@@ -77,36 +92,60 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
-    updateUser(
-      firstName: String!
+    updateMe(
+      firstName: String
       middleName: String
-      lastName: String!
+      lastName: String
       avatar: String
-      email: String!
-      password: String!
+      email: String
+      password: String
+      aboutMe: String
+      address: String
+      phoneNumber: String
+      groupId: [ID]
+      gradeId: [ID]
+      departmentId: [ID]
     ): User
     login(email: String!, password: String!): Auth
     addPost(
       userId: ID
+      isVisible: Boolean!
+      isEvent: Boolean!
+      eventDate: String
+      eventEndDate: String
+      eventLocation: String
       title: String!
       description: String
+      departmentId: ID
       pictures: String
       commentId: ID
       reactionId: ID
     ): Post
     updatePost(
       _id: ID!
+      userId: ID
+      isVisible: Boolean!
+      isEvent: Boolean!
+      eventDate: String
+      eventEndDate: String
+      eventLocation: String
       title: String!
       description: String
+      departmentId: ID
       pictures: String
+      commentId: ID
+      reactionId: ID
     ): Post
-    deletePost(
-      _id: ID!
-    ): Post
+
+    addComment(comment: String!, postId: ID!): Post
+
+    deletePost(_id: ID!): Post
   }
 
   type Subscription {
     postAdded: Post
+    commentAdded: Comment
+    postUpdated: Post
   }
 `;
 

@@ -1,92 +1,168 @@
 <div *ngIf="loading"><mat-spinner></mat-spinner></div>
 
-<mat-card *ngIf="!loading">
-  <mat-card-title>
-    <div class="postTitle">
-      <h2>{{ post.title }}</h2>
-    </div>
-  </mat-card-title>
-
-  <div class="postContent">
-    <div class="imagesBlock">
-      <img
-        id="defaultImg"
-        src="../../../../assets/images/default-placeholder-300x300.png"
-      />
-      <div>
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-      </div>
-    </div>
-
-    <div>
-      <mat-card-subtitle>
-        <div class="subtitleRow">
-          <img id="postUserImg" src="../../../../assets/images/account.png" />
-          <h4 id="postUserDetail">
-            {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
-            {{ post.createdAt | date: "short" }}
-          </h4>
+<div id="post-details">
+  <ng-container *ngIf="post.isVisible">
+    <mat-card *ngIf="!loading">
+      <mat-card-title>
+        <div>
+          <h2>{{ post.title }}</h2>
         </div>
-      </mat-card-subtitle>
+        <div id="postDepartment">
+          <h2 *ngIf="post.departmentId">
+            {{ post.departmentId.depName | titlecase }}
+          </h2>
+        </div>
+      </mat-card-title>
 
-      <mat-card-content>
-        <p id="description">{{ post.description }}</p>
-        <ng-container *ngIf="post.commentId">
-          <hr />
-          <div class="comment" *ngFor="let comment of post.commentId">
-            <app-comments [comment]="comment"></app-comments>
+      <div class="post-content">
+        <div class="images-block">
+          <img
+            id="defaultImg"
+            src="../../../../assets/images/default-placeholder-300x300.png"
+          />
+          <div id="extra-image-column">
+            <img
+              class="extraImgs"
+              src="../../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../../assets/images/default-placeholder-300x300.png"
+            />
+            <img
+              class="extraImgs"
+              src="../../../../assets/images/default-placeholder-300x300.png"
+            />
           </div>
-        </ng-container>
-        <hr />
-        <ng-container *ngIf="isLoggedIn">
-          <mat-form-field id="commentField" appearance="fill">
-            <mat-label>{{ me.firstName }} leave a comment</mat-label>
-            <textarea matInput></textarea>
-          </mat-form-field>
-        </ng-container>
-        <ng-container *ngIf="!isLoggedIn">
-          <a routerLink="/account/login">Leave a comment</a>
-        </ng-container>
-      </mat-card-content>
-    </div>
+        </div>
+
+        <div id="post-body">
+          <mat-card-subtitle>
+            <div class="subtitleRow">
+              <img
+                id="postUserImg"
+                src="../../../../assets/images/account.png"
+              />
+              <h4 id="postUserDetail">
+                {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
+                {{ post.createdAt | date: "short" }}
+              </h4>
+            </div>
+          </mat-card-subtitle>
+
+          <div id="post-body-row">
+            <div>
+              <mat-card-content>
+                <p id="description">{{ post.description }}</p>
+              </mat-card-content>
+            </div>
+            <!-- EVENT CARD -->
+            <ng-container *ngIf="post.isEvent">
+              <div id="event-card">
+                <div class="event-card-row">
+                  <img
+                    id="event-card-icon"
+                    src="../../../../assets/images/calendar.png"
+                  />
+                  <h3>Event</h3>
+                </div>
+                <div class="event-card-row">
+                  <div class="event-card-column">
+                    <h4>DATE:</h4>
+                    <h4>HOUR:</h4>
+                    <hr style="margin: 2px" />
+                    <h4>DATE:</h4>
+                    <h4>HOUR:</h4>
+                  </div>
+                  <div class="event-card-column event-values">
+                    <h4>{{ post.eventDate | date: "shortDate" }}</h4>
+                    <h4>{{ post.eventDate | date: "shortTime" }}</h4>
+                    <hr style="margin: 2px" />
+                    <h4>{{ post.eventEndDate | date: "shortDate" }}</h4>
+                    <h4>{{ post.eventEndDate | date: "shortTime" }}</h4>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <!-- <ng-container *ngIf="!isLoggedIn">
+                  <a routerLink="/account/login">Leave a comment</a>
+                </ng-container> -->
+          </div>
+        </div>
+      </div>
+
+      <mat-divider inset></mat-divider>
+
+      <mat-card-actions>
+        <div class="post-reactions">
+          <div class="likes">
+            {{ likes(post) }}
+            <button id="likeIcon" mat-icon-button>
+              <mat-icon>thumb_up_alt</mat-icon>
+            </button>
+          </div>
+          <div class="comments">
+            {{ post.commentId.length }}
+            <button id="commentIcon" mat-icon-button>
+              <mat-icon>chat_bubble</mat-icon>
+            </button>
+          </div>
+          <div class="shares">
+            <button id="shareIcon" mat-icon-button>
+              <mat-icon id="share-adjust">reply</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+
+  <ng-container *ngIf="!post.isVisible">
+    <h1>The Post Is Not Visible</h1>
+  </ng-container>
+
+  <div id="comments-section">
+    <!-- EXISTING COMMENTS -->
+    <ng-container *ngIf="post.commentId">
+      <div class="comment comment-row" *ngFor="let comment of post.commentId">
+        <img id="commentUserImg" src="../../../../assets/images/account.png" />
+        <app-comments [comment]="comment"></app-comments>
+      </div>
+    </ng-container>
+
+    <!-- COMMENT FORM -->
+    <ng-container *ngIf="isLoggedIn">
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field id="comment-field" appearance="fill">
+          <mat-label>{{ me.firstName }} leave a comment</mat-label>
+          <textarea matInput formControlName="comment"></textarea>
+          <em
+            style="color: red"
+            *ngIf="
+              commentForm.controls.comment.value !== '' &&
+              commentForm.controls.comment.errors &&
+              commentForm.controls.comment.invalid &&
+              commentForm.controls.comment.dirty
+            "
+            >Restricted words found:
+            {{ commentForm.controls.comment.errors["restrictedWords"] }}</em
+          >
+        </mat-form-field>
+
+        <div class="submitBtnRow">
+          <button
+            class="comment-submit"
+            type="submit"
+            [disabled]="!commentForm.controls.comment.valid"
+          >
+            SUBMIT
+          </button>
+        </div>
+      </form>
+    </ng-container>
   </div>
-
-  <mat-divider inset></mat-divider>
-
-  <mat-card-actions>
-    <div class="postReactions">
-      <div class="likes">
-        {{ likes(post) }}
-        <button id="likeIcon" mat-icon-button>
-          <mat-icon>thumb_up_alt</mat-icon>
-        </button>
-      </div>
-      <div class="comments">
-        {{ post.commentId.length }}
-        <button id="commentIcon" mat-icon-button>
-          <mat-icon>chat_bubble</mat-icon>
-        </button>
-      </div>
-      <div class="shares">
-        <button id="shareIcon" mat-icon-button>
-          <mat-icon id="shareAdjust">reply</mat-icon>
-        </button>
-      </div>
-    </div>
-  </mat-card-actions>
-</mat-card>
+</div>

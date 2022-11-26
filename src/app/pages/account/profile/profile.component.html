@@ -18,52 +18,69 @@
       <div id="profile-details">
         <div>
           <div class="profile-row">
-            <div id="profile-col">
+            <div id="profile-avatar">
               <img
                 id="profile-img"
                 src="../../../../assets/images/account.png"
               />
-              <a id="update-avatar" href="#">
-                <h5>Update Avatar</h5>
-              </a>
             </div>
             <div class="profile-col key">
               <h4>Name:</h4>
               <h4>Email:</h4>
               <h4>School:</h4>
-              <h4>Status:</h4>
+              <h4>Group:</h4>
             </div>
             <div class="profile-col value">
               <h4>{{ me.firstName }} {{ me.lastName }}</h4>
               <h4>{{ me.email }}</h4>
               <h4>Value</h4>
-              <h4>Value</h4>
+              <ng-container *ngFor="let group of me.groupId">
+                <h4>{{ group.groupName }}</h4>
+              </ng-container>
             </div>
           </div>
         </div>
-        <a id="edit-profile" href="#">
+        <a id="edit-profile" class="post-card" (click)="profileEdit(me._id)">
           <h5>Edit Profile</h5>
         </a>
       </div>
-      <div class="profile-subheader">
-        <h2>Your Posts:</h2>
-        <a [routerLink]="['form-post']">
-          <h3>Create Post</h3>
-        </a>
-      </div>
+
+      <section>
+        <div id="notifications-subheader">
+          <h2>Your Notifications:</h2>
+        </div>
+        <div id="notifications-body">
+          <h5>...You have no notifications</h5>
+        </div>
+      </section>
+
+      <section>
+        <div id="announcements-subheader">
+          <h2>Your Announcements:</h2>
+          <a [routerLink]="['form-post']">
+            <h3>New Post</h3>
+          </a>
+        </div>
+
+        <div id="announcements-body">
+          <div *ngIf="postsLoading">
+            <mat-spinner></mat-spinner>
+          </div>
+          <div *ngIf="userPosts.length === 0">
+            <h5>...You have no announcements</h5>
+          </div>
+          <div *ngIf="userPosts">
+            <ng-container *ngFor="let singlepost of userPosts">
+              <app-profile-post
+                [post]="singlepost"
+                [countLikes]="likes(singlepost)"
+                [isUserPosts]="isUserPosts"
+              >
+              </app-profile-post>
+            </ng-container>
+          </div>
+        </div>
+      </section>
     </div>
   </ng-template>
-
-  <h1>{{ me.firstName }} ANNOUNCEMENTS:</h1>
-  <div *ngIf="postsLoading"><mat-spinner></mat-spinner></div>
-  <!-- <div *ngIf="error">Error :(</div> -->
-  <div *ngIf="userPosts">
-    <ng-container *ngFor="let singlepost of userPosts">
-      <app-post
-        [post]="singlepost"
-        [countLikes]="likes(singlepost)"
-        [isUserPosts]="isUserPosts"
-      ></app-post>
-    </ng-container>
-  </div>
 </div>

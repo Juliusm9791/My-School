@@ -6,22 +6,23 @@
         {{ comment.userId.lastName }} -
         {{ comment.createdAt | date: "short" }}
       </h4>
-      <mat-card-actions>
-        <div class="commentReactions">
-          <div class="likes">
-            Num
-            <button mat-icon-button>
-              <mat-icon id="likeIcon">thumb_up_alt</mat-icon>
-            </button>
-          </div>
-          <div class="comments">
-            Num
-            <button mat-icon-button>
-              <mat-icon id="commentIcon">chat_bubble</mat-icon>
-            </button>
-          </div>
+      <div class="commentReactions">
+        <div class="likes">
+          <button mat-icon-button>
+            <mat-icon id="likeIcon">thumb_up_alt</mat-icon>
+          </button>
         </div>
-      </mat-card-actions>
+        <div
+          (click)="
+            attachUserName(comment.userId.firstName, comment.userId.lastName)
+          "
+          class="comments"
+        >
+          <button mat-icon-button>
+            <mat-icon id="commentIcon">chat_bubble</mat-icon>
+          </button>
+        </div>
+      </div>
     </div>
   </mat-card-subtitle>
   <mat-card-content>

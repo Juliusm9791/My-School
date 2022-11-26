@@ -13,7 +13,9 @@ import { EventCalendarComponent } from './pages/calendar/EventCalendar.component
 import { PostDetailsComponent } from './pages/posts/post-details/post-details.component';
 import { FormPostComponent } from './pages/account/profile/form-post/form-post.component';
 import { DepartmentDetailsComponent } from './pages/departments/department-details/department-details.component';
-
+import { ProfilePostComponent } from './pages/account/profile/profile-post/profile-post.component';
+import { ProfileEditComponent } from './pages/account/profile/profile-edit/profile-edit/profile-edit.component';
+import { SearchResultsComponent } from './pages/search-results/search-results.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,11 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'search',
+    component: SearchResultsComponent,
     pathMatch: 'full',
   },
   {
@@ -41,11 +48,22 @@ const routes: Routes = [
     component: ProfileComponent,
     pathMatch: 'full',
   },
-   {
-     path: 'account/profile/form-post',
-     component: FormPostComponent,
-     pathMatch: 'full',
-   },
+  {
+    path: 'account/profile/form-post',
+    component: FormPostComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileEditComponent,
+    canActivate: [AuthGuard],
+    pathMatch: 'full',
+  },
+  {
+    path: 'account/profile/form-post/:id',
+    component: FormPostComponent,
+    pathMatch: 'full',
+  },
   {
     path: 'posts',
     component: PostsComponent,
@@ -82,7 +100,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
   bootstrap: [EventCalendarComponent],
 })
