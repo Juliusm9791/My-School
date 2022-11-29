@@ -74,6 +74,14 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div id="grade">
+        <mat-form-field appearance="fill">
+          <mat-label>Grades:</mat-label>
+          <mat-select formControlName="gradeId" multiple>
+            <mat-option *ngFor="let grade of gradeList" value="{{grade._id}}">{{grade.gradeName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
       <div id="event">
         <div>
           <mat-checkbox

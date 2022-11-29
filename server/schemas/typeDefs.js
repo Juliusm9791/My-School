@@ -117,6 +117,7 @@ const typeDefs = gql`
       title: String!
       description: String
       departmentId: ID
+      gradeId: [ID]
       pictures: String
       commentId: ID
       reactionId: ID
@@ -132,6 +133,7 @@ const typeDefs = gql`
       title: String!
       description: String
       departmentId: ID
+      gradeId: [ID]
       pictures: String
       commentId: ID
       reactionId: ID
