@@ -52,6 +52,7 @@ export const ADD_POST = gql`
     $eventEndDate: String
     $eventLocation: String
     $departmentId: ID
+    $gradeId: [ID]
   ) {
     addPost(
       title: $title
@@ -62,11 +63,15 @@ export const ADD_POST = gql`
       eventEndDate: $eventEndDate
       eventLocation: $eventLocation
       departmentId: $departmentId
+      gradeId: $gradeId
     ) {
       title
       description
       isEvent
       departmentId {
+        _id
+      }
+      gradeId {
         _id
       }
     }
@@ -83,6 +88,7 @@ export const UPDATE_POST = gql`
     $eventEndDate: String
     $eventLocation: String
     $departmentId: ID
+    $gradeId: [ID]
   ) {
     updatePost(
       _id: $postId
@@ -94,11 +100,15 @@ export const UPDATE_POST = gql`
       eventEndDate: $eventEndDate
       eventLocation: $eventLocation
       departmentId: $departmentId
+      gradeId: $gradeId
     ) {
       title
       description
       isEvent
       departmentId {
+        _id
+      }
+      gradeId {
         _id
       }
     }

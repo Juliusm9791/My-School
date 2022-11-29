@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DepartmentsService } from 'src/app/pages/departments/departments.service';
+import { GradesService } from 'src/app/services/service';
 import { PostsService } from 'src/app/pages/posts/posts.service';
-import { Department, Post } from 'src/app/types/types';
+import { Department, Post, Grade } from 'src/app/types/types';
 import { FormPostService } from './form-post.service';
 
 import { restrictedWords } from '../../../../shared/bad-words-list';
@@ -30,10 +31,13 @@ export class FormPostComponent implements OnInit {
       restrictedWords(),
     ]),
     departmentId: new FormControl(''),
+    gradeId: new FormControl(''),
   });
 
   departmentList: Department[] = [];
   isLoadingDepartments: boolean = true;
+  gradeList: Grade[] = [];
+  isLoadingGrades: boolean = true;
   post: Post = {} as Post;
   postId: any = this.route.snapshot.paramMap.get('id');
   minDate: any = formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en');
@@ -42,6 +46,7 @@ export class FormPostComponent implements OnInit {
     private router: Router,
     private postFormService: FormPostService,
     private departmentsService: DepartmentsService,
+    private gradesService: GradesService,
     private postsService: PostsService
   ) {
     this.departmentsService.changeDepartmentsLoading.subscribe((loading) => {
@@ -49,6 +54,12 @@ export class FormPostComponent implements OnInit {
     });
     this.departmentsService.changeDepartments.subscribe((dep: Department[]) => {
       this.departmentList = dep;
+    });
+    this.gradesService.changeGradesLoading.subscribe((loading) => {
+      this.isLoadingGrades = loading;
+    });
+    this.gradesService.changeGrades.subscribe((grade: Grade[]) => {
+      this.gradeList = grade;
     });
 
     this.postForm.controls.eventDate.setValue(
@@ -65,6 +76,9 @@ export class FormPostComponent implements OnInit {
       this.postForm.controls.isEvent.setValue(this.post.isEvent);
       this.postForm.controls.isVisible.setValue(this.post.isVisible);
       this.postForm.controls.departmentId.setValue(this.post.departmentId._id);
+      let grade: any = [];
+      this.post.gradeId.forEach((id) => grade.push(id._id));
+      this.postForm.controls.gradeId.setValue(grade);
       this.postForm.controls.eventLocation.setValue(this.post.eventLocation);
       this.postForm.controls.eventDate.setValue(
         formatDate(this.post.eventDate, 'yyyy-MM-ddTHH:mm', 'en')
@@ -79,6 +93,10 @@ export class FormPostComponent implements OnInit {
     if (this.departmentsService.departments.length === 0)
       this.departmentsService.queryDepartment();
     this.departmentList = this.departmentsService.departments;
+
+    if (this.gradesService.grades.length === 0) 
+      this.gradesService.queryGrade();
+    this.gradeList = this.gradesService.grades;
   }
 
   onSubmit() {
@@ -87,6 +105,7 @@ export class FormPostComponent implements OnInit {
     let description: any = this.postForm.controls.postDescription.value;
     let isPostEvent: any = this.postForm.controls.isEvent.value;
     let selectedDepartmentId: any = this.postForm.controls.departmentId.value;
+    let selectedGradeId: any = this.postForm.controls.gradeId.value;
     let eventDate: any = this.postForm.controls.eventDate.value;
     let eventEndDate: any = this.postForm.controls.eventEndDate.value;
     let eventLocation: any = this.postForm.controls.eventLocation.value;
@@ -98,6 +117,7 @@ export class FormPostComponent implements OnInit {
           description,
           isPostEvent,
           selectedDepartmentId,
+          selectedGradeId,
           eventDate,
           eventEndDate,
           eventLocation
@@ -113,6 +133,7 @@ export class FormPostComponent implements OnInit {
           description,
           isPostEvent,
           selectedDepartmentId,
+          selectedGradeId,
           eventDate,
           eventEndDate,
           eventLocation

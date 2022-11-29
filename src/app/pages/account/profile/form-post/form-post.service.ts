@@ -19,6 +19,7 @@ export class FormPostService {
     description: string,
     isEvent: boolean,
     selectedDepartmentId: string,
+    selectedGradeId: string,
     eventDate: string,
     eventEndDate: string,
     eventLocation: string
@@ -35,6 +36,7 @@ export class FormPostService {
           eventEndDate: eventEndDate,
           eventLocation: eventLocation,
           departmentId: selectedDepartmentId,
+          gradeId: selectedGradeId,
         },
 
         refetchQueries: [
@@ -62,6 +64,7 @@ export class FormPostService {
     description: string,
     isEvent: boolean,
     selectedDepartmentId: string,
+    selectedGradeId: string,
     eventDate: string,
     eventEndDate: string,
     eventLocation: string
@@ -79,6 +82,7 @@ export class FormPostService {
           eventEndDate: eventEndDate,
           eventLocation: eventLocation,
           departmentId: selectedDepartmentId,
+          gradeId: selectedGradeId,
         },
         refetchQueries: [
           {
