@@ -63,7 +63,7 @@ export class FormPostComponent implements OnInit {
       this.postForm.controls.postTitle.setValue(this.post.title);
       this.postForm.controls.postDescription.setValue(this.post.description);
       this.postForm.controls.isEvent.setValue(this.post.isEvent);
-      this.postForm.controls.isVisible.setValue(this.post.isVisible);
+      this.postForm.controls.isVisible.setValue(!this.post.isVisible);
       this.postForm.controls.departmentId.setValue(this.post.departmentId._id);
       this.postForm.controls.eventLocation.setValue(this.post.eventLocation);
       this.postForm.controls.eventDate.setValue(
@@ -82,7 +82,7 @@ export class FormPostComponent implements OnInit {
   }
 
   onSubmit() {
-    let isPostVisible: any = this.postForm.controls.isVisible.value;
+    let isPostVisible: any = !this.postForm.controls.isVisible.value;
     let title: any = this.postForm.controls.postTitle.value;
     let description: any = this.postForm.controls.postDescription.value;
     let isPostEvent: any = this.postForm.controls.isEvent.value;
