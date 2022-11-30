@@ -64,7 +64,7 @@
 #login h2 {
   font-size: 14pt;
   color: white;
-  margin-right: 15px;
+  margin: auto 10px auto 5px;
 }
 
 #login h2:hover {
@@ -152,6 +152,10 @@ mat-sidenav-content {
   flex-direction: row;
   align-items: center;
   text-decoration: none;
+}
+
+#loginLink {
+  margin-left: 15px;
 }
 
 .topBarL,

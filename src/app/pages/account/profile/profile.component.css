@@ -12,6 +12,14 @@
   border-radius: 8px;
 }
 
+#groups,
+#grades,
+#departments {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start;
+}
+
 #profile h1,
 #profile-header h2,
 #announcements-subheader h2,
@@ -80,13 +88,19 @@ section {
 }
 
 #profile-details {
-  padding: 10px 40px 0px 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.profile-row {
+.post-card {
+  margin-right: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile-row,
+#profile-buttons {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -96,7 +110,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px;
+  margin: 10px 0px 0px 40px;
 }
 
 .profile-col {
@@ -107,15 +121,9 @@ section {
   margin: 20px 0 0 0;
 }
 
-#update-avatar h5,
-#edit-profile h5 {
-  margin: 10px 0px 10px 0px;
-  text-decoration: none;
-  color: #4050b2;
-}
-
-#edit-profile h5 {
-  margin-right: 15px;
+.key {
+  text-align: right;
+  margin-left: 20px;
 }
 
 section h5 {
