@@ -41,7 +41,15 @@
     <div id="post-body">
       <mat-card-subtitle>
         <div class="subtitleRow">
-          <img id="postUserImg" src="../../../../assets/images/account.png" />
+          <img
+            id="postUserImg"
+            [src]="
+              post.userId.avatar !== '' || null
+                ? post.userId.avatar
+                : defaultAvatar
+            "
+            alt="User Image"
+          />
           <h4 class="postUserDetail postUserName">
             {{ post.userId.firstName }} {{ post.userId.lastName }}
           </h4>

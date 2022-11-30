@@ -19,18 +19,18 @@
     </div>
 
     <div class="topBarR">
-      <form (ngSubmit)="topSearch()">
+      <form id="lgForm" (ngSubmit)="topSearch()">
         <input
           type="search"
           placeholder="Search..."
           [formControl]="topSearchInput"
         />
-
         <img id="searchIcon" src="../assets/images/search_icon_circle.png" />
-        <button type="submit"></button>
+        <button id="lgSubmitButton" type="submit"></button>
       </form>
-
-      <img id="searchIcon2" src="../assets/images/search_icon_circle.png" />
+      <!-- <button id="smSearchButton">
+        <img id="searchIcon2" src="../assets/images/search_icon_circle.png" />
+      </button> -->
 
       <a id="loginLink" routerLink="/account">
         <div id="login">
@@ -99,6 +99,25 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
+      <!-- Small screen search bar -->
+      <div id="smSearchBar">
+        <form id="smForm" (ngSubmit)="topSearch()">
+          <input
+            type="search"
+            placeholder="Search..."
+            [formControl]="topSearchInput"
+          />
+          <button id="smSubmitButton" type="submit">
+            <img
+              height="40px"
+              width="40px"
+              alt="Submit"
+              src="../assets/images/search_icon_circle.png"
+            />
+          </button>
+        </form>
+      </div>
+
       <router-outlet (activate)="onActivate($event)"></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

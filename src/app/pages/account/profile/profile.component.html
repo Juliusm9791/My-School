@@ -21,9 +21,14 @@
         </div>
       </div>
       <div id="profile-details">
+
         <div class="profile-row">
           <div id="profile-avatar">
-            <img id="profile-img" src="../../../../assets/images/account.png" />
+           <img
+                id="profile-img"
+                [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+                alt="Profile Image"
+              />
           </div>
           <div class="profile-col key">
             <h4>Name:</h4>
@@ -38,6 +43,7 @@
               <h4 *ngFor="let group of me.groupId">
                 {{ group.groupName }}
               </h4>
+
             </div>
             <div id="grades">
               <h4 *ngFor="let grade of me.gradeId">

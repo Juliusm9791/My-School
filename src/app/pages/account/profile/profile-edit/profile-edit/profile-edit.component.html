@@ -20,10 +20,20 @@
       <div>
         <div class="profile-row">
           <div id="profile-avatar">
-            <img id="profile-img" src="../../../../assets/images/account.png" />
-            <a id="update-avatar" href="#">
+            <img
+              id="profile-img"
+              [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+              alt="Profile Image"
+            />
+            <input type="file" (change)="selectFile($event)" />
+            <button
+              id="update-avatar"
+              class="btn btn-success"
+              [disabled]="!selectedFiles"
+              (click)="upload()"
+            >
               <h5>Update Avatar</h5>
-            </a>
+            </button>
           </div>
           <div class="profile-col">
             <mat-form-field appearance="fill">
@@ -34,6 +44,45 @@
             <mat-form-field appearance="fill">
               <mat-label>Last Name:</mat-label>
               <input matInput formControlName="lastName" required />
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email Address:</mat-label>
+              <input matInput formControlName="emailAddress" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Address:</mat-label>
+              <input matInput formControlName="address" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Phone Number:</mat-label>
+              <input matInput formControlName="phoneNumber" />
+            </mat-form-field>
+          </div>
+          <div class="profile-col">
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Department:</mat-label>
+              <mat-select formControlName="departmentId">
+                <mat-option>-- None --</mat-option>
+                <ng-container *ngFor="let depatment of departmentList">
+                  <mat-option value="{{ depatment._id }}"
+                    >{{ depatment.depName }}
+                  </mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill">
+              <mat-label>Departments:</mat-label>
+              <mat-select formControlName="departmentId" multiple>
+                <mat-option
+                  *ngFor="let department of departmentList"
+                  value="{{ department._id }}"
+                  >{{ department.depName }}</mat-option
+                >
+              </mat-select>
             </mat-form-field>
 
             <!-- <mat-form-field appearance="fill">

@@ -166,3 +166,10 @@ export const UPDATE_ME = gql`
     }
   }
 `;
+export const UPDATE_AVATAR = gql`
+  mutation UpdateMe($avatar: String!) {
+    updateMe(avatar: $avatar) {
+      _id
+    }
+  }
+`;
