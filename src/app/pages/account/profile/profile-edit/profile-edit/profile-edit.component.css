@@ -89,6 +89,10 @@
   background-color: transparent;
 }
 
+.bio {
+  justify-content: space-between;
+}
+
 #update-avatar h5,
 #edit-profile h5 {
   margin: 10px 0px 10px 0px;
