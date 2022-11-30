@@ -22,6 +22,7 @@ export class PostDetailsComponent implements OnInit {
   me: Me = {} as Me;
   userPosts: Post[] = [];
   private _isUserPosts: boolean = true;
+  defaultAvatar: string = '../../../../assets/images/account.png';
 
   commentForm = new FormGroup({
     comment: new FormControl('', [Validators.required, restrictedWords()]),

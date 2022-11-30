@@ -13,10 +13,6 @@ import { LoginSignupService } from '../../../login-signup.service';
   styleUrls: ['./profile-edit.component.css'],
 })
 export class ProfileEditComponent implements OnInit {
-  // constructor() { }
-
-  // ngOnInit(): void {
-  // }
   profileForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -36,6 +32,7 @@ export class ProfileEditComponent implements OnInit {
   isLoadingDepartments: boolean = true;
   isLoadingGrades: boolean = true;
   isLoadingFaculties: boolean = true;
+  defaultAvatar: string = '../../../../assets/images/account.png';
 
   constructor(
     // private route: ActivatedRoute,
@@ -128,7 +125,14 @@ export class ProfileEditComponent implements OnInit {
     );
   }
 
-  // handleCancel() {
-  //   this.router.navigate(['/account/profile/']);
-  // }
+  selectedFiles: FileList = {} as FileList;
+
+  upload() {
+    const file = this.selectedFiles.item(0);
+    this.profileFormService.uploadFile(file);
+  }
+
+  selectFile(event: any) {
+    this.selectedFiles = event.target.files;
+  }
 }

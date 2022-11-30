@@ -22,6 +22,7 @@ const postBody = `
       _id
       firstName
       lastName
+      avatar
     }
   }
   commentId {
@@ -31,6 +32,7 @@ const postBody = `
       _id
       firstName
       lastName
+      avatar
     }
     createdAt
   }
@@ -38,6 +40,7 @@ const postBody = `
     _id
     firstName
     lastName
+    avatar
   }
   gradeId {
     _id
@@ -56,6 +59,7 @@ export const QUERY_ME = gql`
       email
       firstName
       lastName
+      avatar
       aboutMe
       phoneNumber
       address

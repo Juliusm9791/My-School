@@ -45,7 +45,11 @@
             <div class="subtitleRow">
               <img
                 id="postUserImg"
-                src="../../../../assets/images/account.png"
+                [src]="
+                  post.userId.avatar !== '' || null
+                    ? post.userId.avatar
+                    : defaultAvatar
+                "
               />
               <h4 id="postUserDetail">
                 {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
@@ -129,7 +133,14 @@
     <!-- EXISTING COMMENTS -->
     <ng-container *ngIf="post.commentId">
       <div class="comment comment-row" *ngFor="let comment of post.commentId">
-        <img id="commentUserImg" src="../../../../assets/images/account.png" />
+        <img
+          id="commentUserImg"
+          [src]="
+            comment.userId.avatar !== '' || null
+              ? comment.userId.avatar
+              : defaultAvatar
+          "
+        />
         <app-comments [comment]="comment"></app-comments>
       </div>
     </ng-container>
