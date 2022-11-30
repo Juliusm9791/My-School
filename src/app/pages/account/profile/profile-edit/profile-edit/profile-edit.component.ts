@@ -129,7 +129,7 @@ export class ProfileEditComponent implements OnInit {
 
   upload() {
     const file = this.selectedFiles.item(0);
-    this.profileFormService.uploadFile(file);
+    this.profileFormService.uploadFile(file, this.me._id);
   }
 
   selectFile(event: any) {

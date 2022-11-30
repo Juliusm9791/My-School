@@ -86,16 +86,16 @@ export class FormProfileService {
       );
   }
 
-  uploadFile(file: any) {
+  uploadFile(file: any, id: any) {
     const contentType = file.type;
     const bucket = new S3({
-      accessKeyId: ACCESS,
-      secretAccessKey: SECRET,
+      accessKeyId: 'ACCESS',
+      secretAccessKey: 'SECRET',
       region: 'us-east-2',
     });
     const params = {
-      Bucket: BUCKET,
-      Key: file.name,
+      Bucket: 'BUCKET',
+      Key: id + file.name,
       Body: file,
       ACL: 'public-read',
       ContentType: contentType,
