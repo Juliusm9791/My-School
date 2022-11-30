@@ -21,7 +21,8 @@
             <div id="profile-avatar">
               <img
                 id="profile-img"
-                src="../../../../assets/images/account.png"
+                [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+                alt="Profile Image"
               />
             </div>
             <div class="profile-col key">

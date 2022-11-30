@@ -1,8 +1,12 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { UPDATE_ME } from 'src/app/services/graphql/mutations';
+import { UPDATE_AVATAR, UPDATE_ME } from 'src/app/services/graphql/mutations';
 import { QUERY_ME } from 'src/app/services/graphql/queries';
+import { ACCESS, SECRET, BUCKET } from '../../../../../../../env';
+
+import * as AWS from 'aws-sdk/global';
+import * as S3 from 'aws-sdk/clients/s3';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +23,9 @@ export class FormProfileService {
     address: string,
     phoneNumber: string,
     aboutMe: string,
-    departmentId: string [],
-    groupId: string [],
-    gradeId: string []
+    departmentId: string[],
+    groupId: string[],
+    gradeId: string[]
   ) {
     this.apollo
       .mutate({
@@ -35,7 +39,7 @@ export class FormProfileService {
           aboutMe: aboutMe,
           departmentId: departmentId,
           groupId: groupId,
-          gradeId: gradeId
+          gradeId: gradeId,
         },
 
         refetchQueries: [
@@ -55,5 +59,55 @@ export class FormProfileService {
         }
       );
   }
-};
 
+  updateAvatar(avatar: string) {
+    console.log(avatar);
+    this.apollo
+      .mutate({
+        mutation: UPDATE_AVATAR,
+        variables: {
+          avatar: avatar,
+        },
+        refetchQueries: [
+          {
+            query: QUERY_ME,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('got image', result);
+          this.loading = result.loading;
+          // result && this.router.navigate(['/account/profile']);
+        },
+        (error) => {
+          console.log('update avatar error', error);
+        }
+      );
+  }
+
+  uploadFile(file: any, id: any) {
+    const contentType = file.type;
+    const bucket = new S3({
+      accessKeyId: 'ACCESS',
+      secretAccessKey: 'SECRET',
+      region: 'us-east-2',
+    });
+    const params = {
+      Bucket: 'BUCKET',
+      Key: id + file.name,
+      Body: file,
+      ACL: 'public-read',
+      ContentType: contentType,
+    };
+    bucket.upload(params, (err: any, data: any) => {
+      if (err) {
+        console.log('EROOR: ', JSON.stringify(err));
+        return false;
+      }
+      console.log('File Uploaded.', data.Location);
+      this.updateAvatar(data.Location);
+      return true;
+    });
+  }
+}

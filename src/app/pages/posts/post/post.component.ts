@@ -15,6 +15,7 @@ export class PostComponent implements OnInit {
   isFullDescription: boolean = false;
   updatePostData: Post = {} as Post;
   postDataLoading: boolean = true;
+  defaultAvatar: string = '../../../../assets/images/account.png';
 
   constructor(private router: Router, private postService: PostsService) {}
 

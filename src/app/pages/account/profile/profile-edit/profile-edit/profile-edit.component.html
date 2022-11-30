@@ -20,10 +20,20 @@
       <div>
         <div class="profile-row">
           <div id="profile-avatar">
-            <img id="profile-img" src="../../../../assets/images/account.png" />
-            <a id="update-avatar" href="#">
+            <img
+              id="profile-img"
+              [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+              alt="Profile Image"
+            />
+            <input type="file" (change)="selectFile($event)" />
+            <button
+              id="update-avatar"
+              class="btn btn-success"
+              [disabled]="!selectedFiles"
+              (click)="upload()"
+            >
               <h5>Update Avatar</h5>
-            </a>
+            </button>
           </div>
           <div class="profile-col">
             <mat-form-field appearance="fill">
@@ -66,7 +76,11 @@
             <mat-form-field appearance="fill">
               <mat-label>Departments:</mat-label>
               <mat-select formControlName="departmentId" multiple>
-                <mat-option *ngFor="let department of departmentList" value="{{department._id}}">{{department.depName}}</mat-option>
+                <mat-option
+                  *ngFor="let department of departmentList"
+                  value="{{ department._id }}"
+                  >{{ department.depName }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
             <!-- <mat-form-field appearance="fill">
@@ -82,7 +96,11 @@
             <mat-form-field appearance="fill">
               <mat-label>Groups:</mat-label>
               <mat-select formControlName="groupId" multiple>
-                <mat-option *ngFor="let faculty of facultyList" value="{{faculty._id}}">{{faculty.groupName}}</mat-option>
+                <mat-option
+                  *ngFor="let faculty of facultyList"
+                  value="{{ faculty._id }}"
+                  >{{ faculty.groupName }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
             <!-- <mat-form-field appearance="fill">
@@ -98,7 +116,11 @@
             <mat-form-field appearance="fill">
               <mat-label>Grades:</mat-label>
               <mat-select formControlName="gradeId" multiple>
-                <mat-option *ngFor="let grade of gradeList" value="{{grade._id}}">{{grade.gradeName}}</mat-option>
+                <mat-option
+                  *ngFor="let grade of gradeList"
+                  value="{{ grade._id }}"
+                  >{{ grade.gradeName }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
           </div>
