@@ -42,7 +42,10 @@
           </ng-container>
         </div>
         <div>
-          <img id="accountIcon" src="../assets/images/account.png" />
+          <img
+            id="accountIcon"
+            [src]="me.avatar !== '' || null ? me.avatar : defaultAvatar"
+          />
         </div>
         <div id="logoMobile">
           <a routerLink="/">
