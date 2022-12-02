@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Me, Post } from 'src/app/types/types';
 import { LoginSignupService } from '../../account/login-signup.service';
@@ -34,7 +34,8 @@ export class PostDetailsComponent implements OnInit {
     private postsService: PostsService,
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private router: Router
   ) {
     this.commentsService.changeUserNameComment.subscribe((user) => {
       this.commentForm.controls.comment.setValue(user);
@@ -71,5 +72,15 @@ export class PostDetailsComponent implements OnInit {
       this.postDetailsService.addComment(comment, this.postId);
       this.commentForm.reset();
     }
+  }
+
+  deletePost(id: string) {
+    if (confirm('Are you sure to delete this post')) {
+      this.postsService.deletePost(id);
+      this.router.navigate(['/account/profile/']);
+    }
+  }
+  updatePost(id: string) {
+    this.router.navigate(['/account/profile/form-post/' + id]);
   }
 }

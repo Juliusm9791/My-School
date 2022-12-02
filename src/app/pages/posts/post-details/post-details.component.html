@@ -103,22 +103,37 @@
 
       <mat-card-actions>
         <div class="post-reactions">
-          <div class="likes">
-            {{ likes(post) }}
-            <button id="likeIcon" mat-icon-button>
-              <mat-icon>thumb_up_alt</mat-icon>
-            </button>
+          <div class="reactionSet">
+            <div class="likes">
+              {{ likes(post) }}
+              <button id="likeIcon" mat-icon-button>
+                <mat-icon>thumb_up_alt</mat-icon>
+              </button>
+            </div>
+            <div class="comments">
+              {{ post.commentId.length }}
+              <button id="commentIcon" mat-icon-button>
+                <mat-icon>chat_bubble</mat-icon>
+              </button>
+            </div>
+            <div class="shares">
+              <button id="shareIcon" mat-icon-button>
+                <mat-icon id="share-adjust">reply</mat-icon>
+              </button>
+            </div>
           </div>
-          <div class="comments">
-            {{ post.commentId.length }}
-            <button id="commentIcon" mat-icon-button>
-              <mat-icon>chat_bubble</mat-icon>
-            </button>
-          </div>
-          <div class="shares">
-            <button id="shareIcon" mat-icon-button>
-              <mat-icon id="share-adjust">reply</mat-icon>
-            </button>
+
+          <div class="reactionSet">
+            <div class="delete" title="Delete">
+              <button id="deletePostButton" (click)="deletePost(post._id)">
+                <mat-icon id="deleteIcon">delete</mat-icon>
+              </button>
+            </div>
+            <div class="update" title="Edit">
+              <button id="updatePostButton" (click)="updatePost(post._id)">
+                <mat-icon id="editIcon">edit</mat-icon>
+              </button>
+            </div>
           </div>
         </div>
       </mat-card-actions>

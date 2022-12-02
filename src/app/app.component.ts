@@ -18,6 +18,7 @@ export class AppComponent implements OnDestroy, OnInit {
   isLoggedIn: boolean = false;
   me: any;
   loading: boolean = true;
+  defaultAvatar: string = '../assets/images/account.png';
 
   private _mobileQueryListener: () => void;
 

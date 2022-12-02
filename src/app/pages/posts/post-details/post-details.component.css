@@ -97,6 +97,12 @@ h4 {
   margin-left: 10px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.reactionSet {
+  display: flex;
+  flex-direction: row;
 }
 
 #post-body {
@@ -167,16 +173,32 @@ hr {
 #deleteIcon,
 #editIcon {
   scale: 0.9;
-  margin: -7px 4px 0 3px;
+  margin: -8px 4px 3px 3px;
   color: #4050b2;
   border: none;
 }
 
-#likeIcon:hover,
-#commentIcon:hover,
-#shareIcon:hover,
 #deleteIcon:hover,
 #editIcon:hover {
+  color: #f98c5a;
+}
+
+#deleteIcon {
+  margin-right: 7px;
+}
+
+#updatePostButton,
+#deletePostButton {
+  scale: 1.1;
+  color: red;
+  border: none;
+  background-color: transparent;
+  margin-top: 15px;
+}
+
+#likeIcon:hover,
+#commentIcon:hover,
+#shareIcon:hover {
   color: #f98c5a;
 }
 
