@@ -53,7 +53,7 @@
               />
               <h4 id="postUserDetail">
                 {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
-                {{ post.createdAt | date: "short" }}
+                {{ post.createdAt | date : "short" }}
               </h4>
             </div>
           </mat-card-subtitle>
@@ -83,11 +83,11 @@
                     <h4>HOUR:</h4>
                   </div>
                   <div class="event-card-column event-values">
-                    <h4>{{ post.eventDate | date: "shortDate" }}</h4>
-                    <h4>{{ post.eventDate | date: "shortTime" }}</h4>
+                    <h4>{{ post.eventDate | date : "shortDate" }}</h4>
+                    <h4>{{ post.eventDate | date : "shortTime" }}</h4>
                     <hr style="margin: 2px" />
-                    <h4>{{ post.eventEndDate | date: "shortDate" }}</h4>
-                    <h4>{{ post.eventEndDate | date: "shortTime" }}</h4>
+                    <h4>{{ post.eventEndDate | date : "shortDate" }}</h4>
+                    <h4>{{ post.eventEndDate | date : "shortTime" }}</h4>
                   </div>
                 </div>
               </div>
@@ -122,19 +122,20 @@
               </button>
             </div>
           </div>
-
-          <div class="reactionSet">
-            <div class="delete" title="Delete">
-              <button id="deletePostButton" (click)="deletePost(post._id)">
-                <mat-icon id="deleteIcon">delete</mat-icon>
-              </button>
+          <ng-container *ngIf="me._id === post.userId._id">
+            <div class="reactionSet">
+              <div class="delete" title="Delete">
+                <button id="deletePostButton" (click)="deletePost(post._id)">
+                  <mat-icon id="deleteIcon">delete</mat-icon>
+                </button>
+              </div>
+              <div class="update" title="Edit">
+                <button id="updatePostButton" (click)="updatePost(post._id)">
+                  <mat-icon id="editIcon">edit</mat-icon>
+                </button>
+              </div>
             </div>
-            <div class="update" title="Edit">
-              <button id="updatePostButton" (click)="updatePost(post._id)">
-                <mat-icon id="editIcon">edit</mat-icon>
-              </button>
-            </div>
-          </div>
+          </ng-container>
         </div>
       </mat-card-actions>
     </mat-card>

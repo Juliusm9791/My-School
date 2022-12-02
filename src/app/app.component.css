@@ -50,6 +50,10 @@
   display: flex;
   flex-direction: column;
 }
+#login {
+  display: flex;
+  flex-direction: row;
+}
 
 .vertical-nav h1,
 #login h2 {

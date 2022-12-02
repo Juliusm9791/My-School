@@ -36,16 +36,18 @@
         <div id="login">
           <ng-container *ngIf="isLoggedIn && !loading">
             <h2>Hello {{ me.firstName }}</h2>
+            <img
+              id="accountIcon"
+              [src]="me.avatar !== '' || null ? me.avatar : defaultAvatar"
+            />
           </ng-container>
           <ng-container *ngIf="!isLoggedIn">
             <h2>Login</h2>
           </ng-container>
         </div>
-        <div>
-          <img
-            id="accountIcon"
-            [src]="me.avatar !== '' || null ? me.avatar : defaultAvatar"
-          />
+
+        <div *ngIf="!isLoggedIn">
+          <img id="accountIcon" [src]="defaultAvatar" />
         </div>
         <div id="logoMobile">
           <a routerLink="/">
