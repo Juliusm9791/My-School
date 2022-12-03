@@ -31,7 +31,9 @@
           </div>
           <div class="profile-col">
             <div>
-              <h3>Role:</h3>
+              <div class="key">
+                <h3>Role:</h3>
+              </div>
               <div id="groups">
                 <h4 *ngFor="let group of me.groupId">
                   {{ group.groupName }}
@@ -39,7 +41,9 @@
               </div>
             </div>
             <div>
-              <h3>Grade:</h3>
+              <div class="key">
+                <h3>Grade:</h3>
+              </div>
               <div id="grades">
                 <h4 *ngFor="let grade of me.gradeId">
                   {{ grade.gradeName }}
@@ -47,7 +51,9 @@
               </div>
             </div>
             <div>
-              <h3>Dept:</h3>
+              <div class="key">
+                <h3>Dept:</h3>
+              </div>
               <div id="departments">
                 <h4 *ngFor="let department of me.departmentId">
                   {{ department.depName }}
@@ -55,22 +61,31 @@
               </div>
             </div>
             <div>
-              <h3>Address:</h3>
-              <h4>{{ me.address }}</h4>
+              <div class="key">
+                <h3>Address:</h3>
+              </div>
+              <div>
+                <h4>{{ me.address }}</h4>
+              </div>
             </div>
             <div>
-              <h3>Phone:</h3>
+              <div class="key">
+                <h3>Phone:</h3>
+              </div>
+
               <h4>{{ me.phoneNumber }}</h4>
             </div>
             <div>
-              <h3>Email:</h3>
+              <div class="key">
+                <h3>Email:</h3>
+              </div>
               <h4>{{ me.email }}</h4>
             </div>
           </div>
           <div class="profile-col">
             <div>
               <h3>Bio:</h3>
-              <h4>{{ me.aboutMe }}</h4>
+              <h4 id="bio">{{ me.aboutMe }}</h4>
             </div>
           </div>
         </div>

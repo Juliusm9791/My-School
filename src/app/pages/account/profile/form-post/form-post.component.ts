@@ -94,8 +94,7 @@ export class FormPostComponent implements OnInit {
       this.departmentsService.queryDepartment();
     this.departmentList = this.departmentsService.departments;
 
-    if (this.gradesService.grades.length === 0) 
-      this.gradesService.queryGrade();
+    if (this.gradesService.grades.length === 0) this.gradesService.queryGrade();
     this.gradeList = this.gradesService.grades;
   }
 

@@ -51,10 +51,13 @@
                     : defaultAvatar
                 "
               />
-              <h4 id="postUserDetail">
-                {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
-                {{ post.createdAt | date : "short" }}
-              </h4>
+              <div class="postUserDetail">
+                <h4>{{ post.userId.firstName }} {{ post.userId.lastName }}</h4>
+                <h4>
+                  posted on
+                  {{ post.createdAt | date : "short" }}
+                </h4>
+              </div>
             </div>
           </mat-card-subtitle>
 
@@ -72,29 +75,27 @@
                     id="event-card-icon"
                     src="../../../../assets/images/calendar.png"
                   />
-                  <h3>Event</h3>
+                  <h2>Event</h2>
                 </div>
                 <div class="event-card-row">
-                  <div class="event-card-column">
-                    <h4>DATE:</h4>
-                    <h4>HOUR:</h4>
-                    <hr style="margin: 2px" />
-                    <h4>DATE:</h4>
-                    <h4>HOUR:</h4>
-                  </div>
-                  <div class="event-card-column event-values">
-                    <h4>{{ post.eventDate | date : "shortDate" }}</h4>
-                    <h4>{{ post.eventDate | date : "shortTime" }}</h4>
-                    <hr style="margin: 2px" />
-                    <h4>{{ post.eventEndDate | date : "shortDate" }}</h4>
-                    <h4>{{ post.eventEndDate | date : "shortTime" }}</h4>
-                  </div>
+                  <h5>START:</h5>
+                  <h4>
+                    {{ post.eventDate | date : "shortDate" }}&nbsp;{{
+                      post.eventDate | date : "shortTime"
+                    }}
+                  </h4>
+                </div>
+
+                <hr />
+                <div class="event-card-row">
+                  <h5>END:</h5>
+                  <h4>
+                    {{ post.eventEndDate | date : "shortDate" }}&nbsp;
+                    {{ post.eventEndDate | date : "shortTime" }}
+                  </h4>
                 </div>
               </div>
             </ng-container>
-            <!-- <ng-container *ngIf="!isLoggedIn">
-                  <a routerLink="/account/login">Leave a comment</a>
-                </ng-container> -->
           </div>
         </div>
       </div>
