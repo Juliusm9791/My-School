@@ -21,59 +21,57 @@
         </div>
       </div>
       <div id="profile-details">
-
         <div class="profile-row">
           <div id="profile-avatar">
-           <img
-                id="profile-img"
-                [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
-                alt="Profile Image"
-              />
+            <img
+              id="profile-img"
+              [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+              alt="Profile Image"
+            />
           </div>
-          <div class="profile-col key">
-            <h4>Name:</h4>
-            <h4>School:</h4>
-            <h4>Role:</h4>
-            <h4>Grade:</h4>
-          </div>
-          <div class="profile-col value">
-            <h4>{{ me.firstName }} {{ me.lastName }}</h4>
-            <h4>Any School</h4>
-            <div id="groups">
-              <h4 *ngFor="let group of me.groupId">
-                {{ group.groupName }}
-              </h4>
-
+          <div class="profile-col">
+            <div>
+              <h3>Role:</h3>
+              <div id="groups">
+                <h4 *ngFor="let group of me.groupId">
+                  {{ group.groupName }}
+                </h4>
+              </div>
             </div>
-            <div id="grades">
-              <h4 *ngFor="let grade of me.gradeId">
-                {{ grade.gradeName }}
-              </h4>
+            <div>
+              <h3>Grade:</h3>
+              <div id="grades">
+                <h4 *ngFor="let grade of me.gradeId">
+                  {{ grade.gradeName }}
+                </h4>
+              </div>
+            </div>
+            <div>
+              <h3>Dept:</h3>
+              <div id="departments">
+                <h4 *ngFor="let department of me.departmentId">
+                  {{ department.depName }}
+                </h4>
+              </div>
+            </div>
+            <div>
+              <h3>Address:</h3>
+              <h4>{{ me.address }}</h4>
+            </div>
+            <div>
+              <h3>Phone:</h3>
+              <h4>{{ me.phoneNumber }}</h4>
+            </div>
+            <div>
+              <h3>Email:</h3>
+              <h4>{{ me.email }}</h4>
             </div>
           </div>
-          <div class="profile-col key">
-            <h4>Dept:</h4>
-            <h4>Address:</h4>
-            <h4>Phone #:</h4>
-            <h4>Email:</h4>
-          </div>
-
-          <div class="profile-col value">
-            <div id="departments">
-              <h4 *ngFor="let department of me.departmentId">
-                {{ department.depName }}
-              </h4>
+          <div class="profile-col">
+            <div>
+              <h3>Bio:</h3>
+              <h4>{{ me.aboutMe }}</h4>
             </div>
-            <h4>{{ me.address }}</h4>
-            <h4>{{ me.phoneNumber }}</h4>
-            <h4>{{ me.email }}</h4>
-          </div>
-
-          <div class="profile-col key">
-            <h4>Bio:</h4>
-          </div>
-          <div class="profile-col value">
-            <h4>{{ me.aboutMe }}</h4>
           </div>
         </div>
       </div>

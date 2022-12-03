@@ -41,12 +41,12 @@
 }
 
 .navIcon {
-  width: 70px;
+  width: 60px;
   height: auto;
 }
 
 .vertical-nav {
-  margin: 20px 5px 10px 10px;
+  margin: 20px 5px 10px 15px;
   display: flex;
   flex-direction: column;
 }
@@ -57,7 +57,7 @@
 
 .vertical-nav h1,
 #login h2 {
-  margin: auto 10px auto 20px;
+  margin: auto 0px auto 10px;
   font-family: Grotesk;
   letter-spacing: 0.1rem;
   font-weight: bold;
@@ -82,7 +82,7 @@
 .navTab {
   display: flex;
   flex-direction: row;
-  margin: 0px 0px 10px 0px;
+  margin: 0px;
 }
 
 #accountIcon {
