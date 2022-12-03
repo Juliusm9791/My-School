@@ -21,7 +21,6 @@ export class PostDetailsComponent implements OnInit {
   isLoggedIn: boolean = false;
   me: Me = {} as Me;
   userPosts: Post[] = [];
-  private _isUserPosts: boolean = true;
   defaultAvatar: string = '../../../../assets/images/account.png';
 
   commentForm = new FormGroup({
@@ -50,9 +49,6 @@ export class PostDetailsComponent implements OnInit {
       this.isLoggedIn = loggedIn;
     });
     console.log(this.commentForm.controls.comment);
-  }
-  get isUserPosts() {
-    return this._isUserPosts;
   }
 
   ngOnInit(): void {
