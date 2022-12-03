@@ -25,7 +25,11 @@
               [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
               alt="Profile Image"
             />
-            <input type="file" (change)="selectFile($event)" />
+            <input
+              id="select-avatar"
+              type="file"
+              (change)="selectFile($event)"
+            />
             <button
               id="update-avatar"
               class="btn btn-success"
@@ -46,55 +50,6 @@
               <input matInput formControlName="lastName" required />
             </mat-form-field>
 
-
-            <mat-form-field appearance="fill">
-              <mat-label>Email Address:</mat-label>
-              <input matInput formControlName="emailAddress" />
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Address:</mat-label>
-              <input matInput formControlName="address" />
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-              <mat-label>Phone Number:</mat-label>
-              <input matInput formControlName="phoneNumber" />
-            </mat-form-field>
-          </div>
-          <div class="profile-col">
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Department:</mat-label>
-              <mat-select formControlName="departmentId">
-                <mat-option>-- None --</mat-option>
-                <ng-container *ngFor="let depatment of departmentList">
-                  <mat-option value="{{ depatment._id }}"
-                    >{{ depatment.depName }}
-                  </mat-option>
-                </ng-container>
-              </mat-select>
-            </mat-form-field> -->
-            <mat-form-field appearance="fill">
-              <mat-label>Departments:</mat-label>
-              <mat-select formControlName="departmentId" multiple>
-                <mat-option
-                  *ngFor="let department of departmentList"
-                  value="{{ department._id }}"
-                  >{{ department.depName }}</mat-option
-                >
-              </mat-select>
-            </mat-form-field>
-
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Group:</mat-label>
-              <mat-select formControlName="groupId">
-                <mat-option>-- None --</mat-option>
-                <ng-container *ngFor="let faculty of facultyList">
-                  <mat-option value="{{ faculty._id }}">{{ faculty.groupName }}
-                  </mat-option>
-                </ng-container>
-              </mat-select>
-            </mat-form-field> -->
             <mat-form-field appearance="fill">
               <mat-label>Role:</mat-label>
               <mat-select formControlName="groupId" multiple>
@@ -106,16 +61,6 @@
               </mat-select>
             </mat-form-field>
 
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Grade:</mat-label>
-              <mat-select formControlName="gradeId">
-                <mat-option>-- None --</mat-option>
-                <ng-container *ngFor="let grade of gradeList">
-                  <mat-option value="{{ grade._id }}">{{ grade.gradeName }}
-                  </mat-option>
-                </ng-container>
-              </mat-select>
-            </mat-form-field> -->
             <mat-form-field appearance="fill">
               <mat-label>Grade:</mat-label>
               <mat-select formControlName="gradeId" multiple>
@@ -129,17 +74,6 @@
           </div>
 
           <div class="profile-col">
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Department:</mat-label>
-              <mat-select formControlName="departmentId">
-                <mat-option>-- None --</mat-option>
-                <ng-container *ngFor="let depatment of departmentList">
-                  <mat-option value="{{ depatment._id }}"
-                    >{{ depatment.depName }}
-                  </mat-option>
-                </ng-container>
-              </mat-select>
-            </mat-form-field> -->
             <mat-form-field appearance="fill">
               <mat-label>Department:</mat-label>
               <mat-select formControlName="departmentId" multiple>

@@ -40,23 +40,6 @@
   margin: 0px 10px;
 }
 
-/* Log out and Create Post buttons */
-/* #profile-header h3,
-  #announcements-subheader h3,
-  #notifications-subheader h3 {
-    background-color: rgb(255, 255, 255);
-    color: #4050b2;
-    font-family: Grotesk;
-    font-size: 14pt;
-    letter-spacing: 0.08rem;
-    margin: auto;
-    margin-right: 5px;
-    padding: 3px 10px;
-    border: 0.5px solid grey;
-    box-shadow: 0px 1px 1px rgb(84, 84, 84);
-    border-radius: 5px;
-  } */
-
 #profile-details {
   padding: 10px 40px 0px 40px;
   display: flex;
@@ -77,6 +60,11 @@
   margin-right: 20px;
 }
 
+#profile-avatar input {
+  margin-top: 15px;
+  width: 100px;
+}
+
 .profile-col {
   display: flex;
   flex-direction: column;
@@ -84,6 +72,7 @@
   align-items: left;
   margin: 20px 0 0 20px;
 }
+
 #update-avatar {
   border: none;
   background-color: transparent;
