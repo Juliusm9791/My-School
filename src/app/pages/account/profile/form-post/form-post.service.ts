@@ -5,6 +5,8 @@ import { ADD_POST } from 'src/app/services/graphql/mutations';
 import { UPDATE_POST } from 'src/app/services/graphql/mutations';
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 
+import * as S3 from 'aws-sdk/clients/s3';
+
 @Injectable({
   providedIn: 'root',
 })

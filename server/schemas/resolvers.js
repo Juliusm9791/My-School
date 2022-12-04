@@ -93,6 +93,7 @@ const resolvers = {
         commentId: args.commentId,
         reactionId: args.ReactionId,
         userId: context.user._id,
+        pictures: args.pictures,
       });
       pubsub.publish("POST_ADDED", {
         postAdded: {
@@ -144,6 +145,7 @@ const resolvers = {
             gradeId: args.gradeId,
             title: args.title,
             description: args.description,
+            pictures: args.pictures,
           },
           {
             new: true,
