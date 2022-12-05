@@ -78,7 +78,11 @@
         <mat-form-field appearance="fill">
           <mat-label>Grades:</mat-label>
           <mat-select formControlName="gradeId" multiple>
-            <mat-option *ngFor="let grade of gradeList" value="{{grade._id}}">{{grade.gradeName}}</mat-option>
+            <mat-option
+              *ngFor="let grade of gradeList"
+              value="{{ grade._id }}"
+              >{{ grade.gradeName }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
@@ -142,7 +146,11 @@
       </div>
     </div>
 
+    <!-- (change)="selectFile($event)" -->
+
     <div class="formColumn">
+      <input id="select-photos" type="file" multiple />
+      <h5>Add up to 5 photos</h5>
       <div id="postContent">
         <div id="images-block">
           <img
@@ -169,7 +177,7 @@
           </div>
         </div>
       </div>
-      <h5>Add up to 5 photos</h5>
+
       <div class="submitBtn">
         <button id="cancel" (click)="handleCancel()">CANCEL</button>
         <ng-container *ngIf="!postId">
