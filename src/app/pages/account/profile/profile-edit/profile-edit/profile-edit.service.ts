@@ -78,7 +78,7 @@ export class FormProfileService {
         (result: any) => {
           console.log('got image', result);
           this.loading = result.loading;
-          // result && this.router.navigate(['/account/profile']);
+          result && this.router.navigate(['/account/profile']);
         },
         (error) => {
           console.log('update avatar error', error);

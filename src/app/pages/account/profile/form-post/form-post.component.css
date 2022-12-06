@@ -93,3 +93,9 @@ h5 {
   margin-bottom: 5px;
   width: 100px;
 }
+
+.alert {
+  text-align: center;
+  color: red;
+  font-size: 15px;
+}
