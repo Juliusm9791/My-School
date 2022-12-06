@@ -67,6 +67,7 @@ export const ADD_POST = gql`
       gradeId: $gradeId
       pictures: $pictures
     ) {
+      _id
       title
       description
       isEvent
@@ -82,10 +83,10 @@ export const ADD_POST = gql`
 export const UPDATE_POST = gql`
   mutation updatePost(
     $postId: ID!
-    $title: String!
+    $title: String
     $description: String
-    $isVisible: Boolean!
-    $isEvent: Boolean!
+    $isVisible: Boolean
+    $isEvent: Boolean
     $eventDate: String
     $eventEndDate: String
     $eventLocation: String
@@ -173,6 +174,14 @@ export const UPDATE_ME = gql`
 export const UPDATE_AVATAR = gql`
   mutation UpdateMe($avatar: String!) {
     updateMe(avatar: $avatar) {
+      _id
+    }
+  }
+`;
+
+export const UPDATE_PHOTOS = gql`
+  mutation Mutation($id: ID!, $pictures: [String]) {
+    updatePost(_id: $id, pictures: $pictures) {
       _id
     }
   }

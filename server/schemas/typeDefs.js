@@ -125,12 +125,12 @@ const typeDefs = gql`
     updatePost(
       _id: ID!
       userId: ID
-      isVisible: Boolean!
-      isEvent: Boolean!
+      isVisible: Boolean
+      isEvent: Boolean
       eventDate: String
       eventEndDate: String
       eventLocation: String
-      title: String!
+      title: String
       description: String
       departmentId: ID
       gradeId: [ID]

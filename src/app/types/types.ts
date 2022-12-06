@@ -82,6 +82,7 @@ export interface Post {
   commentId: Comment[];
   userId: UserFullName;
   gradeId: Grade[];
+  pictures: [string];
 }
 
 export interface searchResults {

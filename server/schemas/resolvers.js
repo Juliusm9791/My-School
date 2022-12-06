@@ -133,20 +133,10 @@ const resolvers = {
     },
     updatePost: async (parent, args, context) => {
       if (context.user) {
+        const { _id, ...updateContent } = args;
         return await Post.findByIdAndUpdate(
-          args._id,
-          {
-            isVisible: args.isVisible,
-            isEvent: args.isEvent,
-            eventDate: args.eventDate,
-            eventEndDate: args.eventEndDate,
-            eventLocation: args.eventLocation,
-            departmentId: args.departmentId,
-            gradeId: args.gradeId,
-            title: args.title,
-            description: args.description,
-            pictures: args.pictures,
-          },
+          _id,
+          updateContent,
           {
             new: true,
           }

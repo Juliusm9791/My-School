@@ -9,6 +9,7 @@ import { Department, Post, Grade } from 'src/app/types/types';
 import { FormPostService } from './form-post.service';
 
 import { restrictedWords } from '../../../../shared/bad-words-list';
+import { integer } from 'aws-sdk/clients/cloudfront';
 
 @Component({
   selector: 'app-form-post',
@@ -32,6 +33,7 @@ export class FormPostComponent implements OnInit {
     ]),
     departmentId: new FormControl(''),
     gradeId: new FormControl(''),
+    photos: new FormControl(''),
   });
 
   departmentList: Department[] = [];
@@ -86,6 +88,9 @@ export class FormPostComponent implements OnInit {
       this.postForm.controls.eventEndDate.setValue(
         formatDate(this.post.eventEndDate, 'yyyy-MM-ddTHH:mm', 'en')
       );
+      if(this.post.pictures) {
+        this.post.pictures.forEach(e => this.imgsPreview.push(e));
+      };
     }
   }
 
@@ -94,8 +99,7 @@ export class FormPostComponent implements OnInit {
       this.departmentsService.queryDepartment();
     this.departmentList = this.departmentsService.departments;
 
-    if (this.gradesService.grades.length === 0) 
-      this.gradesService.queryGrade();
+    if (this.gradesService.grades.length === 0) this.gradesService.queryGrade();
     this.gradeList = this.gradesService.grades;
   }
 
@@ -109,6 +113,7 @@ export class FormPostComponent implements OnInit {
     let eventDate: any = this.postForm.controls.eventDate.value;
     let eventEndDate: any = this.postForm.controls.eventEndDate.value;
     let eventLocation: any = this.postForm.controls.eventLocation.value;
+    let photo = this.selectedFiles[0]
     if (!this.postId) {
       if (this.postForm.valid && eventDate < eventEndDate) {
         this.postFormService.addPost(
@@ -120,7 +125,8 @@ export class FormPostComponent implements OnInit {
           selectedGradeId,
           eventDate,
           eventEndDate,
-          eventLocation
+          eventLocation,
+          photo
         );
       }
     } else {
@@ -136,11 +142,44 @@ export class FormPostComponent implements OnInit {
           selectedGradeId,
           eventDate,
           eventEndDate,
-          eventLocation
+          eventLocation,
         );
+        this.postFormService.uploadPhotos(photo, this.postId);
       }
     }
   }
+
+  // count: integer = 0;
+  selectedFiles: FileList = {} as FileList;
+  imgsPreview: any = [];
+  selectFile(event: any) {
+    this.selectedFiles = event.target.files;
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    this.imgsPreview = [];
+    reader.readAsDataURL(file);
+    reader.onload = (_event) => {
+      this.imgsPreview.push(reader.result);
+    };
+  };
+
+  // selectFiles(event: any) {
+  //   this.selectedFiles = event.target.files;
+  //   this.count = event.target.files.length;
+  //   if (this.count > 4) {
+  //     event.target.value = '';
+  //   };
+
+  //   const files = event.target.files;
+
+  //   for (let i = 0; i < this.count; i++ ) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(files[i]);
+  //     reader.onload = (_event) => {
+  //         this.imgsPreview.push(reader.result);
+  //     }
+  //   }
+  // }
 
   handleCancel() {
     this.router.navigate(['/account/profile/']);
