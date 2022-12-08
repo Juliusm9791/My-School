@@ -1,30 +1,16 @@
 <div id="faculty">
   <h1>FACULTY:</h1>
   <div class="facultyContainer">
-    <!-- <ng-container *ngFor="let faculty of faculties">
-      <mat-card class="facultyCard">
-        <mat-card-title>{{ faculty.groupName }}</mat-card-title>
-      </mat-card>
-    </ng-container> -->
+    <ng-container *ngFor="let facultyMenber of facultyMenbers">
+      <app-faculty-menber    [facultyMenber]="facultyMenber">
 
-    <div>
-      <div class="faculty-row">
-        <div class="faculty-row-L">
-          <img id="faculty-avatar" src="../../../assets/images/account.png" />
-          <h2>Teacher Name</h2>
-          <h3>Department</h3>
-        </div>
-        <div class="faculty-row-R">
-          <div class="contactBtns">
-            <mat-icon id="mailIcon">mail</mat-icon>
-          </div>
-          <div class="contactBtns">
-            <mat-icon id="phoneIcon">phone_in_talk</mat-icon>
-          </div>
-        </div>
-        <!-- <img id="emailIcon" src="../../../assets/images/mail_blue.png" /> -->
-        <!-- <img id="phoneIcon" src="../../../assets/images/phone_blue.png" /> -->
-      </div>
-    </div>
+      </app-faculty-menber>
+    </ng-container>
+ <!-- call that function on 4 -->
+ <!--  -->
+ <!--  -->
+ <!--  -->
+<!-- <button (click)="allFacultyMenbers()"> click </button> -->
+   
   </div>
 </div>
