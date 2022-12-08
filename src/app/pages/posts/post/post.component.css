@@ -28,7 +28,8 @@ mat-card-title:hover {
   background-image: linear-gradient(183deg, #f29c55 60%, #ea8935 100%);
 }
 
-#postDepartment h2 {
+#postDepartment h2,
+#postGrade h2 {
   background-color: rgb(240, 240, 240);
   color: #4050b2;
   font-family: Grotesk;
@@ -41,11 +42,13 @@ mat-card-title:hover {
   border-radius: 5px;
 }
 
-#postDepartment {
+#postDepartment,
+#postGrade {
   margin: auto 0px;
 }
 
-#postDepartment h2:hover {
+#postDepartment h2:hover,
+#postGrade h2:hover {
   color: #f98c5a !important;
 }
 
@@ -76,7 +79,8 @@ h4 {
 }
 
 #social-buttons-row,
-#actions-buttons-row {
+#actions-buttons-row,
+#gradeDeptBlk {
   display: flex;
   flex-direction: row;
 }
@@ -158,24 +162,24 @@ mat-card-content p {
 }
 
 #defaultImg {
-  width: 152px;
-  height: 152px;
+  width: 200px;
+  height: 200px;
 }
 
 .extraImgs {
-  width: 38px;
-  height: 38px;
+  width: 100px;
+  height: 100px;
 }
 
 #images-block {
-  margin: 0px 0px 13px -10px;
+  margin: 0px 10px 13px -10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #description {
-  padding-right: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
+  padding-left: 0px;
 }
 
 #event-card {
@@ -239,6 +243,10 @@ hr {
   margin: 5px 0px;
 }
 
+.post-content {
+  margin: 0px;
+}
+
 #post-body {
   width: 100%;
   margin-top: 10px;
@@ -270,7 +278,8 @@ hr {
   }
 
   .extraImgs {
-    width: 30px;
+    width: 60px;
+    height: 60px;
   }
 
   #images-block {

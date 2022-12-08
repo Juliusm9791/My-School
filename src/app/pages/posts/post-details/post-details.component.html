@@ -7,10 +7,18 @@
         <div>
           <h2>{{ post.title }}</h2>
         </div>
-        <div id="postDepartment">
-          <h2 *ngIf="post.departmentId">
-            {{ post.departmentId.depName | titlecase }}
-          </h2>
+
+        <div id="gradeDeptBlk">
+          <div id="postGrade">
+            <h2 *ngIf="post.gradeId">
+              {{ post.gradeId }}
+            </h2>
+          </div>
+          <div id="postDepartment">
+            <h2 *ngIf="post.departmentId">
+              {{ post.departmentId.depName | titlecase }}
+            </h2>
+          </div>
         </div>
       </mat-card-title>
 
