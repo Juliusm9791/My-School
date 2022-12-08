@@ -41,7 +41,9 @@ export class PostDetailsComponent implements OnInit {
     });
     this.postDetailsService.changePost.subscribe((post) => {
       this.post = post;
+      console.log('post:', post);
     });
+
     this.postDetailsService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });

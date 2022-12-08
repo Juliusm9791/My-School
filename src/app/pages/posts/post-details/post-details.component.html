@@ -11,7 +11,7 @@
         <div id="gradeDeptBlk">
           <div id="postGrade">
             <h2 *ngIf="post.gradeId">
-              {{ post.gradeId }}
+              {{ post.gradeId[0].gradeName }}
             </h2>
           </div>
           <div id="postDepartment">
@@ -24,10 +24,7 @@
 
       <div class="post-content">
         <div class="images-block">
-          <img
-            id="defaultImg"
-            src="../../../../assets/images/default-placeholder-300x300.png"
-          />
+          <img id="defaultImg" [src]="post.pictures[0]" />
           <div id="extra-image-column">
             <img
               class="extraImgs"

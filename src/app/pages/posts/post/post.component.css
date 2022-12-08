@@ -47,6 +47,10 @@ mat-card-title:hover {
   margin: auto 0px;
 }
 
+#postGrade {
+  margin-right: 10px;
+}
+
 #postDepartment h2:hover,
 #postGrade h2:hover {
   color: #f98c5a !important;
