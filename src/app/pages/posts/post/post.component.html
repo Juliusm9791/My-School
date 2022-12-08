@@ -6,11 +6,11 @@
       </div>
 
       <div id="gradeDeptBlk">
-        <!-- <div id="postGrade">
+        <div id="postGrade">
           <h2 *ngIf="post.gradeId">
-            {{ post.gradeId | slice : 0 : 8 }}
+            {{ post.gradeId[0].gradeName }}
           </h2>
-        </div> -->
+        </div>
         <div id="postDepartment">
           <h2 *ngIf="post.departmentId">
             {{ post.departmentId.depName | titlecase }}
@@ -22,10 +22,7 @@
 
   <div class="post-content">
     <div id="images-block">
-      <img
-        id="defaultImg"
-        src="../../../../assets/images/default-placeholder-300x300.png"
-      />
+      <img id="defaultImg" [src]="post.pictures[0]" />
       <div id="extra-images">
         <div>
           <img
