@@ -139,6 +139,7 @@ const typeDefs = gql`
       reactionId: ID
     ): Post
 
+    updatePhotos(_id: ID!, pictures: [String]!): Post
     addComment(comment: String!, postId: ID!): Post
 
     deletePost(_id: ID!): Post

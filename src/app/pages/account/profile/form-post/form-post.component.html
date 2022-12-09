@@ -146,18 +146,17 @@
       </div>
     </div>
 
-    <!-- (change)="selectFile($event)" -->
 
     <div class="formColumn">
-      <input id="select-photos" type="file" multiple />
-      <h5>Add up to 5 photos</h5>
+      <!-- <input id="select-photos" type="file" multiple />
+      <h5>Add up to 5 photos</h5> -->
       <div id="postContent">
         <div id="images-block">
           <img
             id="defaultImg"
             [src]="[imgsPreview[0] ? imgsPreview[0] : '../../../assets/images/default-placeholder-300x300.png']"
           />
-          <!-- <div id="extra-images">
+          <div id="extra-images">
             <img
               class="extraImgs"
               [src]="[imgsPreview[1] ? imgsPreview[1] : '../../../assets/images/default-placeholder-300x300.png']"
@@ -174,24 +173,24 @@
               class="extraImgs"
               [src]="[imgsPreview[4] ? imgsPreview[4] : '../../../assets/images/default-placeholder-300x300.png']"
             />
-          </div> -->
+          </div>
         </div>
       </div>
 
-      <!-- <input
+      <input
         id="upload-photos"
         type="file"
         accept="image/*"
         multiple
         (change)="selectFiles($event)" 
-      /> -->
-      <input
+      />
+      <!-- <input
        id="upload-photo"
        type="file"
        accept="image/*"
        (change)="selectFile($event)"
-      />
-      <!-- <h5 class="alert" *ngIf="count > 4">Add up to 5 photos only</h5> -->
+      /> -->
+      <h5 class="alert" *ngIf="count > 4">Add up to 5 photos only</h5>
 
       <div class="submitBtn">
         <button id="cancel" (click)="handleCancel()">CANCEL</button>

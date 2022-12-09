@@ -28,7 +28,7 @@ export class FormPostService {
     eventDate: string,
     eventEndDate: string,
     eventLocation: string,
-    photo: object
+    photos: object,
   ) {
     this.apollo
       .mutate({
@@ -55,8 +55,8 @@ export class FormPostService {
         (result: any) => {
           console.log('got data', result, result.data.addPost._id);
           const id = result.data.addPost._id;
-          if (photo) {
-            this.uploadPhotos(photo, id);
+          if (photos) {
+            this.uploadPhotos(photos, id);
           };
           this.loading = result.loading;
           result && this.router.navigate(['/account/profile']);
@@ -112,39 +112,51 @@ export class FormPostService {
         }
       );
   }
-  uploadPhotos(file: any, id: any) {
+  async uploadPhotos(files: any, id: any) {
     const bucket = new S3({
       accessKeyId: ACCESS,
       secretAccessKey: SECRET,
       region: 'us-east-2',
     });
-    const contentType = file.type;
-    const params = {
-      Bucket: BUCKET,
-      Key: id,
-      Body: file,
-      ACL: 'public-read',
-      ContentType: contentType,
-    };
 
-    bucket.upload(params, (err: any, data: any) => {
-      if (err) {
-        console.log('EROOR: ', JSON.stringify(err));
-        return false;
+    let locations: string[] = [];
+
+    for (let i= 0; i < files.length; i++) {
+      const contentType = files[i].type;
+      const params = {
+        Bucket: BUCKET,
+        Key: id + i,
+        Body: files[i],
+        ACL: 'public-read',
+        ContentType: contentType,
+      };
+  
+      try {
+        const data = await bucket.upload(params).promise()
+        locations.splice(i, 0, data.Location);
+      } catch (err) {
+        console.log(err)
       }
-      console.log('File Uploaded.', data.Location);
-      this.updatePhotos([data.Location], id);
-      return true;
-    });
+      // bucket.upload(params, (err: any, data: any) => {
+      //   if (err) {
+      //     console.log('EROOR: ', JSON.stringify(err));
+      //     return false;
+      //   }
+      //   console.log('File Uploaded.', data.Location);
+      //   locations.push(data.Location);
+      //   return true;
+      // });
+    };
+    this.updatePhotos(locations, id);
   }
 
-  updatePhotos(location: any[], id: string) {
+  updatePhotos(locations: any[], id: string) {
     this.apollo
       .mutate({
         mutation: UPDATE_PHOTOS,
         variables: {
           id: id,
-          pictures: location,
+          pictures: locations,
         },
         refetchQueries: [
           {

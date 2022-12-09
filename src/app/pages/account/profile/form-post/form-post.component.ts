@@ -89,6 +89,7 @@ export class FormPostComponent implements OnInit {
         formatDate(this.post.eventEndDate, 'yyyy-MM-ddTHH:mm', 'en')
       );
       if(this.post.pictures) {
+        console.log("pictures" + this.post.pictures);
         this.post.pictures.forEach(e => this.imgsPreview.push(e));
       };
     }
@@ -113,7 +114,7 @@ export class FormPostComponent implements OnInit {
     let eventDate: any = this.postForm.controls.eventDate.value;
     let eventEndDate: any = this.postForm.controls.eventEndDate.value;
     let eventLocation: any = this.postForm.controls.eventLocation.value;
-    let photo = this.selectedFiles[0]
+    let photos = this.selectedFiles
     if (!this.postId) {
       if (this.postForm.valid && eventDate < eventEndDate) {
         this.postFormService.addPost(
@@ -126,7 +127,7 @@ export class FormPostComponent implements OnInit {
           eventDate,
           eventEndDate,
           eventLocation,
-          photo
+          photos
         );
       }
     } else {
@@ -144,42 +145,42 @@ export class FormPostComponent implements OnInit {
           eventEndDate,
           eventLocation,
         );
-        this.postFormService.uploadPhotos(photo, this.postId);
+        this.postFormService.uploadPhotos(photos, this.postId);
       }
     }
   }
 
-  // count: integer = 0;
+  count: integer = 0;
   selectedFiles: FileList = {} as FileList;
   imgsPreview: any = [];
-  selectFile(event: any) {
-    this.selectedFiles = event.target.files;
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    this.imgsPreview = [];
-    reader.readAsDataURL(file);
-    reader.onload = (_event) => {
-      this.imgsPreview.push(reader.result);
-    };
-  };
-
-  // selectFiles(event: any) {
+  // selectFile(event: any) {
   //   this.selectedFiles = event.target.files;
-  //   this.count = event.target.files.length;
-  //   if (this.count > 4) {
-  //     event.target.value = '';
+  //   const file = event.target.files[0];
+  //   const reader = new FileReader();
+  //   this.imgsPreview = [];
+  //   reader.readAsDataURL(file);
+  //   reader.onload = (_event) => {
+  //     this.imgsPreview.push(reader.result);
   //   };
+  // };
 
-  //   const files = event.target.files;
+  selectFiles(event: any) {
+    this.selectedFiles = event.target.files;
+    this.count = event.target.files.length;
+    if (this.count > 4) {
+      event.target.value = '';
+    };
 
-  //   for (let i = 0; i < this.count; i++ ) {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(files[i]);
-  //     reader.onload = (_event) => {
-  //         this.imgsPreview.push(reader.result);
-  //     }
-  //   }
-  // }
+    const files = event.target.files;
+    this.imgsPreview = [];
+    for (let i = 0; i < this.count; i++ ) {
+      const reader = new FileReader();
+      reader.readAsDataURL(files[i]);
+      reader.onload = (_event) => {
+          this.imgsPreview.push(reader.result);
+      }
+    }
+  }
 
   handleCancel() {
     this.router.navigate(['/account/profile/']);

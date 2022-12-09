@@ -159,6 +159,16 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
 
+    updatePhotos: async (parent, args, context) => {
+      if (context.user) {
+        return await Post.findByIdAndUpdate(
+          {_id: args._id},
+          {$set:{ pictures: args.pictures}},
+          {new: true}
+        )
+      }
+    },
+
     deletePost: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndDelete(
