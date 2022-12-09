@@ -89,7 +89,6 @@ export class FormPostComponent implements OnInit {
         formatDate(this.post.eventEndDate, 'yyyy-MM-ddTHH:mm', 'en')
       );
       if(this.post.pictures) {
-        console.log("pictures" + this.post.pictures);
         this.post.pictures.forEach(e => this.imgsPreview.push(e));
       };
     }
@@ -145,7 +144,9 @@ export class FormPostComponent implements OnInit {
           eventEndDate,
           eventLocation,
         );
-        this.postFormService.uploadPhotos(photos, this.postId);
+        if (Object.keys(photos).length !== 0) {
+          this.postFormService.uploadPhotos(photos, this.postId);
+        };
       }
     }
   }
@@ -169,6 +170,7 @@ export class FormPostComponent implements OnInit {
     this.count = event.target.files.length;
     if (this.count > 4) {
       event.target.value = '';
+      return;
     };
 
     const files = event.target.files;

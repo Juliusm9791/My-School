@@ -55,7 +55,7 @@ export class FormPostService {
         (result: any) => {
           console.log('got data', result, result.data.addPost._id);
           const id = result.data.addPost._id;
-          if (photos) {
+          if (Object.keys(photos).length === 0) {
             this.uploadPhotos(photos, id);
           };
           this.loading = result.loading;
