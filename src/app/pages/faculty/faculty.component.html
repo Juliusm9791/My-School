@@ -6,7 +6,6 @@
         <mat-card-title>{{ faculty.groupName }}</mat-card-title>
       </mat-card>
     </ng-container> -->
-
     <div>
       <div class="faculty-row">
         <div class="faculty-row-L">
@@ -27,4 +26,81 @@
       </div>
     </div>
   </div>
+
+  <!-- PROFILE FRONT END VIEW -->
+  <!-- <div id="profile-container">
+    <div id="profile-header">
+      <h2>{{ me.firstName }} {{ me.lastName }}!</h2>
+    </div>
+
+    <div id="profile-details">
+      <div class="profile-row">
+        <div id="profile-avatar">
+          <img
+            id="profile-img"
+            [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+            alt="Profile Image"
+          />
+        </div>
+        <div class="profile-col">
+          <div>
+            <div class="key">
+              <h3>Role:</h3>
+            </div>
+            <div id="groups">
+              <h4 *ngFor="let group of me.groupId">
+                {{ group.groupName }}
+              </h4>
+            </div>
+          </div>
+          <div>
+            <div class="key">
+              <h3>Grade:</h3>
+            </div>
+            <div id="grades">
+              <h4 *ngFor="let grade of me.gradeId">
+                {{ grade.gradeName }}
+              </h4>
+            </div>
+          </div>
+          <div>
+            <div class="key">
+              <h3>Dept:</h3>
+            </div>
+            <div id="departments">
+              <h4 *ngFor="let department of me.departmentId">
+                {{ department.depName }}
+              </h4>
+            </div>
+          </div>
+          <div>
+            <div class="key">
+              <h3>Address:</h3>
+            </div>
+            <div>
+              <h4>{{ me.address }}</h4>
+            </div>
+          </div>
+          <div>
+            <div class="key">
+              <h3>Phone:</h3>
+            </div>
+            <h4>{{ me.phoneNumber }}</h4>
+          </div>
+          <div>
+            <div class="key">
+              <h3>Email:</h3>
+            </div>
+            <h4>{{ me.email }}</h4>
+          </div>
+        </div>
+        <div class="profile-col">
+          <div>
+            <h3>Bio:</h3>
+            <h4 id="bio">{{ me.aboutMe }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </div>
