@@ -30,6 +30,6 @@ export class FacultyComponent implements OnInit {
     this.facultyService.queryFacultyMenbers();
   }
   allFacultyMenbers() {
-    //return this.facultyService.filterFacultyMembers()
+    return this.facultyService.filterFacultyMembers()
   }
 }

@@ -60,7 +60,7 @@ export class FacultyService {
   filterFacultyMembers() {
     console.log(this._facultyMenbers[0]?.groupId[0].groupName)
     console.log(this._facultyMenbers.filter((menber) => menber.groupId[0].groupName === "Faculty"))
-    //return this._facultyMenbers.filter((menber) => menber.groupId[0].groupName === "Faculty");
+    return this._facultyMenbers.filter((menber) => menber.groupId[0].groupName === "Faculty");
   }
 
 
