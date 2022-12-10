@@ -82,6 +82,35 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+  query Query {
+    users {
+      _id
+      aboutMe
+      address
+      email
+      firstName
+      lastName
+      aboutMe
+      phoneNumber
+      address
+      gradeId {
+        _id
+        gradeName
+      }
+      departmentId {
+        _id
+        depName
+      }
+      groupId {
+        _id
+        groupName
+      }
+   
+      phoneNumber
+    }
+  }
+`;
 export const QUERY_FACULTIES = gql`
   query faculties {
     faculties {

@@ -5,7 +5,7 @@ const typeDefs = gql`
     _id: ID
     depName: String!
   }
-  
+
   type Grade {
     _id: ID
     gradeName: String!
@@ -149,6 +149,7 @@ const typeDefs = gql`
     postAdded: Post
     commentAdded: Comment
     postUpdated: Post
+    meUpdated: User
   }
 `;
 

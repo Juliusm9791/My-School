@@ -16,7 +16,10 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return await User.find({}).populate("departmentId").populate("groupId");
+      return await User.find({})
+        .populate("departmentId")
+        .populate("groupId")
+        .populate("gradeId");
     },
     me: async (parent, args, context) => {
       if (("me", context.user)) {
@@ -191,6 +194,23 @@ const resolvers = {
           new: true,
         });
       }
+      pubsub.publish("ME_UPDATED", {
+        meUpdated: {
+          userId: context.user._id,
+          firstName: args.firstName,
+          middleName: args.middleName,
+          lastName: args.lastName,
+          avatar: args.avatar,
+          email: args.email,
+          password: args.password,
+          aboutMe: args.aboutMe,
+          address: args.address,
+          phoneNumber: args.phoneNumber,
+          groupId: args.groupId,
+          gradeId: args.gradeId,
+          departmentId: args.departmentId,
+        },
+      });
 
       throw new AuthenticationError("Not logged in");
     },
@@ -213,6 +233,7 @@ const resolvers = {
   Subscription: {
     postAdded: { subscribe: () => pubsub.asyncIterator("POST_ADDED") },
     commentAdded: { subscribe: () => pubsub.asyncIterator("COMMENT_ADDED") },
+    meUpdated: { subscribe: () => pubsub.asyncIterator("ME_UPDATED") },
   },
 };
 
