@@ -1,11 +1,20 @@
 <div id="faculty">
   <h1>FACULTY:</h1>
   <div class="facultyContainer">
+    <ng-container *ngFor="let facultyMenber of allFacultyMenbers()">
+      <app-faculty-menber [facultyMenber]="facultyMenber"> </app-faculty-menber>
+    </ng-container>
+    <!-- call that function on 4 -->
+    <!--  -->
+    <!--  -->
 
+    <!--  -->
+    <!-- <button (click)="allFacultyMenbers()"> click </button> -->
   </div>
+</div>
 
-  <!-- PROFILE FRONT END VIEW -->
-  <!-- <div id="profile-container">
+<!-- PROFILE FRONT END VIEW -->
+<!-- <div id="profile-container">
     <div id="profile-header">
       <h2>{{ me.firstName }} {{ me.lastName }}!</h2>
     </div>
@@ -80,4 +89,3 @@
       </div>
     </div>
   </div> -->
-</div>

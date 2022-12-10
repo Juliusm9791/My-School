@@ -141,7 +141,6 @@ export const DELETE_POST = gql`
 `;
 
 export const UPDATE_ME = gql`
-
   mutation UpdateMe(
     $firstName: String!
     $lastName: String!
@@ -169,7 +168,7 @@ export const UPDATE_ME = gql`
       groupId: $groupId
     ) {
       _id
-
+    }
   }
 `;
 export const UPDATE_AVATAR = gql`
