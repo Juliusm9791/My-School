@@ -180,9 +180,10 @@ export const UPDATE_AVATAR = gql`
 `;
 
 export const UPDATE_PHOTOS = gql`
-  mutation Mutation($id: ID!, $pictures: [String]) {
-    updatePost(_id: $id, pictures: $pictures) {
+  mutation Mutation($id: ID!, $pictures: [String]!) {
+    updatePhotos(_id: $id, pictures: $pictures) {
       _id
+      pictures
     }
   }
 `;
