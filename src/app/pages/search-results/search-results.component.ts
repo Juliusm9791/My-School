@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { searchResults } from 'src/app/types/types';
 import { PostsService } from '../posts/posts.service';
 
@@ -11,7 +12,6 @@ export class SearchResultsComponent implements OnInit {
   searchResults: searchResults = {} as searchResults;
 
   constructor(private postsService: PostsService) {
-    // this.searchResults = this.postsService.topSearchResults;
     this.postsService.changeSearchResults.subscribe((results) => {
       this.searchResults = results;
     });

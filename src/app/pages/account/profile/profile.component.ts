@@ -27,6 +27,7 @@ const POST_SUB = gql`
 export class ProfileComponent implements OnInit {
   isLoggedIn: boolean = false;
   me: Me = {} as Me;
+  defaultAvatar: string = '../../../../assets/images/account.png';
   error: any;
   loading: boolean = true;
   postsLoading: boolean = true;
@@ -77,6 +78,7 @@ export class ProfileComponent implements OnInit {
       this.postsLoading = loading;
     });
   }
+
   get isUserPosts() {
     return this._isUserPosts;
   }

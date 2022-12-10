@@ -33,10 +33,10 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-    pictures: {
+    pictures: [{
       type: String,
       required: false,
-    },
+    }],
     departmentId: {
       type: Schema.Types.ObjectId,
       ref: "Department",

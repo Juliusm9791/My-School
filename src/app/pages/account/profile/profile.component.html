@@ -11,38 +11,89 @@
     <div id="profile-container">
       <div id="profile-header">
         <h2>Hello {{ me.firstName }} {{ me.lastName }}!</h2>
-        <a routerLink="/" (click)="logout()">
-          <h3>Logout</h3>
-        </a>
+        <div id="profile-buttons">
+          <a class="post-card" (click)="profileEdit(me._id)">
+            <h3>Edit</h3>
+          </a>
+          <a routerLink="/" (click)="logout()">
+            <h3>Logout</h3>
+          </a>
+        </div>
       </div>
       <div id="profile-details">
-        <div>
-          <div class="profile-row">
-            <div id="profile-avatar">
-              <img
-                id="profile-img"
-                src="../../../../assets/images/account.png"
-              />
+        <div class="profile-row">
+          <div id="profile-avatar">
+            <img
+              id="profile-img"
+              [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+              alt="Profile Image"
+            />
+          </div>
+          <div class="profile-col">
+            <div>
+              <div class="key">
+                <h3>Role:</h3>
+              </div>
+              <div id="groups">
+                <h4 *ngFor="let group of me.groupId">
+                  {{ group.groupName }}
+                </h4>
+              </div>
             </div>
-            <div class="profile-col key">
-              <h4>Name:</h4>
-              <h4>Email:</h4>
-              <h4>School:</h4>
-              <h4>Group:</h4>
+            <div>
+              <div class="key">
+                <h3>Grade:</h3>
+              </div>
+              <div id="grades">
+                <h4 *ngFor="let grade of me.gradeId">
+                  {{ grade.gradeName }}
+                </h4>
+              </div>
             </div>
-            <div class="profile-col value">
-              <h4>{{ me.firstName }} {{ me.lastName }}</h4>
+            <div>
+              <div class="key">
+                <h3>Dept:</h3>
+              </div>
+              <div id="departments">
+                <h4 *ngFor="let department of me.departmentId">
+                  {{ department.depName }}
+                </h4>
+              </div>
+            </div>
+            <div>
+              <div class="key">
+                <h3>Address:</h3>
+              </div>
+              <div>
+                <h4>{{ me.address }}</h4>
+              </div>
+            </div>
+            <div>
+              <div class="key">
+                <h3>Phone:</h3>
+              </div>
+
+              <h4>{{ me.phoneNumber }}</h4>
+            </div>
+            <div>
+              <div class="key">
+                <h3>Email:</h3>
+              </div>
               <h4>{{ me.email }}</h4>
-              <h4>Value</h4>
-              <ng-container *ngFor="let group of me.groupId">
-                <h4>{{ group.groupName }}</h4>
-              </ng-container>
+            </div>
+
+            <div id="mobileBio">
+              <h3>Bio:</h3>
+              <h4 id="bio">{{ me.aboutMe }}</h4>
+            </div>
+          </div>
+          <div class="profile-col">
+            <div id="desktopBio">
+              <h3>Bio:</h3>
+              <h4 id="bio">{{ me.aboutMe }}</h4>
             </div>
           </div>
         </div>
-        <a id="edit-profile" class="post-card" (click)="profileEdit(me._id)">
-          <h5>Edit Profile</h5>
-        </a>
       </div>
 
       <section>

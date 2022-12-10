@@ -1,5 +1,5 @@
 interface Group {
-  _id: string
+  _id: string;
   groupName: string;
 }
 
@@ -7,6 +7,7 @@ export interface Me {
   _id: string;
   firstName: string;
   lastName: string;
+  avatar: string;
   aboutMe: string;
   address: string;
   phoneNumber: string;
@@ -51,6 +52,7 @@ interface UserFullName {
   _id: string;
   firstName: string;
   lastName: string;
+  avatar: string;
 }
 
 interface Comment {
@@ -80,6 +82,7 @@ export interface Post {
   commentId: Comment[];
   userId: UserFullName;
   gradeId: Grade[];
+  pictures: [string];
 }
 
 export interface searchResults {

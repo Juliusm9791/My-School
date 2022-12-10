@@ -1,5 +1,5 @@
 #profile {
-  margin: 40px auto 200px auto;
+  margin: 32px auto 200px auto;
   width: 80%;
 }
 
@@ -10,6 +10,14 @@
   border: 0.5px solid grey;
   box-shadow: 0px 1px 1px rgb(84, 84, 84);
   border-radius: 8px;
+}
+
+#groups,
+#grades,
+#departments {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start;
 }
 
 #profile h1,
@@ -80,13 +88,21 @@ section {
 }
 
 #profile-details {
-  padding: 10px 40px 0px 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-right: 50px;
+  padding-top: 10px;
 }
 
-.profile-row {
+.post-card {
+  margin-right: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile-row,
+#profile-buttons {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -96,7 +112,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px;
+  margin: 10px 0px 0px 40px;
 }
 
 .profile-col {
@@ -104,18 +120,22 @@ section {
   flex-direction: column;
   justify-content: flex start;
   align-items: left;
-  margin: 20px 0 0 0;
+  margin: 10px 0 0px 20px;
 }
 
-#update-avatar h5,
-#edit-profile h5 {
-  margin: 10px 0px 10px 0px;
-  text-decoration: none;
+.profile-col h3 {
   color: #4050b2;
+  margin-bottom: 0px;
 }
 
-#edit-profile h5 {
-  margin-right: 15px;
+.key {
+  width: 70px;
+}
+
+.profile-col div {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
 
 section h5 {
@@ -131,12 +151,13 @@ section h5 {
 .profile-col h4 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
-  margin: 10px 0 0 10px;
+  line-height: 16pt;
+  margin: 0px 8px 0px 0px;
   color: rgb(51, 51, 51);
 }
 
-.key h4 {
-  color: #4050b2;
+#bio {
+  margin-left: 10px;
 }
 
 #profile-avatar h5:hover,
@@ -161,4 +182,57 @@ section h5 {
 #notifications-body {
   margin: 40px auto 50px auto;
   width: 85%;
+}
+
+#mobileBio {
+  display: none;
+}
+
+#desktopBio {
+  display: flex;
+}
+
+@media (max-width: 1300px) {
+  .profile-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #mobileBio {
+    display: flex;
+  }
+
+  #desktopBio {
+    display: none;
+  }
+
+  #profile-details {
+    padding-right: 0px;
+  }
+
+  #bio {
+    padding: 0px 50px 0px 33px;
+  }
+
+  .profile-row {
+    padding: 0px 20px;
+  }
+
+  @media (max-width: 700px) {
+    #profile {
+      width: 95%;
+    }
+
+    #bio {
+      padding-right: 20px;
+    }
+
+    section {
+      margin: 20px;
+    }
+
+    #profile-avatar {
+      margin: 0px;
+    }
+  }
 }

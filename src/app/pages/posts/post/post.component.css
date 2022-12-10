@@ -28,7 +28,8 @@ mat-card-title:hover {
   background-image: linear-gradient(183deg, #f29c55 60%, #ea8935 100%);
 }
 
-#postDepartment h2 {
+#postDepartment h2,
+#postGrade h2 {
   background-color: rgb(240, 240, 240);
   color: #4050b2;
   font-family: Grotesk;
@@ -41,11 +42,17 @@ mat-card-title:hover {
   border-radius: 5px;
 }
 
-#postDepartment {
+#postDepartment,
+#postGrade {
   margin: auto 0px;
 }
 
-#postDepartment h2:hover {
+#postGrade {
+  margin-right: 10px;
+}
+
+#postDepartment h2:hover,
+#postGrade h2:hover {
   color: #f98c5a !important;
 }
 
@@ -76,7 +83,8 @@ h4 {
 }
 
 #social-buttons-row,
-#actions-buttons-row {
+#actions-buttons-row,
+#gradeDeptBlk {
   display: flex;
   flex-direction: row;
 }
@@ -158,72 +166,74 @@ mat-card-content p {
 }
 
 #defaultImg {
-  width: 152px;
-  height: 152px;
+  width: 200px;
+  height: 200px;
 }
 
 .extraImgs {
-  width: 38px;
-  height: 38px;
+  width: 100px;
+  height: 100px;
 }
 
 #images-block {
-  margin: 0px 20px 13px -10px;
+  margin: 0px 10px 13px -10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #description {
-  padding-right: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
+  padding-left: 0px;
 }
 
 #event-card {
-  margin-top: -40px;
-  margin-left: 15px;
+  width: fit-content;
   height: fit-content;
+  margin-top: -50px;
+  margin-left: 15px;
   border-radius: 4px;
   background-color: rgb(240, 240, 240);
   padding: 0px 10px 10px 10px;
   box-shadow: 0px 1px 1px rgb(124, 124, 124);
 }
 
+.event-card-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap !important;
+}
+
 #event-card-icon {
   width: 40px;
+  height: 40px;
   margin-left: -10px;
 }
 
-#extra-images,
-.event-card-column {
-  display: flex;
-  flex-direction: column;
-}
-
-#event-card h3 {
+#event-card h2 {
   color: #4050b2;
   font-family: Grotesk;
-  font-size: 14pt;
+  font-size: 12pt;
   letter-spacing: 0.08rem;
   margin: auto 0px;
-  padding-left: 5px;
+  padding: 0px;
 }
 
-#event-card h3:hover {
-  color: #f98c5a !important;
+.event-card-row h4,
+.event-card-row h5 {
+  color: rgb(35, 35, 35) !important;
+  font-size: 8pt;
+  line-height: 12pt;
+  margin-bottom: 0px;
+  white-space: nowrap;
 }
 
-.event-card-column {
-  width: 55px;
+.event-card-row h5 {
+  color: rgb(140, 140, 140) !important;
+  margin-right: 5px;
 }
 
-.event-values h4 {
-  color: black !important;
-}
-
-.event-card-column h4 {
-  font-size: 9pt;
-  line-height: 14pt;
-  margin: 0px;
+hr {
+  margin: 0px auto;
 }
 
 .post-content,
@@ -233,6 +243,12 @@ mat-card-content p {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  width: fit-content;
+  margin: 5px 0px;
+}
+
+.post-content {
+  margin: 0px;
 }
 
 #post-body {
@@ -253,6 +269,12 @@ mat-card-content p {
   margin: auto 0px auto 10px;
 }
 
+.postUserDetail h4 {
+  font-size: 9pt;
+  line-height: 12pt;
+  margin: 0px auto;
+}
+
 @media (max-width: 900px) {
   #defaultImg {
     width: 120px;
@@ -260,7 +282,8 @@ mat-card-content p {
   }
 
   .extraImgs {
-    width: 30px;
+    width: 60px;
+    height: 60px;
   }
 
   #images-block {
