@@ -37,10 +37,11 @@ h5 {
   text-decoration: none;
   color: rgb(125, 125, 125);
   margin: 0px;
+  padding-left: 5px;
 }
 
 .submitOrUpdate {
-  margin-left: 25px;
+  margin-left: 20px;
 }
 
 .submitBtn {
@@ -60,34 +61,42 @@ h5 {
 
 #title mat-form-field,
 #description mat-form-field {
-  width: 350px;
+  width: 200px;
 }
 
 #defaultImg {
-  width: 180px;
+  width: 220px;
+  height: auto;
 }
 
 .extraImgs {
   width: 45px;
 }
 
-#images-block {
+h5 {
+  margin: 10px 0;
+}
+
+#upload-photo {
+  width: 200px;
+}
+
+/* #images-block {
   margin: 0px;
   display: flex;
   flex-direction: row;
-}
+} */
 
-#extra-images {
+/* #extra-images {
   display: flex;
   flex-direction: column;
-}
+} */
 
-#postContent {
-  margin-top: 18px;
+/* #postContent {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-}
+} */
 
 #select-photos {
   margin-bottom: 5px;

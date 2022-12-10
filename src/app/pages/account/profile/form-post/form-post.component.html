@@ -148,13 +148,19 @@
 
 
     <div class="formColumn">
+
       <!-- <input id="select-photos" type="file" multiple />
       <h5>Add up to 5 photos</h5> -->
+
       <div id="postContent">
         <div id="images-block">
           <img
             id="defaultImg"
-            [src]="[imgsPreview[0] ? imgsPreview[0] : '../../../assets/images/default-placeholder-300x300.png']"
+            [src]="[
+              imgsPreview[0]
+                ? imgsPreview[0]
+                : '../../../assets/images/default-placeholder-300x300.png'
+            ]"
           />
           <div id="extra-images">
             <img
@@ -177,7 +183,9 @@
         </div>
       </div>
 
+
       <input
+
         id="upload-photos"
         type="file"
         accept="image/*"
@@ -191,6 +199,7 @@
        (change)="selectFile($event)"
       /> -->
       <h5 class="alert" *ngIf="count > 4">Add up to 5 photos only</h5>
+
 
       <div class="submitBtn">
         <button id="cancel" (click)="handleCancel()">CANCEL</button>

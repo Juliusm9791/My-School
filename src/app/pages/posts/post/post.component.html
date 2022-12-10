@@ -4,37 +4,36 @@
       <div>
         <h2>{{ post.title }}</h2>
       </div>
-      <div id="postDepartment">
-        <h2 *ngIf="post.departmentId">
-          {{ post.departmentId.depName | titlecase }}
-        </h2>
+
+      <div id="gradeDeptBlk">
+        <div id="postGrade">
+          <h2 *ngIf="post.gradeId">
+            {{ post.gradeId[0].gradeName }}
+          </h2>
+        </div>
+        <div id="postDepartment">
+          <h2 *ngIf="post.departmentId">
+            {{ post.departmentId.depName | titlecase }}
+          </h2>
+        </div>
       </div>
     </mat-card-title>
   </a>
 
   <div class="post-content">
     <div id="images-block">
-      <img
-        id="defaultImg"
-        src="../../../../assets/images/default-placeholder-300x300.png"
-      />
+      <img id="defaultImg" [src]="post.pictures[0]" />
       <div id="extra-images">
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
-        <img
-          class="extraImgs"
-          src="../../../../assets/images/default-placeholder-300x300.png"
-        />
+        <div>
+          <img
+            class="extraImgs"
+            src="../../../../assets/images/default-placeholder-300x300.png"
+          />
+          <img
+            class="extraImgs"
+            src="../../../../assets/images/default-placeholder-300x300.png"
+          />
+        </div>
       </div>
     </div>
 
