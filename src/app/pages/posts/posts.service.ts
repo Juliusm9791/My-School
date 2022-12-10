@@ -13,7 +13,6 @@ export class PostsService {
   error: any;
   errorUserPost: any;
   private _posts: Post[] = [];
-  // isSearching: boolean = true;
   topSearchResults: searchResults = {} as searchResults;
 
   constructor(private apollo: Apollo) {}

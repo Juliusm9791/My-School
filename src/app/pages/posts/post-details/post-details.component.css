@@ -5,7 +5,7 @@
 
 #post-details,
 #comments-section {
-  margin: 45px auto 30px auto;
+  margin: 32px auto 30px auto;
   width: 80%;
 }
 
@@ -27,7 +27,8 @@ app-comments {
   width: -webkit-fill-available;
 }
 
-#postDepartment h2 {
+#postDepartment h2,
+#postGrade h2 {
   background-color: rgb(240, 240, 240);
   color: #4050b2;
   font-family: Grotesk;
@@ -40,11 +41,13 @@ app-comments {
   border-radius: 5px;
 }
 
-#postDepartment {
-  margin: auto 0px;
+#postDepartment,
+#postGrade {
+  margin: auto 0px auto 10px;
 }
 
-#postDepartment h2:hover {
+#postDepartment h2:hover,
+#postGrade h2:hover {
   color: #f98c5a !important;
 }
 
@@ -68,14 +71,6 @@ mat-card-title {
   border-radius: 8px 8px 0px 0px;
 }
 
-h4 {
-  margin: auto;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 10pt;
-  color: #757575;
-  margin-bottom: 10px;
-}
-
 .mat-card {
   background-color: rgb(244, 244, 244);
   border-radius: 8px;
@@ -97,6 +92,13 @@ h4 {
   margin-left: 10px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.reactionSet,
+#gradeDeptBlk {
+  display: flex;
+  flex-direction: row;
 }
 
 #post-body {
@@ -105,7 +107,7 @@ h4 {
 }
 
 hr {
-  margin: 0;
+  margin: 5px auto;
 }
 
 .comment-submit {
@@ -167,16 +169,32 @@ hr {
 #deleteIcon,
 #editIcon {
   scale: 0.9;
-  margin: -7px 4px 0 3px;
+  margin: -8px 4px 3px 3px;
   color: #4050b2;
   border: none;
 }
 
-#likeIcon:hover,
-#commentIcon:hover,
-#shareIcon:hover,
 #deleteIcon:hover,
 #editIcon:hover {
+  color: #f98c5a;
+}
+
+#deleteIcon {
+  margin-right: 7px;
+}
+
+#updatePostButton,
+#deletePostButton {
+  scale: 1.1;
+  color: red;
+  border: none;
+  background-color: transparent;
+  margin-top: 15px;
+}
+
+#likeIcon:hover,
+#commentIcon:hover,
+#shareIcon:hover {
   color: #f98c5a;
 }
 
@@ -219,50 +237,49 @@ mat-card-content p {
 }
 
 #event-card {
+  width: fit-content;
+  height: fit-content;
   margin-top: -85px;
   margin-left: 15px;
-  height: fit-content;
   border-radius: 4px;
   background-color: rgb(240, 240, 240);
   padding: 0px 10px 10px 10px;
   box-shadow: 0px 1px 1px rgb(124, 124, 124);
 }
 
+.event-card-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap !important;
+}
+
 #event-card-icon {
   width: 40px;
+  height: 40px;
   margin-left: -10px;
 }
 
-.event-card-column {
-  display: flex;
-  flex-direction: column;
-}
-
-#event-card h3 {
+#event-card h2 {
   color: #4050b2;
   font-family: Grotesk;
-  font-size: 14pt;
+  font-size: 12pt;
   letter-spacing: 0.08rem;
   margin: auto 0px;
-  padding-left: 5px;
+  padding: 0px;
 }
 
-#event-card h3:hover {
-  color: #f98c5a !important;
+.event-card-row h4,
+.event-card-row h5 {
+  color: rgb(35, 35, 35) !important;
+  font-size: 8pt;
+  line-height: 12pt;
+  margin-bottom: 0px;
+  white-space: nowrap;
 }
 
-.event-card-column {
-  width: 55px;
-}
-
-.event-values h4 {
-  color: black !important;
-}
-
-.event-card-column h4 {
-  font-size: 9pt;
-  line-height: 14pt;
-  margin: 0px;
+.event-card-row h5 {
+  color: rgb(140, 140, 140) !important;
+  margin-right: 5px;
 }
 
 .post-content,
@@ -272,6 +289,7 @@ mat-card-content p {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  width: fit-content;
 }
 
 .subtitleRow {
@@ -297,9 +315,14 @@ mat-card-content p {
   margin: 10px 20px 0px 0px;
 }
 
-#postUserDetail {
+.postUserDetail {
   margin: auto 15px;
-  font-size: 12pt;
+}
+
+.postUserDetail h4 {
+  font-size: 10pt;
+  line-height: 14pt;
+  margin: 0px auto;
 }
 
 #comment-field {

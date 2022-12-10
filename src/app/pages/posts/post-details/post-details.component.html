@@ -7,19 +7,24 @@
         <div>
           <h2>{{ post.title }}</h2>
         </div>
-        <div id="postDepartment">
-          <h2 *ngIf="post.departmentId">
-            {{ post.departmentId.depName | titlecase }}
-          </h2>
+
+        <div id="gradeDeptBlk">
+          <div id="postGrade">
+            <h2 *ngIf="post.gradeId">
+              {{ post.gradeId[0].gradeName }}
+            </h2>
+          </div>
+          <div id="postDepartment">
+            <h2 *ngIf="post.departmentId">
+              {{ post.departmentId.depName | titlecase }}
+            </h2>
+          </div>
         </div>
       </mat-card-title>
 
       <div class="post-content">
         <div class="images-block">
-          <img
-            id="defaultImg"
-            src="../../../../assets/images/default-placeholder-300x300.png"
-          />
+          <img id="defaultImg" [src]="post.pictures[0]" />
           <div id="extra-image-column">
             <img
               class="extraImgs"
@@ -45,12 +50,19 @@
             <div class="subtitleRow">
               <img
                 id="postUserImg"
-                src="../../../../assets/images/account.png"
+                [src]="
+                  post.userId.avatar !== '' || null
+                    ? post.userId.avatar
+                    : defaultAvatar
+                "
               />
-              <h4 id="postUserDetail">
-                {{ post.userId.firstName }} {{ post.userId.lastName }} posted on
-                {{ post.createdAt | date: "short" }}
-              </h4>
+              <div class="postUserDetail">
+                <h4>{{ post.userId.firstName }} {{ post.userId.lastName }}</h4>
+                <h4>
+                  posted on
+                  {{ post.createdAt | date : "short" }}
+                </h4>
+              </div>
             </div>
           </mat-card-subtitle>
 
@@ -68,29 +80,27 @@
                     id="event-card-icon"
                     src="../../../../assets/images/calendar.png"
                   />
-                  <h3>Event</h3>
+                  <h2>Event</h2>
                 </div>
                 <div class="event-card-row">
-                  <div class="event-card-column">
-                    <h4>DATE:</h4>
-                    <h4>HOUR:</h4>
-                    <hr style="margin: 2px" />
-                    <h4>DATE:</h4>
-                    <h4>HOUR:</h4>
-                  </div>
-                  <div class="event-card-column event-values">
-                    <h4>{{ post.eventDate | date: "shortDate" }}</h4>
-                    <h4>{{ post.eventDate | date: "shortTime" }}</h4>
-                    <hr style="margin: 2px" />
-                    <h4>{{ post.eventEndDate | date: "shortDate" }}</h4>
-                    <h4>{{ post.eventEndDate | date: "shortTime" }}</h4>
-                  </div>
+                  <h5>START:</h5>
+                  <h4>
+                    {{ post.eventDate | date : "shortDate" }}&nbsp;{{
+                      post.eventDate | date : "shortTime"
+                    }}
+                  </h4>
+                </div>
+
+                <hr />
+                <div class="event-card-row">
+                  <h5>END:</h5>
+                  <h4>
+                    {{ post.eventEndDate | date : "shortDate" }}&nbsp;
+                    {{ post.eventEndDate | date : "shortTime" }}
+                  </h4>
                 </div>
               </div>
             </ng-container>
-            <!-- <ng-container *ngIf="!isLoggedIn">
-                  <a routerLink="/account/login">Leave a comment</a>
-                </ng-container> -->
           </div>
         </div>
       </div>
@@ -99,23 +109,39 @@
 
       <mat-card-actions>
         <div class="post-reactions">
-          <div class="likes">
-            {{ likes(post) }}
-            <button id="likeIcon" mat-icon-button>
-              <mat-icon>thumb_up_alt</mat-icon>
-            </button>
+          <div class="reactionSet">
+            <div class="likes">
+              {{ likes(post) }}
+              <button id="likeIcon" mat-icon-button>
+                <mat-icon>thumb_up_alt</mat-icon>
+              </button>
+            </div>
+            <div class="comments">
+              {{ post.commentId.length }}
+              <button id="commentIcon" mat-icon-button>
+                <mat-icon>chat_bubble</mat-icon>
+              </button>
+            </div>
+            <div class="shares">
+              <button id="shareIcon" mat-icon-button>
+                <mat-icon id="share-adjust">reply</mat-icon>
+              </button>
+            </div>
           </div>
-          <div class="comments">
-            {{ post.commentId.length }}
-            <button id="commentIcon" mat-icon-button>
-              <mat-icon>chat_bubble</mat-icon>
-            </button>
-          </div>
-          <div class="shares">
-            <button id="shareIcon" mat-icon-button>
-              <mat-icon id="share-adjust">reply</mat-icon>
-            </button>
-          </div>
+          <ng-container *ngIf="me._id === post.userId._id">
+            <div class="reactionSet">
+              <div class="delete" title="Delete">
+                <button id="deletePostButton" (click)="deletePost(post._id)">
+                  <mat-icon id="deleteIcon">delete</mat-icon>
+                </button>
+              </div>
+              <div class="update" title="Edit">
+                <button id="updatePostButton" (click)="updatePost(post._id)">
+                  <mat-icon id="editIcon">edit</mat-icon>
+                </button>
+              </div>
+            </div>
+          </ng-container>
         </div>
       </mat-card-actions>
     </mat-card>
@@ -129,7 +155,14 @@
     <!-- EXISTING COMMENTS -->
     <ng-container *ngIf="post.commentId">
       <div class="comment comment-row" *ngFor="let comment of post.commentId">
-        <img id="commentUserImg" src="../../../../assets/images/account.png" />
+        <img
+          id="commentUserImg"
+          [src]="
+            comment.userId.avatar !== '' || null
+              ? comment.userId.avatar
+              : defaultAvatar
+          "
+        />
         <app-comments [comment]="comment"></app-comments>
       </div>
     </ng-container>

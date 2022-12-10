@@ -90,11 +90,13 @@ const resolvers = {
         eventEndDate: args.eventEndDate,
         eventLocation: args.eventLocation,
         departmentId: args.departmentId,
+        gradeId: args.gradeId,
         title: args.title,
         description: args.description,
         commentId: args.commentId,
         reactionId: args.ReactionId,
         userId: context.user._id,
+        pictures: args.pictures,
       });
       pubsub.publish("POST_ADDED", {
         postAdded: {
@@ -134,18 +136,10 @@ const resolvers = {
     },
     updatePost: async (parent, args, context) => {
       if (context.user) {
+        const { _id, ...updateContent } = args;
         return await Post.findByIdAndUpdate(
-          args._id,
-          {
-            isVisible: args.isVisible,
-            isEvent: args.isEvent,
-            eventDate: args.eventDate,
-            eventEndDate: args.eventEndDate,
-            eventLocation: args.eventLocation,
-            departmentId: args.departmentId,
-            title: args.title,
-            description: args.description,
-          },
+          _id,
+          updateContent,
           {
             new: true,
           }
@@ -166,6 +160,16 @@ const resolvers = {
       });
 
       throw new AuthenticationError("Not logged in");
+    },
+
+    updatePhotos: async (parent, args, context) => {
+      if (context.user) {
+        return await Post.findByIdAndUpdate(
+          {_id: args._id},
+          {$set:{ pictures: args.pictures}},
+          {new: true}
+        )
+      }
     },
 
     deletePost: async (parent, args, context) => {

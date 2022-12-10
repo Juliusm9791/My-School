@@ -62,7 +62,7 @@ const typeDefs = gql`
     eventLocation: String
     title: String!
     description: String!
-    pictures: String
+    pictures: [String]
     departmentId: Department
     gradeId: [Grade]
     userId: User
@@ -117,26 +117,29 @@ const typeDefs = gql`
       title: String!
       description: String
       departmentId: ID
-      pictures: String
+      gradeId: [ID]
+      pictures: [String]
       commentId: ID
       reactionId: ID
     ): Post
     updatePost(
       _id: ID!
       userId: ID
-      isVisible: Boolean!
-      isEvent: Boolean!
+      isVisible: Boolean
+      isEvent: Boolean
       eventDate: String
       eventEndDate: String
       eventLocation: String
-      title: String!
+      title: String
       description: String
       departmentId: ID
-      pictures: String
+      gradeId: [ID]
+      pictures: [String]
       commentId: ID
       reactionId: ID
     ): Post
 
+    updatePhotos(_id: ID!, pictures: [String]!): Post
     addComment(comment: String!, postId: ID!): Post
 
     deletePost(_id: ID!): Post

@@ -20,10 +20,24 @@
       <div>
         <div class="profile-row">
           <div id="profile-avatar">
-            <img id="profile-img" src="../../../../assets/images/account.png" />
-            <a id="update-avatar" href="#">
+            <img
+              id="profile-img"
+              [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+              alt="Profile Image"
+            />
+            <input
+              id="select-avatar"
+              type="file"
+              (change)="selectFile($event)"
+            />
+            <button
+              id="update-avatar"
+              class="btn btn-success"
+              [disabled]="!selectedFiles"
+              (click)="upload()"
+            >
               <h5>Update Avatar</h5>
-            </a>
+            </button>
           </div>
           <div class="profile-col">
             <mat-form-field appearance="fill">
@@ -37,7 +51,42 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-              <mat-label>Email Address:</mat-label>
+              <mat-label>Role:</mat-label>
+              <mat-select formControlName="groupId" multiple>
+                <mat-option
+                  *ngFor="let faculty of facultyList"
+                  value="{{ faculty._id }}"
+                  >{{ faculty.groupName }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Grade:</mat-label>
+              <mat-select formControlName="gradeId" multiple>
+                <mat-option
+                  *ngFor="let grade of gradeList"
+                  value="{{ grade._id }}"
+                  >{{ grade.gradeName }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="profile-col">
+            <mat-form-field appearance="fill">
+              <mat-label>Department:</mat-label>
+              <mat-select formControlName="departmentId" multiple>
+                <mat-option
+                  *ngFor="let department of departmentList"
+                  value="{{ department._id }}"
+                  >{{ department.depName }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Email:</mat-label>
               <input matInput formControlName="emailAddress" />
             </mat-form-field>
 
@@ -47,65 +96,14 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-              <mat-label>Phone Number:</mat-label>
+              <mat-label>Phone #:</mat-label>
               <input matInput formControlName="phoneNumber" />
-            </mat-form-field>
-          </div>
-          <div class="profile-col">
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Department:</mat-label>
-              <mat-select formControlName="departmentId">
-                <mat-option>-- None --</mat-option>
-                <ng-container *ngFor="let depatment of departmentList">
-                  <mat-option value="{{ depatment._id }}"
-                    >{{ depatment.depName }}
-                  </mat-option>
-                </ng-container>
-              </mat-select>
-            </mat-form-field> -->
-            <mat-form-field appearance="fill">
-              <mat-label>Departments:</mat-label>
-              <mat-select formControlName="departmentId" multiple>
-                <mat-option *ngFor="let department of departmentList" value="{{department._id}}">{{department.depName}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Group:</mat-label>
-              <mat-select formControlName="groupId">
-                <mat-option>-- None --</mat-option>
-                <ng-container *ngFor="let faculty of facultyList">
-                  <mat-option value="{{ faculty._id }}">{{ faculty.groupName }}
-                  </mat-option>
-                </ng-container>
-              </mat-select>
-            </mat-form-field> -->
-            <mat-form-field appearance="fill">
-              <mat-label>Groups:</mat-label>
-              <mat-select formControlName="groupId" multiple>
-                <mat-option *ngFor="let faculty of facultyList" value="{{faculty._id}}">{{faculty.groupName}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Grade:</mat-label>
-              <mat-select formControlName="gradeId">
-                <mat-option>-- None --</mat-option>
-                <ng-container *ngFor="let grade of gradeList">
-                  <mat-option value="{{ grade._id }}">{{ grade.gradeName }}
-                  </mat-option>
-                </ng-container>
-              </mat-select>
-            </mat-form-field> -->
-            <mat-form-field appearance="fill">
-              <mat-label>Grades:</mat-label>
-              <mat-select formControlName="gradeId" multiple>
-                <mat-option *ngFor="let grade of gradeList" value="{{grade._id}}">{{grade.gradeName}}</mat-option>
-              </mat-select>
             </mat-form-field>
           </div>
 
           <div class="profile-col bio">
             <mat-form-field id="bio-input" appearance="fill">
-              <mat-label>About:</mat-label>
+              <mat-label>Bio:</mat-label>
               <textarea matInput formControlName="aboutMe"> </textarea>
             </mat-form-field>
 
