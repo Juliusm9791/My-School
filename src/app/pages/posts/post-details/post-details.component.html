@@ -15,7 +15,7 @@
             </h2>
           </div>
           <div id="postDepartment">
-            <h2 *ngIf="post.departmentId">
+            <h2 *ngIf="post.departmentId" (click)="deparmentDetails( post.departmentId._id)">
               {{ post.departmentId.depName | titlecase }}
             </h2>
           </div>

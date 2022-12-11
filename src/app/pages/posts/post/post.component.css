@@ -160,7 +160,11 @@ mat-card-content p {
   margin-bottom: 0px !important;
 }
 
-.post-card {
+mat-card>:first-child {
+    margin-top: -20px;
+}
+
+.post-card div h2 {
   text-decoration: none;
   cursor: pointer;
 }

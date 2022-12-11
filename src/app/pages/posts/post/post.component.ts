@@ -42,4 +42,7 @@ export class PostComponent implements OnInit {
   updatePost(id: string) {
     this.router.navigate(['/account/profile/form-post/' + id]);
   }
+  deparmentDetails(id: string) {
+    this.router.navigate(['/departments/' + id]);
+  }
 }
