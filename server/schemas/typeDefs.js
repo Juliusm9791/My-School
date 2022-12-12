@@ -143,6 +143,8 @@ const typeDefs = gql`
     addComment(comment: String!, postId: ID!): Post
 
     deletePost(_id: ID!): Post
+
+    addReactionLike(postId: ID): Reaction
   }
 
   type Subscription {

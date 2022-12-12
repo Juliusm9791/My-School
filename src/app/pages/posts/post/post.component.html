@@ -104,7 +104,7 @@
   <mat-card-actions>
     <div class="post-actions">
       <div id="social-buttons-row">
-        <div class="likes" title="Like">
+        <div class="likes" title="Like" (click)="addLike(post._id)">
           {{ countLikes }}
           <button id="likeIcon" mat-icon-button>
             <mat-icon>thumb_up_alt</mat-icon>

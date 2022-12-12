@@ -42,7 +42,7 @@ export interface Department {
   depName: string;
 }
 
-interface Reaction {
+export interface Reaction {
   _id: string;
   like: boolean;
   userId: UserFullName;

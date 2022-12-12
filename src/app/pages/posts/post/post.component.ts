@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Post } from 'src/app/types/types';
+import { Me, Post } from 'src/app/types/types';
+import { LoginSignupService } from '../../account/login-signup.service';
 import { PostsService } from '../posts.service';
 
 @Component({
@@ -12,14 +13,25 @@ export class PostComponent implements OnInit {
   @Input() post: Post = {} as Post;
   @Input() countLikes: number = 0;
   @Input() isUserPosts: boolean = false;
+  me: Me = {} as Me;
   isFullDescription: boolean = false;
   updatePostData: Post = {} as Post;
   postDataLoading: boolean = true;
   defaultAvatar: string = '../../../../assets/images/account.png';
 
-  constructor(private router: Router, private postService: PostsService) {}
+  constructor(
+    private router: Router,
+    private postsService: PostsService,
+    private loginSignupService: LoginSignupService
+  ) {
+    this.loginSignupService.changeMe.subscribe((me) => {
+      this.me = me;
+    });
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.me = this.loginSignupService.me;
+  }
 
   changeFullDescription() {
     this.isFullDescription = !this.isFullDescription;
@@ -36,7 +48,7 @@ export class PostComponent implements OnInit {
 
   deletePost(id: string) {
     if (confirm('Are you sure to delete this post')) {
-      this.postService.deletePost(id);
+      this.postsService.deletePost(id);
     }
   }
   updatePost(id: string) {
@@ -44,5 +56,11 @@ export class PostComponent implements OnInit {
   }
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
+  }
+
+  addLike(postId :string) {
+    if (this.me._id) {
+      this.postsService.addUserLike(this.me._id, postId);
+    }
   }
 }
