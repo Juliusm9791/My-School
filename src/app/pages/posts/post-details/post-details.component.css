@@ -221,26 +221,24 @@ mat-card-content p {
 }
 
 .extraImgs {
-  width: 60px;
-  height: 60px;
+  width: 120px;
+  height: 120px;
 }
 
 .images-block {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: -20px 20px 13px -10px;
 }
 
-#extra-image-column {
+#extra-image-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 #event-card {
   width: fit-content;
   height: fit-content;
-  margin-top: -85px;
-  margin-left: 15px;
   border-radius: 4px;
   background-color: rgb(240, 240, 240);
   padding: 0px 10px 10px 10px;
@@ -297,8 +295,15 @@ mat-card-content p {
 }
 
 #post-body {
-  width: 100%;
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#event-card-column {
+  margin-top: -10px;
+  display: flex;
+  flex-direction: column;
 }
 
 #post-body-row {
