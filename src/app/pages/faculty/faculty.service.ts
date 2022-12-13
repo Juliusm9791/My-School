@@ -9,14 +9,14 @@ import { Faculty, Me } from 'src/app/types/types';
 export class FacultyService {
   loading: boolean = true;
   private _faculties: Faculty[] = [];
-  private _facultyMenbers: Me[] = []
-  facultyMenbersLoading: boolean = true;
+  private _facultyMembers: Me[] = []
+  facultyMembersLoading: boolean = true;
 
   constructor(private apollo: Apollo) { }
   @Output() changeFaculties: EventEmitter<any> = new EventEmitter();
 
-  @Output() changeFacultyMenbersLoading: EventEmitter<boolean> = new EventEmitter();
-  @Output() changeFacultyMenbers: EventEmitter<Me[]> = new EventEmitter();
+  @Output() changeFacultyMembersLoading: EventEmitter<boolean> = new EventEmitter();
+  @Output() changeFacultyMembers: EventEmitter<Me[]> = new EventEmitter();
 
   queryFaculties() {
     this.apollo
@@ -37,18 +37,18 @@ export class FacultyService {
       );
   }
 
-  queryFacultyMenbers() {
+  queryFacultyMembers() {
     this.apollo
       .watchQuery({
         query: QUERY_USERS,
       })
       .valueChanges.subscribe(
         (result: any) => {
-          this._facultyMenbers = result?.data?.users;
-          console.log('query facultyMenbers data ', this._facultyMenbers);
-          this.facultyMenbersLoading = result.loading;
-          this.changeFacultyMenbersLoading.emit(this.facultyMenbersLoading);
-          this.changeFacultyMenbers.emit(this._facultyMenbers);
+          this._facultyMembers = result?.data?.users;
+          console.log('query facultyMenbers data ', this._facultyMembers);
+          this.facultyMembersLoading = result.loading;
+          this.changeFacultyMembersLoading.emit(this.facultyMembersLoading);
+          this.changeFacultyMembers.emit(this._facultyMembers);
           // !this.loading && this.router.navigate(['/account/profile']);
         },
         (error) => {
@@ -58,9 +58,9 @@ export class FacultyService {
   }
 
   filterFacultyMembers() {
-    console.log(this._facultyMenbers[0]?.groupId[0].groupName)
-    console.log(this._facultyMenbers.filter((menber) => menber.groupId[0].groupName === "Faculty"))
-    return this._facultyMenbers.filter((menber) => menber.groupId[0].groupName === "Faculty");
+    console.log(this._facultyMembers[0]?.groupId[0].groupName)
+    console.log(this._facultyMembers.filter((member) => member.groupId[0].groupName === "Faculty"))
+    return this._facultyMembers.filter((member) => member.groupId[0].groupName === "Faculty");
   }
 
 

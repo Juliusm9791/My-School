@@ -9,27 +9,27 @@ import { FacultyService } from './faculty.service';
 })
 export class FacultyComponent implements OnInit {
   faculties: Faculty[] = [];
-  facultyMenbersLoading: boolean = true;
-  facultyMenbers: Me[] = []
+  facultyMembersLoading: boolean = true;
+  facultyMembers: Me[] = []
 
   constructor(private facultyService: FacultyService) {
     this.facultyService.changeFaculties.subscribe((faculties) => {
       this.faculties = faculties;
     });
-    this.facultyService.changeFacultyMenbersLoading.subscribe((loading) => {
-      this.facultyMenbersLoading = loading;
+    this.facultyService.changeFacultyMembersLoading.subscribe((loading) => {
+      this.facultyMembersLoading = loading;
     });
-    this.facultyService.changeFacultyMenbers.subscribe((users) => {
-      this.facultyMenbers = users;
+    this.facultyService.changeFacultyMembers.subscribe((users) => {
+      this.facultyMembers = users;
 
     });
   }
 
   ngOnInit(): void {
     this.facultyService.queryFaculties();
-    this.facultyService.queryFacultyMenbers();
+    this.facultyService.queryFacultyMembers();
   }
-  allFacultyMenbers() {
+  allFacultyMembers() {
     return this.facultyService.filterFacultyMembers()
   }
 }
