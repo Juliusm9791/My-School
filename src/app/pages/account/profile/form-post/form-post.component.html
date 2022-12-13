@@ -154,20 +154,42 @@
 
       <div id="postContent">
         <div id="images-block">
-          <img
-            id="defaultImg"
-            [src]="[
-              imgsPreview[0]
-                ? imgsPreview[0]
-                : '../../../assets/images/default-placeholder-300x300.png'
-            ]"
-          />
-          <div id="extra-images">
             <img
-              class="extraImgs"
-              [src]="[imgsPreview[1] ? imgsPreview[1] : '../../../assets/images/default-placeholder-300x300.png']"
+              id="defaultImg"
+              [src]="[
+                imgsPreview[0]
+                  ? imgsPreview[0]
+                  : '../../../assets/images/plusSign.png'
+              ]"
+              (click)="hiddenInput0.click()"
             />
-            <img
+            <input #hiddenInput0 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 0)">    
+          <div id="extra-images">
+              <img
+                class="extraImgs"
+                [src]="[imgsPreview[1] ? imgsPreview[1] : '../../../assets/images/plusSign.png']"
+                (click)="hiddenInput1.click()"
+              />
+              <input #hiddenInput1 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 1)"> 
+              <img
+                class="extraImgs"
+                [src]="[imgsPreview[2] ? imgsPreview[2] : '../../../assets/images/plusSign.png']"
+                (click)="hiddenInput2.click()"
+              />
+              <input #hiddenInput2 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 2)"> 
+              <img
+                class="extraImgs"
+                [src]="[imgsPreview[3] ? imgsPreview[3] : '../../../assets/images/plusSign.png']"
+                (click)="hiddenInput3.click()"
+              />
+              <input #hiddenInput3 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 3)"> 
+              <img
+                class="extraImgs"
+                [src]="[imgsPreview[4] ? imgsPreview[4] : '../../../assets/images/plusSign.png']"
+                (click)="hiddenInput4.click()"
+              />
+              <input #hiddenInput4 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 4)"> 
+            <!-- <img
               class="extraImgs"
               [src]="[imgsPreview[2] ? imgsPreview[2] : '../../../assets/images/default-placeholder-300x300.png']"
             />
@@ -178,27 +200,18 @@
             <img
               class="extraImgs"
               [src]="[imgsPreview[4] ? imgsPreview[4] : '../../../assets/images/default-placeholder-300x300.png']"
-            />
+            /> -->
           </div>
         </div>
       </div>
 
-
-      <input
-
-        id="upload-photos"
-        type="file"
-        accept="image/*"
-        multiple
-        (change)="selectFiles($event)" 
-      />
       <!-- <input
        id="upload-photo"
        type="file"
        accept="image/*"
        (change)="selectFile($event)"
       /> -->
-      <h5 class="alert" *ngIf="count > 4">Add up to 5 photos only</h5>
+      <!-- <h5 class="alert" *ngIf="count > 5">Add up to 5 photos only</h5> -->
 
 
       <div class="submitBtn">

@@ -144,45 +144,51 @@ export class FormPostComponent implements OnInit {
           eventEndDate,
           eventLocation,
         );
-        if (Object.keys(photos).length !== 0) {
-          this.postFormService.uploadPhotos(photos, this.postId);
+        if (photos.length !== 0) {
+          this.postFormService.uploadPhotos(photos, this.postId, this.post.pictures);
         };
       }
     }
   }
 
-  count: integer = 0;
-  selectedFiles: FileList = {} as FileList;
+  selectedFiles: any = [];
   imgsPreview: any = [];
-  // selectFile(event: any) {
-  //   this.selectedFiles = event.target.files;
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
-  //   this.imgsPreview = [];
-  //   reader.readAsDataURL(file);
-  //   reader.onload = (_event) => {
-  //     this.imgsPreview.push(reader.result);
-  //   };
-  // };
-
-  selectFiles(event: any) {
-    this.selectedFiles = event.target.files;
-    this.count = event.target.files.length;
-    if (this.count > 4) {
-      event.target.value = '';
-      return;
-    };
-
-    const files = event.target.files;
-    this.imgsPreview = [];
-    for (let i = 0; i < this.count; i++ ) {
-      const reader = new FileReader();
-      reader.readAsDataURL(files[i]);
-      reader.onload = (_event) => {
-          this.imgsPreview.push(reader.result);
-      }
+  selectFile(event: any, id: number) {
+    const file = event.target.files[0];
+    if(this.selectedFiles[id]) {
+      this.selectedFiles.splice(id, 1, {id: id, file: file});
+    } else {
+      this.selectedFiles.push({ id: id, file: file });
     }
-  }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (_event) => {
+      if(this.imgsPreview[id]) {
+        this.imgsPreview.splice(id, 1, reader.result);
+      } else {
+        this.imgsPreview.push(reader.result);
+      }
+    };
+  };
+
+  // selectFiles(event: any) {
+  //   this.selectedFiles = event.target.files;
+  //   this.count = event.target.files.length;
+  //   if (this.count > 5) {
+  //     event.target.value = '';
+  //     return;
+  //   };
+
+  //   const files = event.target.files;
+  //   this.imgsPreview = [];
+  //   for (let i = 0; i < this.count; i++ ) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(files[i]);
+  //     reader.onload = (_event) => {
+  //         this.imgsPreview.push(reader.result);
+  //     }
+  //   }
+  // }
 
   handleCancel() {
     this.router.navigate(['/account/profile/']);

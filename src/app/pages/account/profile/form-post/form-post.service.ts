@@ -28,7 +28,7 @@ export class FormPostService {
     eventDate: string,
     eventEndDate: string,
     eventLocation: string,
-    photos: object,
+    photos: [],
   ) {
     this.apollo
       .mutate({
@@ -55,8 +55,8 @@ export class FormPostService {
         (result: any) => {
           console.log('got data', result, result.data.addPost._id);
           const id = result.data.addPost._id;
-          if (Object.keys(photos).length === 0) {
-            this.uploadPhotos(photos, id);
+          if (photos.length !== 0) {
+            this.uploadPhotos(photos, id, []);
           };
           this.loading = result.loading;
           result && this.router.navigate(['/account/profile']);
@@ -112,28 +112,32 @@ export class FormPostService {
         }
       );
   }
-  async uploadPhotos(files: any, id: any) {
+  async uploadPhotos(files: any, id: any, locations: any) {
     const bucket = new S3({
       accessKeyId: ACCESS,
       secretAccessKey: SECRET,
       region: 'us-east-2',
     });
 
-    let locations: string[] = [];
+    let updatedLocations: string[] = [];
+    locations.forEach((e : any) => updatedLocations.push(e));
 
     for (let i= 0; i < files.length; i++) {
-      const contentType = files[i].type;
+      const contentType = files[i].file.type;
       const params = {
         Bucket: BUCKET,
-        Key: id + i,
-        Body: files[i],
+        Key: id + files[i].id,
+        Body: files[i].file,
         ACL: 'public-read',
         ContentType: contentType,
       };
   
       try {
-        const data = await bucket.upload(params).promise()
-        locations.splice(i, 0, data.Location);
+        const data = await bucket.upload(params).promise();
+        if (locations.length === 0 || files[i].id > locations.length - 1) {
+          const index = parseInt(files[i].id);
+          updatedLocations.splice(index, 0, data.Location);
+        }
       } catch (err) {
         console.log(err)
       }
@@ -147,7 +151,7 @@ export class FormPostService {
       //   return true;
       // });
     };
-    this.updatePhotos(locations, id);
+    this.updatePhotos(updatedLocations, id);
   }
 
   updatePhotos(locations: any[], id: string) {
