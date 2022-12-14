@@ -22,7 +22,7 @@ import { ProfilePostComponent } from './account/profile/profile-post/profile-pos
 import { ProfileEditComponent } from './account/profile/profile-edit/profile-edit/profile-edit.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { HighlightPipe } from './pipes/highlight.pipe';
-import { FacultyMenberComponent } from './faculty/faculty-menber/faculty-menber.component';
+import { FacultyMemberComponent } from './faculty/faculty-member/faculty-member.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { FacultyMenberComponent } from './faculty/faculty-menber/faculty-menber.
     ProfileEditComponent,
     SearchResultsComponent,
     HighlightPipe,
-    FacultyMenberComponent,
+    FacultyMemberComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
@@ -61,7 +61,7 @@ import { FacultyMenberComponent } from './faculty/faculty-menber/faculty-menber.
     ProfilePostComponent,
     ProfileEditComponent,
     SearchResultsComponent,
-    FacultyMenberComponent,
+    FacultyMemberComponent,
   ],
 })
 export class PagesModule { }

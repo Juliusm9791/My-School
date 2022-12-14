@@ -3,12 +3,12 @@ import { Me } from 'src/app/types/types';
 import { FacultyService } from '../faculty.service';
 
 @Component({
-  selector: 'app-faculty-menber',
-  templateUrl: './faculty-menber.component.html',
-  styleUrls: ['./faculty-menber.component.css']
+  selector: 'app-faculty-member',
+  templateUrl: './faculty-member.component.html',
+  styleUrls: ['./faculty-member.component.css']
 })
-export class FacultyMenberComponent implements OnInit {
-  @Input() facultyMenber: Me = {} as Me;
+export class FacultyMemberComponent implements OnInit {
+  @Input() facultyMember: Me = {} as Me;
   constructor(private facultyService: FacultyService) { }
 
   ngOnInit(): void {
