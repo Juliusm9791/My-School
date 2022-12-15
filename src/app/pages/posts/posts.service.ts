@@ -1,9 +1,12 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
 import { Apollo } from 'apollo-angular';
-import { DELETE_POST } from 'src/app/services/graphql/mutations';
+import {
+  ADD_REACTION_LIKE,
+  DELETE_POST,
+} from 'src/app/services/graphql/mutations';
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
-import { Post, searchResults } from 'src/app/types/types';
+import { Post, Reaction, searchResults } from 'src/app/types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -135,5 +138,37 @@ export class PostsService {
       searchInDescription: resultsDescription,
     };
     this.changeSearchResults.emit(this.topSearchResults);
+  }
+
+  addUserLike(userId: string, postId: string) {
+    let isUserReaction =
+      this.singlePost(postId).reactionId.filter(
+        (reaction: Reaction) => reaction.userId._id === userId
+      ).length > 0;
+
+    if (!isUserReaction) {
+      this.apollo
+        .mutate({
+          mutation: ADD_REACTION_LIKE,
+          variables: {
+            postId: postId,
+          },
+          refetchQueries: [
+            {
+              query: QUERY_POSTS,
+            },
+          ],
+        })
+        .subscribe(
+          (result: any) => {
+            console.log('got data', result.data);
+          },
+          (error) => {
+            console.log('add reaction error', error);
+          }
+        );
+    } else {
+      console.log("Already has a like from this user")
+    }
   }
 }
