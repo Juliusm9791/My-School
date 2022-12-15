@@ -152,7 +152,7 @@ mat-divider {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 app-department {
@@ -175,12 +175,35 @@ app-department {
   font-weight: 300;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .widget-column {
     display: none;
   }
 
   .home-column {
     width: 95%;
+  }
+
+  .home-body {
+    max-width: 100%;
+  }
+
+  .home h1 {
+    margin: 20px 0px 0px 0px;
+    font-size: 14pt;
+  }
+
+  .widget-header h2 {
+    font-size: 14pt;
+  }
+
+  .widget-header h1 {
+    font-size: 14pt !important;
+  }
+
+  .seeAllBtn button {
+    font-family: Grotesk;
+    font-size: 12pt;
+    margin-bottom: 0px;
   }
 }

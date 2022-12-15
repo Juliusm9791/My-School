@@ -91,8 +91,7 @@ section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-right: 50px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .post-card {
@@ -101,7 +100,7 @@ section {
   cursor: pointer;
 }
 
-.profile-row,
+.profile-body,
 #profile-buttons {
   display: flex;
   flex-direction: row;
@@ -112,7 +111,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0px 0px 40px;
+  margin: 20px 30px 20px 50px;
 }
 
 .profile-col {
@@ -120,7 +119,6 @@ section {
   flex-direction: column;
   justify-content: flex start;
   align-items: left;
-  margin: 10px 0 0px 20px;
 }
 
 .profile-col h3 {
@@ -129,7 +127,11 @@ section {
 }
 
 .key {
-  width: 70px;
+  width: 80px;
+}
+
+#bioKey {
+  width: 40px;
 }
 
 .profile-col div {
@@ -144,7 +146,6 @@ section h5 {
 }
 
 #profile-img {
-  margin-top: 15px;
   width: 130px;
 }
 
@@ -154,10 +155,6 @@ section h5 {
   line-height: 16pt;
   margin: 0px 8px 0px 0px;
   color: rgb(51, 51, 51);
-}
-
-#bio {
-  margin-left: 10px;
 }
 
 #profile-avatar h5:hover,
@@ -184,38 +181,19 @@ section h5 {
   width: 85%;
 }
 
-#mobileBio {
-  display: none;
-}
-
-#desktopBio {
-  display: flex;
-}
-
 @media (max-width: 1300px) {
-  .profile-row {
+  .profile-body {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    padding: 0px 50px;
   }
 
-  #mobileBio {
-    display: flex;
+  #profile-avatar {
+    margin: 20px 0px;
   }
 
-  #desktopBio {
-    display: none;
-  }
-
-  #profile-details {
-    padding-right: 0px;
-  }
-
-  #bio {
-    padding: 0px 50px 0px 33px;
-  }
-
-  .profile-row {
-    padding: 0px 20px;
+  #bioKey {
+    width: 80px;
   }
 
   @media (max-width: 700px) {
@@ -223,16 +201,16 @@ section h5 {
       width: 95%;
     }
 
-    #bio {
-      padding-right: 20px;
+    .profile-body {
+      padding: 0px 30px;
+    }
+
+    #profile-avatar {
+      margin-top: 5px;
     }
 
     section {
       margin: 20px;
-    }
-
-    #profile-avatar {
-      margin: 0px;
     }
   }
 }

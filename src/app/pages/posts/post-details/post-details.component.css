@@ -85,7 +85,7 @@ mat-card-title {
   font-size: 12pt;
   line-height: 16pt;
   padding-right: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 .post-reactions {
@@ -298,12 +298,13 @@ mat-card-content p {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 #event-card-column {
-  margin-top: -10px;
   display: flex;
-  flex-direction: column;
+  justify-content: right;
+  margin-bottom: 13px;
 }
 
 #post-body-row {
@@ -333,4 +334,64 @@ mat-card-content p {
 #comment-field {
   width: -webkit-fill-available;
   align-items: flex-end;
+}
+
+@media (max-width: 1000px) {
+  #post-details,
+  #comments-section {
+    width: 95%;
+    margin-top: 50px;
+  }
+
+  #comments-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  #defaultImg {
+    width: 140px;
+    height: 140px;
+  }
+
+  .extraImgs {
+    width: 70px;
+    height: 70px;
+  }
+
+  h2 {
+    font-size: 16pt;
+  }
+
+  #postDepartment h2,
+  #postGrade h2 {
+    font-size: 12pt;
+  }
+
+  #description {
+    font-size: 10pt;
+  }
+
+  #postUserImg {
+    width: 40px;
+    height: 40px;
+  }
+
+  #commentUserImg {
+    margin-top: 15px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .images-block {
+    margin-right: 10px;
+  }
+
+  #post-body {
+    margin-top: 0px;
+  }
+
+  mat-card-subtitle {
+    margin-bottom: 8px;
+  }
 }

@@ -261,7 +261,8 @@ input[type="search"]:focus {
   display: flex;
   border: none;
   justify-content: space-between;
-  background: transparent;
+  background: rgb(242, 242, 242);
+  padding: 5px;
 }
 
 #smForm input {
@@ -319,6 +320,10 @@ input[type="search"]:focus {
   #smSearchBar {
     display: inline;
     margin-top: 60px;
+  }
+
+  #smForm {
+    background-color: red;
   }
 
   #searchIcon2 {

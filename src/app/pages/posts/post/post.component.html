@@ -38,36 +38,39 @@
     </div>
 
     <div id="post-body">
-      <mat-card-subtitle>
-        <div class="subtitleRow">
-          <img
-            id="postUserImg"
-            [src]="
-              post.userId.avatar !== '' || null
-                ? post.userId.avatar
-                : defaultAvatar
-            "
-            alt="User Image"
-          />
-          <div class="postUserDetail">
-            <h4 class="postUserDetail postUserName">
-              {{ post.userId.firstName }} {{ post.userId.lastName }}
-            </h4>
-            <h4 class="postUserDetail">
-              posted on: {{ post.createdAt | date : "short" }}
-            </h4>
+      <div>
+        <mat-card-subtitle>
+          <div class="subtitleRow">
+            <img
+              id="postUserImg"
+              [src]="
+                post.userId.avatar !== '' || null
+                  ? post.userId.avatar
+                  : defaultAvatar
+              "
+              alt="User Image"
+            />
+            <div class="postUserDetail">
+              <h4 class="postUserDetail postUserName">
+                {{ post.userId.firstName }} {{ post.userId.lastName }}
+              </h4>
+              <h4 class="postUserDetail">
+                posted on: {{ post.createdAt | date : "short" }}
+              </h4>
+            </div>
+          </div>
+        </mat-card-subtitle>
+
+        <div id="post-body-row">
+          <div>
+            <mat-card-content>
+              <p id="description">{{ post.description }}</p>
+            </mat-card-content>
           </div>
         </div>
-      </mat-card-subtitle>
-
-      <div id="post-body-row">
-        <div>
-          <mat-card-content>
-            <p id="description">{{ post.description }}</p>
-          </mat-card-content>
-        </div>
-
-        <!-- EVENT CARD -->
+      </div>
+      <!-- EVENT CARD -->
+      <div id="event-card-column">
         <ng-container *ngIf="post.isEvent">
           <div id="event-card">
             <div class="event-card-row">
