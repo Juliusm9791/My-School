@@ -251,7 +251,7 @@ hr {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: fit-content;
+  width: 100%;
 }
 
 .post-content {
