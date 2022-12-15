@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { ADD_POST, UPDATE_PHOTOS } from 'src/app/services/graphql/mutations';
-import { UPDATE_POST } from 'src/app/services/graphql/mutations';
+import { ADD_POST, UPDATE_PHOTOS, UPDATE_POST, DELETE_PHOTOS } from 'src/app/services/graphql/mutations';
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 
 import * as S3 from 'aws-sdk/clients/s3';
@@ -28,7 +27,7 @@ export class FormPostService {
     eventDate: string,
     eventEndDate: string,
     eventLocation: string,
-    photos: [],
+    photos: []
   ) {
     this.apollo
       .mutate({
@@ -56,8 +55,8 @@ export class FormPostService {
           console.log('got data', result, result.data.addPost._id);
           const id = result.data.addPost._id;
           if (photos.length !== 0) {
-            this.uploadPhotos(photos, id, []);
-          };
+            this.uploadPhotos(photos, id, [], []);
+          }
           this.loading = result.loading;
           result && this.router.navigate(['/account/profile']);
         },
@@ -77,7 +76,7 @@ export class FormPostService {
     selectedGradeId: string,
     eventDate: string,
     eventEndDate: string,
-    eventLocation: string,
+    eventLocation: string
   ) {
     this.apollo
       .mutate({
@@ -112,17 +111,17 @@ export class FormPostService {
         }
       );
   }
-  async uploadPhotos(files: any, id: any, locations: any) {
+  async uploadPhotos(files: any, id: any, locations: any, deleteIds: any) {
     const bucket = new S3({
       accessKeyId: ACCESS,
       secretAccessKey: SECRET,
       region: 'us-east-2',
     });
 
-    let updatedLocations: string[] = [];
-    locations.forEach((e : any) => updatedLocations.push(e));
+    let updatedLocations: any[] = [];
+    locations.forEach((e: any) => updatedLocations.push({id: e.id, location: e.location}));
 
-    for (let i= 0; i < files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
       const contentType = files[i].file.type;
       const params = {
         Bucket: BUCKET,
@@ -131,15 +130,21 @@ export class FormPostService {
         ACL: 'public-read',
         ContentType: contentType,
       };
-  
+
       try {
         const data = await bucket.upload(params).promise();
-        if (locations.length === 0 || files[i].id > locations.length - 1) {
-          const index = parseInt(files[i].id);
-          updatedLocations.splice(index, 0, data.Location);
+
+        const picture = {
+          id: files[i].id,
+          location: data.Location,
+        };
+
+        const index = updatedLocations.findIndex((e) => e.id == picture.id);
+        if (index === -1) {
+          updatedLocations.push(picture);
         }
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
       // bucket.upload(params, (err: any, data: any) => {
       //   if (err) {
@@ -150,8 +155,23 @@ export class FormPostService {
       //   locations.push(data.Location);
       //   return true;
       // });
-    };
-    this.updatePhotos(updatedLocations, id);
+    }
+    if (deleteIds.length !== 0) {
+      for (let i = 0; i < deleteIds.length; i++) {
+        // const params = {
+        //   Bucket: BUCKET,
+        //   Key: id + deleteIds[i],
+        // };
+        // try {
+        //   await bucket.deleteObject(params).promise();
+        //   console.log('file deleted Successfully');
+        // } catch (err) {
+        //   console.log('ERROR in file Deleting : ' + JSON.stringify(err));
+        // }
+        this.deletePhotos(id, deleteIds[i])
+      }
+    }
+      this.updatePhotos(updatedLocations, id);
   }
 
   updatePhotos(locations: any[], id: string) {
@@ -176,6 +196,32 @@ export class FormPostService {
         },
         (error) => {
           console.log('update photos error', error);
+        }
+      );
+  };
+
+  deletePhotos(id: string, pictureId: number) {
+    this.apollo
+      .mutate({
+        mutation: DELETE_PHOTOS,
+        variables: {
+          id: id,
+          pictureId: pictureId,
+        },
+        refetchQueries: [
+          {
+            query: QUERY_POSTS,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('delete photo', result);
+          this.loading = result.loading;
+          // result && this.router.navigate(['/account/profile']);
+        },
+        (error) => {
+          console.log('delete photo error', error);
         }
       );
   }

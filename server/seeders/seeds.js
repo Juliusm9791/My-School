@@ -184,7 +184,6 @@ db.once("open", async () => {
       gradeId: [grades[1]._id, grades[2]._id],
       description:
         "Each semester I have special opportunity to choose one of you to represent our class at the Speakers’ Showcase. All communications professors can nominate one student to submit their best speech. If you are nominated you will receive extra credit. In addition, a panel of judges will choose the top six presentations to be in the Showcase. If you are chosen to be in the Showcase, you will receive additional extra credit and possibly money or prizes. This is a win-win! The next showcase is April 26th. Your presentation videos will be due April 17th.",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -197,7 +196,6 @@ db.once("open", async () => {
       gradeId: applyAllGrades,
       description:
         "Bus Riders: We ask that all parents of students riding the bus please wait with your child until they have boarded the bus each morning.  This will give our driver time to ensure that it is your child’s correct week to be at school.  Buses will have a roster and signage in the window indicating the week of attendance (Green-Week A, Yellow-Week B). At the end of the school day, bus riders will be escorted to the bus by school staff.",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -209,7 +207,6 @@ db.once("open", async () => {
       gradeId: [grades[4]._id, grades[5]._id],
       description:
         "Pitt County Schools is pleased to announce that they have transitioned to being a 1-to-1 district. K-2 students will be receiving iPads while 3rd-5th graders will be receiving Chromebooks. Your child will use the same device for three consecutive school years. A detailed device agreement is coming home on the first student day or when picking up devices for virtual learning and will need to be signed and returned before the device may travel home with your child. ",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -221,7 +218,6 @@ db.once("open", async () => {
       gradeId: [grades[5]._id, grades[6]._id],
       description:
         "Open House will look different this year.  Students who are coming on A and B weeks will participate in a virtual Open House on August 13th for 1st-5th grade.  Each teacher will send out a virtual open house video to view by 3:00 on Open House. Your child’s teacher will contact you to either set up times to meet virtually through Zoom or do a live question and answer session for parents who would like to attend.  We understand this may cause some anxiety, however, we can assure you we will be available to answer questions, address concerns, and introduce ourselves to our Eagles!",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -233,7 +229,6 @@ db.once("open", async () => {
       gradeId: applyAllGrades,
       description:
         " Students will be provided 5 masks and a lanyard.  Students may choose to use these masks, or any other appropriate mask.  Please do not send students with masks that contain inappropriate images or words. The lanyard is to be used to make sure that while students are eating, the lanyards do not fall to the ground or become mixed up with another student's mask.",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -245,7 +240,6 @@ db.once("open", async () => {
       gradeId: applyAllGrades,
       description:
         " Lunch money can be paid online with the system PaySchools Central found at payschoolscentral.com or students may bring cash or a check weekly or monthly.If you feel your family may qualify for free/reduced lunch status please make sure you get the form from the office or your child’s teacher. If you were approved last year it continues for the first 4 weeks of school but a new application must be filled out each year.  ",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -257,7 +251,6 @@ db.once("open", async () => {
       gradeId: [grades[1]._id, grades[2]._id],
       description:
         "We would like to invite all Parents and Carers to our second PTA meeting of this academic year. It will take place in the school library at 6.45pm on Monday 7th November. We look forward to seeing you then. ",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -269,7 +262,6 @@ db.once("open", async () => {
       gradeId: [grades[5]._id, grades[6]._id],
       description:
         "This year our FGO will have two focuses. We will be focused on Monthly School Spirit Days to create a school-wide sense of community and enthusiasm for being an amazing Fishkill Frog! We will also be focused on raising money and collecting goods for our school and our community.  Your FGO has been working on creating these focuses. Our school focus will be on Bully Prevention and our community focus will be towards aiding Animal Shelters and Endangered Animals. Each month, we will collect alternately for each of these focuses.  ",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -281,7 +273,6 @@ db.once("open", async () => {
       gradeId: [grades[1]._id, grades[2]._id],
       description:
         "school pictures on Tuesday, October 2nd & Wednesday October 3rd.",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -293,7 +284,6 @@ db.once("open", async () => {
       gradeId: [grades[5]._id],
       description:
         "Module Quiz: It includes 25 multiple-choice questions, and you have 75 minutes  complete the assignment once you begin. The quiz is due on Friday by 11.59pm • Presentation: Be sure to reference the rubric for this assignment that can be found in the course documents folder. The presentation upload is due on Friday by 11.59pm.  As always, I am happy to help.",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -305,7 +295,6 @@ db.once("open", async () => {
       gradeId: [grades[4]._id],
       description:
         "Just a reminder that we are 3 days away from your final project being due.Make sure you have  done the following things before you turn in your project: • Review the feedback on your rough draft • Read the rubric for the final presentation(found in the folder where you submit your  presentation)• Touch base with me if you have any questions ",
-      pictures: "",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
