@@ -46,62 +46,66 @@
         </div>
 
         <div id="post-body">
-          <mat-card-subtitle>
-            <div class="subtitleRow">
-              <img
-                id="postUserImg"
-                [src]="
-                  post.userId.avatar !== '' || null
-                    ? post.userId.avatar
-                    : defaultAvatar
-                "
-              />
-              <div class="postUserDetail">
-                <h4>{{ post.userId.firstName }} {{ post.userId.lastName }}</h4>
-                <h4>
-                  posted on
-                  {{ post.createdAt | date : "short" }}
-                </h4>
-              </div>
-            </div>
-          </mat-card-subtitle>
-
-          <div id="post-body-row">
-            <mat-card-content>
-              <p id="description">{{ post.description }}</p>
-            </mat-card-content>
-          </div>
-        </div>
-        <!-- EVENT CARD -->
-        <div id="event-card-column">
-          <ng-container *ngIf="post.isEvent">
-            <div id="event-card">
-              <div class="event-card-row">
+          <div>
+            <mat-card-subtitle>
+              <div class="subtitleRow">
                 <img
-                  id="event-card-icon"
-                  src="../../../../assets/images/calendar.png"
+                  id="postUserImg"
+                  [src]="
+                    post.userId.avatar !== '' || null
+                      ? post.userId.avatar
+                      : defaultAvatar
+                  "
                 />
-                <h2>Event</h2>
+                <div class="postUserDetail">
+                  <h4>
+                    {{ post.userId.firstName }} {{ post.userId.lastName }}
+                  </h4>
+                  <h4>
+                    posted on
+                    {{ post.createdAt | date : "short" }}
+                  </h4>
+                </div>
               </div>
-              <div class="event-card-row">
-                <h5>START:</h5>
-                <h4>
-                  {{ post.eventDate | date : "shortDate" }}&nbsp;{{
-                    post.eventDate | date : "shortTime"
-                  }}
-                </h4>
-              </div>
+            </mat-card-subtitle>
 
-              <hr />
-              <div class="event-card-row">
-                <h5>END:</h5>
-                <h4>
-                  {{ post.eventEndDate | date : "shortDate" }}&nbsp;
-                  {{ post.eventEndDate | date : "shortTime" }}
-                </h4>
-              </div>
+            <div id="post-body-row">
+              <mat-card-content>
+                <p id="description">{{ post.description }}</p>
+              </mat-card-content>
             </div>
-          </ng-container>
+          </div>
+          <!-- EVENT CARD -->
+          <div id="event-card-column">
+            <ng-container *ngIf="post.isEvent">
+              <div id="event-card">
+                <div class="event-card-row">
+                  <img
+                    id="event-card-icon"
+                    src="../../../../assets/images/calendar.png"
+                  />
+                  <h2>Event</h2>
+                </div>
+                <div class="event-card-row">
+                  <h5>START:</h5>
+                  <h4>
+                    {{ post.eventDate | date : "shortDate" }}&nbsp;{{
+                      post.eventDate | date : "shortTime"
+                    }}
+                  </h4>
+                </div>
+
+                <hr />
+                <div class="event-card-row">
+                  <h5>END:</h5>
+                  <h4>
+                    {{ post.eventEndDate | date : "shortDate" }}&nbsp;
+                    {{ post.eventEndDate | date : "shortTime" }}
+                  </h4>
+                </div>
+              </div>
+            </ng-container>
+          </div>
         </div>
       </div>
 
