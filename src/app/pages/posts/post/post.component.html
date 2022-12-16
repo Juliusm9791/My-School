@@ -12,7 +12,10 @@
         </h2>
       </div>
       <div id="postDepartment">
-        <h2 *ngIf="post.departmentId" (click)="deparmentDetails(post.departmentId._id)">
+        <h2
+          *ngIf="post.departmentId"
+          (click)="deparmentDetails(post.departmentId._id)"
+        >
           {{ post.departmentId.depName | titlecase }}
         </h2>
       </div>
@@ -40,22 +43,58 @@
       <div>
         <mat-card-subtitle>
           <div class="subtitleRow">
-            <img
-              id="postUserImg"
-              [src]="
-                post.userId.avatar !== '' || null
-                  ? post.userId.avatar
-                  : defaultAvatar
-              "
-              alt="User Image"
-            />
-            <div class="postUserDetail">
-              <h4 class="postUserDetail postUserName">
-                {{ post.userId.firstName }} {{ post.userId.lastName }}
-              </h4>
-              <h4 class="postUserDetail">
-                posted on: {{ post.createdAt | date : "short" }}
-              </h4>
+            <div id="userLockup">
+              <div id="img-col">
+                <img
+                  id="postUserImg"
+                  [src]="
+                    post.userId.avatar !== '' || null
+                      ? post.userId.avatar
+                      : defaultAvatar
+                  "
+                  alt="User Image"
+                />
+              </div>
+              <div class="postUserDetail">
+                <h4 class="postUserDetail postUserName">
+                  {{ post.userId.firstName }} {{ post.userId.lastName }}
+                </h4>
+                <h4 class="postUserDetail">
+                  posted: {{ post.createdAt | date : "short" }}
+                </h4>
+              </div>
+            </div>
+
+            <!-- EVENT CARD -->
+            <div id="event-card-column">
+              <ng-container *ngIf="post.isEvent">
+                <div id="event-card">
+                  <img
+                    id="event-card-icon"
+                    src="../../../../assets/images/calendar.png"
+                  />
+                  <h2>Event:</h2>
+
+                  <div class="start-end-column">
+                    <div class="event-card-row">
+                      <h5>START:</h5>
+                      <h4>
+                        {{ post.eventDate | date : "shortDate" }}&nbsp;{{
+                          post.eventDate | date : "shortTime"
+                        }}
+                      </h4>
+                    </div>
+                    <hr />
+                    <div class="event-card-row">
+                      <h5>END:</h5>
+                      <h4>
+                        {{ post.eventEndDate | date : "shortDate" }}&nbsp;
+                        {{ post.eventEndDate | date : "shortTime" }}
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
             </div>
           </div>
         </mat-card-subtitle>
@@ -67,37 +106,6 @@
             </mat-card-content>
           </div>
         </div>
-      </div>
-      <!-- EVENT CARD -->
-      <div id="event-card-column">
-        <ng-container *ngIf="post.isEvent">
-          <div id="event-card">
-            <div class="event-card-row">
-              <img
-                id="event-card-icon"
-                src="../../../../assets/images/calendar.png"
-              />
-              <h2>Event</h2>
-            </div>
-            <div class="event-card-row">
-              <h5>START:</h5>
-              <h4>
-                {{ post.eventDate | date : "shortDate" }}&nbsp;{{
-                  post.eventDate | date : "shortTime"
-                }}
-              </h4>
-            </div>
-
-            <hr />
-            <div class="event-card-row">
-              <h5>END:</h5>
-              <h4>
-                {{ post.eventEndDate | date : "shortDate" }}&nbsp;
-                {{ post.eventEndDate | date : "shortTime" }}
-              </h4>
-            </div>
-          </div>
-        </ng-container>
       </div>
     </div>
   </div>

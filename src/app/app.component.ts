@@ -30,7 +30,7 @@ export class AppComponent implements OnDestroy, OnInit {
     private postsService: PostsService,
     private router: Router
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 900px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
     this.authService.changeLoggedIn.subscribe((loggedIn) => {
