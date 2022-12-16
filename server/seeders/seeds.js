@@ -39,7 +39,7 @@ db.once("open", async () => {
   await Grade.deleteMany();
 
   const grades = await Grade.insertMany([
-    { gradeName: "Kindergarten" },
+    { gradeName: "K" },
     { gradeName: "1st" },
     { gradeName: "2nd" },
     { gradeName: "3rd" },
