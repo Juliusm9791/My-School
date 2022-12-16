@@ -56,6 +56,7 @@ db.once("open", async () => {
     { groupName: "Faculty" },
     { groupName: "Parent" },
     { groupName: "Student" },
+    { groupName: "Not Assigned" },
   ]);
 
   console.log("group seeded");

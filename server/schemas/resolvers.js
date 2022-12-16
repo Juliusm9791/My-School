@@ -77,9 +77,12 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      const unassignedGroupId = await Group.find({});
+      const user = await User.create({
+        ...args,
+        groupId: unassignedGroupId[3]._id, //  group id "Not Assigned"
+      });
       const token = signToken(user);
-
       return { token, user };
     },
     addPost: async (parents, args, context) => {
