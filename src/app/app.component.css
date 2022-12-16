@@ -280,7 +280,7 @@ input[type="search"]:focus {
   padding-top: 0px !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .topBarR {
     flex-direction: row;
     align-items: flex-end;
@@ -288,6 +288,10 @@ input[type="search"]:focus {
 
   #login h2 {
     display: none;
+  }
+
+  #loginLink {
+    margin-left: 0px;
   }
 
   #accountIcon {
@@ -302,7 +306,7 @@ input[type="search"]:focus {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   #logo {
     display: none;
   }

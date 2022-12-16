@@ -181,7 +181,7 @@ section h5 {
   width: 85%;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1000px) {
   .profile-body {
     flex-direction: column;
     align-items: flex-start;
@@ -196,7 +196,7 @@ section h5 {
     width: 80px;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     #profile {
       width: 95%;
     }
@@ -205,12 +205,21 @@ section h5 {
       padding: 0px 30px;
     }
 
+    #profile-container {
+      padding-bottom: 30px;
+    }
+
     #profile-avatar {
       margin-top: 5px;
     }
 
     section {
       margin: 20px;
+    }
+
+    #announcements-body,
+    #notifications-body {
+      width: 90%;
     }
   }
 }

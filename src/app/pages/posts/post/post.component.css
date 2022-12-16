@@ -149,7 +149,7 @@ h4 {
 }
 
 mat-card-subtitle {
-  margin: 5px 0 !important;
+  margin: 0 !important;
 }
 
 mat-card-content {
@@ -160,8 +160,8 @@ mat-card-content p {
   margin-bottom: 0px !important;
 }
 
-mat-card>:first-child {
-    margin-top: -20px;
+mat-card > :first-child {
+  margin-top: -20px;
 }
 
 .post-card div h2 {
@@ -191,24 +191,27 @@ mat-card>:first-child {
 }
 
 #event-card {
+  display: flex;
+  flex-direction: row;
   width: fit-content;
   height: fit-content;
   border-radius: 4px;
   background-color: rgb(240, 240, 240);
-  padding: 0px 10px 10px 10px;
+  padding: 5px 10px;
   box-shadow: 0px 1px 1px rgb(124, 124, 124);
 }
 
-.event-card-row {
+.start-end-column {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap !important;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
 }
 
 #event-card-column {
   display: flex;
   justify-content: right;
-  margin-bottom: 13px;
+  margin-top: -3px;
 }
 
 #event-card-icon {
@@ -220,7 +223,7 @@ mat-card>:first-child {
 #event-card h2 {
   color: #4050b2;
   font-family: Grotesk;
-  font-size: 12pt;
+  font-size: 14pt;
   letter-spacing: 0.08rem;
   margin: auto 0px;
   padding: 0px;
@@ -254,6 +257,21 @@ hr {
   width: 100%;
 }
 
+.subtitleRow {
+  justify-content: space-between;
+}
+
+#userLockup {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.event-card-row {
+  justify-content: space-between;
+  flex-wrap: nowrap !important;
+}
+
 .post-content {
   margin: 0px;
 }
@@ -274,8 +292,12 @@ hr {
   height: 35px;
 }
 
+#img-col {
+  margin: auto;
+}
+
 .postUserDetail {
-  margin: auto 0px auto 10px;
+  margin: auto 10px;
 }
 
 .postUserDetail h4 {
@@ -286,6 +308,18 @@ hr {
 
 @media (max-width: 900px) {
   #defaultImg {
+    width: 160px;
+    height: 160px;
+  }
+
+  .extraImgs {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 700px) {
+  #defaultImg {
     width: 120px;
     height: 120px;
   }
@@ -295,12 +329,6 @@ hr {
     height: 60px;
   }
 
-  #extra-images {
-    flex-direction: row;
-  }
-}
-
-@media (max-width: 700px) {
   h2 {
     font-size: 16pt;
   }
@@ -308,5 +336,33 @@ hr {
   #postDepartment h2,
   #postGrade h2 {
     font-size: 12pt;
+  }
+
+  #event-card {
+    padding: 5px;
+  }
+
+  #event-card-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: -4px;
+  }
+
+  #event-card h2 {
+    font-size: 10pt;
+  }
+
+  .event-card-row h4,
+  .event-card-row h5 {
+    font-size: 7pt;
+    line-height: 10pt;
+  }
+
+  .start-end-column {
+    margin-left: 5px;
+  }
+
+  #img-col {
+    margin: 0px;
   }
 }
