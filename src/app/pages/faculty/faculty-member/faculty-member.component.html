@@ -1,19 +1,19 @@
 <div>
-    <div class="faculty-row">
-      <div class="faculty-row-L">
-        <img id="faculty-avatar" src="../../../assets/images/account.png" />
-        <h2>{{facultyMember.firstName}} {{facultyMember.lastName}}</h2>
-        <h3 *ngIf="facultyMember.departmentId.length > 0">{{facultyMember.departmentId[0].depName}}</h3>
+  <div class="faculty-row">
+    <div class="faculty-row-L">
+      <img id="faculty-avatar" src="../../../assets/images/account.png" />
+      <h2>{{ facultyMember.firstName }} {{ facultyMember.lastName }}</h2>
+      <h3 *ngIf="facultyMember.departmentId.length > 0">
+        {{ facultyMember.departmentId[0].depName }}
+      </h3>
+    </div>
+    <div class="faculty-row-R">
+      <div class="contactBtns">
+        <mat-icon id="mailIcon">mail</mat-icon>
       </div>
-      <div class="faculty-row-R">
-        <div class="contactBtns">
-          <mat-icon id="mailIcon">mail</mat-icon>
-        </div>
-        <div class="contactBtns">
-          <mat-icon id="phoneIcon">phone_in_talk</mat-icon>
-        </div>
+      <div class="contactBtns">
+        <mat-icon id="phoneIcon">phone_in_talk</mat-icon>
       </div>
-      <!-- <img id="emailIcon" src="../../../assets/images/mail_blue.png" /> -->
-      <!-- <img id="phoneIcon" src="../../../assets/images/phone_blue.png" /> -->
     </div>
   </div>
+</div>

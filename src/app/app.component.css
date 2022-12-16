@@ -340,11 +340,6 @@ input[type="search"]:focus {
     display: none;
   }
 
-  #accountIcon {
-    width: 25px;
-    margin: 6px 0px 0px 5px;
-  }
-
   .toolbar {
     padding-left: 6px !important;
     padding-right: 10px !important;
@@ -352,6 +347,10 @@ input[type="search"]:focus {
 
   .mat-icon-button {
     scale: 1.1;
+    margin: 0px;
+  }
+
+  #accountIcon {
     margin: 0px;
   }
 
