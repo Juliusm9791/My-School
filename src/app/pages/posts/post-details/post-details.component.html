@@ -116,7 +116,7 @@
       <mat-card-actions>
         <div class="post-reactions">
           <div class="reactionSet">
-            <div class="likes">
+            <div class="likes" (click)="addLike(post._id)">
               {{ likes(post) }}
               <button id="likeIcon" mat-icon-button>
                 <mat-icon>thumb_up_alt</mat-icon>
