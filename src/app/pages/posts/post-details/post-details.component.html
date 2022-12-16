@@ -15,7 +15,10 @@
             </h2>
           </div>
           <div id="postDepartment">
-            <h2 *ngIf="post.departmentId" (click)="deparmentDetails( post.departmentId._id)">
+            <h2
+              *ngIf="post.departmentId"
+              (click)="deparmentDetails(post.departmentId._id)"
+            >
               {{ post.departmentId.depName | titlecase }}
             </h2>
           </div>
@@ -26,14 +29,8 @@
         <div class="images-block">
           <img id="defaultImg" [src]="post.pictures[0]" />
           <div id="extra-image-row">
-            <img
-              class="extraImgs"
-              src="../../../../assets/images/default-placeholder-300x300.png"
-            />
-            <img
-              class="extraImgs"
-              src="../../../../assets/images/default-placeholder-300x300.png"
-            />
+            <img class="extraImgs" [src]="post.pictures[0]" />
+            <img class="extraImgs" [src]="post.pictures[0]" />
             <!-- <img
               class="extraImgs"
               src="../../../../assets/images/default-placeholder-300x300.png"
