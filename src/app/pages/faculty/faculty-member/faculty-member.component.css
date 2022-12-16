@@ -72,3 +72,34 @@
 #phoneIcon:hover {
   color: #f98c5a;
 }
+
+@media only screen and (max-width: 1000px) {
+  #faculty-avatar {
+    width: 45px;
+    margin-right: 10px;
+  }
+
+  .faculty-row h2 {
+    font-size: 12pt;
+    margin-right: 10px;
+  }
+
+  .faculty-row h3 {
+    font-size: 10pt;
+  }
+
+  .contactBtns {
+    height: 35px;
+    margin-right: 8px;
+  }
+
+  #mailIcon,
+  #phoneIcon {
+    margin: 0 3px;
+    scale: 1;
+  }
+
+  #phoneIcon {
+    margin-top: 1px;
+  }
+}
