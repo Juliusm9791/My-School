@@ -1,0 +1,150 @@
+#profile-front {
+  margin: 32px auto 200px auto;
+  width: 80%;
+}
+
+#profile-container {
+  background-color: rgb(244, 244, 244);
+  border-radius: 5px;
+  padding-bottom: 50px;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  border-radius: 8px;
+}
+
+#groups,
+#grades,
+#departments {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start;
+}
+
+#profile h1,
+#profile-header h2,
+#announcements-subheader h2,
+#notifications-subheader h2 {
+  font-family: Grotesk;
+  font-size: 16pt;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  color: #4050b2;
+}
+
+#profile-header {
+  background-color: #3e5bb3;
+  background-image: linear-gradient(180deg, #3e5bb3 16%, #2a4fae 100%);
+  padding: 10px 10px 10px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profile-header {
+  border-radius: 7px 7px 0 0;
+}
+
+#profile-header h2 {
+  color: white;
+  margin: 0px 10px;
+}
+
+#profile-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.profile-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#profile-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 30px 20px 50px;
+}
+
+.profile-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex start;
+  align-items: left;
+}
+
+.profile-col h3 {
+  color: #4050b2;
+  margin-bottom: 0px;
+}
+
+.key {
+  width: 80px;
+}
+
+#bioKey {
+  width: 40px;
+}
+
+.profile-col div {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+#profile-img {
+  width: 130px;
+}
+
+.profile-col h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  line-height: 16pt;
+  margin: 0px 8px 0px 0px;
+  color: rgb(51, 51, 51);
+}
+
+#profile-header a:link,
+#profile-header a:active,
+#profile-header a:visited,
+#profile-header a:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 1000px) {
+  .profile-body {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 50px;
+  }
+
+  #profile-avatar {
+    margin: 20px 0px;
+  }
+
+  #bioKey {
+    width: 80px;
+  }
+
+  @media (max-width: 800px) {
+    #profile {
+      width: 95%;
+    }
+
+    .profile-body {
+      padding: 0px 30px;
+    }
+
+    #profile-container {
+      padding-bottom: 30px;
+    }
+
+    #profile-avatar {
+      margin-top: 5px;
+    }
+  }
+}
