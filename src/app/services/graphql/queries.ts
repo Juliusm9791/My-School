@@ -9,7 +9,10 @@ const postBody = `
   eventEndDate
   eventLocation
   title
-  pictures
+  pictures {
+    id
+    location
+  }
   departmentId{
     _id
     depName

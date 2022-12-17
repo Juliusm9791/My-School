@@ -53,7 +53,6 @@ export const ADD_POST = gql`
     $eventLocation: String
     $departmentId: ID
     $gradeId: [ID]
-    $pictures: [String]
   ) {
     addPost(
       title: $title
@@ -65,7 +64,6 @@ export const ADD_POST = gql`
       eventLocation: $eventLocation
       departmentId: $departmentId
       gradeId: $gradeId
-      pictures: $pictures
     ) {
       _id
       title
@@ -92,7 +90,6 @@ export const UPDATE_POST = gql`
     $eventLocation: String
     $departmentId: ID
     $gradeId: [ID]
-    $pictures: [String]
   ) {
     updatePost(
       _id: $postId
@@ -105,7 +102,6 @@ export const UPDATE_POST = gql`
       eventLocation: $eventLocation
       departmentId: $departmentId
       gradeId: $gradeId
-      pictures: $pictures
     ) {
       title
       description
@@ -180,10 +176,25 @@ export const UPDATE_AVATAR = gql`
 `;
 
 export const UPDATE_PHOTOS = gql`
-  mutation Mutation($id: ID!, $pictures: [String]!) {
+  mutation UpdatePhotos($id: ID!, $pictures: [pictureInput]!) {
     updatePhotos(_id: $id, pictures: $pictures) {
       _id
-      pictures
+      pictures {
+        id
+        location
+      }
+    }
+  }
+`;
+
+export const DELETE_PHOTOS = gql`
+  mutation DeletePhotos($id: ID!, $pictureId: Int!) {
+    deletePhotos(_id: $id, pictureId: $pictureId) {
+      _id
+      pictures {
+        id
+        location
+      }
     }
   }
 `;

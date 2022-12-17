@@ -170,7 +170,15 @@ const resolvers = {
         );
       }
     },
-
+    deletePhotos: async(parent, args, context) => {
+      if (context.user) {
+        return await Post.findByIdAndUpdate(
+          {_id: args._id},
+          {$pull: { pictures: {id: args.pictureId}}},
+          {new: true}
+        )
+      }
+    },
     deletePost: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndDelete(

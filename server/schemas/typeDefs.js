@@ -53,6 +53,11 @@ const typeDefs = gql`
     user: User
   }
 
+  type Picture {
+    id: Int!
+    location: String!
+  }
+
   type Post {
     _id: ID
     isVisible: Boolean!
@@ -62,7 +67,7 @@ const typeDefs = gql`
     eventLocation: String
     title: String!
     description: String!
-    pictures: [String]
+    pictures: [Picture]
     departmentId: Department
     gradeId: [Grade]
     userId: User
@@ -81,6 +86,11 @@ const typeDefs = gql`
     faculties: [Group]
     departments: [Department]
     grades: [Grade]
+  }
+
+  input pictureInput {
+    id: Int!
+    location: String
   }
 
   type Mutation {
@@ -118,7 +128,7 @@ const typeDefs = gql`
       description: String
       departmentId: ID
       gradeId: [ID]
-      pictures: [String]
+      pictures: [pictureInput]
       commentId: ID
       reactionId: ID
     ): Post
@@ -134,12 +144,13 @@ const typeDefs = gql`
       description: String
       departmentId: ID
       gradeId: [ID]
-      pictures: [String]
+      pictures: [pictureInput]
       commentId: ID
       reactionId: ID
     ): Post
 
-    updatePhotos(_id: ID!, pictures: [String]!): Post
+    updatePhotos(_id: ID!, pictures: [pictureInput]!): Post
+    deletePhotos(_id: ID!, pictureId: Int!): Post
     addComment(comment: String!, postId: ID!): Post
 
     deletePost(_id: ID!): Post

@@ -2,6 +2,19 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
+const pictureSchema = new Schema(
+  {
+    id: {
+      type: Number,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true
+    }
+  }
+);
+
 const postSchema = new Schema(
   {
     isVisible: {
@@ -33,10 +46,7 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-    pictures: [{
-      type: String,
-      required: false,
-    }],
+    pictures: [pictureSchema],
     departmentId: {
       type: Schema.Types.ObjectId,
       ref: "Department",
