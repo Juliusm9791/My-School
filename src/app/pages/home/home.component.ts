@@ -21,14 +21,13 @@ export class HomeComponent implements OnInit {
     private departmentService: DepartmentsService
   ) {
     this.departmentService.changeDepartments.subscribe((department) => {
-      for (let i = 0; i < 6; i++) {
-        this.departments.push(department[i]);
-      }
+        this.departments = department
+        this.departments = this.departments.slice(0, 6)
     });
+
     this.postsService.changePosts.subscribe((posts) => {
-      for (let i = 0; i < 3; i++) {
-        this.posts.push(posts[i]);
-      }
+      this.posts = posts;
+      this.posts = this.posts.slice(0, 3)
     });
     this.postsService.changeLoading.subscribe((loading) => {
       this.loading = loading;

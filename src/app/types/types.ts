@@ -1,3 +1,5 @@
+import { integer } from "aws-sdk/clients/cloudfront";
+
 interface Group {
   _id: string;
   groupName: string;
@@ -42,7 +44,7 @@ export interface Department {
   depName: string;
 }
 
-interface Reaction {
+export interface Reaction {
   _id: string;
   like: boolean;
   userId: UserFullName;
@@ -67,6 +69,11 @@ export interface Grade {
   gradeName: string;
 }
 
+export interface Picture {
+  id: integer;
+  location: string;
+}
+
 export interface Post {
   _id: string;
   isVisible: boolean;
@@ -82,7 +89,7 @@ export interface Post {
   commentId: Comment[];
   userId: UserFullName;
   gradeId: Grade[];
-  pictures: [string];
+  pictures: Picture[];
 }
 
 export interface searchResults {

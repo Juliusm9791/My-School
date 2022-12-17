@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Me, Post } from 'src/app/types/types';
+import { Me, Post, Reaction } from 'src/app/types/types';
 import { LoginSignupService } from '../../account/login-signup.service';
 import { PostsService } from '../posts.service';
 import { PostDetailsService } from './post-details.service';
@@ -26,7 +26,7 @@ export class PostDetailsComponent implements OnInit {
   commentForm = new FormGroup({
     comment: new FormControl('', [Validators.required, restrictedWords()]),
   });
-
+  
   constructor(
     private postDetailsService: PostDetailsService,
     private route: ActivatedRoute,
@@ -58,6 +58,7 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.queryPost(this.postId);
     this.isLoggedIn = this.authService.isLoggedIn;
     this.me = this.loginSignupService.me;
+
   }
 
   likes(post: Post) {
@@ -81,4 +82,15 @@ export class PostDetailsComponent implements OnInit {
   updatePost(id: string) {
     this.router.navigate(['/account/profile/form-post/' + id]);
   }
+
+  deparmentDetails(id: string) {
+    this.router.navigate(['/departments/' + id]);
+  }
+
+  addLike(postId :string) {
+    if (this.me._id) {
+      this.postsService.addUserLike(this.me._id, postId);
+    }
+  }
+
 }

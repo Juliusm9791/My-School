@@ -89,7 +89,7 @@ export class FormPostComponent implements OnInit {
         formatDate(this.post.eventEndDate, 'yyyy-MM-ddTHH:mm', 'en')
       );
       if(this.post.pictures) {
-        this.post.pictures.forEach(e => this.imgsPreview.push(e));
+        this.post.pictures.forEach(e => this.imgsPreview.splice(e.id, 1, e.location));
       };
     }
   }
@@ -144,45 +144,57 @@ export class FormPostComponent implements OnInit {
           eventEndDate,
           eventLocation,
         );
-        if (Object.keys(photos).length !== 0) {
-          this.postFormService.uploadPhotos(photos, this.postId);
+        if (photos.length !== 0 || this.deletePicturesId.length !== 0) {
+          this.postFormService.uploadPhotos(photos, this.postId, this.post.pictures, this.deletePicturesId);
         };
       }
     }
   }
 
-  count: integer = 0;
-  selectedFiles: FileList = {} as FileList;
-  imgsPreview: any = [];
-  // selectFile(event: any) {
-  //   this.selectedFiles = event.target.files;
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
-  //   this.imgsPreview = [];
-  //   reader.readAsDataURL(file);
-  //   reader.onload = (_event) => {
-  //     this.imgsPreview.push(reader.result);
-  //   };
-  // };
-
-  selectFiles(event: any) {
-    this.selectedFiles = event.target.files;
-    this.count = event.target.files.length;
-    if (this.count > 4) {
-      event.target.value = '';
-      return;
-    };
-
-    const files = event.target.files;
-    this.imgsPreview = [];
-    for (let i = 0; i < this.count; i++ ) {
-      const reader = new FileReader();
-      reader.readAsDataURL(files[i]);
-      reader.onload = (_event) => {
-          this.imgsPreview.push(reader.result);
-      }
+  selectedFiles: any = [];
+  imgsPreview: any = [null, null, null, null, null];
+  selectFile(event: any, id: number) {
+    const file = event.target.files[0];
+    this.deletePicturesId = this.deletePicturesId.filter(e => e !== id);
+    if(this.selectedFiles[id]) {
+      this.selectedFiles.splice(id, 1, {id: id, file: file});
+    } else {
+      this.selectedFiles.push({ id: id, file: file });
     }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (_event) => {
+        this.imgsPreview.splice(id, 1, reader.result);
+    };
+  };
+
+  deletePicturesId: number[] = [];
+  deletePhotoHandler(image: any, id: number) {
+    if(image.startsWith("http")) {
+      this.deletePicturesId.push(id);
+    } else {
+      this.selectedFiles = this.selectedFiles.filter((file: any) => file.id !== id);
+    }
+    this.imgsPreview.splice(id, 1, null);
   }
+  // selectFiles(event: any) {
+  //   this.selectedFiles = event.target.files;
+  //   this.count = event.target.files.length;
+  //   if (this.count > 5) {
+  //     event.target.value = '';
+  //     return;
+  //   };
+
+  //   const files = event.target.files;
+  //   this.imgsPreview = [];
+  //   for (let i = 0; i < this.count; i++ ) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(files[i]);
+  //     reader.onload = (_event) => {
+  //         this.imgsPreview.push(reader.result);
+  //     }
+  //   }
+  // }
 
   handleCancel() {
     this.router.navigate(['/account/profile/']);

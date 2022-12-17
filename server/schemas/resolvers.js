@@ -16,7 +16,10 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return await User.find({}).populate("departmentId").populate("groupId");
+      return await User.find({})
+        .populate("departmentId")
+        .populate("groupId")
+        .populate("gradeId");
     },
     me: async (parent, args, context) => {
       if (("me", context.user)) {
@@ -74,9 +77,12 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      const unassignedGroupId = await Group.find({});
+      const user = await User.create({
+        ...args,
+        groupId: unassignedGroupId[3]._id, //  group id "Not Assigned"
+      });
       const token = signToken(user);
-
       return { token, user };
     },
     addPost: async (parents, args, context) => {
@@ -134,13 +140,9 @@ const resolvers = {
     updatePost: async (parent, args, context) => {
       if (context.user) {
         const { _id, ...updateContent } = args;
-        return await Post.findByIdAndUpdate(
-          _id,
-          updateContent,
-          {
-            new: true,
-          }
-        );
+        return await Post.findByIdAndUpdate(_id, updateContent, {
+          new: true,
+        });
       }
       pubsub.publish("POST_UPDATED", {
         postUpdated: {
@@ -162,13 +164,21 @@ const resolvers = {
     updatePhotos: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndUpdate(
+          { _id: args._id },
+          { $set: { pictures: args.pictures } },
+          { new: true }
+        );
+      }
+    },
+    deletePhotos: async(parent, args, context) => {
+      if (context.user) {
+        return await Post.findByIdAndUpdate(
           {_id: args._id},
-          {$set:{ pictures: args.pictures}},
+          {$pull: { pictures: {id: args.pictureId}}},
           {new: true}
         )
       }
     },
-
     deletePost: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndDelete(
@@ -177,6 +187,11 @@ const resolvers = {
             await Comment.deleteMany({
               _id: {
                 $in: post.commentId,
+              },
+            });
+            await Reaction.deleteMany({
+              _id: {
+                $in: post.reactionId,
               },
             });
           }
@@ -191,6 +206,23 @@ const resolvers = {
           new: true,
         });
       }
+      pubsub.publish("ME_UPDATED", {
+        meUpdated: {
+          userId: context.user._id,
+          firstName: args.firstName,
+          middleName: args.middleName,
+          lastName: args.lastName,
+          avatar: args.avatar,
+          email: args.email,
+          password: args.password,
+          aboutMe: args.aboutMe,
+          address: args.address,
+          phoneNumber: args.phoneNumber,
+          groupId: args.groupId,
+          gradeId: args.gradeId,
+          departmentId: args.departmentId,
+        },
+      });
 
       throw new AuthenticationError("Not logged in");
     },
@@ -209,10 +241,27 @@ const resolvers = {
 
       return { token, user };
     },
+    addReactionLike: async (parent, args, context) => {
+      if (context.user) {
+        // const post = await Post.findById({ _id: args.postId });
+
+        const newReaction = await Reaction.create({
+          like: true,
+          userId: context.user._id,
+        });
+        const updatedPost = await Post.findByIdAndUpdate(
+          { _id: args.postId },
+          { $addToSet: { reactionId: newReaction } },
+          { new: true }
+        );
+        return updatedPost;
+      }
+    },
   },
   Subscription: {
     postAdded: { subscribe: () => pubsub.asyncIterator("POST_ADDED") },
     commentAdded: { subscribe: () => pubsub.asyncIterator("COMMENT_ADDED") },
+    meUpdated: { subscribe: () => pubsub.asyncIterator("ME_UPDATED") },
   },
 };
 

@@ -261,7 +261,8 @@ input[type="search"]:focus {
   display: flex;
   border: none;
   justify-content: space-between;
-  background: transparent;
+  background: rgb(242, 242, 242);
+  padding: 5px;
 }
 
 #smForm input {
@@ -279,7 +280,7 @@ input[type="search"]:focus {
   padding-top: 0px !important;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .topBarR {
     flex-direction: row;
     align-items: flex-end;
@@ -287,6 +288,10 @@ input[type="search"]:focus {
 
   #login h2 {
     display: none;
+  }
+
+  #loginLink {
+    margin-left: 0px;
   }
 
   #accountIcon {
@@ -301,7 +306,7 @@ input[type="search"]:focus {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   #logo {
     display: none;
   }
@@ -321,6 +326,10 @@ input[type="search"]:focus {
     margin-top: 60px;
   }
 
+  #smForm {
+    background-color: red;
+  }
+
   #searchIcon2 {
     display: inline;
     width: 25px;
@@ -331,11 +340,6 @@ input[type="search"]:focus {
     display: none;
   }
 
-  #accountIcon {
-    width: 25px;
-    margin: 6px 0px 0px 5px;
-  }
-
   .toolbar {
     padding-left: 6px !important;
     padding-right: 10px !important;
@@ -343,6 +347,10 @@ input[type="search"]:focus {
 
   .mat-icon-button {
     scale: 1.1;
+    margin: 0px;
+  }
+
+  #accountIcon {
     margin: 0px;
   }
 

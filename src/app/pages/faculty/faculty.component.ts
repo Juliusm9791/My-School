@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Faculty } from 'src/app/types/types';
+import { Faculty, Me } from 'src/app/types/types';
 import { FacultyService } from './faculty.service';
 
 @Component({
@@ -9,14 +9,27 @@ import { FacultyService } from './faculty.service';
 })
 export class FacultyComponent implements OnInit {
   faculties: Faculty[] = [];
+  facultyMembersLoading: boolean = true;
+  facultyMembers: Me[] = []
 
   constructor(private facultyService: FacultyService) {
     this.facultyService.changeFaculties.subscribe((faculties) => {
       this.faculties = faculties;
     });
+    this.facultyService.changeFacultyMembersLoading.subscribe((loading) => {
+      this.facultyMembersLoading = loading;
+    });
+    this.facultyService.changeFacultyMembers.subscribe((users) => {
+      this.facultyMembers = users;
+
+    });
   }
 
   ngOnInit(): void {
     this.facultyService.queryFaculties();
+    this.facultyService.queryFacultyMembers();
+  }
+  allFacultyMembers() {
+    return this.facultyService.filterFacultyMembers()
   }
 }
