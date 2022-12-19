@@ -22,16 +22,16 @@
 
   <div class="post-content">
     <div id="images-block">
-      <img id="defaultImg" [src]="post.pictures[0]" />
+      <img id="defaultImg" [src]="postPictures(0, post.pictures)" />
       <div id="extra-images">
         <div>
           <img
             class="extraImgs"
-            src="../../../../assets/images/default-placeholder-300x300.png"
+            [src]="postPictures(1, post.pictures)" 
           />
           <img
             class="extraImgs"
-            src="../../../../assets/images/default-placeholder-300x300.png"
+            [src]="postPictures(2, post.pictures)" 
           />
         </div>
       </div>

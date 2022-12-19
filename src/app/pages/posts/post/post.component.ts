@@ -17,7 +17,9 @@ export class PostComponent implements OnInit {
   postDataLoading: boolean = true;
   defaultAvatar: string = '../../../../assets/images/account.png';
 
-  constructor(private router: Router, private postService: PostsService) {}
+  constructor(private router: Router, private postService: PostsService) {
+    
+  }
 
   ngOnInit(): void {}
 
@@ -41,5 +43,15 @@ export class PostComponent implements OnInit {
   }
   updatePost(id: string) {
     this.router.navigate(['/account/profile/form-post/' + id]);
+  }
+
+  postPictures(index: number, locations: any[]) {
+    let postPictures: string[] = [];
+    locations.forEach(e => postPictures.splice(e.id, 0, e.location));
+    if (postPictures[index]) {
+      return postPictures[index]
+    } else {
+      return "../../../../assets/images/default-placeholder-300x300.png"
+    }
   }
 }
