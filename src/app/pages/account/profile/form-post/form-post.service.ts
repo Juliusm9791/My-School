@@ -5,7 +5,6 @@ import { ADD_POST, UPDATE_PHOTOS, UPDATE_POST, DELETE_PHOTOS } from 'src/app/ser
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 
 import * as S3 from 'aws-sdk/clients/s3';
-// import { ACCESS, BUCKET, SECRET } from 'env';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 

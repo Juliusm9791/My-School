@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { UPDATE_AVATAR, UPDATE_ME } from 'src/app/services/graphql/mutations';
 import { QUERY_ME } from 'src/app/services/graphql/queries';
-// import { ACCESS, SECRET, BUCKET } from '../../../../../../../env';
 
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
