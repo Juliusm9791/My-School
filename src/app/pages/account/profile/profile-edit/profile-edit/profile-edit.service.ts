@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { UPDATE_AVATAR, UPDATE_ME } from 'src/app/services/graphql/mutations';
 import { QUERY_ME } from 'src/app/services/graphql/queries';
-import { ACCESS, SECRET, BUCKET } from '../../../../../../../env';
+// import { ACCESS, SECRET, BUCKET } from '../../../../../../../env';
 
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -89,12 +90,12 @@ export class FormProfileService {
   uploadFile(file: any, id: any) {
     const contentType = file.type;
     const bucket = new S3({
-      accessKeyId: ACCESS,
-      secretAccessKey: SECRET,
+      accessKeyId: environment.ACCESS,
+      secretAccessKey: environment.SECRET,
       region: 'us-east-2',
     });
     const params = {
-      Bucket: BUCKET,
+      Bucket: environment.BUCKET,
       Key: id + file.name,
       Body: file,
       ACL: 'public-read',
