@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "node server.js",
     "build": "npm run config && ng build",
-    "config": "ts-node setEnv.ts",
+    "config": "node setEnv.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "seed": "node ./server/seeders/seeds.js",
