@@ -66,11 +66,18 @@
   margin: 3px 6px 0px 6px;
   scale: 1.2;
   color: #4050b2;
+  cursor: pointer;
 }
 
 #mailIcon:hover,
-#phoneIcon:hover {
+#phoneIcon:hover,
+.faculty-row-L h2:hover {
   color: #f98c5a;
+}
+
+.faculty-row-L img,
+.faculty-row-L h2 {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1000px) {

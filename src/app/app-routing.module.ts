@@ -15,6 +15,7 @@ import { FormPostComponent } from './pages/account/profile/form-post/form-post.c
 import { DepartmentDetailsComponent } from './pages/departments/department-details/department-details.component';
 import { ProfilePostComponent } from './pages/account/profile/profile-post/profile-post.component';
 import { ProfileEditComponent } from './pages/account/profile/profile-edit/profile-edit/profile-edit.component';
+import { ProfileFrontComponent } from './pages/account/profile/profile-front/profile-front.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 
 const routes: Routes = [
@@ -56,6 +57,12 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfileEditComponent,
+    canActivate: [AuthGuard],
+    pathMatch: 'full',
+  },
+  {
+    path: 'profile/detail/:id',
+    component: ProfileFrontComponent,
     canActivate: [AuthGuard],
     pathMatch: 'full',
   },
