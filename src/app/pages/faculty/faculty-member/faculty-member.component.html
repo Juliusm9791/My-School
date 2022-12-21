@@ -1,8 +1,16 @@
 <div>
   <div class="faculty-row">
     <div class="faculty-row-L">
-      <img id="faculty-avatar" src="../../../assets/images/account.png" />
-      <h2>{{ facultyMember.firstName }} {{ facultyMember.lastName }}</h2>
+      <img
+        (click)="profileFront(facultyMember._id)"
+        id="faculty-avatar"
+        src="../../../assets/images/account.png"
+      />
+
+      <h2 (click)="profileFront(facultyMember._id)">
+        {{ facultyMember.firstName }} {{ facultyMember.lastName }}
+      </h2>
+
       <h3 *ngIf="facultyMember.departmentId.length > 0">
         {{ facultyMember.departmentId[0].depName }}
       </h3>

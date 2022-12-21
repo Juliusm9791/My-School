@@ -23,6 +23,7 @@ import { ProfileEditComponent } from './account/profile/profile-edit/profile-edi
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { FacultyMemberComponent } from './faculty/faculty-member/faculty-member.component';
+import { ProfileFrontComponent } from './account/profile/profile-front/profile-front.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { FacultyMemberComponent } from './faculty/faculty-member/faculty-member.
     SearchResultsComponent,
     HighlightPipe,
     FacultyMemberComponent,
+    ProfileFrontComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
@@ -62,6 +64,7 @@ import { FacultyMemberComponent } from './faculty/faculty-member/faculty-member.
     ProfileEditComponent,
     SearchResultsComponent,
     FacultyMemberComponent,
+    ProfileFrontComponent,
   ],
 })
-export class PagesModule { }
+export class PagesModule {}
