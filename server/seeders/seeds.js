@@ -39,13 +39,12 @@ db.once("open", async () => {
   await Grade.deleteMany();
 
   const grades = await Grade.insertMany([
-    { gradeName: "Kindergarten" },
-    { gradeName: "Grade 1" },
-    { gradeName: "Grade 2" },
-    { gradeName: "Grade 3" },
-    { gradeName: "Grade 4" },
-    { gradeName: "Grade 5" },
-    { gradeName: "Grade 6" },
+    { gradeName: "K" },
+    { gradeName: "1st" },
+    { gradeName: "2nd" },
+    { gradeName: "3rd" },
+    { gradeName: "4th" },
+    { gradeName: "5th" },
   ]);
 
   console.log("Grades seeded");
@@ -57,6 +56,7 @@ db.once("open", async () => {
     { groupName: "Faculty" },
     { groupName: "Parent" },
     { groupName: "Student" },
+    { groupName: "Not Assigned" },
   ]);
 
   console.log("group seeded");
@@ -204,7 +204,7 @@ db.once("open", async () => {
       isVisible: true,
       title: "Device Distribution",
       departmentId: departments[0].id,
-      gradeId: [grades[4]._id, grades[5]._id],
+      gradeId: [grades[3]._id, grades[4]._id],
       description:
         "Pitt County Schools is pleased to announce that they have transitioned to being a 1-to-1 district. K-2 students will be receiving iPads while 3rd-5th graders will be receiving Chromebooks. Your child will use the same device for three consecutive school years. A detailed device agreement is coming home on the first student day or when picking up devices for virtual learning and will need to be signed and returned before the device may travel home with your child. ",
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -215,7 +215,7 @@ db.once("open", async () => {
       isVisible: true,
       title: "Open House",
       departmentId: departments[0].id,
-      gradeId: [grades[5]._id, grades[6]._id],
+      gradeId: [grades[2]._id, grades[3]._id],
       description:
         "Open House will look different this year.  Students who are coming on A and B weeks will participate in a virtual Open House on August 13th for 1st-5th grade.  Each teacher will send out a virtual open house video to view by 3:00 on Open House. Your child’s teacher will contact you to either set up times to meet virtually through Zoom or do a live question and answer session for parents who would like to attend.  We understand this may cause some anxiety, however, we can assure you we will be available to answer questions, address concerns, and introduce ourselves to our Eagles!",
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -259,7 +259,7 @@ db.once("open", async () => {
       isVisible: true,
       title: "FGO THEME AND MISSION FOR THE YEAR:",
       departmentId: departments[12].id,
-      gradeId: [grades[5]._id, grades[6]._id],
+      gradeId: [grades[3]._id, grades[4]._id],
       description:
         "This year our FGO will have two focuses. We will be focused on Monthly School Spirit Days to create a school-wide sense of community and enthusiasm for being an amazing Fishkill Frog! We will also be focused on raising money and collecting goods for our school and our community.  Your FGO has been working on creating these focuses. Our school focus will be on Bully Prevention and our community focus will be towards aiding Animal Shelters and Endangered Animals. Each month, we will collect alternately for each of these focuses.  ",
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -281,7 +281,7 @@ db.once("open", async () => {
       isVisible: true,
       title: "Biology 1 Quiz",
       departmentId: departments[3].id,
-      gradeId: [grades[5]._id],
+      gradeId: [grades[4]._id],
       description:
         "Module Quiz: It includes 25 multiple-choice questions, and you have 75 minutes  complete the assignment once you begin. The quiz is due on Friday by 11.59pm • Presentation: Be sure to reference the rubric for this assignment that can be found in the course documents folder. The presentation upload is due on Friday by 11.59pm.  As always, I am happy to help.",
       userId: users[Math.floor(Math.random() * users.length)]._id,

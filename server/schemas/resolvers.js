@@ -77,9 +77,12 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, args) => {
-      const user = await User.create(args);
+      const unassignedGroupId = await Group.find({});
+      const user = await User.create({
+        ...args,
+        groupId: unassignedGroupId[3]._id, //  group id "Not Assigned"
+      });
       const token = signToken(user);
-
       return { token, user };
     },
     addPost: async (parents, args, context) => {
@@ -137,13 +140,9 @@ const resolvers = {
     updatePost: async (parent, args, context) => {
       if (context.user) {
         const { _id, ...updateContent } = args;
-        return await Post.findByIdAndUpdate(
-          _id,
-          updateContent,
-          {
-            new: true,
-          }
-        );
+        return await Post.findByIdAndUpdate(_id, updateContent, {
+          new: true,
+        });
       }
       pubsub.publish("POST_UPDATED", {
         postUpdated: {
@@ -165,10 +164,10 @@ const resolvers = {
     updatePhotos: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndUpdate(
-          {_id: args._id},
-          {$set:{ pictures: args.pictures}},
-          {new: true}
-        )
+          { _id: args._id },
+          { $set: { pictures: args.pictures } },
+          { new: true }
+        );
       }
     },
     deletePhotos: async(parent, args, context) => {
@@ -188,6 +187,11 @@ const resolvers = {
             await Comment.deleteMany({
               _id: {
                 $in: post.commentId,
+              },
+            });
+            await Reaction.deleteMany({
+              _id: {
+                $in: post.reactionId,
               },
             });
           }
@@ -236,6 +240,22 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addReactionLike: async (parent, args, context) => {
+      if (context.user) {
+        // const post = await Post.findById({ _id: args.postId });
+
+        const newReaction = await Reaction.create({
+          like: true,
+          userId: context.user._id,
+        });
+        const updatedPost = await Post.findByIdAndUpdate(
+          { _id: args.postId },
+          { $addToSet: { reactionId: newReaction } },
+          { new: true }
+        );
+        return updatedPost;
+      }
     },
   },
   Subscription: {

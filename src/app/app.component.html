@@ -1,4 +1,5 @@
 <div [class.is-mobile]="mobileQuery.matches">
+  <!-- TOOLBAR -->
   <mat-toolbar color="primary" class="toolbar">
     <div class="topBarL">
       <button mat-icon-button (click)="snav.toggle()">
@@ -49,12 +50,12 @@
         <div *ngIf="!isLoggedIn">
           <img id="accountIcon" [src]="defaultAvatar" />
         </div>
-        <div id="logoMobile">
-          <a routerLink="/">
-            <img src="../assets/images/logo.png" />
-          </a>
-        </div>
       </a>
+      <div id="logoMobile">
+        <a routerLink="/">
+          <img src="../assets/images/logo.png" />
+        </a>
+      </div>
     </div>
   </mat-toolbar>
 
@@ -62,6 +63,7 @@
     class="sidenav-container"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
   >
+    <!-- FLY OUT MENU -->
     <mat-sidenav
       #snav
       [mode]="mobileQuery.matches ? 'over' : 'side'"
@@ -103,6 +105,7 @@
       </mat-nav-list>
     </mat-sidenav>
 
+    <!-- MOBILE SEARCH -->
     <mat-sidenav-content>
       <!-- Small screen search bar -->
       <div id="smSearchBar">
@@ -114,8 +117,8 @@
           />
           <button id="smSubmitButton" type="submit">
             <img
-              height="40px"
-              width="40px"
+              height="35px"
+              width="35px"
               alt="Submit"
               src="../assets/images/search_icon_circle.png"
             />

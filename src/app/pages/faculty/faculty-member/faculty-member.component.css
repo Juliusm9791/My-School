@@ -66,9 +66,47 @@
   margin: 3px 6px 0px 6px;
   scale: 1.2;
   color: #4050b2;
+  cursor: pointer;
 }
 
 #mailIcon:hover,
-#phoneIcon:hover {
+#phoneIcon:hover,
+.faculty-row-L h2:hover {
   color: #f98c5a;
+}
+
+.faculty-row-L img,
+.faculty-row-L h2 {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+  #faculty-avatar {
+    width: 45px;
+    margin-right: 10px;
+  }
+
+  .faculty-row h2 {
+    font-size: 12pt;
+    margin-right: 10px;
+  }
+
+  .faculty-row h3 {
+    font-size: 10pt;
+  }
+
+  .contactBtns {
+    height: 35px;
+    margin-right: 8px;
+  }
+
+  #mailIcon,
+  #phoneIcon {
+    margin: 0 3px;
+    scale: 1;
+  }
+
+  #phoneIcon {
+    margin-top: 1px;
+  }
 }

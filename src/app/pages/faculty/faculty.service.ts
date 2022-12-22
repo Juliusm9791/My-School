@@ -58,11 +58,8 @@ export class FacultyService {
   }
 
   filterFacultyMembers() {
-    console.log(this._facultyMembers[0]?.groupId[0].groupName)
-    console.log(this._facultyMembers.filter((member) => member.groupId[0].groupName === "Faculty"))
     return this._facultyMembers.filter((member) => member.groupId[0].groupName === "Faculty");
   }
-
 
   get faculties() {
     return this._faculties;

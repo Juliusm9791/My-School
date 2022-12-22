@@ -17,12 +17,6 @@
   cursor: pointer;
 }
 
-h1 {
-  font-size: 16pt;
-  margin: 30px auto 10px auto;
-  text-align: center;
-}
-
 h2 {
   font-size: 16pt;
   font-family: Grotesk;
@@ -32,11 +26,13 @@ h2 {
   line-height: 20pt;
   margin: auto;
   font-weight: 900;
+  text-align: center;
 }
 
 @media only screen and (max-width: 1000px) {
   h2 {
     font-size: 12pt;
+    line-height: 14pt;
   }
 
   .deptCard {

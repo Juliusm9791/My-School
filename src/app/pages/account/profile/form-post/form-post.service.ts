@@ -5,8 +5,8 @@ import { ADD_POST, UPDATE_PHOTOS, UPDATE_POST, DELETE_PHOTOS } from 'src/app/ser
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 
 import * as S3 from 'aws-sdk/clients/s3';
-import { ACCESS, BUCKET, SECRET } from 'env';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -113,8 +113,8 @@ export class FormPostService {
   }
   async uploadPhotos(files: any, id: any, locations: any, deleteIds: any) {
     const bucket = new S3({
-      accessKeyId: ACCESS,
-      secretAccessKey: SECRET,
+      accessKeyId: environment.ACCESS,
+      secretAccessKey: environment.SECRET,
       region: 'us-east-2',
     });
 
@@ -124,7 +124,7 @@ export class FormPostService {
     for (let i = 0; i < files.length; i++) {
       const contentType = files[i].file.type;
       const params = {
-        Bucket: BUCKET,
+        Bucket: environment.BUCKET,
         Key: id + files[i].id,
         Body: files[i].file,
         ACL: 'public-read',

@@ -9,6 +9,7 @@ import { HttpLink } from 'apollo-angular/http';
 import { HttpHeaders } from '@angular/common/http';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
+import { environment } from 'src/environments/environment';
 
 // const uri = 'http://localhost:3001/graphql'; // <-- add the URL of the GraphQL server here
 // export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
@@ -24,10 +25,13 @@ import { getMainDefinition } from '@apollo/client/utilities';
     {
       provide: APOLLO_OPTIONS,
       useFactory(httpLink: HttpLink): ApolloClientOptions<any> {
-        const http = httpLink.create({
-          uri: 'http://localhost:3001/graphql',
-        });
-        // const http = httpLink.create({ uri: '/graphql' });
+        let uriPath;
+        if (environment.production) {
+          uriPath = { uri: '/graphql' };
+        } else {
+          uriPath = { uri: 'http://localhost:3001/graphql' };
+        }
+        const http = httpLink.create(uriPath);
 
         // Create a WebSocket link: 1
         const ws = new WebSocketLink({

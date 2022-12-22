@@ -198,3 +198,12 @@ export const DELETE_PHOTOS = gql`
     }
   }
 `;
+
+export const ADD_REACTION_LIKE = gql`
+mutation addReaction( $postId: ID!) {
+  addReactionLike(postId: $postId) {
+   like
+  _id
+  }
+}
+`;

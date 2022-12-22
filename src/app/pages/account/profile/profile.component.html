@@ -20,16 +20,19 @@
           </a>
         </div>
       </div>
+
       <div id="profile-details">
-        <div class="profile-row">
+        <div class="profile-body">
           <div id="profile-avatar">
             <img
               id="profile-img"
-              [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+              [src]="me.avatar !== '' ? me.avatar : defaultAvatar"
               alt="Profile Image"
             />
           </div>
+
           <div class="profile-col">
+            <!-- Role -->
             <div>
               <div class="key">
                 <h3>Role:</h3>
@@ -40,6 +43,8 @@
                 </h4>
               </div>
             </div>
+
+            <!-- Grade -->
             <div>
               <div class="key">
                 <h3>Grade:</h3>
@@ -50,6 +55,8 @@
                 </h4>
               </div>
             </div>
+
+            <!-- Dept -->
             <div>
               <div class="key">
                 <h3>Dept:</h3>
@@ -60,6 +67,8 @@
                 </h4>
               </div>
             </div>
+
+            <!-- Address -->
             <div>
               <div class="key">
                 <h3>Address:</h3>
@@ -68,6 +77,8 @@
                 <h4>{{ me.address }}</h4>
               </div>
             </div>
+
+            <!-- Phone -->
             <div>
               <div class="key">
                 <h3>Phone:</h3>
@@ -75,27 +86,31 @@
 
               <h4>{{ me.phoneNumber }}</h4>
             </div>
+
+            <!-- Email -->
             <div>
               <div class="key">
                 <h3>Email:</h3>
               </div>
               <h4>{{ me.email }}</h4>
             </div>
-
-            <div id="mobileBio">
-              <h3>Bio:</h3>
-              <h4 id="bio">{{ me.aboutMe }}</h4>
-            </div>
           </div>
+
           <div class="profile-col">
-            <div id="desktopBio">
-              <h3>Bio:</h3>
-              <h4 id="bio">{{ me.aboutMe }}</h4>
+            <!-- Bio -->
+            <div>
+              <div id="bioKey" class="key">
+                <h3>Bio:</h3>
+              </div>
+              <div>
+                <h4 id="bio">{{ me.aboutMe }}</h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Notifications -->
       <section>
         <div id="notifications-subheader">
           <h2>Your Notifications:</h2>
@@ -105,6 +120,7 @@
         </div>
       </section>
 
+      <!-- Announcements -->
       <section>
         <div id="announcements-subheader">
           <h2>Your Announcements:</h2>

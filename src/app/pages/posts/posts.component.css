@@ -1,5 +1,5 @@
 #announcements {
-  margin: 40px auto 200px auto;
+  margin: 32px auto 200px auto;
   width: 80%;
 }
 
@@ -19,9 +19,71 @@
   max-width: 1000px;
 }
 
-@media (max-width: 900px) {
+#img-col {
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
   #announcements {
-    margin: 40px auto 200px auto;
     width: 95%;
+  }
+
+  #defaultImg {
+    width: 160px;
+    height: 160px;
+  }
+
+  .extraImgs {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 700px) {
+  #defaultImg {
+    width: 120px;
+    height: 120px;
+  }
+
+  .extraImgs {
+    width: 60px;
+    height: 60px;
+  }
+
+  h2 {
+    font-size: 16pt;
+  }
+
+  #postDepartment h2,
+  #postGrade h2 {
+    font-size: 12pt;
+  }
+
+  #event-card {
+    padding: 5px;
+  }
+
+  #event-card-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: -4px;
+  }
+
+  #event-card h2 {
+    font-size: 10pt;
+  }
+
+  .event-card-row h4,
+  .event-card-row h5 {
+    font-size: 7pt;
+    line-height: 10pt;
+  }
+
+  .start-end-column {
+    margin-left: 5px;
+  }
+
+  #img-col {
+    margin: 0px;
   }
 }
