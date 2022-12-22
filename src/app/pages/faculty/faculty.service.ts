@@ -9,13 +9,14 @@ import { Faculty, Me } from 'src/app/types/types';
 export class FacultyService {
   loading: boolean = true;
   private _faculties: Faculty[] = [];
-  private _facultyMembers: Me[] = []
+  private _facultyMembers: Me[] = [];
   facultyMembersLoading: boolean = true;
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) {}
   @Output() changeFaculties: EventEmitter<any> = new EventEmitter();
 
-  @Output() changeFacultyMembersLoading: EventEmitter<boolean> = new EventEmitter();
+  @Output() changeFacultyMembersLoading: EventEmitter<boolean> =
+    new EventEmitter();
   @Output() changeFacultyMembers: EventEmitter<Me[]> = new EventEmitter();
 
   queryFaculties() {
@@ -58,7 +59,12 @@ export class FacultyService {
   }
 
   filterFacultyMembers() {
-    return this._facultyMembers.filter((member) => member.groupId[0].groupName === "Faculty");
+    return this._facultyMembers.filter(
+      (member) => member.groupId[0].groupName === 'Faculty'
+    );
+  }
+  singleFacultyMember(id: string) {
+    return this._facultyMembers.filter((member) => member._id === id)[0];
   }
 
   get faculties() {

@@ -89,6 +89,7 @@ export const QUERY_USERS = gql`
   query Query {
     users {
       _id
+      avatar
       aboutMe
       address
       email

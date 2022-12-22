@@ -42,6 +42,7 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.changePost.subscribe((post) => {
       this.post = post;
       console.log('post:', post);
+      post.pictures.forEach(picture => this.postPictures.splice(picture.id, 0, picture.location));
     });
 
     this.postDetailsService.changeLoading.subscribe((loading) => {
@@ -83,6 +84,8 @@ export class PostDetailsComponent implements OnInit {
     this.router.navigate(['/account/profile/form-post/' + id]);
   }
 
+  postPictures: string[] = [];
+  
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
   }

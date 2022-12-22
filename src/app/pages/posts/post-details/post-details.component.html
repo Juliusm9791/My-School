@@ -27,10 +27,16 @@
 
       <div class="post-content">
         <div class="images-block">
-          <img id="defaultImg" [src]="post.pictures[0]" />
+          <img id="defaultImg" [src]="postPictures[0] ? postPictures[0] : '../../../../assets/images/default-placeholder-300x300.png'" />
           <div id="extra-image-row">
-            <img class="extraImgs" [src]="post.pictures[0]" />
-            <img class="extraImgs" [src]="post.pictures[0]" />
+            <img
+              class="extraImgs"
+              [src]="postPictures[1] ? postPictures[1] : '../../../../assets/images/default-placeholder-300x300.png'"
+            />
+            <img
+              class="extraImgs"
+              [src]="postPictures[2] ? postPictures[2] : '../../../../assets/images/default-placeholder-300x300.png'"
+            />
             <!-- <img
               class="extraImgs"
               src="../../../../assets/images/default-placeholder-300x300.png"
