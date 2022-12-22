@@ -54,6 +54,17 @@ export class PostComponent implements OnInit {
   updatePost(id: string) {
     this.router.navigate(['/account/profile/form-post/' + id]);
   }
+
+  postPictures(index: number, locations: any[]) {
+    let postPictures: string[] = [];
+    locations.forEach(e => postPictures.splice(e.id, 0, e.location));
+    if (postPictures[index]) {
+      return postPictures[index]
+    } else {
+      return "../../../../assets/images/default-placeholder-300x300.png"
+    }
+  };
+  
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
   }
