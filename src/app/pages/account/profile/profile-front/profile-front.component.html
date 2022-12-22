@@ -3,7 +3,7 @@
   <div id="profile-container">
     <div id="profile-header">
       <!-- <h2>{{ me.firstName }} {{ me.lastName }}!</h2> -->
-      <h2>Name</h2>
+      <h2>{{facultyMember.firstName}} {{facultyMember.lastName}}</h2>
     </div>
 
     <div id="profile-details">
@@ -16,7 +16,7 @@
           /> -->
           <img
             id="profile-img"
-            src="/src/assets/images/account.png"
+            [src]="facultyMember.avatar !== null || '' ? facultyMember.avatar : '/src/assets/images/account.png'"
             alt="Profile Image"
           />
         </div>
@@ -82,7 +82,7 @@
           <div>
             <h3>Bio:</h3>
             <!-- <h4 id="bio">{{ me.aboutMe }}</h4> -->
-            <h4>Bio</h4>
+            <h4>Bio {{facultyMember.aboutMe}}</h4>
           </div>
         </div>
       </div>
