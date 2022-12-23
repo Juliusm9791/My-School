@@ -21,12 +21,10 @@ export class PostsComponent implements OnInit {
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
 
-
   constructor(private postsService: PostsService) {
-
     this.postsService.changePosts.subscribe((posts) => {
       this.posts = posts;
-      this.length = posts.length
+      this.length = posts.length;
     });
     this.postsService.changeLoading.subscribe((loading) => {
       this.loading = loading;
@@ -43,18 +41,17 @@ export class PostsComponent implements OnInit {
     this.postsService.queryPosts();
   }
   likes(post: Post) {
-    return this.postsService.countLikes(post)
+    return this.postsService.countLikes(post);
   }
   handlePageEvent(event: PageEvent) {
-    this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
-    console.log(this.length)
-    console.log(this.pageIndex)
-    console.log(this.pageSize)
   }
   postsPage() {
-    return this.posts.filter((post, index) => index < this.pageSize)
+    let newArray = this.posts.slice(
+      this.pageIndex * this.pageSize,
+      this.pageSize + this.pageIndex * this.pageSize
+    );
+    return newArray;
   }
-
 }
