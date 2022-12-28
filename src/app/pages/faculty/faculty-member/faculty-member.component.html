@@ -4,16 +4,17 @@
       <img
         (click)="profileFront(facultyMember._id)"
         id="faculty-avatar"
-        src="../../../assets/images/account.png"
+        src="../../../../assets/images/account.png"
       />
+      <div class="faculty-column">
+        <h2 (click)="profileFront(facultyMember._id)">
+          {{ facultyMember.firstName }} {{ facultyMember.lastName }}
+        </h2>
 
-      <h2 (click)="profileFront(facultyMember._id)">
-        {{ facultyMember.firstName }} {{ facultyMember.lastName }}
-      </h2>
-
-      <h3 *ngIf="facultyMember.departmentId.length > 0">
-        {{ facultyMember.departmentId[0].depName }}
-      </h3>
+        <h3 *ngIf="facultyMember.departmentId.length > 0">
+          {{ facultyMember.departmentId[0].depName }}
+        </h3>
+      </div>
     </div>
     <div class="faculty-row-R">
       <div class="contactBtns">

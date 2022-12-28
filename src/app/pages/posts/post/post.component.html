@@ -27,14 +27,8 @@
       <img id="defaultImg" [src]="postPictures(0, post.pictures)" />
       <div id="extra-images">
         <div>
-          <img
-            class="extraImgs"
-            [src]="postPictures(1, post.pictures)" 
-          />
-          <img
-            class="extraImgs"
-            [src]="postPictures(2, post.pictures)" 
-          />
+          <img class="extraImgs" [src]="postPictures(1, post.pictures)" />
+          <img class="extraImgs" [src]="postPictures(2, post.pictures)" />
         </div>
       </div>
     </div>
@@ -44,6 +38,7 @@
         <mat-card-subtitle>
           <div class="subtitleRow">
             <div id="userLockup">
+              <!-- USER IMAGE -->
               <div id="img-col">
                 <img
                   id="postUserImg"
@@ -55,6 +50,8 @@
                   alt="User Image"
                 />
               </div>
+
+              <!-- USER NAME AND POST DATE -->
               <div class="postUserDetail">
                 <h4 class="postUserDetail postUserName">
                   {{ post.userId.firstName }} {{ post.userId.lastName }}

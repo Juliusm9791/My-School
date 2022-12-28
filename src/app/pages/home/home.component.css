@@ -125,6 +125,9 @@ mat-divider {
   margin: 40px 0px 10px 0px;
   color: #4050b2;
 }
+.seeAllBtn {
+  text-align: right;
+}
 
 .seeAllBtn button {
   font-family: Grotesk;
@@ -156,7 +159,7 @@ mat-divider {
 }
 
 app-department {
-  width: 45%;
+  width: 50%;
 }
 
 #footer {
@@ -176,6 +179,10 @@ app-department {
 }
 
 @media (max-width: 1100px) {
+  app-department {
+    width: 90%;
+  }
+
   .widget-column {
     display: none;
   }
@@ -202,7 +209,6 @@ app-department {
   }
 
   .seeAllBtn button {
-    font-family: Grotesk;
     font-size: 12pt;
     margin-bottom: 0px;
   }

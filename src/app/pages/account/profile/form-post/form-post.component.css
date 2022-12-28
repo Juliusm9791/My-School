@@ -45,7 +45,6 @@ h5 {
 }
 
 .submitBtn {
-  margin-top: 20px;
   text-align: end;
 }
 
@@ -65,12 +64,12 @@ h5 {
 }
 
 #defaultImg {
-  width: 220px;
+  width: 200px;
   height: auto;
 }
 
 .extraImgs {
-  width: 45px;
+  width: 50px;
 }
 
 h5 {
@@ -80,23 +79,6 @@ h5 {
 #upload-photo {
   width: 200px;
 }
-
-/* #images-block {
-  margin: 0px;
-  display: flex;
-  flex-direction: row;
-} */
-
-/* #extra-images {
-  display: flex;
-  flex-direction: column;
-} */
-
-/* #postContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-} */
 
 #select-photos {
   margin-bottom: 5px;
@@ -136,3 +118,19 @@ h5 {
   display: inline-block;
 }
 
+#footer {
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  background-color: rgb(244, 244, 244);
+}
+
+#footer h5 {
+  margin: 10px auto;
+  padding-top: 12px;
+  color: rgb(167, 167, 167);
+  font-family: Grotesk;
+  font-size: 8pt;
+  font-weight: 300;
+}
