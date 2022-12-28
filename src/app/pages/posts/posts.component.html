@@ -1,22 +1,22 @@
 <div id="announcements">
-  <h1>ANNOUNCEMENTS:</h1>
-    <mat-paginator
+  <mat-paginator
     (page)="handlePageEvent($event)"
     [length]="length"
     [pageSize]="pageSize"
     [showFirstLastButtons]="showFirstLastButtons"
     [pageSizeOptions]="pageSizeOptions"
     [pageIndex]="pageIndex"
-    aria-label="Select page">
-</mat-paginator>
-
+    aria-label="Select page"
+  >
+  </mat-paginator>
+  <h1>ANNOUNCEMENTS:</h1>
   <div *ngIf="loading">
     <mat-spinner></mat-spinner>
   </div>
 
   <div *ngIf="error">Error :(</div>
   <div *ngIf="posts">
-    <ng-container *ngFor="let singlepost of postsPage()  ">
+    <ng-container *ngFor="let singlepost of postsPage()">
       <app-post
         [post]="singlepost"
         [countLikes]="likes(singlepost)"
@@ -25,3 +25,4 @@
     </ng-container>
   </div>
 </div>
+<div id="footer"><h5>My School &reg; 2022</h5></div>
