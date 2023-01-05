@@ -146,64 +146,133 @@
       </div>
     </div>
 
-
     <div class="formColumn">
-
       <!-- <input id="select-photos" type="file" multiple />
       <h5>Add up to 5 photos</h5> -->
 
       <div id="postContent">
         <div id="images-block">
+          <div class="img-wrap">
+            <img
+              id="defaultImg"
+              [src]="[
+                imgsPreview[0]
+                  ? imgsPreview[0]
+                  : '../../../assets/images/plus_icon_grey.png'
+              ]"
+              (click)="hiddenInput0.click()"
+            />
+            <span
+              *ngIf="imgsPreview[0]"
+              class="close"
+              (click)="deletePhotoHandler(imgsPreview[0], 0)"
+              >&times;</span
+            >
+            <input
+              #hiddenInput0
+              type="file"
+              accept="image/*"
+              style="display: none"
+              (change)="selectFile($event, 0)"
+            />
+          </div>
+          <div id="extra-images">
             <div class="img-wrap">
               <img
-                id="defaultImg"
+                class="extraImgs"
                 [src]="[
-                  imgsPreview[0]
-                    ? imgsPreview[0]
-                    : '../../../assets/images/plusSign.png'
+                  imgsPreview[1]
+                    ? imgsPreview[1]
+                    : '../../../assets/images/plus_icon_grey.png'
                 ]"
-                (click)="hiddenInput0.click()"
+                (click)="hiddenInput1.click()"
               />
-              <span *ngIf="imgsPreview[0]" class="close" (click)="deletePhotoHandler(imgsPreview[0], 0)">&times;</span>
-              <input #hiddenInput0 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 0)">    
+              <span
+                *ngIf="imgsPreview[1]"
+                class="close"
+                (click)="deletePhotoHandler(imgsPreview[1], 1)"
+                >&times;</span
+              >
+              <input
+                #hiddenInput1
+                type="file"
+                accept="image/*"
+                style="display: none"
+                (change)="selectFile($event, 1)"
+              />
             </div>
-          <div id="extra-images">
-              <div class="img-wrap">
-                <img
-                  class="extraImgs"
-                  [src]="[imgsPreview[1] ? imgsPreview[1] : '../../../assets/images/plusSign.png']"
-                  (click)="hiddenInput1.click()"
-                />
-                <span *ngIf="imgsPreview[1]" class="close" (click)="deletePhotoHandler(imgsPreview[1], 1)">&times;</span>
-                <input #hiddenInput1 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 1)"> 
-              </div>
-              <div class="img-wrap">
-                <img
-                  class="extraImgs"
-                  [src]="[imgsPreview[2] ? imgsPreview[2] : '../../../assets/images/plusSign.png']"
-                  (click)="hiddenInput2.click()"
-                />
-                <span *ngIf="imgsPreview[2]" class="close" (click)="deletePhotoHandler(imgsPreview[2], 2)">&times;</span>
-                <input #hiddenInput2 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 2)"> 
-              </div>
-              <div class="img-wrap">
-                <img
-                  class="extraImgs"
-                  [src]="[imgsPreview[3] ? imgsPreview[3] : '../../../assets/images/plusSign.png']"
-                  (click)="hiddenInput3.click()"
-                />
-                <span *ngIf="imgsPreview[3]" class="close" (click)="deletePhotoHandler(imgsPreview[3], 3)">&times;</span>
-                <input #hiddenInput3 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 3)"> 
-              </div>
-              <div class="img-wrap">
-                <img
-                  class="extraImgs"
-                  [src]="[imgsPreview[4] ? imgsPreview[4] : '../../../assets/images/plusSign.png']"
-                  (click)="hiddenInput4.click()"
-                />
-                <span *ngIf="imgsPreview[4]" class="close" (click)="deletePhotoHandler(imgsPreview[4], 4)">&times;</span>
-                <input #hiddenInput4 type="file" accept="image/*" style="display:none" (change)="selectFile($event, 4)"> 
-              </div>
+            <div class="img-wrap">
+              <img
+                class="extraImgs"
+                [src]="[
+                  imgsPreview[2]
+                    ? imgsPreview[2]
+                    : '../../../assets/images/plus_icon_grey.png'
+                ]"
+                (click)="hiddenInput2.click()"
+              />
+              <span
+                *ngIf="imgsPreview[2]"
+                class="close"
+                (click)="deletePhotoHandler(imgsPreview[2], 2)"
+                >&times;</span
+              >
+              <input
+                #hiddenInput2
+                type="file"
+                accept="image/*"
+                style="display: none"
+                (change)="selectFile($event, 2)"
+              />
+            </div>
+            <div class="img-wrap">
+              <img
+                class="extraImgs"
+                [src]="[
+                  imgsPreview[3]
+                    ? imgsPreview[3]
+                    : '../../../assets/images/plus_icon_grey.png'
+                ]"
+                (click)="hiddenInput3.click()"
+              />
+              <span
+                *ngIf="imgsPreview[3]"
+                class="close"
+                (click)="deletePhotoHandler(imgsPreview[3], 3)"
+                >&times;</span
+              >
+              <input
+                #hiddenInput3
+                type="file"
+                accept="image/*"
+                style="display: none"
+                (change)="selectFile($event, 3)"
+              />
+            </div>
+            <div class="img-wrap">
+              <img
+                class="extraImgs"
+                [src]="[
+                  imgsPreview[4]
+                    ? imgsPreview[4]
+                    : '../../../assets/images/plus_icon_grey.png'
+                ]"
+                (click)="hiddenInput4.click()"
+              />
+              <span
+                *ngIf="imgsPreview[4]"
+                class="close"
+                (click)="deletePhotoHandler(imgsPreview[4], 4)"
+                >&times;</span
+              >
+              <input
+                #hiddenInput4
+                type="file"
+                accept="image/*"
+                style="display: none"
+                (change)="selectFile($event, 4)"
+              />
+            </div>
             <!-- <img
               class="extraImgs"
               [src]="[imgsPreview[2] ? imgsPreview[2] : '../../../assets/images/default-placeholder-300x300.png']"
@@ -226,8 +295,7 @@
        accept="image/*"
        (change)="selectFile($event)"
       /> -->
-      <!-- <h5 class="alert" *ngIf="count > 5">Add up to 5 photos only</h5> -->
-
+      <h5>* Add up to 5 photos</h5>
 
       <div class="submitBtn">
         <button id="cancel" (click)="handleCancel()">CANCEL</button>
@@ -272,3 +340,5 @@
 <!-- <a *ngIf="!isLoggedIn"routerLink="/login">Login</a>
 
   <a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a> -->
+
+<div id="footer"><h5>My School &reg; 2022</h5></div>

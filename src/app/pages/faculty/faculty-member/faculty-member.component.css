@@ -5,7 +5,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: 0px auto;
-  border-radius: 30px 8px 8px 30px;
+  border-radius: 40px 8px 8px 40px;
   border: 0.5px solid grey;
   box-shadow: 0px 1px 1px rgb(84, 84, 84);
   margin: 10px 0;
@@ -26,13 +26,21 @@
 }
 
 #faculty-avatar {
-  width: 55px;
+  width: 65px;
+  height: 65px;
   margin-right: 15px;
+}
+
+.faculty-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 .faculty-row h2 {
   font-family: Grotesk;
   font-size: 16pt;
+  line-height: 18pt;
   font-weight: bold;
   letter-spacing: 0.1rem;
   color: #ffffff;
@@ -41,8 +49,9 @@
 
 .faculty-row h3 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12pt;
-  padding-top: 4px;
+  font-size: 10pt;
+  line-height: 12pt;
+  padding-top: 6px;
   color: rgb(255, 255, 255);
 }
 
@@ -58,7 +67,7 @@
   padding: 5px;
   box-shadow: 0px 1px 1px rgb(124, 124, 124);
   height: 40px;
-  margin-right: 8px;
+  margin-right: 12px;
 }
 
 #mailIcon,
@@ -82,7 +91,8 @@
 
 @media only screen and (max-width: 1000px) {
   #faculty-avatar {
-    width: 45px;
+    width: 55px;
+    height: 55px;
     margin-right: 10px;
   }
 
@@ -92,7 +102,7 @@
   }
 
   .faculty-row h3 {
-    font-size: 10pt;
+    font-size: 8pt;
   }
 
   .contactBtns {
@@ -108,5 +118,9 @@
 
   #phoneIcon {
     margin-top: 1px;
+  }
+
+  .faculty-row h3 {
+    padding-top: 0px;
   }
 }

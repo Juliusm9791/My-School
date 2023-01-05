@@ -1,15 +1,16 @@
 #profile-front {
-  margin: 32px auto 200px auto;
+  margin: 60px auto 150px auto;
   width: 80%;
 }
 
 #profile-container {
   background-color: rgb(244, 244, 244);
   border-radius: 5px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   border: 0.5px solid grey;
   box-shadow: 0px 1px 1px rgb(84, 84, 84);
   border-radius: 8px;
+  max-width: 330px;
 }
 
 #groups,
@@ -50,13 +51,6 @@
   margin: 0px 10px;
 }
 
-#profile-details {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: 20px;
-}
-
 .profile-body {
   display: flex;
   flex-direction: row;
@@ -66,8 +60,8 @@
 #profile-avatar {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 20px 30px 20px 50px;
+  align-items: flex-start;
+  margin: 20px 0px 15px 30px;
 }
 
 .profile-col {
@@ -83,21 +77,20 @@
 }
 
 .key {
-  width: 80px;
-}
-
-#bioKey {
-  width: 40px;
+  width: 65px;
+  text-align: right;
 }
 
 .profile-col div {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  margin-left: 15px;
 }
 
 #profile-img {
   width: 130px;
+  border-radius: 50%;
 }
 
 .profile-col h4 {
@@ -115,36 +108,33 @@
   text-decoration: none;
 }
 
+#footer {
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  background-color: rgb(244, 244, 244);
+}
+
+#footer h5 {
+  margin: 10px auto;
+  padding-top: 12px;
+  color: rgb(167, 167, 167);
+  font-family: Grotesk;
+  font-size: 8pt;
+  font-weight: 300;
+}
+
 @media (max-width: 1000px) {
+  #profile {
+    width: 95%;
+  }
+
   .profile-body {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px 50px;
+    padding: 0px 30px;
   }
 
   #profile-avatar {
-    margin: 20px 0px;
-  }
-
-  #bioKey {
-    width: 80px;
-  }
-
-  @media (max-width: 800px) {
-    #profile {
-      width: 95%;
-    }
-
-    .profile-body {
-      padding: 0px 30px;
-    }
-
-    #profile-container {
-      padding-bottom: 30px;
-    }
-
-    #profile-avatar {
-      margin-top: 5px;
-    }
+    margin-top: 5px;
   }
 }

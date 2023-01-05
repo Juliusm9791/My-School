@@ -1,5 +1,5 @@
 #announcements {
-  margin: 32px auto 200px auto;
+  margin: 32px auto 150px auto;
   width: 80%;
 }
 
@@ -21,6 +21,23 @@
 
 #img-col {
   margin: auto;
+}
+
+#footer {
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  background-color: rgb(244, 244, 244);
+}
+
+#footer h5 {
+  margin: 10px auto;
+  padding-top: 12px;
+  color: rgb(167, 167, 167);
+  font-family: Grotesk;
+  font-size: 8pt;
+  font-weight: 300;
 }
 
 @media (max-width: 1000px) {
@@ -86,4 +103,8 @@
   #img-col {
     margin: 0px;
   }
+}
+mat-paginator {
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, 0.87);
 }

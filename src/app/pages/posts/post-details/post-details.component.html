@@ -27,15 +27,30 @@
 
       <div class="post-content">
         <div class="images-block">
-          <img id="defaultImg" [src]="postPictures[0] ? postPictures[0] : '../../../../assets/images/default-placeholder-300x300.png'" />
+          <img
+            id="defaultImg"
+            [src]="
+              postPictures[0]
+                ? postPictures[0]
+                : '../../../../assets/images/default-placeholder-300x300.png'
+            "
+          />
           <div id="extra-image-row">
             <img
               class="extraImgs"
-              [src]="postPictures[1] ? postPictures[1] : '../../../../assets/images/default-placeholder-300x300.png'"
+              [src]="
+                postPictures[1]
+                  ? postPictures[1]
+                  : '../../../../assets/images/default-placeholder-300x300.png'
+              "
             />
             <img
               class="extraImgs"
-              [src]="postPictures[2] ? postPictures[2] : '../../../../assets/images/default-placeholder-300x300.png'"
+              [src]="
+                postPictures[2]
+                  ? postPictures[2]
+                  : '../../../../assets/images/default-placeholder-300x300.png'
+              "
             />
             <!-- <img
               class="extraImgs"
@@ -211,3 +226,5 @@
     </ng-container>
   </div>
 </div>
+
+<div id="footer"><h5>My School &reg; 2022</h5></div>
