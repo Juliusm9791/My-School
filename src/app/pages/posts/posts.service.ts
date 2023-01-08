@@ -168,7 +168,14 @@ export class PostsService {
           }
         );
     } else {
-      console.log("Already has a like from this user")
+      console.log('Already has a like from this user');
     }
+  }
+  isLiked(post: Post, userId: string) {
+    return (
+      post.reactionId.filter(
+        (reaction: Reaction) => reaction.userId._id === userId
+      ).length > 0
+    );
   }
 }

@@ -149,7 +149,7 @@
           <div class="reactionSet">
             <div class="likes" (click)="addLike(post._id)">
               {{ likes(post) }}
-              <button id="likeIcon" mat-icon-button>
+              <button id="likeIcon" [ngStyle]="{color: isLiked() && '#f98c5a'}" mat-icon-button>
                 <mat-icon>thumb_up_alt</mat-icon>
               </button>
             </div>
