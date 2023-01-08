@@ -75,10 +75,6 @@ export class PostComponent implements OnInit {
     }
   }
   isLiked() {
-    return (
-      this.post.reactionId.filter(
-        (reaction: Reaction) => reaction.userId._id === this.me._id
-      ).length > 0
-    );
+    return this.postsService.isLiked(this.post, this.me._id);
   }
 }
