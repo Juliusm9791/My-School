@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginSignupService } from './pages/account/login-signup.service';
 import { PostsService } from './pages/posts/posts.service';
@@ -12,7 +12,10 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnDestroy, OnInit {
-  topSearchInput = new FormControl('');
+  topSearchInput = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
   title = 'client';
   mobileQuery: MediaQueryList;
   isLoggedIn: boolean = false;
@@ -62,7 +65,7 @@ export class AppComponent implements OnDestroy, OnInit {
     });
   }
   topSearch() {
-    if (this.topSearchInput.value) {
+    if (this.topSearchInput.value && this.topSearchInput.valid) {
       this.postsService.searchInPost(this.topSearchInput.value);
       this.topSearchInput.reset();
       this.router.navigate(['/search']);
@@ -71,6 +74,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.loginSignupService.deleteMe();
   }
 
   schoolList: string[] = [

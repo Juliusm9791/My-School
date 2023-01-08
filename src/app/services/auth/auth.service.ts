@@ -42,9 +42,9 @@ export class AuthService {
     try {
       const decoded: any = decode(token);
       if (decoded.exp < Date.now() / 100000) {
+        localStorage.removeItem('id_token');
         return true;
       } else {
-        // localStorage.removeItem('id_token');
         return false;
       }
     } catch (err) {
