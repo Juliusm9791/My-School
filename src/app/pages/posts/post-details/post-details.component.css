@@ -44,7 +44,8 @@ app-comments {
 
 #postDepartment,
 #postGrade {
-  margin: auto 0px auto 10px;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
 #postDepartment h2:hover,
@@ -56,6 +57,7 @@ h2 {
   margin: auto;
   font-family: Grotesk;
   font-size: 18pt;
+  line-height: 20pt;
   color: white;
   margin-bottom: 10px;
   padding-top: 8px;
@@ -221,8 +223,8 @@ mat-card-subtitle {
 }
 
 .extraImgs {
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
 }
 
 .images-block {
@@ -252,6 +254,11 @@ mat-card-subtitle {
   flex-direction: column;
   justify-content: center;
   margin-left: 10px;
+}
+
+#title-row {
+  display: flex;
+  flex-direction: row;
 }
 
 #event-card-column {
@@ -347,7 +354,7 @@ hr {
 }
 
 .postUserDetail {
-  margin: auto 15px;
+  margin: 10px 15px;
 }
 
 .postUserDetail h4 {
@@ -391,20 +398,21 @@ hr {
   .images-block {
     margin-top: 5px;
     flex-direction: row;
+    margin-left: 2px;
   }
 
   #defaultImg,
   .extraImgs {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
   }
 }
 
 @media (max-width: 1000px) {
   #defaultImg,
   .extraImgs {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
 
   .images-block {
@@ -414,7 +422,7 @@ hr {
   #post-details,
   #comments-section {
     width: 95%;
-    margin-top: 50px;
+    margin-top: 30px;
   }
 
   #comments-section {
@@ -429,12 +437,13 @@ hr {
 @media (max-width: 700px) {
   #defaultImg,
   .extraImgs {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
 
   h2 {
-    font-size: 16pt;
+    font-size: 14pt;
+    line-height: 18pt;
   }
 
   #postDepartment h2,
@@ -443,7 +452,7 @@ hr {
   }
 
   .postUserDetail {
-    margin: auto 10px;
+    margin: 3px 10px;
   }
 
   #event-card {
@@ -496,5 +505,64 @@ hr {
 
   mat-card-subtitle {
     margin-bottom: 8px;
+  }
+
+  .comment-submit {
+    font-size: 14pt;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  #defaultImg,
+  .extraImgs {
+    width: 80px;
+    height: 80px;
+  }
+
+  #event-card {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  #defaultImg,
+  .extraImgs {
+    width: 60px;
+    height: 60px;
+  }
+
+  .likes,
+  .comments,
+  .shares,
+  .delete,
+  .update {
+    margin-right: 5px;
+  }
+
+  #shareIcon {
+    scale: 1;
+    /* margin-top: -3px; */
+  }
+
+  #commentIcon,
+  #deleteIcon,
+  #editIcon {
+    scale: 0.7;
+  }
+
+  #likeIcon {
+    scale: 0.8;
+  }
+
+  .mat-icon-button {
+    width: 30px !important;
+    height: 40px !important;
+    line-height: 25px !important;
+  }
+
+  .comment-submit {
+    font-size: 12pt;
+    padding: 8px;
   }
 }
