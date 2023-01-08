@@ -10,11 +10,7 @@
         <div id="profile-avatar">
           <img
             id="profile-img"
-            [src]="
-              facultyMember.avatar !== null || ''
-                ? facultyMember.avatar
-                : '/src/assets/images/account.png'
-            "
+            [src]="(facultyMember.avatar !== '' && facultyMember.avatar) ? facultyMember.avatar : defaultAvatar"
             alt="Profile Image"
           />
         </div>
