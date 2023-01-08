@@ -74,28 +74,28 @@
       <mat-nav-list>
         <div class="nav">
           <div class="vertical-nav">
-            <a routerLink="/posts">
+            <a routerLink="/posts" (click)="mobileQuery.matches && snav.toggle()">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/announcements.png" />
                 <h1>ANNOUNCEMENTS</h1>
               </div>
             </a>
 
-            <a routerLink="/calendar">
+            <a routerLink="/calendar" (click)="mobileQuery.matches && snav.toggle()">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/calendar.png" />
                 <h1>EVENT CALENDAR</h1>
               </div>
             </a>
 
-            <a routerLink="/departments">
+            <a routerLink="/departments" (click)="mobileQuery.matches && snav.toggle()">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/department.png" />
                 <h1>DEPARTMENTS</h1>
               </div>
             </a>
 
-            <a routerLink="/faculty">
+            <a routerLink="/faculty" (click)="mobileQuery.matches && snav.toggle()">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/faculty.png" />
                 <h1>FACULTY</h1>
