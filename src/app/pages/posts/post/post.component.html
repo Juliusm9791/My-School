@@ -114,7 +114,7 @@
       <div id="social-buttons-row">
         <div class="likes" title="Like" (click)="addLike(post._id)">
           {{ countLikes }}
-          <button id="likeIcon" mat-icon-button>
+          <button id="likeIcon" [ngStyle]="{color: isLiked() && '#f98c5a'}" mat-icon-button>
             <mat-icon>thumb_up_alt</mat-icon>
           </button>
         </div>

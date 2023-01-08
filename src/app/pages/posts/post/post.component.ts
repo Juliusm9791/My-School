@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Me, Post } from 'src/app/types/types';
+import { Me, Post, Reaction } from 'src/app/types/types';
 import { LoginSignupService } from '../../account/login-signup.service';
 import { PostsService } from '../posts.service';
 
@@ -57,21 +57,28 @@ export class PostComponent implements OnInit {
 
   postPictures(index: number, locations: any[]) {
     let postPictures: string[] = [];
-    locations.forEach(e => postPictures.splice(e.id, 0, e.location));
+    locations.forEach((e) => postPictures.splice(e.id, 0, e.location));
     if (postPictures[index]) {
-      return postPictures[index]
+      return postPictures[index];
     } else {
-      return "../../../../assets/images/default-placeholder-300x300.png"
+      return '../../../../assets/images/default-placeholder-300x300.png';
     }
-  };
-  
+  }
+
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
   }
 
-  addLike(postId :string) {
+  addLike(postId: string) {
     if (this.me._id) {
       this.postsService.addUserLike(this.me._id, postId);
     }
+  }
+  isLiked() {
+    return (
+      this.post.reactionId.filter(
+        (reaction: Reaction) => reaction.userId._id === this.me._id
+      ).length > 0
+    );
   }
 }
