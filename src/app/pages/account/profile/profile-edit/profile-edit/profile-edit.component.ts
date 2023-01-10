@@ -82,6 +82,12 @@ export class ProfileEditComponent implements OnInit {
     this.me.gradeId.forEach((id) => grade.push(id._id));
     this.profileForm.controls.gradeId.setValue(grade);
     this.profileForm.controls.aboutMe.setValue(this.me.aboutMe);
+
+    if (this.me.avatar) {
+      this.avatarPreview = this.me.avatar;
+    } else {
+      this.avatarPreview = this.defaultAvatar;
+    }
   }
 
   ngOnInit() {
@@ -123,16 +129,25 @@ export class ProfileEditComponent implements OnInit {
       groupId,
       gradeId
     );
-  }
-
-  selectedFiles: FileList = {} as FileList;
-
-  upload() {
     const file = this.selectedFiles.item(0);
     this.profileFormService.uploadFile(file, this.me._id);
   }
 
+  selectedFiles: FileList = {} as FileList;
+
+  // upload() {
+  //   const file = this.selectedFiles.item(0);
+  //   this.profileFormService.uploadFile(file, this.me._id);
+  // }
+
   selectFile(event: any) {
     this.selectedFiles = event.target.files;
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFiles[0]);
+    reader.onload = (_event) => {
+        this.avatarPreview = reader.result;
+    };
   }
+
+  avatarPreview: any;
 }
