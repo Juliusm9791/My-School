@@ -67,11 +67,13 @@
             <div id="event-card-column">
               <ng-container *ngIf="post.isEvent">
                 <div id="event-card">
-                  <img
-                    id="event-card-icon"
-                    src="../../../../assets/images/calendar.png"
-                  />
-                  <h2>Event:</h2>
+                  <div id="title-row">
+                    <img
+                      id="event-card-icon"
+                      src="../../../../assets/images/calendar.png"
+                    />
+                    <h2>Event:</h2>
+                  </div>
 
                   <div class="start-end-column">
                     <div class="event-card-row">
@@ -115,7 +117,11 @@
       <div id="social-buttons-row">
         <div class="likes" title="Like" (click)="addLike(post._id)">
           {{ countLikes }}
-          <button id="likeIcon" [ngStyle]="{color: isLiked() && '#f98c5a'}" mat-icon-button>
+          <button
+            id="likeIcon"
+            [ngStyle]="{ color: isLiked() && '#f98c5a' }"
+            mat-icon-button
+          >
             <mat-icon>thumb_up_alt</mat-icon>
           </button>
         </div>

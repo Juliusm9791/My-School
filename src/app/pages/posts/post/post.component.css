@@ -44,11 +44,8 @@ mat-card-title:hover {
 
 #postDepartment,
 #postGrade {
-  margin: auto 0px;
-}
-
-#postGrade {
-  margin-right: 10px;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
 #postDepartment h2:hover,
@@ -208,6 +205,11 @@ mat-card > :first-child {
   margin-left: 10px;
 }
 
+#title-row {
+  display: flex;
+  flex-direction: row;
+}
+
 #event-card-column {
   display: flex;
   justify-content: right;
@@ -324,12 +326,29 @@ hr {
   #images-block {
     margin-top: 10px;
     flex-direction: row;
+    margin-left: 2px;
   }
 
   #defaultImg,
   .extraImgs {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 1100px) {
+  #defaultImg,
+  .extraImgs {
+    width: 100px;
+    height: 100px;
+  }
+
+  .images-block {
+    margin-right: 10px;
+  }
+
+  #img-col {
+    margin: 0px;
   }
 }
 
@@ -375,5 +394,139 @@ hr {
 
   #img-col {
     margin: 0px;
+  }
+}
+
+@media (max-width: 700px) {
+  #userLockup {
+    padding-top: 10px;
+  }
+
+  h2 {
+    font-size: 14pt;
+    line-height: 18pt;
+  }
+
+  #postDepartment h2,
+  #postGrade h2,
+  #event-card h2 {
+    font-size: 12pt;
+  }
+
+  .postUserDetail {
+    margin: 3px 10px;
+  }
+
+  #event-card {
+    padding: 5px;
+  }
+
+  #event-card-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: -4px;
+  }
+
+  .event-card-row h4,
+  .event-card-row h5 {
+    font-size: 7pt;
+    line-height: 10pt;
+  }
+
+  #event-card {
+    flex-direction: column;
+  }
+
+  .start-end-column {
+    margin-left: 5px;
+  }
+
+  #description {
+    font-size: 10pt;
+  }
+
+  #postUserImg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .postUserDetail h4 {
+    font-size: 8pt;
+    line-height: 12pt;
+  }
+
+  #commentUserImg {
+    margin-top: 15px;
+    width: 55px;
+    height: 55px;
+  }
+
+  #post-body {
+    margin-top: 10px;
+  }
+
+  mat-card-subtitle {
+    margin-bottom: 8px;
+  }
+
+  .comment-submit {
+    font-size: 14pt;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  #defaultImg,
+  .extraImgs {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 420px) {
+  #defaultImg,
+  .extraImgs {
+    width: 60px;
+    height: 60px;
+  }
+
+  .likes,
+  .comments,
+  .shares,
+  .delete,
+  .update {
+    margin-right: 5px;
+  }
+
+  #shareIcon {
+    scale: 1;
+    /* margin-top: -3px; */
+  }
+
+  #commentIcon,
+  #deleteIcon,
+  #editIcon {
+    scale: 0.7;
+  }
+
+  #likeIcon {
+    scale: 0.8;
+  }
+
+  .mat-icon-button {
+    width: 30px !important;
+    height: 40px !important;
+    line-height: 25px !important;
+  }
+
+  .comment-submit {
+    font-size: 12pt;
+    padding: 8px;
+  }
+
+  #postDepartment h2,
+  #postGrade h2,
+  #event-card h2 {
+    font-size: 10pt;
   }
 }

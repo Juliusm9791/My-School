@@ -1,15 +1,18 @@
 <div id="announcements">
-  <mat-paginator
-    (page)="handlePageEvent($event)"
-    [length]="length"
-    [pageSize]="pageSize"
-    [showFirstLastButtons]="showFirstLastButtons"
-    [pageSizeOptions]="pageSizeOptions"
-    [pageIndex]="pageIndex"
-    aria-label="Select page"
-  >
-  </mat-paginator>
-  <h1>ANNOUNCEMENTS:</h1>
+  <div id="titlePageRow">
+    <h1>ANNOUNCEMENTS:</h1>
+    <mat-paginator
+      (page)="handlePageEvent($event)"
+      [length]="length"
+      [pageSize]="pageSize"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="pageIndex"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+
   <div *ngIf="loading">
     <mat-spinner></mat-spinner>
   </div>

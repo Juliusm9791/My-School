@@ -12,10 +12,10 @@
       <div id="profile-header">
         <h2>Hello {{ me.firstName }} {{ me.lastName }}!</h2>
         <div id="profile-buttons">
-          <a class="post-card" (click)="profileEdit(me._id)">
+          <a id="edit" (click)="profileEdit(me._id)">
             <h3>Edit</h3>
           </a>
-          <a routerLink="/" (click)="logout()">
+          <a id="logout" routerLink="/" (click)="logout()">
             <h3>Logout</h3>
           </a>
         </div>
@@ -26,7 +26,7 @@
           <div id="profile-avatar">
             <img
               id="profile-img"
-              [src]="(me.avatar !== '' && me.avatar) ? me.avatar : defaultAvatar"
+              [src]="me.avatar !== '' && me.avatar ? me.avatar : defaultAvatar"
               alt="Profile Image"
             />
           </div>
@@ -113,7 +113,7 @@
       <!-- Notifications -->
       <section>
         <div id="notifications-subheader">
-          <h2>Your Notifications:</h2>
+          <h2>Notifications:</h2>
         </div>
         <div id="notifications-body">
           <h5>...You have no notifications</h5>
@@ -123,7 +123,7 @@
       <!-- Announcements -->
       <section>
         <div id="announcements-subheader">
-          <h2>Your Announcements:</h2>
+          <h2>Announcements:</h2>
           <a [routerLink]="['form-post']">
             <h3>New Post</h3>
           </a>
