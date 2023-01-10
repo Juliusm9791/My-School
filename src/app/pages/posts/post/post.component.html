@@ -48,12 +48,13 @@
                       : defaultAvatar
                   "
                   alt="User Image"
+                  (click)="profileFront(post.userId._id)"
                 />
               </div>
 
               <!-- USER NAME AND POST DATE -->
               <div class="postUserDetail">
-                <h4 class="postUserDetail postUserName">
+                <h4 class="postUserDetail postUserName" (click)="profileFront(post.userId._id)">
                   {{ post.userId.firstName }} {{ post.userId.lastName }}
                 </h4>
                 <h4 class="postUserDetail">

@@ -385,6 +385,10 @@ hr {
   font-weight: 300;
 }
 
+#postUserImg, .postUserName, #commentUserImg {
+  cursor: pointer;
+}
+
 @media (max-width: 1300px) {
   .post-content {
     flex-direction: column-reverse;
@@ -566,3 +570,4 @@ hr {
     padding: 8px;
   }
 }
+

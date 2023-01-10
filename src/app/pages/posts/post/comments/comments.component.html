@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-subtitle>
     <div class="commentHeader">
-      <h4>
+      <h4 id="userInfo" (click)="profileFront(comment.userId._id)">
         {{ comment.userId.firstName }}
         {{ comment.userId.lastName }} -
         {{ comment.createdAt | date: "short" }}

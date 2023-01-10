@@ -77,4 +77,8 @@ export class PostComponent implements OnInit {
   isLiked() {
     return this.postsService.isLiked(this.post, this.me._id);
   }
+
+  profileFront(id: string) {
+    this.router.navigate(['/profile/detail/' + id]);
+  }
 }
