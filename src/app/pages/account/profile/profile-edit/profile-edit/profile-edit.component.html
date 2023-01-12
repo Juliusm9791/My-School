@@ -22,7 +22,7 @@
           <div id="profile-avatar">
             <img
               id="profile-img"
-              [src]="me.avatar !== null || '' ? me.avatar : defaultAvatar"
+              [src]="avatarPreview"
               alt="Profile Image"
             />
             <input
@@ -30,14 +30,14 @@
               type="file"
               (change)="selectFile($event)"
             />
-            <button
+            <!-- <button
               id="update-avatar"
               class="btn btn-success"
               [disabled]="!selectedFiles"
               (click)="upload()"
             >
               <h5>Update Avatar</h5>
-            </button>
+            </button> -->
           </div>
           <div class="profile-col">
             <mat-form-field appearance="fill">

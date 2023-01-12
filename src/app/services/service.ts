@@ -3,8 +3,10 @@ import { Apollo } from 'apollo-angular';
 import {
   QUERY_GRADES,
   QUERY_FACULTIES,
+  QUERY_USER,
 } from 'src/app/services/graphql/queries';
-import { Grade, Faculty } from 'src/app/types/types';
+import { Grade, Faculty, Me } from 'src/app/types/types';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +46,7 @@ export class GradesService {
 @Injectable({
   providedIn: 'root',
 })
+
 export class FacultiesService {
   loading: boolean = true;
   private _faculties: Faculty[] = [];
@@ -73,5 +76,42 @@ export class FacultiesService {
   }
   get faculties() {
     return this._faculties;
+  }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+
+export class UserService {
+  private _user: Me = {} as Me;
+  loading: boolean = true;
+  constructor(private apollo: Apollo, private authService: AuthService) {}
+  @Output() changeUserLoading: EventEmitter<boolean> = new EventEmitter();
+  @Output() changeUser: EventEmitter<Me> = new EventEmitter();
+
+  queryUser(id: string) {
+    this.apollo
+      .watchQuery({
+        query: QUERY_USER,
+        variables: {
+          id: id,
+        },
+      })
+      .valueChanges.subscribe(
+        (result: any) => {
+          this._user = result?.data?.user;
+          console.log('query user data ', this._user);
+          this.loading = result.loading;
+          this.changeUserLoading.emit(this.loading);
+          this.changeUser.emit(this._user);
+        },
+        (error) => {
+          console.log('query user error', JSON.stringify(error, null, 2));
+        }
+      );
+  }
+  get user() {
+    return this._user;
   }
 }

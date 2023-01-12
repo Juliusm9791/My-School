@@ -27,7 +27,8 @@
           [formControl]="topSearchInput"
         />
         <img id="searchIcon" src="../assets/images/search_icon_circle.png" />
-        <button id="lgSubmitButton" type="submit"></button>
+        <button id="lgSubmitButton" type="submit" [disabled]="!this.topSearchInput.valid"
+        ></button>
       </form>
       <!-- <button id="smSearchButton">
         <img id="searchIcon2" src="../assets/images/search_icon_circle.png" />
@@ -39,7 +40,7 @@
             <h2>Hello {{ me.firstName }}</h2>
             <img
               id="accountIcon"
-              [src]="me.avatar !== '' || null ? me.avatar : defaultAvatar"
+              [src]="(me.avatar !== '' && me.avatar) ? me.avatar : defaultAvatar"
             />
           </ng-container>
           <ng-container *ngIf="!isLoggedIn">
@@ -73,28 +74,28 @@
       <mat-nav-list>
         <div class="nav">
           <div class="vertical-nav">
-            <a routerLink="/posts">
+            <a routerLink="/posts" (click)="mobileQuery.matches && snav.toggle()">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/announcements.png" />
                 <h1>ANNOUNCEMENTS</h1>
               </div>
             </a>
 
-            <a routerLink="/calendar">
+            <a routerLink="/calendar" (click)="mobileQuery.matches && snav.toggle()">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/calendar.png" />
                 <h1>EVENT CALENDAR</h1>
               </div>
             </a>
 
-            <a routerLink="/departments">
+            <a routerLink="/departments" (click)="mobileQuery.matches && snav.toggle()">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/department.png" />
                 <h1>DEPARTMENTS</h1>
               </div>
             </a>
 
-            <a routerLink="/faculty">
+            <a routerLink="/faculty" (click)="mobileQuery.matches && snav.toggle()">
               <div class="navTab">
                 <img class="navIcon" src="../assets/images/faculty.png" />
                 <h1>FACULTY</h1>

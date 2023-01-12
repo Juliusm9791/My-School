@@ -65,6 +65,7 @@ export class ProfileComponent implements OnInit {
     });
     this.loginSignupService.changeMe.subscribe((me) => {
       this.me = me;
+      console.log(this.me.avatar);
     });
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;

@@ -1,8 +1,8 @@
 <!-- PROFILE FRONT END VIEW -->
-<div id="profile-front">
+<div *ngIf="!loading" id="profile-front">
   <div id="profile-container">
     <div id="profile-header">
-      <h2>{{ facultyMember.firstName }} {{ facultyMember.lastName }}</h2>
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
     </div>
 
     <div id="profile-details">
@@ -10,11 +10,7 @@
         <div id="profile-avatar">
           <img
             id="profile-img"
-            [src]="
-              facultyMember.avatar !== null || ''
-                ? facultyMember.avatar
-                : '/src/assets/images/account.png'
-            "
+            [src]="(user.avatar !== '' && user.avatar) ? user.avatar : defaultAvatar"
             alt="Profile Image"
           />
         </div>
@@ -24,7 +20,7 @@
             <h3>Role:</h3>
           </div>
           <div id="groups">
-            <h4>{{ facultyMember.groupId }}</h4>
+            <h4>{{ gatherData(user.groupId, "groupName") }}</h4>
           </div>
         </div>
 
@@ -33,7 +29,7 @@
             <h3>Grade:</h3>
           </div>
           <div id="grades">
-            <h4>{{ facultyMember.gradeId }}</h4>
+            <h4>{{ gatherData(user.gradeId, "gradeName") }}</h4>
           </div>
         </div>
 
@@ -42,7 +38,7 @@
             <h3>Dept:</h3>
           </div>
           <div id="departments">
-            <h4>{{ facultyMember.departmentId }}</h4>
+            <h4>{{ gatherData(user.departmentId, "depName") }}</h4>
           </div>
         </div>
 
@@ -51,7 +47,7 @@
             <h3>Address:</h3>
           </div>
           <div>
-            <h4>{{ facultyMember.address }}</h4>
+            <h4>{{ user.address }}</h4>
           </div>
         </div>
 
@@ -60,7 +56,7 @@
             <h3>Phone:</h3>
           </div>
           <div>
-            <h4>{{ facultyMember.phoneNumber }}</h4>
+            <h4>{{ user.phoneNumber }}</h4>
           </div>
         </div>
 
@@ -69,7 +65,7 @@
             <h3>Email:</h3>
           </div>
           <div>
-            <h4>{{ facultyMember.email }}</h4>
+            <h4>{{ user.email }}</h4>
           </div>
         </div>
 
@@ -78,7 +74,7 @@
             <h3>Bio:</h3>
           </div>
           <div>
-            <h4>{{ facultyMember.aboutMe }}</h4>
+            <h4>{{ user.aboutMe }}</h4>
           </div>
         </div>
       </div>

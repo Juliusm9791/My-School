@@ -16,7 +16,7 @@ export class PostsComponent implements OnInit {
   private _isUserPosts: boolean = false;
 
   length = 200;
-  pageSize = 10;
+  pageSize = 5;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;

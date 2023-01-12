@@ -60,6 +60,7 @@ export class LoginSignupService {
     this.apollo
       .watchQuery({
         query: QUERY_ME,
+        fetchPolicy: 'network-only',
       })
       .valueChanges.subscribe(
         (result: any) => {
@@ -85,5 +86,6 @@ export class LoginSignupService {
 
   deleteMe() {
     this._me = {} as Me;
+    this.changeMe.emit(this._me);
   }
 }

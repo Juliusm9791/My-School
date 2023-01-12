@@ -52,14 +52,22 @@
                   : '../../../../assets/images/default-placeholder-300x300.png'
               "
             />
-            <!-- <img
+            <img
               class="extraImgs"
-              src="../../../../assets/images/default-placeholder-300x300.png"
+              [src]="
+                postPictures[3]
+                  ? postPictures[3]
+                  : '../../../../assets/images/default-placeholder-300x300.png'
+              "
             />
             <img
               class="extraImgs"
-              src="../../../../assets/images/default-placeholder-300x300.png"
-            /> -->
+              [src]="
+                postPictures[4]
+                  ? postPictures[4]
+                  : '../../../../assets/images/default-placeholder-300x300.png'
+              "
+            />
           </div>
         </div>
 
@@ -77,10 +85,11 @@
                           : defaultAvatar
                       "
                       alt="User Image"
+                      (click)="profileFront(post.userId._id)"
                     />
                   </div>
                   <div class="postUserDetail">
-                    <h4 class="postUserDetail postUserName">
+                    <h4 class="postUserDetail postUserName" (click)="profileFront(post.userId._id)">
                       {{ post.userId.firstName }} {{ post.userId.lastName }}
                     </h4>
                     <h4 class="postUserDetail">
@@ -93,11 +102,13 @@
                 <div id="event-card-column">
                   <ng-container *ngIf="post.isEvent">
                     <div id="event-card">
-                      <img
-                        id="event-card-icon"
-                        src="../../../../assets/images/calendar.png"
-                      />
-                      <h2>Event:</h2>
+                      <div id="title-row">
+                        <img
+                          id="event-card-icon"
+                          src="../../../../assets/images/calendar.png"
+                        />
+                        <h2>Event:</h2>
+                      </div>
 
                       <div class="start-end-column">
                         <div class="event-card-row">
@@ -139,7 +150,7 @@
           <div class="reactionSet">
             <div class="likes" (click)="addLike(post._id)">
               {{ likes(post) }}
-              <button id="likeIcon" mat-icon-button>
+              <button id="likeIcon" [ngStyle]="{color: isLiked() && '#f98c5a'}" mat-icon-button>
                 <mat-icon>thumb_up_alt</mat-icon>
               </button>
             </div>
@@ -189,6 +200,7 @@
               ? comment.userId.avatar
               : defaultAvatar
           "
+          (click)="profileFront(comment.userId._id)"
         />
         <app-comments [comment]="comment"></app-comments>
       </div>

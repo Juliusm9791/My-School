@@ -26,7 +26,7 @@ export class PostDetailsComponent implements OnInit {
   commentForm = new FormGroup({
     comment: new FormControl('', [Validators.required, restrictedWords()]),
   });
-  
+
   constructor(
     private postDetailsService: PostDetailsService,
     private route: ActivatedRoute,
@@ -42,7 +42,9 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.changePost.subscribe((post) => {
       this.post = post;
       console.log('post:', post);
-      post.pictures.forEach(picture => this.postPictures.splice(picture.id, 0, picture.location));
+      post.pictures.forEach((picture) =>
+        this.postPictures.splice(picture.id, 0, picture.location)
+      );
     });
 
     this.postDetailsService.changeLoading.subscribe((loading) => {
@@ -59,11 +61,13 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.queryPost(this.postId);
     this.isLoggedIn = this.authService.isLoggedIn;
     this.me = this.loginSignupService.me;
-
   }
 
   likes(post: Post) {
     return this.postsService.countLikes(post);
+  }
+  isLiked() {
+    return this.postsService.isLiked(this.post, this.me._id);
   }
 
   onSubmit() {
@@ -85,15 +89,18 @@ export class PostDetailsComponent implements OnInit {
   }
 
   postPictures: string[] = [];
-  
+
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
   }
 
-  addLike(postId :string) {
+  addLike(postId: string) {
     if (this.me._id) {
       this.postsService.addUserLike(this.me._id, postId);
     }
   }
 
+  profileFront(id: string) {
+    this.router.navigate(['/profile/detail/' + id]);
+  }
 }
