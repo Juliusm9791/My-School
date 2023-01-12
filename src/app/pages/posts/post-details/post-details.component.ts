@@ -99,4 +99,8 @@ export class PostDetailsComponent implements OnInit {
       this.postsService.addUserLike(this.me._id, postId);
     }
   }
+
+  profileFront(id: string) {
+    this.router.navigate(['/profile/detail/' + id]);
+  }
 }

@@ -110,7 +110,7 @@ export const QUERY_USERS = gql`
         _id
         groupName
       }
-   
+
       phoneNumber
     }
   }
@@ -124,6 +124,32 @@ export const QUERY_FACULTIES = gql`
   }
 `;
 
+export const QUERY_USER = gql`
+  query User($id: ID!) {
+    user(_id: $id) {
+      _id
+      aboutMe
+      address
+      avatar
+      departmentId {
+        _id
+        depName
+      }
+      email
+      firstName
+      gradeId {
+        _id
+        gradeName
+      }
+      groupId {
+        _id
+        groupName
+      }
+      lastName
+      phoneNumber
+    }
+  }
+`;
 export const QUERY_DEPARTMENTS = gql`
   query departments {
     departments {

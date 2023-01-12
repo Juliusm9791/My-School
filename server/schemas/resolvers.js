@@ -30,6 +30,15 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    user: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findById(args._id)
+          .populate("departmentId")
+          .populate("gradeId")
+          .populate("groupId");
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
     posts: async (parent, args) => {
       return await Post.find({})
         .sort({ createdAt: "desc" })

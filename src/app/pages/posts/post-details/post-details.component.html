@@ -85,10 +85,11 @@
                           : defaultAvatar
                       "
                       alt="User Image"
+                      (click)="profileFront(post.userId._id)"
                     />
                   </div>
                   <div class="postUserDetail">
-                    <h4 class="postUserDetail postUserName">
+                    <h4 class="postUserDetail postUserName" (click)="profileFront(post.userId._id)">
                       {{ post.userId.firstName }} {{ post.userId.lastName }}
                     </h4>
                     <h4 class="postUserDetail">
@@ -199,6 +200,7 @@
               ? comment.userId.avatar
               : defaultAvatar
           "
+          (click)="profileFront(comment.userId._id)"
         />
         <app-comments [comment]="comment"></app-comments>
       </div>
