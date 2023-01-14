@@ -1,5 +1,5 @@
 #createPostForm {
-  margin: 50px auto 200px auto;
+  margin: 32px auto 200px auto;
   width: fit-content;
 }
 
@@ -9,6 +9,7 @@
   font-weight: bold;
   letter-spacing: 0.1rem;
   color: #4050b2;
+  margin-left: 30px;
 }
 
 form {
@@ -16,6 +17,7 @@ form {
   padding: 30px 30px 30px 0px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .submitBtn button {
@@ -38,6 +40,10 @@ h5 {
   color: rgb(125, 125, 125);
   margin: 0px;
   padding-left: 5px;
+}
+
+mat-checkbox {
+  margin-bottom: 20px;
 }
 
 .submitOrUpdate {
@@ -120,10 +126,12 @@ h5 {
 
 #footer {
   text-align: center;
-  height: 100px;
+  height: 70px;
   width: 100%;
   bottom: 0;
+  position: fixed;
   background-color: rgb(244, 244, 244);
+  z-index: -1;
 }
 
 #footer h5 {
@@ -133,4 +141,27 @@ h5 {
   font-family: Grotesk;
   font-size: 8pt;
   font-weight: 300;
+}
+
+@media (max-width: 1100px) {
+  .profile-body {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 50px;
+  }
+}
+@media (max-width: 800px) {
+  #createPostForm {
+    width: 95%;
+  }
+}
+
+@media (max-width: 500px) {
+  .formColumn {
+    margin-left: 15px;
+  }
+
+  #createPostForm h2 {
+    margin-left: 15px;
+  }
 }

@@ -5,7 +5,7 @@
   align-items: center;
   background-color: #ffbc83;
   background-image: linear-gradient(182deg, #ffbc83 0%, #f29c55 84%);
-  padding: 5px 5px 5px 15px;
+  padding: 5px 5px 5px 10px;
   border-radius: 8px;
   border: 0.5px solid grey;
   box-shadow: 0px 1px 1px rgb(84, 84, 84);
@@ -71,29 +71,73 @@
 .actions-buttons-row {
   display: flex;
   flex-direction: row;
+  align-self: baseline;
+}
+
+.action-buttons-row div {
+  margin: 0px;
 }
 
 h3 {
-  margin: auto;
+  padding: 5px 0px;
+  margin: 0px 10px;
   font-family: Grotesk;
-  font-size: 18pt;
+  font-size: 16pt;
+  line-height: normal;
   color: white;
-  margin-right: 20px;
 }
 
 h5 {
   font-family: Grotesk;
-  font-size: 12pt;
+  font-size: 10pt;
+  line-height: normal;
   color: white;
-  margin: auto 0;
+  padding: 10px 10px 0px 10px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
   h3 {
     font-size: 14pt;
+    padding: 5px 0px 0px 0px;
+    margin: 0 5px;
   }
 
   h5 {
     font-size: 10pt;
+    padding: 5px 0px 0px 5px;
+    margin-bottom: 5px;
+  }
+
+  .post-title-row {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1000px) {
+  #deleteIcon,
+  #editIcon {
+    scale: 0.7;
+  }
+
+  .delete,
+  .update {
+    padding: 0px 0px 0px 5px;
+    height: 35px;
+  }
+
+  .delete {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 700px) {
+  h3 {
+    font-size: 12pt;
+    margin-left: 5px;
+  }
+
+  h5 {
+    font-size: 8pt;
   }
 }
