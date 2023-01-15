@@ -25,12 +25,10 @@
   <div class="post-content">
     <div id="images-block">
       <img id="defaultImg" [src]="postPictures(0, post.pictures)" />
-      <div id="extra-images">
-        <div>
-          <img class="extraImgs" [src]="postPictures(1, post.pictures)" />
-          <img class="extraImgs" [src]="postPictures(2, post.pictures)" />
-        </div>
-      </div>
+      <img class="extraImgs" [src]="postPictures(1, post.pictures)" />
+      <img class="extraImgs" [src]="postPictures(2, post.pictures)" />
+      <img class="extraImgs" [src]="postPictures(3, post.pictures)" />
+      <img class="extraImgs" [src]="postPictures(4, post.pictures)" />
     </div>
 
     <div id="post-body">
@@ -54,7 +52,10 @@
 
               <!-- USER NAME AND POST DATE -->
               <div class="postUserDetail">
-                <h4 class="postUserDetail postUserName" (click)="profileFront(post.userId._id)">
+                <h4
+                  class="postUserDetail postUserName"
+                  (click)="profileFront(post.userId._id)"
+                >
                   {{ post.userId.firstName }} {{ post.userId.lastName }}
                 </h4>
                 <h4 class="postUserDetail">
