@@ -87,8 +87,10 @@
 
 #accountIcon {
   width: 30px;
+  height: 30px;
   margin-right: 10px;
   border-radius: 50%;
+  padding-top: 3px;
 }
 
 .is-mobile .toolbar {
@@ -297,6 +299,7 @@ input[type="search"]:focus {
 
   #accountIcon {
     margin: 0px 0px 5px 20px;
+    padding-top: 0px;
   }
 
   .toolbar {
@@ -353,6 +356,7 @@ input[type="search"]:focus {
 
   #accountIcon {
     margin: 0px;
+    padding-bottom: 2px;
   }
 
   .vertical-nav {
