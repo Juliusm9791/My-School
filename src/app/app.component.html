@@ -15,7 +15,7 @@
 
     <div class="topBarM">
       <a routerLink="/">
-        <img id="logo" src="../assets/images/logo.png" />
+        <img id="logo" src="../assets/images/my_school_logo.png" />
       </a>
     </div>
 
@@ -27,7 +27,10 @@
           [formControl]="topSearchInput"
         />
         <img id="searchIcon" src="../assets/images/search_icon_circle.png" />
-        <button id="lgSubmitButton" type="submit" [disabled]="!this.topSearchInput.valid"
+        <button
+          id="lgSubmitButton"
+          type="submit"
+          [disabled]="!this.topSearchInput.valid"
         ></button>
       </form>
       <!-- <button id="smSearchButton">
@@ -40,7 +43,7 @@
             <h2>Hello {{ me.firstName }}</h2>
             <img
               id="accountIcon"
-              [src]="(me.avatar !== '' && me.avatar) ? me.avatar : defaultAvatar"
+              [src]="me.avatar !== '' && me.avatar ? me.avatar : defaultAvatar"
             />
           </ng-container>
           <ng-container *ngIf="!isLoggedIn">
@@ -74,33 +77,58 @@
       <mat-nav-list>
         <div class="nav">
           <div class="vertical-nav">
-            <a routerLink="/posts" (click)="mobileQuery.matches && snav.toggle()">
+            <a
+              routerLink="/posts"
+              (click)="mobileQuery.matches && snav.toggle()"
+            >
               <div class="navTab">
-                <img class="navIcon" src="../assets/images/announcements.png" />
+                <img
+                  class="navIcon"
+                  src="../assets/images/announcements_icon.png"
+                />
                 <h1>ANNOUNCEMENTS</h1>
               </div>
             </a>
 
-            <a routerLink="/calendar" (click)="mobileQuery.matches && snav.toggle()">
+            <a
+              routerLink="/calendar"
+              (click)="mobileQuery.matches && snav.toggle()"
+            >
               <div class="navTab">
-                <img class="navIcon" src="../assets/images/calendar.png" />
+                <img class="navIcon" src="../assets/images/calendar_icon.png" />
                 <h1>EVENT CALENDAR</h1>
               </div>
             </a>
 
-            <a routerLink="/departments" (click)="mobileQuery.matches && snav.toggle()">
+            <a
+              routerLink="/departments"
+              (click)="mobileQuery.matches && snav.toggle()"
+            >
               <div class="navTab">
-                <img class="navIcon" src="../assets/images/department.png" />
+                <img
+                  class="navIcon"
+                  src="../assets/images/departments_icon.png"
+                />
                 <h1>DEPARTMENTS</h1>
               </div>
             </a>
 
-            <a routerLink="/faculty" (click)="mobileQuery.matches && snav.toggle()">
+            <a
+              routerLink="/faculty"
+              (click)="mobileQuery.matches && snav.toggle()"
+            >
               <div class="navTab">
-                <img class="navIcon" src="../assets/images/faculty.png" />
+                <img class="navIcon" src="../assets/images/faculty_icon.png" />
                 <h1>FACULTY</h1>
               </div>
             </a>
+
+            <!-- <a routerLink="/my-school" (click)="mobileQuery.matches && snav.toggle()"> -->
+            <div class="navTab">
+              <img class="navIcon" src="../assets/images/my_school_icon.png" />
+              <h1>MY SCHOOL</h1>
+            </div>
+            <!-- </a> -->
           </div>
         </div>
       </mat-nav-list>
