@@ -95,14 +95,19 @@
   }
 
   .rightRs {
-    margin-right: 15px;
-    width: 35px;
-    height: 35px;
+    margin-right: 10px;
+    width: 32px;
+    height: 32px;
   }
 
   #rightArrow {
     padding-left: 1px;
-    padding-top: 1px;
+    padding-top: 2px;
     scale: 1.2;
+  }
+
+  .bannerStyle {
+    min-height: 400px;
+    max-height: 200px;
   }
 }

@@ -89,7 +89,10 @@
                     />
                   </div>
                   <div class="postUserDetail">
-                    <h4 class="postUserDetail postUserName" (click)="profileFront(post.userId._id)">
+                    <h4
+                      class="postUserDetail postUserName"
+                      (click)="profileFront(post.userId._id)"
+                    >
                       {{ post.userId.firstName }} {{ post.userId.lastName }}
                     </h4>
                     <h4 class="postUserDetail">
@@ -150,7 +153,11 @@
           <div class="reactionSet">
             <div class="likes" (click)="addLike(post._id)">
               {{ likes(post) }}
-              <button id="likeIcon" [ngStyle]="{color: isLiked() && '#f98c5a'}" mat-icon-button>
+              <button
+                id="likeIcon"
+                [ngStyle]="{ color: isLiked() && '#f98c5a' }"
+                mat-icon-button
+              >
                 <mat-icon>thumb_up_alt</mat-icon>
               </button>
             </div>
@@ -239,4 +246,4 @@
   </div>
 </div>
 
-<div id="footer"><h5>My School &reg; 2022</h5></div>
+<div id="footer"><h5>My School &reg; 2023</h5></div>

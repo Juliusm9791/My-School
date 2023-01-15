@@ -108,8 +108,12 @@ mat-divider {
   margin: 10px auto;
 }
 
-#social-header {
-  margin: 40px 0px 25px 0px;
+#calendar-header {
+  margin: 20px 0px 10px 10px;
+}
+
+#department-header {
+  margin: 40px 0px 0px 10px;
 }
 
 .social-icons {
@@ -122,7 +126,7 @@ mat-divider {
   font-size: 16pt;
   font-weight: bold;
   letter-spacing: 0.1rem;
-  margin: 40px 0px 10px 0px;
+  margin: 40px 0px -10px 0px;
   color: #4050b2;
 }
 .seeAllBtn {
@@ -132,8 +136,7 @@ mat-divider {
 .seeAllBtn button {
   font-family: Grotesk;
   font-size: 16pt;
-  margin-top: 5px;
-  margin-bottom: 30px;
+  margin: 0px 15px 30px 0px;
   font-weight: bolder;
   letter-spacing: 0.1rem;
   width: fit-content;
@@ -196,7 +199,7 @@ app-department {
   }
 
   .home h1 {
-    margin: 20px 0px 0px 0px;
+    margin: 5px 0px -20px 10px;
     font-size: 14pt;
   }
 

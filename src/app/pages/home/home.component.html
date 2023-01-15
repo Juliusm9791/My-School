@@ -22,12 +22,12 @@
       <br />
       <br />
 
-      <h1 id="social-header">CALENDAR:</h1>
+      <h1 id="calendar-header">CALENDAR:</h1>
       <app-eventCalendar [homeCalendar]="homeCalendar"></app-eventCalendar>
       <br />
       <br />
 
-      <h1>DEPARTMENTS:</h1>
+      <h1 id="department-header">DEPARTMENTS:</h1>
       <div class="homeDeptContainer">
         <ng-container *ngFor="let sinleDepartment of departments">
           <app-department [department]="sinleDepartment"></app-department>
@@ -99,5 +99,5 @@
     </div>
   </div>
 
-  <div id="footer"><h5>My School &reg; 2022</h5></div>
+  <div id="footer"><h5>My School &reg; 2023</h5></div>
 </div>
