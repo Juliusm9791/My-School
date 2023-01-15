@@ -10,7 +10,9 @@
         <div id="profile-avatar">
           <img
             id="profile-img"
-            [src]="(user.avatar !== '' && user.avatar) ? user.avatar : defaultAvatar"
+            [src]="
+              user.avatar !== '' && user.avatar ? user.avatar : defaultAvatar
+            "
             alt="Profile Image"
           />
         </div>
@@ -70,7 +72,7 @@
         </div>
 
         <div>
-          <div class="key">
+          <div class="key bio">
             <h3>Bio:</h3>
           </div>
           <div>

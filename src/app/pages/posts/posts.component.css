@@ -64,9 +64,11 @@ mat-paginator {
 
 #footer {
   text-align: center;
-  height: 100px;
+  height: 70px;
   width: 100%;
   bottom: 0;
+  position: fixed;
+  z-index: -1;
   background-color: rgb(244, 244, 244);
 }
 
@@ -148,14 +150,6 @@ mat-paginator {
   #announcements h1 {
     font-size: 14pt;
     margin-left: 5px;
-  }
-
-  #titlePageRow {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    /* justify-content: space-between;
-    align-items: center; */
   }
 
   ::ng-deep .mat-paginator-container {

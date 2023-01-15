@@ -218,6 +218,12 @@ section h5 {
   font-weight: 300;
 }
 
+@media (min-width: 1400px) {
+  #profile {
+    width: 60%;
+  }
+}
+
 @media (max-width: 1100px) {
   .profile-body {
     flex-direction: column;

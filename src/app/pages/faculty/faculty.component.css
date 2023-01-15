@@ -26,9 +26,11 @@
 
 #footer {
   text-align: center;
-  height: 100px;
+  height: 70px;
   width: 100%;
   bottom: 0;
+  position: fixed;
+  z-index: -1;
   background-color: rgb(244, 244, 244);
 }
 

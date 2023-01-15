@@ -18,6 +18,10 @@ form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  border-radius: 5px;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  border-radius: 8px;
 }
 
 .submitBtn button {
@@ -158,10 +162,14 @@ h5 {
 
 @media (max-width: 500px) {
   .formColumn {
-    margin-left: 15px;
+    margin-left: 20px;
   }
 
   #createPostForm h2 {
-    margin-left: 15px;
+    margin-left: 5px;
+  }
+
+  #createPostForm h2 {
+    font-size: 14pt;
   }
 }

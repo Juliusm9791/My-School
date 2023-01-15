@@ -166,20 +166,16 @@ mat-card > :first-child {
   cursor: pointer;
 }
 
-#defaultImg {
-  width: 200px;
-  height: 200px;
-}
-
+#defaultImg,
 .extraImgs {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
 }
 
 #images-block {
-  margin: 0px 15px 13px -10px;
+  margin: 10px 0px 13px 2px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 #description {
@@ -196,6 +192,7 @@ mat-card > :first-child {
   background-color: rgb(240, 240, 240);
   padding: 5px 10px;
   box-shadow: 0px 1px 1px rgb(124, 124, 124);
+  margin: 3px 6px 0px 5px;
 }
 
 .start-end-column {
@@ -249,7 +246,6 @@ hr {
   margin: 0px auto;
 }
 
-.post-content,
 .subtitleRow,
 #post-body-row,
 .event-card-row {
@@ -257,6 +253,11 @@ hr {
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .subtitleRow {
@@ -274,13 +275,10 @@ hr {
   flex-wrap: nowrap !important;
 }
 
-.post-content {
-  margin: 0px;
-}
-
 #post-body {
   width: 100%;
   margin-top: 10px;
+  margin-left: 5px;
 }
 
 #post-body {
@@ -295,8 +293,13 @@ hr {
   border-radius: 50%;
 }
 
-#postUserImg, .postUserName {
+#postUserImg,
+.postUserName {
   cursor: pointer;
+}
+
+.postUserName:hover {
+  color: #ea8935;
 }
 
 #img-col {
@@ -313,22 +316,7 @@ hr {
   margin: 0px auto;
 }
 
-@media (max-width: 1300px) {
-  .post-content {
-    flex-direction: column-reverse;
-  }
-
-  .subtitleRow,
-  #description {
-    padding-left: 5px;
-  }
-
-  #images-block {
-    margin-top: 10px;
-    flex-direction: row;
-    margin-left: 2px;
-  }
-
+@media (max-width: 1600px) {
   #defaultImg,
   .extraImgs {
     width: 120px;
@@ -336,29 +324,26 @@ hr {
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
+  .subtitleRow,
+  #description {
+    padding-left: 5px;
+  }
+
   #defaultImg,
   .extraImgs {
     width: 100px;
     height: 100px;
   }
+}
 
+@media (max-width: 1100px) {
   .images-block {
     margin-right: 10px;
-  }
-
-  #img-col {
-    margin: 0px;
   }
 }
 
 @media (max-width: 700px) {
-  #defaultImg,
-  .extraImgs {
-    width: 100px;
-    height: 100px;
-  }
-
   h2 {
     font-size: 16pt;
   }
@@ -459,10 +444,6 @@ hr {
     margin-top: 15px;
     width: 55px;
     height: 55px;
-  }
-
-  #post-body {
-    margin-top: 10px;
   }
 
   mat-card-subtitle {
