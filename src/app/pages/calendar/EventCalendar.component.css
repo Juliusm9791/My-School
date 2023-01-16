@@ -4,7 +4,7 @@
 }
 
 #calendar h1,
-::ng-deep .mat-typography h3 {
+::ng-deep .col-md-4 h3 {
   margin-bottom: 30px;
   font-family: Grotesk;
   letter-spacing: 0.1rem;
@@ -95,17 +95,32 @@ mwl-demo-utils-calendar-header {
 }
 
 @media (max-width: 1000px) {
-  ::ng-deep .cal-cell {
-    font-size: 8pt !important;
-  }
-
   ::ng-deep .mwl-demo-utils-calendar-header {
     font-size: 12pt;
   }
+
+  ::ng-deep .col-md-4 h3 {
+    margin: 0px auto 20px auto;
+    font-size: 14pt;
+  }
+
+  ::ng-deep .cal-cell,
+  ::ng-deep .btn-primary,
+  ::ng-deep .btn-outline-secondary {
+    font-size: 8pt !important;
+  }
 }
 
-@media (max-width: 700px) {
-  #calendar h1 {
-    font-size: 14pt;
+@media (max-width: 800px) {
+  ::ng-deep .cal-header {
+    margin-top: 10px;
+  }
+
+  ::ng-deep .col-md-4 h3 {
+    margin: 20px auto;
+  }
+
+  ::ng-deep .text-center {
+    text-align: start !important;
   }
 }

@@ -46,8 +46,8 @@
   align-items: center;
   background-color: #6fa465;
   background-image: linear-gradient(180deg, #6fa465 69%, #649b5a 100%);
-  padding: 7px 15px 12px 15px;
   border-radius: 8px 8px 0 0;
+  height: 60px;
 }
 
 #menu-header {
@@ -64,14 +64,35 @@
   justify-content: space-around;
   background-color: #fdb4b4;
   background-image: linear-gradient(175deg, #fdb4b4 0%, #c97474 100%);
-  padding: 0px 20px;
+}
+
+#fb-header,
+#ig-header,
+#tw-header {
+  width: 100%;
+  margin: 0px auto;
+  text-align: center;
+}
+
+#fb-header:hover,
+#ig-header:hover,
+#tw-header:hover {
+  background-color: #f6acac;
+  background-image: linear-gradient(150deg, #f6acac 0%, #c26d6d 100%);
+  cursor: pointer;
+}
+#fb-header:hover {
+  border-radius: 8px 0 0 0;
+}
+
+#tw-header:hover {
+  border-radius: 0 8px 0 0;
 }
 
 .widget-header h2 {
   font-family: Grotesk;
   font-size: 18pt;
   letter-spacing: 0.08rem;
-  padding-top: 8px;
   padding-right: 15px;
   color: white;
   margin: auto 0px;
@@ -82,14 +103,6 @@
   color: white !important;
   font-size: 18pt !important;
   margin: 5px !important;
-}
-
-/* .widget-header h2:hover {
-  color: #f29c55;
-} */
-
-mat-slide-toggle {
-  padding-top: 5px;
 }
 
 .widget-body {
@@ -109,16 +122,22 @@ mat-divider {
 }
 
 #calendar-header {
-  margin: 20px 0px 10px 10px;
+  margin: 40px 0px 20px 10px;
+}
+
+#homePageCalendar {
+  width: 85%;
+  margin: 0px auto;
 }
 
 #department-header {
-  margin: 40px 0px 0px 10px;
+  margin: 60px 0px -10px 10px;
 }
 
 .social-icons {
   width: 60px;
   height: auto;
+  margin: 0px auto;
 }
 
 .home h1 {
