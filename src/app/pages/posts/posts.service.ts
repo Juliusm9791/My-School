@@ -28,6 +28,7 @@ export class PostsService {
     this.apollo
       .watchQuery({
         query: QUERY_POSTS,
+        fetchPolicy: "no-cache"
       })
       .valueChanges.subscribe(
         (result: any) => {
