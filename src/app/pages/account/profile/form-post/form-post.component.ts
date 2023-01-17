@@ -89,7 +89,7 @@ export class FormPostComponent implements OnInit {
         formatDate(this.post.eventEndDate, 'yyyy-MM-ddTHH:mm', 'en')
       );
       if(this.post.pictures) {
-        this.post.pictures.forEach(e => this.imgsPreview.splice(e.id, 1, e.location));
+        this.post.pictures.forEach(e => this.imgsPreview.splice(e.order, 1, e.location));
       };
     }
   }

@@ -183,7 +183,7 @@ const resolvers = {
       if (context.user) {
         return await Post.findByIdAndUpdate(
           {_id: args._id},
-          {$pull: { pictures: {id: args.pictureId}}},
+          {$pull: { pictures: {order: args.pictureId}}},
           {new: true}
         )
       }

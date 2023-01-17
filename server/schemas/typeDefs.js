@@ -54,7 +54,7 @@ const typeDefs = gql`
   }
 
   type Picture {
-    id: Int!
+    order: Int!
     location: String!
   }
 
@@ -89,7 +89,7 @@ const typeDefs = gql`
   }
 
   input pictureInput {
-    id: Int!
+    order: Int!
     location: String
   }
 

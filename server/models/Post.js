@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const pictureSchema = new Schema(
   {
-    id: {
+    order: {
       type: Number,
       required: true,
     },

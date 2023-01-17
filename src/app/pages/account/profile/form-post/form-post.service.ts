@@ -113,6 +113,7 @@ export class FormPostService {
       );
   }
   async uploadPhotos(files: any, id: any, locations: any, deleteIds: any) {
+    console.log(deleteIds);
     const bucket = new S3({
       accessKeyId: environment.ACCESS,
       secretAccessKey: environment.SECRET,
@@ -120,7 +121,7 @@ export class FormPostService {
     });
 
     let updatedLocations: any[] = [];
-    locations.forEach((e: any) => updatedLocations.push({id: e.id, location: e.location}));
+    locations.forEach((e: any) => updatedLocations.push({order: e.order, location: e.location}));
 
     for (let i = 0; i < files.length; i++) {
       const contentType = files[i].file.type;
@@ -136,11 +137,11 @@ export class FormPostService {
         const data = await bucket.upload(params).promise();
 
         const picture = {
-          id: files[i].id,
+          order: files[i].id,
           location: data.Location,
         };
 
-        const index = updatedLocations.findIndex((e) => e.id == picture.id);
+        const index = updatedLocations.findIndex((e) => e.order == picture.order);
         if (index === -1) {
           updatedLocations.push(picture);
         }
