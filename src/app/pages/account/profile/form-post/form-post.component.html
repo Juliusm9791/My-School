@@ -91,15 +91,16 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div id="event">
-          <div>
-            <mat-checkbox
-              color="primary"
-              id="event-check"
-              formControlName="isEvent"
-              >Event</mat-checkbox
-            >
-          </div>
+
+        <div>
+          <mat-checkbox
+            color="primary"
+            id="event-check"
+            formControlName="isEvent"
+            >Event</mat-checkbox
+          >
+        </div>
+        <form [formGroup]="eventForm" id="event">
           <div id="toggleDate" *ngIf="postForm.controls.isEvent.value">
             <mat-form-field appearance="fill">
               <mat-label>Choose Event Start Date</mat-label>
@@ -136,19 +137,19 @@
               <em
                 style="color: red"
                 *ngIf="
-                  postForm.controls.eventLocation.value !== '' &&
-                  postForm.controls.eventLocation.invalid &&
-                  postForm.controls.eventLocation.dirty &&
-                  postForm.controls.eventLocation.errors
+                  eventForm.controls.eventLocation.value !== '' &&
+                  eventForm.controls.eventLocation.invalid &&
+                  eventForm.controls.eventLocation.dirty &&
+                  eventForm.controls.eventLocation.errors
                 "
                 >Restricted words found:
                 {{
-                  postForm.controls.eventLocation.errors["restrictedWords"]
+                  eventForm.controls.eventLocation.errors["restrictedWords"]
                 }}</em
               >
             </mat-form-field>
           </div>
-        </div>
+        </form>
       </div>
 
       <div class="formColumn">
