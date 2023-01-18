@@ -25,16 +25,25 @@ export class FormPostComponent implements OnInit {
     ]),
     isEvent: new FormControl(false),
     isVisible: new FormControl(false),
-    eventDate: new FormControl(''),
-    eventEndDate: new FormControl(''),
-    eventLocation: new FormControl('', [
-      Validators.required,
-      restrictedWords(),
-    ]),
     departmentId: new FormControl(''),
     gradeId: new FormControl(''),
     photos: new FormControl(''),
   });
+
+  eventForm = new FormGroup({
+
+    eventDate: new FormControl('', [
+      Validators.required,
+    ]),
+    eventEndDate: new FormControl('', [
+      Validators.required,
+    ]),
+    eventLocation: new FormControl('', [
+      Validators.required,
+      restrictedWords(),
+    ]),
+
+  })
 
   departmentList: Department[] = [];
   isLoadingDepartments: boolean = true;
@@ -64,12 +73,12 @@ export class FormPostComponent implements OnInit {
       this.gradeList = grade;
     });
 
-    this.postForm.controls.eventDate.setValue(
-      formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en')
-    );
-    this.postForm.controls.eventEndDate.setValue(
-      formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en')
-    );
+    // this.eventForm.controls.eventDate.setValue(
+    //   formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en')
+    // );
+    // this.eventForm.controls.eventEndDate.setValue(
+    //   formatDate(new Date(), 'yyyy-MM-ddTHH:mm', 'en')
+    // );
     if (this.postId) {
       this.post = this.postsService.singlePost(this.postId);
 
@@ -81,14 +90,14 @@ export class FormPostComponent implements OnInit {
       let grade: any = [];
       this.post.gradeId.forEach((id) => grade.push(id._id));
       this.postForm.controls.gradeId.setValue(grade);
-      this.postForm.controls.eventLocation.setValue(this.post.eventLocation);
-      this.postForm.controls.eventDate.setValue(
+      this.eventForm.controls.eventLocation.setValue(this.post.eventLocation);
+      this.eventForm.controls.eventDate.setValue(
         formatDate(this.post.eventDate, 'yyyy-MM-ddTHH:mm', 'en')
       );
-      this.postForm.controls.eventEndDate.setValue(
+      this.eventForm.controls.eventEndDate.setValue(
         formatDate(this.post.eventEndDate, 'yyyy-MM-ddTHH:mm', 'en')
       );
-      if(this.post.pictures) {
+      if (this.post.pictures) {
         this.post.pictures.forEach(e => this.imgsPreview.splice(e.id, 1, e.location));
       };
     }
@@ -110,12 +119,12 @@ export class FormPostComponent implements OnInit {
     let isPostEvent: any = this.postForm.controls.isEvent.value;
     let selectedDepartmentId: any = this.postForm.controls.departmentId.value;
     let selectedGradeId: any = this.postForm.controls.gradeId.value;
-    let eventDate: any = this.postForm.controls.eventDate.value;
-    let eventEndDate: any = this.postForm.controls.eventEndDate.value;
-    let eventLocation: any = this.postForm.controls.eventLocation.value;
+    let eventDate: any = this.eventForm.controls.eventDate.value;
+    let eventEndDate: any = this.eventForm.controls.eventEndDate.value;
+    let eventLocation: any = this.eventForm.controls.eventLocation.value;
     let photos = this.selectedFiles
     if (!this.postId) {
-      if (this.postForm.valid && eventDate < eventEndDate) {
+      if (this.postForm.valid && !isPostEvent || this.postForm.valid && this.eventForm.valid && isPostEvent) {
         this.postFormService.addPost(
           isPostVisible,
           title,
@@ -130,7 +139,7 @@ export class FormPostComponent implements OnInit {
         );
       }
     } else {
-      if (this.postForm.valid && eventDate < eventEndDate) {
+      if (this.postForm.valid && !isPostEvent || this.postForm.valid && this.eventForm.valid && isPostEvent) {
         !this.postForm.controls.isEvent.value && (eventDate = null);
         this.postFormService.updatePost(
           this.postId,
@@ -156,21 +165,21 @@ export class FormPostComponent implements OnInit {
   selectFile(event: any, id: number) {
     const file = event.target.files[0];
     this.deletePicturesId = this.deletePicturesId.filter(e => e !== id);
-    if(this.selectedFiles[id]) {
-      this.selectedFiles.splice(id, 1, {id: id, file: file});
+    if (this.selectedFiles[id]) {
+      this.selectedFiles.splice(id, 1, { id: id, file: file });
     } else {
       this.selectedFiles.push({ id: id, file: file });
     }
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (_event) => {
-        this.imgsPreview.splice(id, 1, reader.result);
+      this.imgsPreview.splice(id, 1, reader.result);
     };
   };
 
   deletePicturesId: number[] = [];
   deletePhotoHandler(image: any, id: number) {
-    if(image.startsWith("http")) {
+    if (image.startsWith("http")) {
       this.deletePicturesId.push(id);
     } else {
       this.selectedFiles = this.selectedFiles.filter((file: any) => file.id !== id);
