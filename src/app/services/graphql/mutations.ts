@@ -180,7 +180,7 @@ export const UPDATE_PHOTOS = gql`
     updatePhotos(_id: $id, pictures: $pictures) {
       _id
       pictures {
-        id
+        order
         location
       }
     }
@@ -192,7 +192,7 @@ export const DELETE_PHOTOS = gql`
     deletePhotos(_id: $id, pictureId: $pictureId) {
       _id
       pictures {
-        id
+        order
         location
       }
     }
