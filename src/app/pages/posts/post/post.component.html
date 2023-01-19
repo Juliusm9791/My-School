@@ -2,7 +2,7 @@
   <mat-card-title class="post-card">
     <a (click)="postDetail(post._id)">
       <div>
-        <h2>{{ post.title }}</h2>
+        <h2>{{ post.title | titlecase }}</h2>
       </div>
     </a>
     <div id="gradeDeptBlk">

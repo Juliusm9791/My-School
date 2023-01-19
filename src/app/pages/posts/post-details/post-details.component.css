@@ -396,6 +396,11 @@ hr {
 .postUserName:hover {
   color: #f29c55;
 }
+@media (min-width: 1500px) {
+  #post-details {
+    width: 70%;
+  }
+}
 
 @media (max-width: 1300px) {
   .post-content {

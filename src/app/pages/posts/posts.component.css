@@ -81,6 +81,12 @@ mat-paginator {
   font-weight: 300;
 }
 
+@media (min-width: 1400px) {
+  #announcements {
+    width: 60%;
+  }
+}
+
 @media (max-width: 1000px) {
   #announcements {
     width: 95%;
@@ -98,6 +104,10 @@ mat-paginator {
 }
 
 @media (max-width: 700px) {
+  #announcements h1 {
+    margin-bottom: -15px;
+  }
+
   #defaultImg {
     width: 120px;
     height: 120px;
