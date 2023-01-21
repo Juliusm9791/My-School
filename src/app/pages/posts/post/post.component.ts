@@ -64,7 +64,9 @@ export class PostComponent implements OnInit {
       return '../../../../assets/images/default-placeholder-300x300.png';
     }
   }
-
+  gradeDetails(id: string) {
+    this.router.navigate(['/profile/grades/' + id]);
+  }
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
   }

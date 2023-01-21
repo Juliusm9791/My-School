@@ -1,0 +1,12 @@
+<div *ngIf="gradePosts.length === 0">
+  <h2>No posts in this grade</h2>
+</div>
+
+<!-- {{ post.gradeId[0].gradeName }} -->
+<div id="gradeFilter" *ngIf="gradePosts.length > 0">
+  <h1>{{ gradePosts[0].gradeId[0].gradeName }} ANNOUNCEMENTS:</h1>
+  <ng-container *ngFor="let singlepost of gradePosts">
+    <app-post [post]="singlepost" [countLikes]="likes(singlepost)"></app-post>
+  </ng-container>
+</div>
+<div id="footer"><h5>My School &reg; 2023</h5></div>
