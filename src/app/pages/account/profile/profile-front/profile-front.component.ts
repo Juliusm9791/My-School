@@ -26,10 +26,10 @@ export class ProfileFrontComponent implements OnInit {
   ) {
     this.userService.changeUser.subscribe((user) => {
       this.user = user;
-    })
+    });
     this.userService.changeUserLoading.subscribe((loading) => {
       this.loading = loading;
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -40,15 +40,14 @@ export class ProfileFrontComponent implements OnInit {
     this.userId = this.route.snapshot.paramMap.get('id');
     if (this.userId === this.loginSignupService.me._id) {
       this.router.navigate(['/account/profile']);
-      return
-    }; 
+    }
     this.userService.queryUser(this.userId);
     // console.log(this.facultyMember);
   }
 
   gatherData(element: any[], elementName: string) {
-    let result: string [] = []
-    element.forEach((e: any)=> result.push(e[elementName]));
+    let result: string[] = [];
+    element.forEach((e: any) => result.push(e[elementName]));
     return result.join(', ');
   }
 }

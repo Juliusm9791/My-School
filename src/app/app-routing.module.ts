@@ -121,4 +121,4 @@ const routes: Routes = [
   exports: [RouterModule],
   bootstrap: [EventCalendarComponent],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
