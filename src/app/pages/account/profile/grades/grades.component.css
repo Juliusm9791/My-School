@@ -1,0 +1,35 @@
+#gradeFilter {
+  margin: 32px auto 200px auto;
+  width: 80%;
+}
+
+#gradeFilter h1 {
+  font-family: Grotesk;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  font-size: 16pt;
+  color: #4050b2;
+}
+
+#footer {
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  background-color: rgb(244, 244, 244);
+}
+
+#footer h5 {
+  margin: 10px auto;
+  padding-top: 12px;
+  color: rgb(167, 167, 167);
+  font-family: Grotesk;
+  font-size: 8pt;
+  font-weight: 300;
+}
+
+@media only screen and (max-width: 1000px) {
+  #gradeFilter {
+    width: 95%;
+  }
+}

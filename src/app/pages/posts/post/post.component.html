@@ -7,7 +7,7 @@
     </a>
     <div id="gradeDeptBlk">
       <div id="postGrade">
-        <h2 *ngIf="post.gradeId">
+        <h2 *ngIf="post.gradeId" (click)="gradeDetails(post.gradeId[0]._id)">
           {{ post.gradeId[0].gradeName }}
         </h2>
       </div>
@@ -59,7 +59,7 @@
                   {{ post.userId.firstName }} {{ post.userId.lastName }}
                 </h4>
                 <h4 class="postUserDetail">
-                  posted: {{ post.createdAt | date : "short" }}
+                  posted: {{ post.createdAt | date: "short" }}
                 </h4>
               </div>
             </div>
@@ -80,8 +80,8 @@
                     <div class="event-card-row">
                       <h5>START:</h5>
                       <h4>
-                        {{ post.eventDate | date : "shortDate" }}&nbsp;{{
-                          post.eventDate | date : "shortTime"
+                        {{ post.eventDate | date: "shortDate" }}&nbsp;{{
+                          post.eventDate | date: "shortTime"
                         }}
                       </h4>
                     </div>
@@ -89,8 +89,8 @@
                     <div class="event-card-row">
                       <h5>END:</h5>
                       <h4>
-                        {{ post.eventEndDate | date : "shortDate" }}&nbsp;
-                        {{ post.eventEndDate | date : "shortTime" }}
+                        {{ post.eventEndDate | date: "shortDate" }}&nbsp;
+                        {{ post.eventEndDate | date: "shortTime" }}
                       </h4>
                     </div>
                   </div>
