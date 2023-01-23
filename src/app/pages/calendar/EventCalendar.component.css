@@ -37,6 +37,10 @@ mwl-demo-utils-calendar-header {
   color: #4050b2;
 }
 
+::ng-deep .cal-month-view .cal-day-badge {
+  display: none;
+}
+
 ::ng-deep .cal-header {
   font-family: Grotesk;
   color: white;

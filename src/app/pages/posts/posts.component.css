@@ -41,11 +41,6 @@ mat-paginator {
   padding-right: 15px;
 }
 
-::ng-deep .mat-icon-button,
-::ng-deep .mat-form-field-wrapper {
-  width: 25px;
-}
-
 ::ng-deep .mat-paginator .mat-icon-button.mat-icon-button:enabled {
   color: #4050b2;
 }

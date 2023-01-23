@@ -29,7 +29,7 @@ db.once("open", async () => {
     { depName: "FOREIGN LANGUAGE" },
     { depName: "LIBRARY" },
     { depName: "GUIDANCE" },
-    { depName: "EXTRA-CURRICULARS" },
+    { depName: "EXTRACURRICULAR" },
     { depName: "TRANSPORTATION" },
     { depName: "FOOD SERVICES" },
   ]);
