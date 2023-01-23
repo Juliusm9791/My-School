@@ -41,9 +41,7 @@
                 <img
                   id="postUserImg"
                   [src]="
-                    post.userId.avatar !== '' || null
-                      ? post.userId.avatar
-                      : defaultAvatar
+                    !! post.userId.avatar ? post.userId.avatar : defaultAvatar
                   "
                   alt="User Image"
                   (click)="profileFront(post.userId._id)"
