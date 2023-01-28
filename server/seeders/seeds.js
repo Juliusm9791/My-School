@@ -179,11 +179,17 @@ db.once("open", async () => {
   const posts = await Post.insertMany([
     {
       isVisible: true,
-      title: "English 203 Extra Credit Opportunities",
+      // isEvent: true,
+      // eventDate: "04-26-2023",
+      // eventEndDate: "04-26-2023",
+      // eventLocation: "Community Center",
+      title: "English Extra Credit Opportunities",
       departmentId: departments[1].id,
       gradeId: [grades[1]._id, grades[2]._id],
       description:
         "Each semester I have special opportunity to choose one of you to represent our class at the Speakers’ Showcase. All communications professors can nominate one student to submit their best speech. If you are nominated you will receive extra credit. In addition, a panel of judges will choose the top six presentations to be in the Showcase. If you are chosen to be in the Showcase, you will receive additional extra credit and possibly money or prizes. This is a win-win! The next showcase is April 26th. Your presentation videos will be due April 17th.",
+      // pictures: postPictures["https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/0.jpg
+      // "],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -195,7 +201,7 @@ db.once("open", async () => {
       departmentId: departments[13].id,
       gradeId: applyAllGrades,
       description:
-        "Bus Riders: We ask that all parents of students riding the bus please wait with your child until they have boarded the bus each morning.  This will give our driver time to ensure that it is your child’s correct week to be at school.  Buses will have a roster and signage in the window indicating the week of attendance (Green-Week A, Yellow-Week B). At the end of the school day, bus riders will be escorted to the bus by school staff.",
+        "Bus Riders: We are in search of an adult bus stop chaperone for each stop along the route. Please lookout for a signup sheet that will be circulating by our transportation officials. We appreciate any volunteers that want to step up to ensure safety of our students at each and every bus stop in the district.",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -204,9 +210,9 @@ db.once("open", async () => {
       isVisible: true,
       title: "Device Distribution",
       departmentId: departments[0].id,
-      gradeId: [grades[3]._id, grades[4]._id],
+      gradeId: [grades[2]._id, grades[3]._id, grades[4]._id, grades[5]._id],
       description:
-        "Pitt County Schools is pleased to announce that they have transitioned to being a 1-to-1 district. K-2 students will be receiving iPads while 3rd-5th graders will be receiving Chromebooks. Your child will use the same device for three consecutive school years. A detailed device agreement is coming home on the first student day or when picking up devices for virtual learning and will need to be signed and returned before the device may travel home with your child. ",
+        "Pitt County Schools is pleased to announce that they have transitioned to being a 1-to-1 district. Our second and third grade students will be receiving iPads while fourth and fifth graders will be receiving Chromebooks. Your child will use the same device for the remainder of the year. A detailed device agreement is coming home with the students and can be submitted when picking up devices, but before the device can be taken home. ",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -217,7 +223,7 @@ db.once("open", async () => {
       departmentId: departments[0].id,
       gradeId: [grades[2]._id, grades[3]._id],
       description:
-        "Open House will look different this year.  Students who are coming on A and B weeks will participate in a virtual Open House on August 13th for 1st-5th grade.  Each teacher will send out a virtual open house video to view by 3:00 on Open House. Your child’s teacher will contact you to either set up times to meet virtually through Zoom or do a live question and answer session for parents who would like to attend.  We understand this may cause some anxiety, however, we can assure you we will be available to answer questions, address concerns, and introduce ourselves to our Eagles!",
+        "Open House will look different this year. Students who are coming on A and B weeks will participate in a virtual Open House on December 1st for 1st-5th grade.  Each teacher will send out a virtual open house video to view by 4:30pm. Your child’s teacher will contact you to either set up times to meet virtually through Zoom or do a live question and answer session for parents who would like to attend. We understand this may cause some anxiety, however, we can assure you we will be available to answer questions, address concerns, and introduce ourselves to our Eagles!",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -228,14 +234,14 @@ db.once("open", async () => {
       departmentId: departments[8].id,
       gradeId: applyAllGrades,
       description:
-        " Students will be provided 5 masks and a lanyard.  Students may choose to use these masks, or any other appropriate mask.  Please do not send students with masks that contain inappropriate images or words. The lanyard is to be used to make sure that while students are eating, the lanyards do not fall to the ground or become mixed up with another student's mask.",
+        "Students will be provided 5 masks and a lanyard. Students may choose to use these masks, or any other appropriate mask. Please do not send students with masks that contain inappropriate images or words. The lanyard is to be used to make sure that while students are eating, the masks do not fall to the ground or become mixed up with another student's mask.",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
       isVisible: true,
-      title: "School Nutrition",
+      title: "School Lunch",
       departmentId: departments[14].id,
       gradeId: applyAllGrades,
       description:
@@ -246,22 +252,22 @@ db.once("open", async () => {
     },
     {
       isVisible: true,
-      title: "PTA MEETING",
+      title: "PTA Meeting",
       departmentId: departments[0].id,
       gradeId: [grades[1]._id, grades[2]._id],
       description:
-        "We would like to invite all Parents and Carers to our second PTA meeting of this academic year. It will take place in the school library at 6.45pm on Monday 7th November. We look forward to seeing you then. ",
+        "We would like to invite our first & second grader parents to our second PTA meeting of this academic year. It will take place in the school library at 6:45pm on Monday November 7th. We look forward to seeing you all and discussing next year's curriculum revisions in more detail",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
       isVisible: true,
-      title: "FGO THEME AND MISSION FOR THE YEAR:",
-      departmentId: departments[12].id,
-      gradeId: [grades[3]._id, grades[4]._id],
+      title: "Graduation Concert!",
+      departmentId: departments[6].id,
+      gradeId: [grades[5]._id],
       description:
-        "This year our FGO will have two focuses. We will be focused on Monthly School Spirit Days to create a school-wide sense of community and enthusiasm for being an amazing Fishkill Frog! We will also be focused on raising money and collecting goods for our school and our community.  Your FGO has been working on creating these focuses. Our school focus will be on Bully Prevention and our community focus will be towards aiding Animal Shelters and Endangered Animals. Each month, we will collect alternately for each of these focuses.  ",
+        "This year our graduating fifth graders will enjoy a concert courtesy of our own school band, perform in the gymnasium on April 27th at 11:30am just before first period lunch. We will celebrate and also raise funds for Bully Prevention and towards aiding local animal shelters.",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -272,29 +278,29 @@ db.once("open", async () => {
       departmentId: departments[0].id,
       gradeId: [grades[1]._id, grades[2]._id],
       description:
-        "school pictures on Tuesday, October 2nd & Wednesday October 3rd.",
+        "School pictures are scheduled to take place on Tuesday, October 2nd & Wednesday October 3rd for the First and Second grade classes only. We will continue in about a week with the 3rd graders once they finish standardized testing at the end of the month. Remember to wear your best outfit and smile!",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
       isVisible: true,
-      title: "Biology 1 Quiz",
+      title: "Biology Quiz",
       departmentId: departments[3].id,
       gradeId: [grades[4]._id],
       description:
-        "Module Quiz: It includes 25 multiple-choice questions, and you have 75 minutes  complete the assignment once you begin. The quiz is due on Friday by 11.59pm • Presentation: Be sure to reference the rubric for this assignment that can be found in the course documents folder. The presentation upload is due on Friday by 11.59pm.  As always, I am happy to help.",
+        "Module Quiz: Heads up fourth graders, this week’s quiz includes 25 multiple-choice questions, and you have one hour complete the assignment once you begin. The quiz takes place on Friday.  Presentation: Be sure to reference the rubric for this assignment that can be found in the course documents folder. As always, I am happy to help!",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
     },
     {
       isVisible: true,
-      title: "Calculus Project",
+      title: "Algebra Project",
       departmentId: departments[2].id,
-      gradeId: [grades[4]._id],
+      gradeId: [grades[5]._id],
       description:
-        "Just a reminder that we are 3 days away from your final project being due.Make sure you have  done the following things before you turn in your project: • Review the feedback on your rough draft • Read the rubric for the final presentation(found in the folder where you submit your  presentation)• Touch base with me if you have any questions ",
+        "To all our fifth graders, quick reminder that we are just 3 days away from the final project due date. Make sure you have done the following things before you turn in your project: Review the feedback from the first submission, read the rubric for the final presentation guidelines (found in the folder where you submit your  presentation), touch base with me if you have any questions.",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
