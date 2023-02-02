@@ -1,13 +1,9 @@
-@font-face {
-  font-family: Grotesk;
-  src: url("../../../assets/fonts/TypoGroteskRoundedDemo.otf");
-}
-#faculty {
+#gradeFilter {
   margin: 32px auto 200px auto;
   width: 80%;
 }
 
-#faculty h1 {
+#gradeFilter h1 {
   font-family: Grotesk;
   letter-spacing: 0.1rem;
   font-weight: bold;
@@ -15,22 +11,11 @@
   color: #4050b2;
 }
 
-.facultyContainer {
-  background-color: rgb(244, 244, 244);
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  padding: 10px 20px;
-  border-radius: 8px;
-}
-
 #footer {
   text-align: center;
-  height: 70px;
+  height: 100px;
   width: 100%;
   bottom: 0;
-  position: fixed;
-  z-index: -1;
   background-color: rgb(244, 244, 244);
 }
 
@@ -44,7 +29,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  #faculty {
+  #gradeFilter {
     width: 95%;
   }
 }

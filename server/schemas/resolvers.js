@@ -31,13 +31,10 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     user: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findById(args._id)
-          .populate("departmentId")
-          .populate("gradeId")
-          .populate("groupId");
-      }
-      throw new AuthenticationError("You need to be logged in!");
+      return await User.findById(args._id)
+        .populate("departmentId")
+        .populate("gradeId")
+        .populate("groupId");
     },
     posts: async (parent, args) => {
       return await Post.find({})
@@ -179,13 +176,13 @@ const resolvers = {
         );
       }
     },
-    deletePhotos: async(parent, args, context) => {
+    deletePhotos: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndUpdate(
-          {_id: args._id},
-          {$pull: { pictures: {id: args.pictureId}}},
-          {new: true}
-        )
+          { _id: args._id },
+          { $pull: { pictures: { order: args.pictureId } } },
+          { new: true }
+        );
       }
     },
     deletePost: async (parent, args, context) => {

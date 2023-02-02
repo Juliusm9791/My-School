@@ -41,11 +41,6 @@ mat-paginator {
   padding-right: 15px;
 }
 
-::ng-deep .mat-icon-button,
-::ng-deep .mat-form-field-wrapper {
-  width: 25px;
-}
-
 ::ng-deep .mat-paginator .mat-icon-button.mat-icon-button:enabled {
   color: #4050b2;
 }
@@ -64,9 +59,11 @@ mat-paginator {
 
 #footer {
   text-align: center;
-  height: 100px;
+  height: 70px;
   width: 100%;
   bottom: 0;
+  position: fixed;
+  z-index: -1;
   background-color: rgb(244, 244, 244);
 }
 
@@ -77,6 +74,12 @@ mat-paginator {
   font-family: Grotesk;
   font-size: 8pt;
   font-weight: 300;
+}
+
+@media (min-width: 1400px) {
+  #announcements {
+    width: 60%;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -96,6 +99,10 @@ mat-paginator {
 }
 
 @media (max-width: 700px) {
+  #announcements h1 {
+    margin-bottom: -15px;
+  }
+
   #defaultImg {
     width: 120px;
     height: 120px;
@@ -148,14 +155,6 @@ mat-paginator {
   #announcements h1 {
     font-size: 14pt;
     margin-left: 5px;
-  }
-
-  #titlePageRow {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    /* justify-content: space-between;
-    align-items: center; */
   }
 
   ::ng-deep .mat-paginator-container {

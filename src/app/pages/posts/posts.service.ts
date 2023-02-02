@@ -18,7 +18,7 @@ export class PostsService {
   private _posts: Post[] = [];
   topSearchResults: searchResults = {} as searchResults;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
   @Output() changePosts: EventEmitter<any> = new EventEmitter();
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeError: EventEmitter<any> = new EventEmitter();
@@ -80,9 +80,8 @@ export class PostsService {
       el.isEvent &&
         el.isVisible &&
         events.push({
-          title: `${el.title} ${
-            date.getMonth() + 1
-          }/${date.getDate()}/${date.getFullYear()}`,
+          title: `${el.title} ${date.getMonth() + 1
+            }/${date.getDate()}/${date.getFullYear()}`,
           color: colors[randomColor],
           start: date,
           meta: {
@@ -119,6 +118,9 @@ export class PostsService {
 
   departmentPosts(id: string) {
     return this._posts.filter((post) => post.departmentId?._id === id && post);
+  }
+  gradePosts(id: string) {
+    return this._posts.filter((post) => post.gradeId[0]?._id === id && post);
   }
 
   searchInPost(searchInput: string) {

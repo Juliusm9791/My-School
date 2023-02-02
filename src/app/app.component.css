@@ -27,7 +27,7 @@
 #logo {
   width: 50px;
   margin: auto;
-  padding-bottom: 5px;
+  padding-bottom: 2px;
   display: block;
 }
 
@@ -87,8 +87,10 @@
 
 #accountIcon {
   width: 30px;
+  height: 30px;
   margin-right: 10px;
   border-radius: 50%;
+  padding-top: 3px;
 }
 
 .is-mobile .toolbar {
@@ -116,7 +118,7 @@
 
 .mat-option {
   font-size: 16px !important;
-  margin: 15px 10px;
+  margin: 15px 0px 15px 10px;
 }
 
 .sidenav-container {
@@ -297,6 +299,7 @@ input[type="search"]:focus {
 
   #accountIcon {
     margin: 0px 0px 5px 20px;
+    padding-top: 0px;
   }
 
   .toolbar {
@@ -342,17 +345,18 @@ input[type="search"]:focus {
   }
 
   .toolbar {
-    padding-left: 6px !important;
+    padding-left: 5px !important;
     padding-right: 10px !important;
   }
 
   .mat-icon-button {
     scale: 1.1;
-    margin: 0px;
+    margin-right: 5px;
   }
 
   #accountIcon {
     margin: 0px;
+    padding-bottom: 2px;
   }
 
   .vertical-nav {

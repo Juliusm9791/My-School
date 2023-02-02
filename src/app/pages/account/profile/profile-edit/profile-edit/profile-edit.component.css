@@ -1,23 +1,27 @@
 #profile {
-  margin: 32px auto 200px auto;
+  margin: 38px auto 200px auto;
   width: 80%;
 }
 
 #profile-container {
-  background-color: rgb(244, 244, 244);
   border-radius: 5px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+#edit-container {
   padding-bottom: 50px;
+  background-color: rgb(244, 244, 244);
   border: 0.5px solid grey;
   box-shadow: 0px 1px 1px rgb(84, 84, 84);
   border-radius: 8px;
-  width: fit-content;
-  margin: 0 auto;
 }
 
 #profile h1,
 #profile-header h2 {
   font-family: Grotesk;
   font-size: 16pt;
+  line-height: normal;
   font-weight: bold;
   letter-spacing: 0.1rem;
   color: #4050b2;
@@ -31,6 +35,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
 }
 
 #profile-header {
@@ -39,7 +44,7 @@
 
 #profile-header h2 {
   color: white;
-  margin: 0px 10px;
+  margin: 0px 5px;
 }
 
 #profile-details {
@@ -67,7 +72,7 @@
 }
 
 #select-avatar {
-  margin-top: 15px;
+  margin: 15px 0px;
   width: 90px;
 }
 
@@ -102,6 +107,7 @@
 #profile-img {
   margin-top: 15px;
   width: 130px;
+  height: 130px;
   border-radius: 50%;
 }
 
@@ -156,9 +162,11 @@
 
 #footer {
   text-align: center;
-  height: 100px;
+  height: 70px;
   width: 100%;
   bottom: 0;
+  position: fixed;
+  z-index: -1;
   background-color: rgb(244, 244, 244);
 }
 
@@ -182,6 +190,7 @@
   #profile-avatar {
     margin-right: 0px;
   }
+
   .mat-form-field,
   #bio-input {
     width: 300px;
@@ -207,5 +216,27 @@
 
   #profile-container {
     width: 100%;
+  }
+
+  #profile h1 {
+    font-size: 16pt;
+  }
+
+  #profile-header h2 {
+    font-size: 12pt;
+  }
+
+  #profile h1 {
+    margin: 0px 0px 15px 5px;
+  }
+
+  #profile-header h2 {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 500px) {
+  #profile h1 {
+    font-size: 14pt;
   }
 }

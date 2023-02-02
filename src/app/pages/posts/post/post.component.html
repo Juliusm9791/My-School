@@ -2,12 +2,12 @@
   <mat-card-title class="post-card">
     <a (click)="postDetail(post._id)">
       <div>
-        <h2>{{ post.title }}</h2>
+        <h2>{{ post.title | titlecase }}</h2>
       </div>
     </a>
     <div id="gradeDeptBlk">
       <div id="postGrade">
-        <h2 *ngIf="post.gradeId">
+        <h2 *ngIf="post.gradeId" (click)="gradeDetails(post.gradeId[0]._id)">
           {{ post.gradeId[0].gradeName }}
         </h2>
       </div>
@@ -25,12 +25,10 @@
   <div class="post-content">
     <div id="images-block">
       <img id="defaultImg" [src]="postPictures(0, post.pictures)" />
-      <div id="extra-images">
-        <div>
-          <img class="extraImgs" [src]="postPictures(1, post.pictures)" />
-          <img class="extraImgs" [src]="postPictures(2, post.pictures)" />
-        </div>
-      </div>
+      <img class="extraImgs" [src]="postPictures(1, post.pictures)" />
+      <img class="extraImgs" [src]="postPictures(2, post.pictures)" />
+      <img class="extraImgs" [src]="postPictures(3, post.pictures)" />
+      <img class="extraImgs" [src]="postPictures(4, post.pictures)" />
     </div>
 
     <div id="post-body">
@@ -43,9 +41,7 @@
                 <img
                   id="postUserImg"
                   [src]="
-                    post.userId.avatar !== '' || null
-                      ? post.userId.avatar
-                      : defaultAvatar
+                    !! post.userId.avatar ? post.userId.avatar : defaultAvatar
                   "
                   alt="User Image"
                   (click)="profileFront(post.userId._id)"
@@ -54,11 +50,14 @@
 
               <!-- USER NAME AND POST DATE -->
               <div class="postUserDetail">
-                <h4 class="postUserDetail postUserName" (click)="profileFront(post.userId._id)">
+                <h4
+                  class="postUserDetail postUserName"
+                  (click)="profileFront(post.userId._id)"
+                >
                   {{ post.userId.firstName }} {{ post.userId.lastName }}
                 </h4>
                 <h4 class="postUserDetail">
-                  posted: {{ post.createdAt | date : "short" }}
+                  posted: {{ post.createdAt | date: "short" }}
                 </h4>
               </div>
             </div>
@@ -79,8 +78,8 @@
                     <div class="event-card-row">
                       <h5>START:</h5>
                       <h4>
-                        {{ post.eventDate | date : "shortDate" }}&nbsp;{{
-                          post.eventDate | date : "shortTime"
+                        {{ post.eventDate | date: "shortDate" }}&nbsp;{{
+                          post.eventDate | date: "shortTime"
                         }}
                       </h4>
                     </div>
@@ -88,8 +87,8 @@
                     <div class="event-card-row">
                       <h5>END:</h5>
                       <h4>
-                        {{ post.eventEndDate | date : "shortDate" }}&nbsp;
-                        {{ post.eventEndDate | date : "shortTime" }}
+                        {{ post.eventEndDate | date: "shortDate" }}&nbsp;
+                        {{ post.eventEndDate | date: "shortTime" }}
                       </h4>
                     </div>
                   </div>

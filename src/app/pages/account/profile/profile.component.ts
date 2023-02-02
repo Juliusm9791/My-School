@@ -27,7 +27,7 @@ const POST_SUB = gql`
 export class ProfileComponent implements OnInit {
   isLoggedIn: boolean = false;
   me: Me = {} as Me;
-  defaultAvatar: string = '../../../../assets/images/account.png';
+  defaultAvatar: string = '../../../../assets/images/account_plus.svg';
   error: any;
   loading: boolean = true;
   postsLoading: boolean = true;

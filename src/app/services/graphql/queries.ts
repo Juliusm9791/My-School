@@ -10,7 +10,7 @@ const postBody = `
   eventLocation
   title
   pictures {
-    id
+    order
     location
   }
   departmentId{

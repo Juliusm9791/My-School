@@ -70,7 +70,7 @@ export interface Grade {
 }
 
 export interface Picture {
-  id: integer;
+  order: integer;
   location: string;
 }
 

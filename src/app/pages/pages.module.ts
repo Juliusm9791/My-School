@@ -24,6 +24,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { HighlightPipe } from './pipes/highlight.pipe';
 import { FacultyMemberComponent } from './faculty/faculty-member/faculty-member.component';
 import { ProfileFrontComponent } from './account/profile/profile-front/profile-front.component';
+import { GradesComponent } from './account/profile/grades/grades.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ProfileFrontComponent } from './account/profile/profile-front/profile-f
     HighlightPipe,
     FacultyMemberComponent,
     ProfileFrontComponent,
+    GradesComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
@@ -65,6 +67,7 @@ import { ProfileFrontComponent } from './account/profile/profile-front/profile-f
     SearchResultsComponent,
     FacultyMemberComponent,
     ProfileFrontComponent,
+    GradesComponent,
   ],
 })
-export class PagesModule {}
+export class PagesModule { }

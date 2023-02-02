@@ -57,14 +57,16 @@ export class PostComponent implements OnInit {
 
   postPictures(index: number, locations: any[]) {
     let postPictures: string[] = [];
-    locations.forEach((e) => postPictures.splice(e.id, 0, e.location));
+    locations.forEach((e) => postPictures.splice(e.order, 0, e.location));
     if (postPictures[index]) {
       return postPictures[index];
     } else {
       return '../../../../assets/images/default-placeholder-300x300.png';
     }
   }
-
+  gradeDetails(id: string) {
+    this.router.navigate(['/profile/grades/' + id]);
+  }
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
   }

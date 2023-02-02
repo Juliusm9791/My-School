@@ -22,12 +22,14 @@
       <br />
       <br />
 
-      <h1 id="social-header">CALENDAR:</h1>
-      <app-eventCalendar [homeCalendar]="homeCalendar"></app-eventCalendar>
+      <h1 id="calendar-header">CALENDAR:</h1>
+      <div id="homePageCalendar">
+        <app-eventCalendar [homeCalendar]="homeCalendar"></app-eventCalendar>
+      </div>
       <br />
       <br />
 
-      <h1>DEPARTMENTS:</h1>
+      <h1 id="department-header">DEPARTMENTS:</h1>
       <div class="homeDeptContainer">
         <ng-container *ngFor="let sinleDepartment of departments">
           <app-department [department]="sinleDepartment"></app-department>
@@ -37,6 +39,7 @@
         <button type="submit" [routerLink]="['departments']">SEE ALL</button>
       </div>
     </div>
+
     <div class="widget-column">
       <div class="sticky-widget">
         <h1 id="menu-header">THE MENU:</h1>
@@ -71,27 +74,42 @@
         <h1 id="social-header">THE SOCIALS:</h1>
         <div class="widget">
           <div class="widget-header2">
-            <img class="social-icons" src="../../../assets/images/FB.png" />
-            <img class="social-icons" src="../../../assets/images/IG.png" />
-            <img
-              class="social-icons"
-              src="../../../assets/images/Twitter.png"
-            />
+            <div id="fb-header">
+              <img class="social-icons" src="../../../assets/images/FB.png" />
+            </div>
+            <div id="ig-header">
+              <img class="social-icons" src="../../../assets/images/IG.png" />
+            </div>
+            <div id="tw-header">
+              <img
+                class="social-icons"
+                src="../../../assets/images/Twitter.png"
+              />
+            </div>
           </div>
           <div class="widget-body">
             <p>
-              <b>@user</b> -
-              <i>Post content</i>
+              <b>@MrSaunders337</b> -
+              <i
+                >I just know our 5th graders are going to Ace their STAR exams
+                next week!</i
+              >
             </p>
             <mat-divider></mat-divider>
             <p>
-              <b>@user</b> -
-              <i>Post content</i>
+              <b>@Jillibean2001</b> -
+              <i
+                >I hear Tuesday is a teacher workday, can someone please
+                confirm?</i
+              >
             </p>
             <mat-divider></mat-divider>
             <p>
-              <b>@user</b> -
-              <i>Post content</i>
+              <b>@j0hnnyDee</b> -
+              <i
+                >My kid will be in the talent show and you've all officially
+                been warned.</i
+              >
             </p>
           </div>
         </div>
@@ -99,5 +117,5 @@
     </div>
   </div>
 
-  <div id="footer"><h5>My School &reg; 2022</h5></div>
+  <div id="footer"><h5>My School &reg; 2023</h5></div>
 </div>

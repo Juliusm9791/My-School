@@ -2,11 +2,9 @@
   <a routerLink="/posts/{{ post._id }}" routerLinkActive="active">
     <div class="post-title-row">
       <h3>
-        {{ post.title }}
+        {{ post.title | titlecase }}
       </h3>
-      <h5>
-        {{ post.createdAt | date: "short" }}
-      </h5>
+      <h5>{{ post.createdAt | date : "short" }}</h5>
     </div>
   </a>
 

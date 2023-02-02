@@ -43,7 +43,7 @@ export class PostDetailsComponent implements OnInit {
       this.post = post;
       console.log('post:', post);
       post.pictures.forEach((picture) =>
-        this.postPictures.splice(picture.id, 0, picture.location)
+        this.postPictures.splice(picture.order, 0, picture.location)
       );
     });
 

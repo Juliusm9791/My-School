@@ -1,19 +1,7 @@
 const mongoose = require("mongoose");
-
+const pictureSchema = require('./Picture');
 const { Schema } = mongoose;
 
-const pictureSchema = new Schema(
-  {
-    id: {
-      type: Number,
-      required: true,
-    },
-    location: {
-      type: String,
-      required: true
-    }
-  }
-);
 
 const postSchema = new Schema(
   {

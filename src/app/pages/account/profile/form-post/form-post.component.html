@@ -1,92 +1,97 @@
 <div id="createPostForm">
   <h2>NEW ANNOUNCEMENT</h2>
   <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-    <div class="formColumn">
-      <div id="title">
-        <mat-form-field appearance="fill">
-          <mat-label>Title</mat-label>
-          <input
-            matInput
-            placeholder="Title"
-            formControlName="postTitle"
-            required
-          />
-          <em
-            style="color: red"
-            *ngIf="
-              postForm.controls.postTitle.value !== '' &&
-              postForm.controls.postTitle.errors &&
-              postForm.controls.postTitle.invalid &&
-              postForm.controls.postTitle.dirty
-            "
-            >Restricted words found:
-            {{ postForm.controls.postTitle.errors["restrictedWords"] }}</em
-          >
-        </mat-form-field>
-      </div>
-      <div id="description">
-        <mat-form-field appearance="fill">
-          <mat-label>Description</mat-label>
-
-          <textarea
-            matInput
-            placeholder="Description"
-            formControlName="postDescription"
-            required
-            matInput
-          ></textarea>
-          <em
-            style="color: red"
-            *ngIf="
-              postForm.controls.postDescription.value !== '' &&
-              postForm.controls.postDescription.invalid &&
-              postForm.controls.postDescription.dirty &&
-              postForm.controls.postDescription.errors
-            "
-            >Restricted words found:
-            {{
-              postForm.controls.postDescription.errors["restrictedWords"]
-            }}</em
-          >
-        </mat-form-field>
-      </div>
-
-      <div>
-        <mat-checkbox
-          color="primary"
-          id="visibility-check"
-          formControlName="isVisible"
-          >Save as Draft</mat-checkbox
-        >
-      </div>
+    <div id="post-header">
+      <h2>Create your announcement!</h2>
     </div>
-    <div class="formColumn">
-      <div id="department">
-        <mat-form-field appearance="fill">
-          <mat-label>Department</mat-label>
-          <mat-select formControlName="departmentId">
-            <mat-option>-- None --</mat-option>
-            <ng-container *ngFor="let depatment of departmentList">
-              <mat-option value="{{ depatment._id }}"
-                >{{ depatment.depName }}
-              </mat-option>
-            </ng-container>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div id="grade">
-        <mat-form-field appearance="fill">
-          <mat-label>Grades:</mat-label>
-          <mat-select formControlName="gradeId" multiple>
-            <mat-option
-              *ngFor="let grade of gradeList"
-              value="{{ grade._id }}"
-              >{{ grade.gradeName }}</mat-option
+    <div id="post-body">
+      <div class="formColumn">
+        <div id="title">
+          <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              placeholder="Title"
+              formControlName="postTitle"
+              required
+            />
+            <em
+              style="color: red"
+              *ngIf="
+                postForm.controls.postTitle.value !== '' &&
+                postForm.controls.postTitle.errors &&
+                postForm.controls.postTitle.invalid &&
+                postForm.controls.postTitle.dirty
+              "
+              >Restricted words found:
+              {{ postForm.controls.postTitle.errors["restrictedWords"] }}</em
             >
-          </mat-select>
-        </mat-form-field>
+          </mat-form-field>
+        </div>
+        <div id="description">
+          <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+
+            <textarea
+              matInput
+              placeholder="Description"
+              formControlName="postDescription"
+              required
+              matInput
+            ></textarea>
+            <em
+              style="color: red"
+              *ngIf="
+                postForm.controls.postDescription.value !== '' &&
+                postForm.controls.postDescription.invalid &&
+                postForm.controls.postDescription.dirty &&
+                postForm.controls.postDescription.errors
+              "
+              >Restricted words found:
+              {{
+                postForm.controls.postDescription.errors["restrictedWords"]
+              }}</em
+            >
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-checkbox
+            color="primary"
+            id="visibility-check"
+            formControlName="isVisible"
+            >Save as Draft</mat-checkbox
+          >
+        </div>
       </div>
-      <div id="event">
+
+      <div class="formColumn">
+        <div id="department">
+          <mat-form-field appearance="fill">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="departmentId">
+              <mat-option>-- None --</mat-option>
+              <ng-container *ngFor="let depatment of departmentList">
+                <mat-option value="{{ depatment._id }}"
+                  >{{ depatment.depName }}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div id="grade">
+          <mat-form-field appearance="fill">
+            <mat-label>Grades:</mat-label>
+            <mat-select formControlName="gradeId" multiple>
+              <mat-option
+                *ngFor="let grade of gradeList"
+                value="{{ grade._id }}"
+                >{{ grade.gradeName }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
         <div>
           <mat-checkbox
             color="primary"
@@ -95,228 +100,209 @@
             >Event</mat-checkbox
           >
         </div>
-        <div id="toggleDate" *ngIf="postForm.controls.isEvent.value">
-          <mat-form-field appearance="fill">
-            <mat-label>Choose Event Start Date</mat-label>
-            <input
-              matInput
-              formControlName="eventDate"
-              type="datetime-local"
-              [min]="minDate"
-            />
-          </mat-form-field>
-        </div>
-        <div id="toggleDate" *ngIf="postForm.controls.isEvent.value">
-          <mat-form-field appearance="fill">
-            <mat-label>Choose Event End Date</mat-label>
-            <input
-              matInput
-              formControlName="eventEndDate"
-              type="datetime-local"
-              [min]="minDate"
-            />
-          </mat-form-field>
-        </div>
-        <div id="eventLocation" *ngIf="postForm.controls.isEvent.value">
-          <mat-form-field appearance="fill">
-            <mat-label>Event Location</mat-label>
-
-            <textarea
-              matInput
-              placeholder="Event location"
-              formControlName="eventLocation"
-              required
-              matInput
-            ></textarea>
-            <em
-              style="color: red"
-              *ngIf="
-                postForm.controls.eventLocation.value !== '' &&
-                postForm.controls.eventLocation.invalid &&
-                postForm.controls.eventLocation.dirty &&
-                postForm.controls.eventLocation.errors
-              "
-              >Restricted words found:
-              {{
-                postForm.controls.eventLocation.errors["restrictedWords"]
-              }}</em
-            >
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-
-    <div class="formColumn">
-      <!-- <input id="select-photos" type="file" multiple />
-      <h5>Add up to 5 photos</h5> -->
-
-      <div id="postContent">
-        <div id="images-block">
-          <div class="img-wrap">
-            <img
-              id="defaultImg"
-              [src]="[
-                imgsPreview[0]
-                  ? imgsPreview[0]
-                  : '../../../assets/images/plus_icon_grey.png'
-              ]"
-              (click)="hiddenInput0.click()"
-            />
-            <span
-              *ngIf="imgsPreview[0]"
-              class="close"
-              (click)="deletePhotoHandler(imgsPreview[0], 0)"
-              >&times;</span
-            >
-            <input
-              #hiddenInput0
-              type="file"
-              accept="image/*"
-              style="display: none"
-              (change)="selectFile($event, 0)"
-            />
+        <form [formGroup]="eventForm" id="event">
+          <div id="toggleDate" *ngIf="postForm.controls.isEvent.value">
+            <mat-form-field appearance="fill">
+              <mat-label>Choose Event Start Date</mat-label>
+              <input
+                matInput
+                formControlName="eventDate"
+                type="datetime-local"
+                [min]="minDate"
+              />
+            </mat-form-field>
           </div>
-          <div id="extra-images">
-            <div class="img-wrap">
-              <img
-                class="extraImgs"
-                [src]="[
-                  imgsPreview[1]
-                    ? imgsPreview[1]
-                    : '../../../assets/images/plus_icon_grey.png'
-                ]"
-                (click)="hiddenInput1.click()"
-              />
-              <span
-                *ngIf="imgsPreview[1]"
-                class="close"
-                (click)="deletePhotoHandler(imgsPreview[1], 1)"
-                >&times;</span
-              >
+          <div id="toggleDate" *ngIf="postForm.controls.isEvent.value">
+            <mat-form-field appearance="fill">
+              <mat-label>Choose Event End Date</mat-label>
               <input
-                #hiddenInput1
-                type="file"
-                accept="image/*"
-                style="display: none"
-                (change)="selectFile($event, 1)"
+                matInput
+                formControlName="eventEndDate"
+                type="datetime-local"
+                [min]="minDate"
               />
-            </div>
-            <div class="img-wrap">
-              <img
-                class="extraImgs"
-                [src]="[
-                  imgsPreview[2]
-                    ? imgsPreview[2]
-                    : '../../../assets/images/plus_icon_grey.png'
-                ]"
-                (click)="hiddenInput2.click()"
-              />
-              <span
-                *ngIf="imgsPreview[2]"
-                class="close"
-                (click)="deletePhotoHandler(imgsPreview[2], 2)"
-                >&times;</span
-              >
-              <input
-                #hiddenInput2
-                type="file"
-                accept="image/*"
-                style="display: none"
-                (change)="selectFile($event, 2)"
-              />
-            </div>
-            <div class="img-wrap">
-              <img
-                class="extraImgs"
-                [src]="[
-                  imgsPreview[3]
-                    ? imgsPreview[3]
-                    : '../../../assets/images/plus_icon_grey.png'
-                ]"
-                (click)="hiddenInput3.click()"
-              />
-              <span
-                *ngIf="imgsPreview[3]"
-                class="close"
-                (click)="deletePhotoHandler(imgsPreview[3], 3)"
-                >&times;</span
-              >
-              <input
-                #hiddenInput3
-                type="file"
-                accept="image/*"
-                style="display: none"
-                (change)="selectFile($event, 3)"
-              />
-            </div>
-            <div class="img-wrap">
-              <img
-                class="extraImgs"
-                [src]="[
-                  imgsPreview[4]
-                    ? imgsPreview[4]
-                    : '../../../assets/images/plus_icon_grey.png'
-                ]"
-                (click)="hiddenInput4.click()"
-              />
-              <span
-                *ngIf="imgsPreview[4]"
-                class="close"
-                (click)="deletePhotoHandler(imgsPreview[4], 4)"
-                >&times;</span
-              >
-              <input
-                #hiddenInput4
-                type="file"
-                accept="image/*"
-                style="display: none"
-                (change)="selectFile($event, 4)"
-              />
-            </div>
-            <!-- <img
-              class="extraImgs"
-              [src]="[imgsPreview[2] ? imgsPreview[2] : '../../../assets/images/default-placeholder-300x300.png']"
-            />
-            <img
-              class="extraImgs"
-              [src]="[imgsPreview[3] ? imgsPreview[3] : '../../../assets/images/default-placeholder-300x300.png']"
-            />
-            <img
-              class="extraImgs"
-              [src]="[imgsPreview[4] ? imgsPreview[4] : '../../../assets/images/default-placeholder-300x300.png']"
-            /> -->
+            </mat-form-field>
           </div>
-        </div>
+          <div id="eventLocation" *ngIf="postForm.controls.isEvent.value">
+            <mat-form-field appearance="fill">
+              <mat-label>Event Location</mat-label>
+
+              <textarea
+                matInput
+                placeholder="Event location"
+                formControlName="eventLocation"
+                required
+                matInput
+              ></textarea>
+              <em
+                style="color: red"
+                *ngIf="
+                  eventForm.controls.eventLocation.value !== '' &&
+                  eventForm.controls.eventLocation.invalid &&
+                  eventForm.controls.eventLocation.dirty &&
+                  eventForm.controls.eventLocation.errors
+                "
+                >Restricted words found:
+                {{
+                  eventForm.controls.eventLocation.errors["restrictedWords"]
+                }}</em
+              >
+            </mat-form-field>
+          </div>
+        </form>
       </div>
 
-      <!-- <input
-       id="upload-photo"
-       type="file"
-       accept="image/*"
-       (change)="selectFile($event)"
-      /> -->
-      <h5>* Add up to 5 photos</h5>
+      <div class="formColumn">
+        <div id="postContent">
+          <div id="images-block">
+            <div class="img-wrap">
+              <img
+                id="defaultImg"
+                [src]="[
+                  imgsPreview[0]
+                    ? imgsPreview[0]
+                    : '../../../assets/images/post_plus.svg'
+                ]"
+                (click)="hiddenInput0.click()"
+              />
+              <span
+                *ngIf="imgsPreview[0]"
+                class="close"
+                (click)="deletePhotoHandler(imgsPreview[0], 0)"
+                >&times;</span
+              >
+              <input
+                #hiddenInput0
+                type="file"
+                accept="image/*"
+                style="display: none"
+                (change)="selectFile($event, 0)"
+              />
+            </div>
+            <div id="extra-images">
+              <div class="img-wrap">
+                <img
+                  class="extraImgs"
+                  [src]="[
+                    imgsPreview[1]
+                      ? imgsPreview[1]
+                      : '../../../assets/images/post_plus.svg'
+                  ]"
+                  (click)="hiddenInput1.click()"
+                />
+                <span
+                  *ngIf="imgsPreview[1]"
+                  class="close"
+                  (click)="deletePhotoHandler(imgsPreview[1], 1)"
+                  >&times;</span
+                >
+                <input
+                  #hiddenInput1
+                  type="file"
+                  accept="image/*"
+                  style="display: none"
+                  (change)="selectFile($event, 1)"
+                />
+              </div>
+              <div class="img-wrap">
+                <img
+                  class="extraImgs"
+                  [src]="[
+                    imgsPreview[2]
+                      ? imgsPreview[2]
+                      : '../../../assets/images/post_plus.svg'
+                  ]"
+                  (click)="hiddenInput2.click()"
+                />
+                <span
+                  *ngIf="imgsPreview[2]"
+                  class="close"
+                  (click)="deletePhotoHandler(imgsPreview[2], 2)"
+                  >&times;</span
+                >
+                <input
+                  #hiddenInput2
+                  type="file"
+                  accept="image/*"
+                  style="display: none"
+                  (change)="selectFile($event, 2)"
+                />
+              </div>
+              <div class="img-wrap">
+                <img
+                  class="extraImgs"
+                  [src]="[
+                    imgsPreview[3]
+                      ? imgsPreview[3]
+                      : '../../../assets/images/post_plus.svg'
+                  ]"
+                  (click)="hiddenInput3.click()"
+                />
+                <span
+                  *ngIf="imgsPreview[3]"
+                  class="close"
+                  (click)="deletePhotoHandler(imgsPreview[3], 3)"
+                  >&times;</span
+                >
+                <input
+                  #hiddenInput3
+                  type="file"
+                  accept="image/*"
+                  style="display: none"
+                  (change)="selectFile($event, 3)"
+                />
+              </div>
+              <div class="img-wrap">
+                <img
+                  class="extraImgs"
+                  [src]="[
+                    imgsPreview[4]
+                      ? imgsPreview[4]
+                      : '../../../assets/images/post_plus.svg'
+                  ]"
+                  (click)="hiddenInput4.click()"
+                />
+                <span
+                  *ngIf="imgsPreview[4]"
+                  class="close"
+                  (click)="deletePhotoHandler(imgsPreview[4], 4)"
+                  >&times;</span
+                >
+                <input
+                  #hiddenInput4
+                  type="file"
+                  accept="image/*"
+                  style="display: none"
+                  (change)="selectFile($event, 4)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="submitBtn">
-        <button id="cancel" (click)="handleCancel()">CANCEL</button>
-        <ng-container *ngIf="!postId">
-          <button
-            class="submitOrUpdate"
-            type="submit"
-            [disabled]="!postForm.valid"
-          >
-            SUBMIT
-          </button>
-        </ng-container>
-        <ng-container *ngIf="postId">
-          <button
-            class="submitOrUpdate"
-            type="submit"
-            [disabled]="!postForm.valid"
-          >
-            UPDATE
-          </button>
-        </ng-container>
+        <h5>* Add up to 5 photos</h5>
+
+        <div class="submitBtn">
+          <button id="cancel" (click)="handleCancel()">CANCEL</button>
+          <ng-container *ngIf="!postId">
+            <button
+              class="submitOrUpdate"
+              type="submit"
+              [disabled]="!postForm.valid"
+            >
+              SUBMIT
+            </button>
+          </ng-container>
+          <ng-container *ngIf="postId">
+            <button
+              class="submitOrUpdate"
+              type="submit"
+              [disabled]="!postForm.valid"
+            >
+              UPDATE
+            </button>
+          </ng-container>
+        </div>
       </div>
     </div>
 
@@ -341,4 +327,4 @@
 
   <a *ngIf="isLoggedIn" routerLink="/" (click)="logout()">Logout</a> -->
 
-<div id="footer"><h5>My School &reg; 2022</h5></div>
+<div id="footer"><h5>My School &reg; 2023</h5></div>
