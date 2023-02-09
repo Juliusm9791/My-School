@@ -110,16 +110,6 @@
         </div>
       </div>
 
-      <!-- Notifications -->
-      <section>
-        <div id="notifications-subheader">
-          <h2>Notifications:</h2>
-        </div>
-        <div id="notifications-body">
-          <h5>...You have no notifications</h5>
-        </div>
-      </section>
-
       <!-- Announcements -->
       <section>
         <div id="announcements-subheader">
@@ -146,6 +136,30 @@
               </app-profile-post>
             </ng-container>
           </div>
+        </div>
+      </section>
+
+      <!-- Notifications -->
+      <section>
+        <div id="notifications-subheader">
+          <h2>Notifications:</h2>
+        </div>
+        <div id="notifications-body">
+          <!-- <div *ngIf="userNotifications.length === 0"> -->
+
+          <div class="notificationRow">
+            <div class="notificationDetail">
+              <h4>Julius M</h4>
+              <h5>commented on your <span>post</span></h5>
+            </div>
+            <div class="clear" title="Clear">
+              <!-- <button id="clearNotificationButton" (click)="clearNotification(notification._id)"> -->
+              <mat-icon id="clear">clear</mat-icon>
+              <!-- </button> -->
+            </div>
+          </div>
+
+          <!-- <h5>...You have no notifications</h5> -->
         </div>
       </section>
 

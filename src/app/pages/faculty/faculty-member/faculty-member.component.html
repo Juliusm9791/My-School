@@ -4,8 +4,9 @@
       <img
         (click)="profileFront(facultyMember._id)"
         id="faculty-avatar"
-        src="../../../../assets/images/account.png"
+        [src]="facultyMember.avatar ? facultyMember.avatar : defaultAvatar"
       />
+
       <div class="faculty-column">
         <h2 (click)="profileFront(facultyMember._id)">
           {{ facultyMember.firstName }} {{ facultyMember.lastName }}

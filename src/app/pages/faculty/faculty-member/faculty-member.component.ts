@@ -9,6 +9,8 @@ import { FacultyService } from '../faculty.service';
   styleUrls: ['./faculty-member.component.css'],
 })
 export class FacultyMemberComponent implements OnInit {
+  defaultAvatar = '../../../../assets/images/account.png';
+
   @Input() facultyMember: Me = {} as Me;
   constructor(private facultyService: FacultyService, private router: Router) {}
 

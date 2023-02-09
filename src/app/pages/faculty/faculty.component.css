@@ -43,65 +43,6 @@
   font-weight: 300;
 }
 
-/* My school component styles */
-
-#mySchoolFilter {
-  margin: 32px auto 200px auto;
-  width: fit-content;
-}
-
-#mySchoolFilter h1 {
-  font-family: Grotesk;
-  letter-spacing: 0.1rem;
-  font-weight: bold;
-  font-size: 16pt;
-  color: #4050b2;
-}
-
-.mySchoolContainer {
-  background-color: rgb(244, 244, 244);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: 30px;
-  padding: 30px;
-  border-radius: 8px;
-}
-
-.departmentColumn,
-.gradeColumn {
-  display: flex;
-  flex-direction: column;
-}
-
-.departmentColumn {
-  margin-right: 100px;
-}
-
-.gradeColumn {
-  margin-right: 30px;
-}
-
-mat-checkbox {
-  margin-bottom: 20px;
-  color: red;
-}
-
-mat-checkbox h2 {
-  font-family: Grotesk;
-  letter-spacing: 0.1rem;
-  font-weight: bold;
-  font-size: 16pt;
-  color: #4050b2;
-  margin: 0px;
-  padding-left: 10px;
-}
-
-::ng-deep .mat-checkbox-inner-container {
-  height: 22px !important;
-  width: 22px !important;
-}
-
 @media only screen and (max-width: 1000px) {
   #faculty {
     width: 95%;
