@@ -30,6 +30,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.post);
     this.me = this.loginSignupService.me;
   }
 
