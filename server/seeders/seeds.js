@@ -93,7 +93,7 @@ db.once("open", async () => {
       firstName: firstname,
       middleName: faker.name.middleName(),
       lastName: lastname,
-      avatar: "",
+      avatar: faker.image.avatar(),
       email: firstname + lastname + "@gmail.com",
       password: "12345678",
       groupId: groups[randomGroup]._id,
@@ -191,8 +191,9 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/0.jpg"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/0.jpg",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
@@ -210,12 +211,14 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/1.1.jpg"
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/1.1.jpg",
         },
         {
           order: 1,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/1.jpg"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/1.jpg",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
@@ -235,12 +238,14 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/2.1.jpg"
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/2.1.jpg",
         },
         {
           order: 1,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/2.jpg"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/2.jpg",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
@@ -260,8 +265,9 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/3.jpg"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/3.jpg",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
@@ -278,16 +284,19 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.1.jpg"
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.1.jpg",
         },
         {
           order: 1,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.2.jpg"
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.2.jpg",
         },
         {
           order: 2,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.jpg"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.jpg",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
@@ -319,8 +328,9 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/6.png"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/6.png",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
@@ -340,12 +350,14 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/7.1.jpg"
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/7.1.jpg",
         },
         {
           order: 1,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/7.jpg"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/7.jpg",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
@@ -365,8 +377,9 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/8.jpg"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/8.jpg",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
@@ -386,8 +399,9 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/9.jpg"
-        }
+          location:
+            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/9.jpg",
+        },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,

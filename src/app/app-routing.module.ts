@@ -18,6 +18,7 @@ import { GradesComponent } from './pages/account/profile/grades/grades.component
 import { ProfileEditComponent } from './pages/account/profile/profile-edit/profile-edit/profile-edit.component';
 import { ProfileFrontComponent } from './pages/account/profile/profile-front/profile-front.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
+import { MySchoolComponent } from './pages/my-school/my-school.component';
 
 const routes: Routes = [
   {
@@ -110,6 +111,11 @@ const routes: Routes = [
   {
     path: 'calendar',
     component: EventCalendarComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'my-school',
+    component: MySchoolComponent,
     pathMatch: 'full',
   },
 ];
