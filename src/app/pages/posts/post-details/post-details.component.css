@@ -86,8 +86,7 @@ mat-card-title {
 #description {
   font-size: 12pt;
   line-height: 16pt;
-  padding-right: 10px;
-  padding-bottom: 5px;
+  padding: 10px 10px 0px 5px;
 }
 
 .post-reactions {
@@ -218,8 +217,8 @@ mat-card-subtitle {
 }
 
 #defaultImg {
-  width: 240px;
-  height: 240px;
+  width: 160px;
+  height: 160px;
 }
 
 .extraImgs {
@@ -227,10 +226,10 @@ mat-card-subtitle {
   height: 60px;
 }
 
-.images-block {
+#images-block {
+  margin: 10px 0px 13px 2px;
   display: flex;
-  flex-direction: column;
-  margin: 0px 20px 13px -10px;
+  flex-direction: row;
 }
 
 #extra-image-row {
@@ -300,7 +299,6 @@ hr {
   margin: 0px auto;
 }
 
-.post-content,
 .subtitleRow,
 #post-body-row,
 .event-card-row {
@@ -308,6 +306,11 @@ hr {
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+}
+
+.post-content {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .event-card-row {
@@ -403,31 +406,19 @@ hr {
 }
 
 @media (max-width: 1300px) {
-  .post-content {
-    flex-direction: column-reverse;
-  }
-
   .subtitleRow,
   #description {
     padding-left: 5px;
   }
 
-  .images-block {
-    margin-top: 5px;
-    flex-direction: row;
-    margin-left: 2px;
-  }
-
-  #defaultImg,
-  .extraImgs {
+  #defaultImg {
     width: 120px;
     height: 120px;
   }
 }
 
 @media (max-width: 1100px) {
-  #defaultImg,
-  .extraImgs {
+  #defaultImg {
     width: 100px;
     height: 100px;
   }
@@ -530,16 +521,14 @@ hr {
 }
 
 @media (max-width: 550px) {
-  #defaultImg,
-  .extraImgs {
+  #defaultImg {
     width: 80px;
     height: 80px;
   }
 }
 
 @media (max-width: 420px) {
-  #defaultImg,
-  .extraImgs {
+  #defaultImg {
     width: 60px;
     height: 60px;
   }

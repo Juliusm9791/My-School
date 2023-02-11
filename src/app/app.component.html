@@ -123,12 +123,18 @@
               </div>
             </a>
 
-            <!-- <a routerLink="/my-school" (click)="mobileQuery.matches && snav.toggle()"> -->
-            <div class="navTab">
-              <img class="navIcon" src="../assets/images/my_school_icon.png" />
-              <h1>MY SCHOOL</h1>
-            </div>
-            <!-- </a> -->
+            <a
+              routerLink="/my-school"
+              (click)="mobileQuery.matches && snav.toggle()"
+            >
+              <div class="navTab">
+                <img
+                  class="navIcon"
+                  src="../assets/images/my_school_icon.png"
+                />
+                <h1>MY SCHOOL</h1>
+              </div>
+            </a>
           </div>
         </div>
       </mat-nav-list>

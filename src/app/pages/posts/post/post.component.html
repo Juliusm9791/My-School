@@ -23,13 +23,13 @@
   </mat-card-title>
 
   <div class="post-content">
-    <div id="images-block">
-      <img id="defaultImg" [src]="postPictures(0, post.pictures)" />
-      <img class="extraImgs" [src]="postPictures(1, post.pictures)" />
-      <img class="extraImgs" [src]="postPictures(2, post.pictures)" />
-      <img class="extraImgs" [src]="postPictures(3, post.pictures)" />
-      <img class="extraImgs" [src]="postPictures(4, post.pictures)" />
-    </div>
+    <ng-container *ngIf="post.pictures.length !== 0">
+      <div id="images-block">
+        <ng-container *ngFor="let picture of post.pictures">
+          <img id="defaultImg" [src]="picture.location" />
+        </ng-container>
+      </div>
+    </ng-container>
 
     <div id="post-body">
       <div>
@@ -41,7 +41,7 @@
                 <img
                   id="postUserImg"
                   [src]="
-                    !! post.userId.avatar ? post.userId.avatar : defaultAvatar
+                    !!post.userId.avatar ? post.userId.avatar : defaultAvatar
                   "
                   alt="User Image"
                   (click)="profileFront(post.userId._id)"
@@ -57,7 +57,7 @@
                   {{ post.userId.firstName }} {{ post.userId.lastName }}
                 </h4>
                 <h4 class="postUserDetail">
-                  posted: {{ post.createdAt | date: "short" }}
+                  posted: {{ post.createdAt | date : "short" }}
                 </h4>
               </div>
             </div>
@@ -78,8 +78,8 @@
                     <div class="event-card-row">
                       <h5>START:</h5>
                       <h4>
-                        {{ post.eventDate | date: "shortDate" }}&nbsp;{{
-                          post.eventDate | date: "shortTime"
+                        {{ post.eventDate | date : "shortDate" }}&nbsp;{{
+                          post.eventDate | date : "shortTime"
                         }}
                       </h4>
                     </div>
@@ -87,8 +87,8 @@
                     <div class="event-card-row">
                       <h5>END:</h5>
                       <h4>
-                        {{ post.eventEndDate | date: "shortDate" }}&nbsp;
-                        {{ post.eventEndDate | date: "shortTime" }}
+                        {{ post.eventEndDate | date : "shortDate" }}&nbsp;
+                        {{ post.eventEndDate | date : "shortTime" }}
                       </h4>
                     </div>
                   </div>

@@ -10,7 +10,7 @@ import { FacultyService } from './faculty.service';
 export class FacultyComponent implements OnInit {
   faculties: Faculty[] = [];
   facultyMembersLoading: boolean = true;
-  facultyMembers: Me[] = []
+  facultyMembers: Me[] = [];
 
   constructor(private facultyService: FacultyService) {
     this.facultyService.changeFaculties.subscribe((faculties) => {
@@ -21,7 +21,6 @@ export class FacultyComponent implements OnInit {
     });
     this.facultyService.changeFacultyMembers.subscribe((users) => {
       this.facultyMembers = users;
-
     });
   }
 
@@ -30,6 +29,6 @@ export class FacultyComponent implements OnInit {
     this.facultyService.queryFacultyMembers();
   }
   allFacultyMembers() {
-    return this.facultyService.filterFacultyMembers()
+    return this.facultyService.filterFacultyMembers();
   }
 }

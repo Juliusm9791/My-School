@@ -126,8 +126,25 @@ mat-divider {
 }
 
 #homePageCalendar {
-  width: 85%;
+  width: 100%;
   margin: 0px auto;
+}
+
+::ng-deep #calendar h1 {
+  display: none;
+}
+
+::ng-deep .btn-primary,
+::ng-deep .btn-outline-secondary {
+  font-size: 8pt !important;
+}
+
+::ng-deep .col-md-4 h3 {
+  font-size: 10pt !important;
+}
+
+::ng-deep #calendar {
+  width: 95% !important;
 }
 
 #department-header {
@@ -184,6 +201,10 @@ app-department {
   width: 50%;
 }
 
+app-calendar {
+  width: 90%;
+}
+
 #footer {
   text-align: center;
   height: 100px;
@@ -201,10 +222,6 @@ app-department {
 }
 
 @media (max-width: 1100px) {
-  app-department {
-    width: 90%;
-  }
-
   .widget-column {
     display: none;
   }
@@ -233,5 +250,10 @@ app-department {
   .seeAllBtn button {
     font-size: 12pt;
     margin-bottom: 0px;
+    padding: 6px 10px;
+  }
+
+  app-department {
+    width: 90%;
   }
 }

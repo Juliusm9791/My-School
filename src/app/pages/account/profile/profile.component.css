@@ -33,6 +33,12 @@
   color: #4050b2;
 }
 
+#notifications-body h4 {
+  color: #4050b2;
+  font-size: 12pt;
+  margin: 0px 7px 3px 5px;
+}
+
 #profile h1 {
   margin-left: 5px;
 }
@@ -62,6 +68,7 @@ section {
 #messages-subheader {
   height: 50px;
 }
+
 #profile-header {
   border-radius: 7px 7px 0 0;
 }
@@ -105,10 +112,63 @@ section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding-top: 20px;
 }
 
-#profile-buttons a {
+.notificationRow {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  padding: 3px 10px;
+  height: 50px;
+  width: fit-content;
+}
+
+.notificationDetail {
+  display: flex;
+  flex-direction: row;
+}
+
+.notificationDetail h4,
+.notificationRow h5,
+.clear {
+  margin: auto 3px auto 5px !important;
+}
+
+h5 {
+  font-size: 12pt;
+}
+
+.notificationDetail h4 {
+  font-size: 12pt !important;
+  cursor: pointer;
+}
+
+h5 span {
+  color: #3e5bb3 !important;
+  margin-left: 3px;
+}
+
+h5 span:hover {
+  color: #f98c5a !important;
+  cursor: pointer;
+}
+
+#clear {
+  padding-top: 3px;
+  scale: 0.8;
+  color: #3e5bb3;
+  cursor: pointer;
+}
+
+#clear:hover {
+  padding-top: 3px;
+  color: #f98c5a;
+}
+
+#profile-buttons a,
+#notifications-body a {
   text-decoration: none;
   cursor: pointer;
 }
@@ -181,7 +241,9 @@ section h5 {
 #profile-header h3:hover,
 #announcements-subheader h3:hover,
 #notifications-subheader h3:hover,
-#messages-subheader h3:hover #edit-profile h5:hover {
+#messages-subheader h3:hover,
+#edit-profile h5:hover,
+#notifications-body h4:hover {
   color: #f98c5a !important;
 }
 
@@ -218,7 +280,7 @@ section h5 {
   padding-top: 12px;
   color: rgb(167, 167, 167);
   font-family: Grotesk;
-  font-size: 8pt;
+  font-size: 8pt !important;
   font-weight: 300;
 }
 

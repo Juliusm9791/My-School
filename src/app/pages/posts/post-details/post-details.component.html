@@ -26,50 +26,13 @@
       </mat-card-title>
 
       <div class="post-content">
-        <div class="images-block">
-          <img
-            id="defaultImg"
-            [src]="
-              postPictures[0]
-                ? postPictures[0]
-                : '../../../../assets/images/default-placeholder-300x300.png'
-            "
-          />
-          <div id="extra-image-row">
-            <img
-              class="extraImgs"
-              [src]="
-                postPictures[1]
-                  ? postPictures[1]
-                  : '../../../../assets/images/default-placeholder-300x300.png'
-              "
-            />
-            <img
-              class="extraImgs"
-              [src]="
-                postPictures[2]
-                  ? postPictures[2]
-                  : '../../../../assets/images/default-placeholder-300x300.png'
-              "
-            />
-            <img
-              class="extraImgs"
-              [src]="
-                postPictures[3]
-                  ? postPictures[3]
-                  : '../../../../assets/images/default-placeholder-300x300.png'
-              "
-            />
-            <img
-              class="extraImgs"
-              [src]="
-                postPictures[4]
-                  ? postPictures[4]
-                  : '../../../../assets/images/default-placeholder-300x300.png'
-              "
-            />
+        <ng-container *ngIf="post.pictures.length !== 0">
+          <div id="images-block">
+            <ng-container *ngFor="let picture of post.pictures">
+              <img id="defaultImg" [src]="picture.location" />
+            </ng-container>
           </div>
-        </div>
+        </ng-container>
 
         <div id="post-body">
           <div>
@@ -80,7 +43,9 @@
                     <img
                       id="postUserImg"
                       [src]="
-                      !! post.userId.avatar ? post.userId.avatar : defaultAvatar
+                        !!post.userId.avatar
+                          ? post.userId.avatar
+                          : defaultAvatar
                       "
                       alt="User Image"
                       (click)="profileFront(post.userId._id)"
