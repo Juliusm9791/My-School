@@ -32,7 +32,7 @@ export class ProfileEditComponent implements OnInit {
   isLoadingDepartments: boolean = true;
   isLoadingGrades: boolean = true;
   isLoadingFaculties: boolean = true;
-  defaultAvatar: string = '../../../../assets/images/account.png';
+  defaultAvatar: string = '../../../../assets/images/account_plus.svg';
 
   constructor(
     // private route: ActivatedRoute,
@@ -145,7 +145,7 @@ export class ProfileEditComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFiles[0]);
     reader.onload = (_event) => {
-        this.avatarPreview = reader.result;
+      this.avatarPreview = reader.result;
     };
   }
 
