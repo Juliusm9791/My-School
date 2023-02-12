@@ -4,7 +4,7 @@
       <h4 id="userInfo" (click)="profileFront(comment.userId._id)">
         {{ comment.userId.firstName }}
         {{ comment.userId.lastName }} -
-        {{ comment.createdAt | date: "short" }}
+        {{ comment.createdAt | date : "short" }}
       </h4>
       <div class="commentReactions">
         <div class="likes">

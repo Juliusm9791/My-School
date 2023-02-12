@@ -47,4 +47,16 @@
   #faculty {
     width: 95%;
   }
+
+  #faculty h1 {
+    font-size: 14pt;
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .facultyContainer {
+    margin-top: 20px;
+    padding: 10px;
+  }
 }

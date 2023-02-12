@@ -322,11 +322,6 @@ hr {
 }
 
 @media (max-width: 1300px) {
-  .subtitleRow,
-  #description {
-    padding-left: 5px;
-  }
-
   #defaultImg {
     width: 100px;
     height: 100px;

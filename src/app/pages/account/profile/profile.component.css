@@ -20,6 +20,10 @@
   justify-content: flex-start;
 }
 
+.value h4 {
+  padding-left: 8px;
+}
+
 #profile h1,
 #profile-header h2,
 #announcements-subheader h2,
@@ -189,7 +193,7 @@ h5 span:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 30px 20px 50px;
+  margin: 15px 10px 20px 40px;
 }
 
 .profile-col {
@@ -204,12 +208,10 @@ h5 span:hover {
   margin-bottom: 0px;
 }
 
-.key {
-  width: 80px;
-}
-
+.key,
 #bioKey {
-  width: 40px;
+  width: 70px;
+  justify-content: flex-end;
 }
 
 .profile-col div {
@@ -291,84 +293,96 @@ section h5 {
 }
 
 @media (max-width: 1100px) {
+  #profile-img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .key h3,
+  .value h4 {
+    font-size: 10pt;
+    line-height: 18pt;
+  }
+}
+
+@media (max-width: 800px) {
+  #profile-details {
+    justify-content: center;
+  }
+
   .profile-body {
     flex-direction: column;
     align-items: flex-start;
     padding: 0px 50px;
   }
 
+  #profile {
+    width: 95%;
+  }
+
+  .profile-body {
+    padding: 0px 20px;
+  }
+
+  #profile-container {
+    padding-bottom: 0px;
+  }
+
   #profile-avatar {
-    margin: 20px 0px;
+    margin: 5px auto 20px auto;
   }
 
-  #bioKey {
-    width: 80px;
+  section {
+    margin: 20px;
   }
 
-  @media (max-width: 800px) {
-    #profile {
-      width: 95%;
-    }
+  #announcements-body,
+  #notifications-body,
+  #messages-body {
+    width: 90%;
+    margin: 30px auto;
+  }
+}
 
-    .profile-body {
-      padding: 0px 20px;
-    }
-
-    #profile-container {
-      padding-bottom: 0px;
-    }
-
-    #profile-avatar {
-      margin-top: 5px;
-    }
-
-    section {
-      margin: 20px;
-    }
-
-    #announcements-body,
-    #notifications-body,
-    #messages-body {
-      width: 90%;
-      margin: 30px auto;
-    }
+@media (max-width: 500px) {
+  #profile h1 {
+    font-size: 14pt;
   }
 
-  @media (max-width: 500px) {
-    #profile h1 {
-      font-size: 14pt;
-    }
+  #profile-header,
+  #announcements-subheader,
+  #notifications-subheader,
+  #messages-subheader {
+    padding: 10px 5px 10px 10px;
+  }
 
-    #profile-header,
-    #announcements-subheader,
-    #notifications-subheader,
-    #messages-subheader {
-      padding: 10px 5px 10px 10px;
-    }
+  #profile-header h2,
+  #announcements-subheader h2,
+  #notifications-subheader h2,
+  #messages-subheader h2 {
+    font-size: 12pt;
+    margin: 0px;
+  }
 
-    #profile-header h2,
-    #announcements-subheader h2,
-    #notifications-subheader h2,
-    #messages-subheader h2 {
-      font-size: 12pt;
-      margin: 0px;
-    }
+  #profile-header h3,
+  #announcements-subheader h3,
+  .profile-col h3,
+  .mat-typography h3,
+  .profile-col h4 {
+    font-size: 10pt;
+    line-height: 14pt;
+  }
 
-    #profile-header h3,
-    #announcements-subheader h3,
-    .profile-col h3,
-    .mat-typography h3,
-    .profile-col h4 {
-      font-size: 10pt;
-      line-height: 14pt;
-    }
+  #edit {
+    margin-right: 5px;
+  }
 
-    #edit {
-      margin-right: 5px;
-    }
+  section {
+    margin: 20px 15px;
+  }
 
-    section {
-      margin: 20px 15px;
-    }
+  .notificationDetail h4,
+  h5 {
+    font-size: 10pt !important;
   }
 }

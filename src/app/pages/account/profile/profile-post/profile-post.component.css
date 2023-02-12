@@ -136,4 +136,8 @@ h5 {
   h3 {
     font-size: 12pt;
   }
+
+  .profile-post {
+    padding-right: 0px;
+  }
 }
