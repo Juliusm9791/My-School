@@ -45,6 +45,7 @@ db.once("open", async () => {
     { gradeName: "3rd" },
     { gradeName: "4th" },
     { gradeName: "5th" },
+    { gradeName: "All Grades" },
   ]);
 
   console.log("Grades seeded");
