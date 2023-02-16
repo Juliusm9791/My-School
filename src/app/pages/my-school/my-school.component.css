@@ -56,3 +56,57 @@ mat-checkbox h2 {
   width: 22px !important;
   margin-right: 15px;
 }
+
+@media (max-width: 1000px) {
+  #mySchoolFilter h1 {
+    font-size: 14pt;
+  }
+
+  mat-checkbox h2 {
+    font-size: 12pt;
+    padding-left: 6px;
+  }
+
+  ::ng-deep .mat-checkbox-inner-container {
+    height: 18px !important;
+    width: 18px !important;
+    margin-right: 10px;
+  }
+
+  .departmentColumn {
+    margin-right: 40px;
+  }
+
+  .gradeColumn {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  #mySchoolFilter h1 {
+    margin-left: 20px;
+  }
+
+  mat-checkbox h2 {
+    font-size: 11pt;
+    padding-left: 4px;
+  }
+
+  ::ng-deep .mat-checkbox-inner-container {
+    height: 15px !important;
+    width: 15px !important;
+    margin-right: 6px;
+  }
+
+  .departmentColumn {
+    margin-right: 15px;
+  }
+
+  .gradeColumn {
+    margin-right: 6px;
+  }
+
+  mat-checkbox {
+    margin-bottom: 10px;
+  }
+}

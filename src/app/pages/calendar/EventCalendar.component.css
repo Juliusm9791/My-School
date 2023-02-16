@@ -116,8 +116,15 @@ mwl-demo-utils-calendar-header {
 }
 
 @media (max-width: 800px) {
+  #calendar {
+    margin-bottom: 50px;
+  }
   ::ng-deep .cal-header {
     margin-top: 10px;
+  }
+
+  #calendar h1 {
+    font-size: 14pt;
   }
 
   ::ng-deep .col-md-4 h3 {
