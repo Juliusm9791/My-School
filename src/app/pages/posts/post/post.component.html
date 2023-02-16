@@ -29,7 +29,6 @@
           <a [href]="picture.location" alt="post pictures" target="_blank"
             ><img id="defaultImg" [src]="picture.location"
           /></a>
-
         </ng-container>
       </div>
     </ng-container>
@@ -130,7 +129,7 @@
         <div class="comments" title="Comment">
           {{ post.commentId.length }}
           <button id="commentIcon" mat-icon-button>
-            <mat-icon>chat_bubble</mat-icon>
+            <mat-icon (click)="postDetail(post._id)">chat_bubble</mat-icon>
           </button>
         </div>
         <div class="shares" title="Share">
