@@ -90,6 +90,9 @@ export class PostDetailsComponent implements OnInit {
 
   postPictures: string[] = [];
 
+  gradeDetails(id: string) {
+    this.router.navigate(['/profile/grades/' + id]);
+  }
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
   }
