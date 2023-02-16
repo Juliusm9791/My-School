@@ -105,8 +105,10 @@ export class FormProfileService {
         console.log('EROOR: ', JSON.stringify(err));
         return false;
       }
-      console.log('File Uploaded.', data.Location);
-      this.updateAvatar(data.Location);
+      console.log('File Uploaded.', data, data.Location);
+      this.updateAvatar(
+        'https://ik.imagekit.io/myschool/' + data.Key + '?tr=w-200,h-200'
+      );
       return true;
     });
   }
