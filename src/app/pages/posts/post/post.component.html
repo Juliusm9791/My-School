@@ -26,7 +26,9 @@
     <ng-container *ngIf="post.pictures.length !== 0">
       <div id="images-block">
         <ng-container *ngFor="let picture of post.pictures">
-          <img id="defaultImg" [src]="picture.location" />
+          <a [href]="picture.location" alt="post pictures" target="_blank"
+            ><img id="defaultImg" [src]="picture.location"
+          /></a>
           <!-- <img class="extraImgs" [src]="postPictures(1, post.pictures)" />
           <img class="extraImgs" [src]="postPictures(2, post.pictures)" />
           <img class="extraImgs" [src]="postPictures(3, post.pictures)" />
