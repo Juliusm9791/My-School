@@ -77,6 +77,16 @@ const typeDefs = gql`
     updatedAt: String
   }
 
+  type Notification {
+    _id: ID
+    sender: User
+    receiver: User
+    type: String
+    isRead: Boolean
+    referPost: Post
+    createdAt: String
+  }
+
   type Query {
     users: [User]
     user(_id: ID!): User
@@ -86,6 +96,7 @@ const typeDefs = gql`
     faculties: [Group]
     departments: [Department]
     grades: [Grade]
+    notifications: [Notification]
   }
 
   input pictureInput {
@@ -156,6 +167,14 @@ const typeDefs = gql`
     deletePost(_id: ID!): Post
 
     addReactionLike(postId: ID): Reaction
+
+    addNotification(
+      receiver: ID!
+      type: String!
+      referPost: ID!
+    ): Notification
+    updateNotification(_id: ID!, isRead: Boolean): Notification
+    deleteNotification(_id: ID!): Notification
   }
 
   type Subscription {

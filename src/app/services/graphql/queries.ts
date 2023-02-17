@@ -176,3 +176,26 @@ export const QUERY_POST = gql`
   query post($_id: ID!) {
     post(_id: $_id) ${postBody}
 `;
+
+export const QUERY_NOTIFICATIONS = gql`
+query Query {
+  notifications {
+    _id
+    createdAt
+    isRead
+    type
+    receiver {
+      _id
+    }
+    sender {
+      _id
+      firstName
+      lastName
+    }
+    referPost {
+      _id
+      title
+    }
+  }
+}
+`;

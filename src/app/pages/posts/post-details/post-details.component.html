@@ -200,11 +200,7 @@
       <div class="comment comment-row" *ngFor="let comment of post.commentId">
         <img
           id="commentUserImg"
-          [src]="
-            comment.userId.avatar !== '' || null
-              ? comment.userId.avatar
-              : defaultAvatar
-          "
+          [src]="comment.userId.avatar !== '' && comment.userId.avatar ? comment.userId.avatar : defaultAvatar"
           (click)="profileFront(comment.userId._id)"
         />
         <app-comments [comment]="comment"></app-comments>

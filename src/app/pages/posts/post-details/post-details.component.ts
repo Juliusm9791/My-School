@@ -8,6 +8,7 @@ import { PostsService } from '../posts.service';
 import { PostDetailsService } from './post-details.service';
 import { restrictedWords } from '../../../shared/bad-words-list';
 import { CommentsService } from '../post/comments/comments.service';
+import { NotificationsService } from 'src/app/services/service';
 
 @Component({
   selector: 'app-post-details',
@@ -29,6 +30,7 @@ export class PostDetailsComponent implements OnInit {
 
   constructor(
     private postDetailsService: PostDetailsService,
+    private notificationsService: NotificationsService,
     private route: ActivatedRoute,
     private postsService: PostsService,
     private authService: AuthService,
@@ -74,6 +76,9 @@ export class PostDetailsComponent implements OnInit {
     let comment: any = this.commentForm.controls.comment.value;
     if (comment !== '' || null) {
       this.postDetailsService.addComment(comment, this.postId);
+      if (this.post.userId._id !== this.me._id) {
+        this.notificationsService.addNotification(this.post.userId._id, "Comment", this.post._id)
+      }
       this.commentForm.reset();
     }
   }
@@ -97,6 +102,9 @@ export class PostDetailsComponent implements OnInit {
   addLike(postId: string) {
     if (this.me._id) {
       this.postsService.addUserLike(this.me._id, postId);
+      if (this.post.userId._id !== this.me._id) {
+        this.notificationsService.addNotification(this.post.userId._id, "Like", this.post._id)
+      }
     }
   }
 

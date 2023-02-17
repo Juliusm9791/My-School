@@ -6,6 +6,7 @@ const Comment = require("./Comment");
 const Department = require("./Department");
 const DeletedPost = require("./DeletedPost");
 const Grade = require("./Grade");
+const Notification = require("./Notification");
 
 module.exports = {
   User,
@@ -15,5 +16,6 @@ module.exports = {
   Comment,
   Department,
   DeletedPost,
-  Grade
+  Grade,
+  Notification
 };

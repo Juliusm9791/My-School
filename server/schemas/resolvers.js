@@ -8,6 +8,7 @@ const {
   Comment,
   Reaction,
   Grade,
+  Notification
 } = require("../models");
 const pubsub = new PubSub();
 
@@ -79,6 +80,9 @@ const resolvers = {
     grades: async (parent, args) => {
       return await Grade.find({});
     },
+    notifications: async (parent, args) => {
+      return await Notification.find({}).populate("sender").populate("receiver").populate("referPost");
+    }
   },
 
   Mutation: {
@@ -143,6 +147,24 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+    addNotification: async (parent, args, context) => {
+      const newNotification = await Notification.create({
+        sender: context.user._id,
+        receiver: args.receiver,
+        type: args.type,
+        referPost: args.referPost
+      });
+      pubsub.publish("NOTIFICATION_ADDED", {
+        notificationAdded: {
+          sender: args.sender,
+          receiver: args.receiver,
+          type: args.type,
+          isRead: args.isRead,
+          referPostId: args.postId
+        },
+      });
+      return newNotification;
+    }, 
     updatePost: async (parent, args, context) => {
       if (context.user) {
         const { _id, ...updateContent } = args;
@@ -176,6 +198,12 @@ const resolvers = {
         );
       }
     },
+    updateNotification: async(parent, args, context) => {
+      if (context. user) {
+        const { _id, ...updateContent } = args;
+        return await Notification.findByIdAndUpdate(_id, updateContent, { new: true })
+      };
+    },
     deletePhotos: async (parent, args, context) => {
       if (context.user) {
         return await Post.findByIdAndUpdate(
@@ -205,7 +233,12 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-
+    deleteNotification: async(parent, args, context) => {
+      if (context.user) {
+        return await Notification.findByIdAndDelete({_id: args._id})
+      }
+      throw new AuthenticationError("Not logged in");
+    },
     updateMe: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {

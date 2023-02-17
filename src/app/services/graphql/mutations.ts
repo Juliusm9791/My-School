@@ -78,6 +78,23 @@ export const ADD_POST = gql`
     }
   }
 `;
+
+export const ADD_NOTIFICATION = gql`
+  mutation Mutation(
+    $receiver: ID!
+    $type: String!
+    $referPost: ID!
+  ) {
+    addNotification(
+      receiver: $receiver
+      type: $type
+      referPost: $referPost
+    ) {
+      _id
+      createdAt
+    }
+  }
+`;
 export const UPDATE_POST = gql`
   mutation updatePost(
     $postId: ID!
@@ -116,6 +133,15 @@ export const UPDATE_POST = gql`
   }
 `;
 
+export const UPDATE_NOTIFICATION = gql`
+  mutation UpdateNotification($id: ID!, $isRead: Boolean) {
+    updateNotification(_id: $id, isRead: $isRead) {
+      _id
+      isRead
+    }
+  }
+`;
+
 export const ADD_COMMENT = gql`
   mutation addComment($comment: String!, $postId: ID!) {
     addComment(comment: $comment, postId: $postId) {
@@ -131,6 +157,14 @@ export const ADD_COMMENT = gql`
 export const DELETE_POST = gql`
   mutation deletePost($_id: ID!) {
     deletePost(_id: $_id) {
+      _id
+    }
+  }
+`;
+
+export const DELETE_NOTIFICATION = gql`
+  mutation Mutation($id: ID!) {
+    deleteNotification(_id: $id) {
       _id
     }
   }
@@ -200,10 +234,10 @@ export const DELETE_PHOTOS = gql`
 `;
 
 export const ADD_REACTION_LIKE = gql`
-mutation addReaction( $postId: ID!) {
-  addReactionLike(postId: $postId) {
-   like
-  _id
+  mutation addReaction($postId: ID!) {
+    addReactionLike(postId: $postId) {
+      like
+      _id
+    }
   }
-}
 `;

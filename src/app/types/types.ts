@@ -97,3 +97,13 @@ export interface searchResults {
   searchInTitle: Post[];
   searchInDescription: Post[];
 }
+
+export interface Notification {
+  _id: string;
+  sender: Me;
+  receiver: Me;
+  type: string;
+  isRead: Boolean;
+  referPost: Post;
+  createdAt: string;
+}
