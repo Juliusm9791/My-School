@@ -9,9 +9,11 @@ const {
   Post,
   Reaction,
   Grade,
+  Notification,
 } = require("../models");
 
 db.once("open", async () => {
+  await Notification.deleteMany();
   // DEPARTMENTS
   // delete any previous department entries
   await Department.deleteMany();

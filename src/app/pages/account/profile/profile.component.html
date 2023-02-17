@@ -148,19 +148,22 @@
           <h2>Notifications:</h2>
         </div>
         <div id="notifications-body">
-          <!-- <div *ngIf="userNotifications.length === 0"> -->
-
+          <div *ngIf="userNotifications.length === 0">
+            <h5>...You have no notifications</h5>
+          </div>
+          <ng-container *ngFor="let notification of userNotifications">
           <div class="notificationRow">
             <div class="notificationDetail">
-              <h4>Julius M</h4>
-              <h5>commented on your <span>post</span></h5>
+              <h4><a routerLink="/profile/detail/{{notification.sender._id}}" routerLinkActive="active">{{notification.sender.firstName}}</a></h4>
+              <h5>{{action(notification.type)}} on your <a routerLink="/posts/{{notification.referPost._id}}" routerLinkActive="active">post "{{notification.referPost.title}}"</a></h5>
             </div>
             <div class="clear" title="Clear">
-              <!-- <button id="clearNotificationButton" (click)="clearNotification(notification._id)"> -->
+              <button id="clearNotificationButton" (click)="clearNotification(notification._id)">
               <mat-icon id="clear">clear</mat-icon>
-              <!-- </button> -->
+              </button>
             </div>
           </div>
+          </ng-container>
 
           <!-- <h5>...You have no notifications</h5> -->
         </div>
