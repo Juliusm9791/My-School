@@ -10,7 +10,10 @@
 
         <div id="gradeDeptBlk">
           <div id="postGrade">
-            <h2 *ngIf="post.gradeId">
+            <h2
+              *ngIf="post.gradeId"
+              (click)="gradeDetails(post.gradeId[0]._id)"
+            >
               {{ post.gradeId[0].gradeName }}
             </h2>
           </div>
@@ -27,48 +30,15 @@
 
       <div class="post-content">
         <div class="images-block">
-          <img
-            id="defaultImg"
-            [src]="
-              postPictures[0]
-                ? postPictures[0]
-                : '../../../../assets/images/default-placeholder-300x300.png'
-            "
-          />
-          <div id="extra-image-row">
-            <img
-              class="extraImgs"
-              [src]="
-                postPictures[1]
-                  ? postPictures[1]
-                  : '../../../../assets/images/default-placeholder-300x300.png'
-              "
-            />
-            <img
-              class="extraImgs"
-              [src]="
-                postPictures[2]
-                  ? postPictures[2]
-                  : '../../../../assets/images/default-placeholder-300x300.png'
-              "
-            />
-            <img
-              class="extraImgs"
-              [src]="
-                postPictures[3]
-                  ? postPictures[3]
-                  : '../../../../assets/images/default-placeholder-300x300.png'
-              "
-            />
-            <img
-              class="extraImgs"
-              [src]="
-                postPictures[4]
-                  ? postPictures[4]
-                  : '../../../../assets/images/default-placeholder-300x300.png'
-              "
-            />
-          </div>
+          <ng-container *ngIf="post.pictures.length !== 0">
+            <div id="images-block">
+              <ng-container *ngFor="let picture of post.pictures">
+                <a [href]="picture.location" alt="post pictures" target="_blank"
+                  ><img id="defaultImg" [src]="picture.location"
+                /></a>
+              </ng-container>
+            </div>
+          </ng-container>
         </div>
 
         <div id="post-body">
@@ -80,7 +50,9 @@
                     <img
                       id="postUserImg"
                       [src]="
-                      !! post.userId.avatar ? post.userId.avatar : defaultAvatar
+                        !!post.userId.avatar
+                          ? post.userId.avatar
+                          : defaultAvatar
                       "
                       alt="User Image"
                       (click)="profileFront(post.userId._id)"
@@ -94,7 +66,7 @@
                       {{ post.userId.firstName }} {{ post.userId.lastName }}
                     </h4>
                     <h4 class="postUserDetail">
-                      posted: {{ post.createdAt | date : "short" }}
+                      posted: {{ post.createdAt | date: "short" }}
                     </h4>
                   </div>
                 </div>
@@ -115,8 +87,8 @@
                         <div class="event-card-row">
                           <h5>START:</h5>
                           <h4>
-                            {{ post.eventDate | date : "shortDate" }}&nbsp;{{
-                              post.eventDate | date : "shortTime"
+                            {{ post.eventDate | date: "shortDate" }}&nbsp;{{
+                              post.eventDate | date: "shortTime"
                             }}
                           </h4>
                         </div>
@@ -124,8 +96,8 @@
                         <div class="event-card-row">
                           <h5>END:</h5>
                           <h4>
-                            {{ post.eventEndDate | date : "shortDate" }}&nbsp;
-                            {{ post.eventEndDate | date : "shortTime" }}
+                            {{ post.eventEndDate | date: "shortDate" }}&nbsp;
+                            {{ post.eventEndDate | date: "shortTime" }}
                           </h4>
                         </div>
                       </div>
@@ -239,5 +211,3 @@
     </ng-container>
   </div>
 </div>
-
-<div id="footer"><h5>My School &reg; 2023</h5></div>

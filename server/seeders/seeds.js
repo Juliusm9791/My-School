@@ -47,6 +47,7 @@ db.once("open", async () => {
     { gradeName: "3rd" },
     { gradeName: "4th" },
     { gradeName: "5th" },
+    { gradeName: "All Grades" },
   ]);
 
   console.log("Grades seeded");
@@ -193,8 +194,7 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/0.jpg",
+          location: "https://ik.imagekit.io/myschool/0.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -213,8 +213,7 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/1.1.jpg",
+          location: "https://ik.imagekit.io/myschool/1.1.jpg?tr=w-200,h-200",
         },
         {
           order: 1,

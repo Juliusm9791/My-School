@@ -26,11 +26,9 @@
     <ng-container *ngIf="post.pictures.length !== 0">
       <div id="images-block">
         <ng-container *ngFor="let picture of post.pictures">
-          <img id="defaultImg" [src]="picture.location" />
-          <!-- <img class="extraImgs" [src]="postPictures(1, post.pictures)" />
-          <img class="extraImgs" [src]="postPictures(2, post.pictures)" />
-          <img class="extraImgs" [src]="postPictures(3, post.pictures)" />
-          <img class="extraImgs" [src]="postPictures(4, post.pictures)" /> -->
+          <a [href]="picture.location" alt="post pictures" target="_blank"
+            ><img id="defaultImg" [src]="picture.location"
+          /></a>
         </ng-container>
       </div>
     </ng-container>
@@ -131,7 +129,7 @@
         <div class="comments" title="Comment">
           {{ post.commentId.length }}
           <button id="commentIcon" mat-icon-button>
-            <mat-icon>chat_bubble</mat-icon>
+            <mat-icon (click)="postDetail(post._id)">chat_bubble</mat-icon>
           </button>
         </div>
         <div class="shares" title="Share">

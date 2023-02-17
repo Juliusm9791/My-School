@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { ADD_POST, UPDATE_PHOTOS, UPDATE_POST, DELETE_PHOTOS } from 'src/app/services/graphql/mutations';
+import {
+  ADD_POST,
+  UPDATE_PHOTOS,
+  UPDATE_POST,
+  DELETE_PHOTOS,
+} from 'src/app/services/graphql/mutations';
 import { QUERY_POSTS } from 'src/app/services/graphql/queries';
 
 import * as S3 from 'aws-sdk/clients/s3';
@@ -121,7 +126,9 @@ export class FormPostService {
     });
 
     let updatedLocations: any[] = [];
-    locations.forEach((e: any) => updatedLocations.push({order: e.order, location: e.location}));
+    locations.forEach((e: any) =>
+      updatedLocations.push({ order: e.order, location: e.location })
+    );
 
     for (let i = 0; i < files.length; i++) {
       const contentType = files[i].file.type;
@@ -138,10 +145,13 @@ export class FormPostService {
 
         const picture = {
           order: files[i].id,
-          location: data.Location,
+          location:
+            'https://ik.imagekit.io/myschool/' + data.Key + '?tr=w-500,h-500',
         };
 
-        const index = updatedLocations.findIndex((e) => e.order == picture.order);
+        const index = updatedLocations.findIndex(
+          (e) => e.order == picture.order
+        );
         if (index === -1) {
           updatedLocations.push(picture);
         }
@@ -170,10 +180,10 @@ export class FormPostService {
         // } catch (err) {
         //   console.log('ERROR in file Deleting : ' + JSON.stringify(err));
         // }
-        this.deletePhotos(id, deleteIds[i])
+        this.deletePhotos(id, deleteIds[i]);
       }
     }
-      this.updatePhotos(updatedLocations, id);
+    this.updatePhotos(updatedLocations, id);
   }
 
   updatePhotos(locations: any[], id: string) {
@@ -200,7 +210,7 @@ export class FormPostService {
           console.log('update photos error', error);
         }
       );
-  };
+  }
 
   deletePhotos(id: string, pictureId: number) {
     this.apollo
