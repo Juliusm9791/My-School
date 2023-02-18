@@ -188,7 +188,7 @@ db.once("open", async () => {
       departmentId: departments[1].id,
       gradeId: [grades[1]._id, grades[2]._id],
       description:
-        "Each semester I have special opportunity to choose one of you to represent our class at the Speakers’ Showcase. All communications professors can nominate one student to submit their best speech. If you are nominated you will receive extra credit. In addition, a panel of judges will choose the top six presentations to be in the Showcase. If you are chosen to be in the Showcase, you will receive additional extra credit and possibly money or prizes. This is a win-win! The next showcase is April 26th. Your presentation videos will be due April 17th.",
+        "Each semester I have special opportunity to choose one of you to represent our class at the Speakers' Showcase. All communications professors can nominate one student to submit their best speech. If you are nominated you will receive extra credit. In addition, a panel of judges will choose the top six presentations to be in the Showcase. If you are chosen to be in the Showcase, you will receive additional extra credit and possibly money or prizes. This is a win-win! The next showcase is April 26th. Your presentation videos will be due April 17th.",
       pictures: [
         {
           order: 0,
@@ -215,8 +215,7 @@ db.once("open", async () => {
         },
         {
           order: 1,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/1.jpg",
+          location: "https://ik.imagekit.io/myschool/1.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -237,13 +236,11 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/2.1.jpg",
+          location: "https://ik.imagekit.io/myschool/2.1.jpg?tr=w-200,h-200",
         },
         {
           order: 1,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/2.jpg",
+          location: "https://ik.imagekit.io/myschool/2.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -260,12 +257,11 @@ db.once("open", async () => {
       departmentId: departments[0].id,
       gradeId: [grades[2]._id, grades[3]._id],
       description:
-        "Open House will look different this year. Students who are coming on A and B weeks will participate in a virtual Open House on December 1st for 1st-5th grade.  Each teacher will send out a virtual open house video to view by 4:30pm. Your child’s teacher will contact you to either set up times to meet virtually through Zoom or do a live question and answer session for parents who would like to attend. We understand this may cause some anxiety, however, we can assure you we will be available to answer questions, address concerns, and introduce ourselves to our Eagles!",
+        "Open House will look different this year. Students who are coming on A and B weeks will participate in a virtual Open House on December 1st for 1st-5th grade.  Each teacher will send out a virtual open house video to view by 4:30pm. Your child's teacher will contact you to either set up times to meet virtually through Zoom or do a live question and answer session for parents who would like to attend. We understand this may cause some anxiety, however, we can assure you we will be available to answer questions, address concerns, and introduce ourselves to our Eagles!",
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/3.jpg",
+          location: "https://ik.imagekit.io/myschool/3.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -283,18 +279,15 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.1.jpg",
+          location: "https://ik.imagekit.io/myschool/4.1.jpg?tr=w-200,h-200",
         },
         {
           order: 1,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.2.jpg",
+          location: "https://ik.imagekit.io/myschool/4.2.jpg?tr=w-200,h-200",
         },
         {
           order: 2,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/4.jpg",
+          location: "https://ik.imagekit.io/myschool/4.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -308,7 +301,7 @@ db.once("open", async () => {
       departmentId: departments[14].id,
       gradeId: applyAllGrades,
       description:
-        " Lunch money can be paid online with the system PaySchools Central found at payschoolscentral.com or students may bring cash or a check weekly or monthly.If you feel your family may qualify for free/reduced lunch status please make sure you get the form from the office or your child’s teacher. If you were approved last year it continues for the first 4 weeks of school but a new application must be filled out each year.  ",
+        "Lunch money can be paid online with the system PaySchools Central found at payschoolscentral.com or students may bring cash or a check weekly or monthly.If you feel your family may qualify for free/reduced lunch status please make sure you get the form from the office or your child's teacher. If you were approved last year it continues for the first 4 weeks of school but a new application must be filled out each year.",
       userId: users[Math.floor(Math.random() * users.length)]._id,
       commentId: comments[Math.floor(Math.random() * comments.length)]._id,
       reactionId: reactions[Math.floor(Math.random() * reactions.length)]._id,
@@ -327,8 +320,7 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/6.png",
+          location: "https://ik.imagekit.io/myschool/6.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -349,13 +341,11 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/7.1.jpg",
+          location: "https://ik.imagekit.io/myschool/7.1.jpg?tr=w-200,h-200",
         },
         {
           order: 1,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/7.jpg",
+          location: "https://ik.imagekit.io/myschool/7.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -376,8 +366,7 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/8.jpg",
+          location: "https://ik.imagekit.io/myschool/8.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
@@ -394,12 +383,11 @@ db.once("open", async () => {
       departmentId: departments[3].id,
       gradeId: [grades[4]._id],
       description:
-        "Module Quiz: Heads up fourth graders, this week’s quiz includes 25 multiple-choice questions, and you have one hour complete the assignment once you begin. The quiz takes place on Friday.  Presentation: Be sure to reference the rubric for this assignment that can be found in the course documents folder. As always, I am happy to help!",
+        "Module Quiz: Heads up fourth graders, this week's quiz includes 25 multiple-choice questions, and you have one hour complete the assignment once you begin. The quiz takes place on Friday.  Presentation: Be sure to reference the rubric for this assignment that can be found in the course documents folder. As always, I am happy to help!",
       pictures: [
         {
           order: 0,
-          location:
-            "https://user-images-8d8a6cbf-fd68-4ab3-bbdf-fe392c16d283.s3.us-east-2.amazonaws.com/9.jpg",
+          location: "https://ik.imagekit.io/myschool/9.jpg?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
