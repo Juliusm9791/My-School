@@ -82,11 +82,13 @@ export class ProfileComponent implements OnInit {
     this.postsService.changeLoading.subscribe((loading) => {
       this.postsLoading = loading;
     });
-    this.notificationsService.changeNotifications.subscribe((notifications: Notification[]) => {
-      this.userNotifications = notifications.filter((notification) => {
-        return notification.receiver._id === this.me._id
-      })
-    })
+    this.notificationsService.changeNotifications.subscribe(
+      (notifications: Notification[]) => {
+        this.userNotifications = notifications.filter((notification) => {
+          return notification.receiver._id === this.me._id;
+        });
+      }
+    );
     this.notificationsService.changeLoading.subscribe((loading) => {
       this.notificationsLoading = loading;
     });
@@ -122,10 +124,10 @@ export class ProfileComponent implements OnInit {
   }
 
   action(type: string) {
-    if (type === "Comment") {
-      return "commented"
+    if (type === 'Comment') {
+      return 'commented on';
     } else {
-      return "liked"
+      return 'liked';
     }
   }
 

@@ -123,7 +123,6 @@ section {
 .notificationRow {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
   height: 50px;
   width: fit-content;
 }
@@ -148,14 +147,12 @@ h5 {
   cursor: pointer;
 }
 
-h5 span {
+.notificationDetail a {
   color: #3e5bb3 !important;
-  margin-left: 3px;
 }
 
-h5 span:hover {
+.notificationDetail a:hover {
   color: #f98c5a !important;
-  cursor: pointer;
 }
 
 #clear {
@@ -168,6 +165,11 @@ h5 span:hover {
 #clear:hover {
   padding-top: 3px;
   color: #f98c5a;
+}
+
+#clearNotificationButton {
+  border: none;
+  background-color: transparent;
 }
 
 #profile-buttons a,

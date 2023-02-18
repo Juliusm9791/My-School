@@ -322,7 +322,7 @@ db.once("open", async () => {
       pictures: [
         {
           order: 0,
-          location: "https://ik.imagekit.io/myschool/6.jpg?tr=w-200,h-200",
+          location: "https://ik.imagekit.io/myschool/6.png?tr=w-200,h-200",
         },
       ],
       userId: users[Math.floor(Math.random() * users.length)]._id,
