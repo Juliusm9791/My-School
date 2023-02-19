@@ -4,6 +4,7 @@
 }
 
 .home {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -221,6 +222,34 @@ app-calendar {
   font-weight: 300;
 }
 
+#homeIllustration1,
+#homeIllustration2,
+#homeIllustration3 {
+  z-index: -1;
+  position: absolute;
+  height: 280px;
+  width: auto;
+  rotate: 270deg;
+  top: 65px;
+  right: 200px;
+}
+
+#homeIllustration2 {
+  top: 1330px;
+  right: 450px;
+  height: 350px;
+  width: auto;
+  rotate: 270deg;
+}
+
+#homeIllustration3 {
+  top: 2100px;
+  right: 740px;
+  height: 440px;
+  width: auto;
+  rotate: 360deg;
+}
+
 @media (max-width: 1100px) {
   .widget-column {
     display: none;
@@ -255,5 +284,26 @@ app-calendar {
 
   app-department {
     width: 90%;
+  }
+
+  #homeIllustration1 {
+    height: 180px;
+    width: auto;
+    top: 25px;
+    right: -40px;
+  }
+
+  #homeIllustration2 {
+    top: 1340px;
+    right: 80px;
+    height: 240px;
+    width: auto;
+  }
+
+  #homeIllustration3 {
+    top: 2150px;
+    right: 10px;
+    height: 340px;
+    width: auto;
   }
 }
