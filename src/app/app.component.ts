@@ -36,8 +36,12 @@ export class AppComponent implements OnDestroy, OnInit {
     this.mobileQuery = media.matchMedia('(max-width: 900px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    this.authService.changeLoggedIn.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
+
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+      !isLoggedIn
+        ? this.router.navigate(['/'])
+        : this.loginSignupService.queryMe();
     });
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
@@ -46,17 +50,7 @@ export class AppComponent implements OnDestroy, OnInit {
       this.me = me;
     });
   }
-  ngOnInit(): void {
-    this.authService.loggedIn();
-    this.isLoggedIn = this.authService.isLoggedIn;
-
-    if (this.isLoggedIn) {
-      this.loginSignupService.queryMe();
-      this.me = this.loginSignupService.me;
-    } else {
-      this.router.navigate(['/']);
-    }
-  }
+  ngOnInit(): void {}
   onActivate(event: any) {
     document.querySelector<any>('mat-sidenav-content').scroll({
       top: 0,
@@ -71,10 +65,14 @@ export class AppComponent implements OnDestroy, OnInit {
       this.router.navigate(['/search']);
     }
   }
+  isUserLoggedIn() {
+    !this.isLoggedIn
+      ? this.router.navigate(['/account/login'])
+      : this.router.navigate(['/account/profile']);
+  }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-    this.loginSignupService.deleteMe();
   }
 
   schoolList: string[] = [

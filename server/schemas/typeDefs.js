@@ -30,6 +30,7 @@ const typeDefs = gql`
     departmentId: [Department]
     groupId: [Group]
     gradeId: [Grade]
+    fireUid: String
   }
 
   type Reaction {
@@ -112,6 +113,7 @@ const typeDefs = gql`
       avatar: String
       email: String!
       password: String!
+      fireUid: String
     ): Auth
     updateMe(
       firstName: String
@@ -127,7 +129,7 @@ const typeDefs = gql`
       gradeId: [ID]
       departmentId: [ID]
     ): User
-    login(email: String!, password: String!): Auth
+    login(email: String!, password: String!, fireUid: String): Auth
     addPost(
       userId: ID
       isVisible: Boolean!
@@ -168,11 +170,7 @@ const typeDefs = gql`
 
     addReactionLike(postId: ID): Reaction
 
-    addNotification(
-      receiver: ID!
-      type: String!
-      referPost: ID!
-    ): Notification
+    addNotification(receiver: ID!, type: String!, referPost: ID!): Notification
     updateNotification(_id: ID!, isRead: Boolean): Notification
     deleteNotification(_id: ID!): Notification
   }

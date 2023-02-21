@@ -52,8 +52,8 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
-    this.authService.changeLoggedIn.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
     });
     console.log(this.commentForm.controls.comment);
   }
@@ -61,7 +61,6 @@ export class PostDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.postId = this.route.snapshot.paramMap.get('id');
     this.postDetailsService.queryPost(this.postId);
-    this.isLoggedIn = this.authService.isLoggedIn;
     this.me = this.loginSignupService.me;
   }
 
@@ -77,7 +76,11 @@ export class PostDetailsComponent implements OnInit {
     if (comment !== '' || null) {
       this.postDetailsService.addComment(comment, this.postId);
       if (this.post.userId._id !== this.me._id) {
-        this.notificationsService.addNotification(this.post.userId._id, "Comment", this.post._id)
+        this.notificationsService.addNotification(
+          this.post.userId._id,
+          'Comment',
+          this.post._id
+        );
       }
       this.commentForm.reset();
     }
@@ -106,7 +109,11 @@ export class PostDetailsComponent implements OnInit {
     if (this.me._id) {
       this.postsService.addUserLike(this.me._id, postId);
       if (this.post.userId._id !== this.me._id) {
-        this.notificationsService.addNotification(this.post.userId._id, "Like", this.post._id)
+        this.notificationsService.addNotification(
+          this.post.userId._id,
+          'Like',
+          this.post._id
+        );
       }
     }
   }

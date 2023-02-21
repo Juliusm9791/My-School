@@ -8,7 +8,7 @@ const {
   Comment,
   Reaction,
   Grade,
-  Notification
+  Notification,
 } = require("../models");
 const pubsub = new PubSub();
 
@@ -81,8 +81,11 @@ const resolvers = {
       return await Grade.find({});
     },
     notifications: async (parent, args) => {
-      return await Notification.find({}).populate("sender").populate("receiver").populate("referPost");
-    }
+      return await Notification.find({})
+        .populate("sender")
+        .populate("receiver")
+        .populate("referPost");
+    },
   },
 
   Mutation: {
@@ -152,7 +155,7 @@ const resolvers = {
         sender: context.user._id,
         receiver: args.receiver,
         type: args.type,
-        referPost: args.referPost
+        referPost: args.referPost,
       });
       pubsub.publish("NOTIFICATION_ADDED", {
         notificationAdded: {
@@ -160,11 +163,11 @@ const resolvers = {
           receiver: args.receiver,
           type: args.type,
           isRead: args.isRead,
-          referPostId: args.postId
+          referPostId: args.postId,
         },
       });
       return newNotification;
-    }, 
+    },
     updatePost: async (parent, args, context) => {
       if (context.user) {
         const { _id, ...updateContent } = args;
@@ -198,11 +201,13 @@ const resolvers = {
         );
       }
     },
-    updateNotification: async(parent, args, context) => {
-      if (context. user) {
+    updateNotification: async (parent, args, context) => {
+      if (context.user) {
         const { _id, ...updateContent } = args;
-        return await Notification.findByIdAndUpdate(_id, updateContent, { new: true })
-      };
+        return await Notification.findByIdAndUpdate(_id, updateContent, {
+          new: true,
+        });
+      }
     },
     deletePhotos: async (parent, args, context) => {
       if (context.user) {
@@ -233,9 +238,9 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-    deleteNotification: async(parent, args, context) => {
+    deleteNotification: async (parent, args, context) => {
       if (context.user) {
-        return await Notification.findByIdAndDelete({_id: args._id})
+        return await Notification.findByIdAndDelete({ _id: args._id });
       }
       throw new AuthenticationError("Not logged in");
     },
