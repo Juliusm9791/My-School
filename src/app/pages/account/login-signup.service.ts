@@ -3,6 +3,8 @@ import {
   Auth,
   authState,
   createUserWithEmailAndPassword,
+  getAuth,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -17,13 +19,18 @@ import { Me } from 'src/app/types/types';
 export class LoginSignupService {
   private loading: boolean = true;
   private _me: Me = {} as Me;
+  isLoggedIn?: boolean;
 
   constructor(
     private apollo: Apollo,
     private authService: AuthService,
     private router: Router,
     private fireAuth: Auth
-  ) {}
+  ) {
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
+  }
 
   @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
   @Output() changeMe: EventEmitter<Me> = new EventEmitter();
@@ -37,6 +44,7 @@ export class LoginSignupService {
 
     authState(this.fireAuth).subscribe((user) => {
       if (!!user) {
+        variables.password = user.uid;
         this.apollo
           .mutate({
             mutation: mutationType,
@@ -91,25 +99,41 @@ export class LoginSignupService {
   }
 
   queryMe() {
-    this.apollo
-      .watchQuery({
-        query: QUERY_ME,
-        fetchPolicy: 'network-only',
-      })
-      .valueChanges.subscribe(
-        (result: any) => {
-          this._me = result?.data?.me;
-          console.log('query me data ', this._me);
-          this.loading = result.loading;
-          this.changeLoading.emit(this.loading);
-          this.changeMe.emit(this._me);
-          !this.loading && this.router.navigate(['/account/profile']);
-        },
-        (error) => {
-          console.log('query me error', error);
-        }
-      );
+    console.log('start query me');
+    if (this.isLoggedIn) {
+      this.apollo
+        .watchQuery({
+          query: QUERY_ME,
+          fetchPolicy: 'network-only',
+        })
+        .valueChanges.subscribe(
+          (result: any) => {
+            this._me = result?.data?.me;
+            console.log('query me data ', this._me);
+            this.loading = result.loading;
+            this.changeLoading.emit(this.loading);
+            this.changeMe.emit(this._me);
+            !this.loading && this.router.navigate(['/account/profile']);
+          },
+          (error) => {
+            console.log('query me error', error);
+          }
+        );
+    }
   }
+
+  resetPassword(email: any) {
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log('Password reset email sent!' + email);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  }
+
   get me() {
     return this._me;
   }

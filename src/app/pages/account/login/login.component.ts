@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LOGIN } from 'src/app/services/graphql/mutations';
 import { LoginSignupService } from '../login-signup.service';
@@ -8,10 +8,14 @@ import { LoginSignupService } from '../login-signup.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loading: boolean = true;
   hide = true;
-
+  emailSent: boolean = false;
+  resetEmailInput: boolean = false;
+  resetEmailForm = new FormGroup({
+    resetEmail: new FormControl('', [Validators.required, Validators.email]),
+  });
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -26,6 +30,10 @@ export class LoginComponent implements OnInit {
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
+  }
+  ngOnDestroy(): void {
+    this.resetEmailForm.reset();
+    this.emailSent = false;
   }
 
   getErrorMessage(msg: string) {
@@ -45,5 +53,15 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value,
     });
+  }
+
+  resetemail() {
+    console.log(this.resetEmailForm.valid);
+    if (this.resetEmailForm.valid) {
+      console.log('sent');
+      this.loginSignupService.resetPassword(
+        this.resetEmailForm.controls.resetEmail.value
+      );
+    }
   }
 }
