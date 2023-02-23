@@ -6,7 +6,7 @@ import {
   QUERY_USER,
   QUERY_NOTIFICATIONS,
 } from 'src/app/services/graphql/queries';
-import { ADD_NOTIFICATION, DELETE_NOTIFICATION, UPDATE_NOTIFICATION } from './graphql/mutations';
+import { ADD_NOTIFICATION, DELETE_NOTIFICATION, DELETE_NOTIFICATION_BY_POST_ID, UPDATE_NOTIFICATION } from './graphql/mutations';
 import { Grade, Faculty, Me, Notification } from 'src/app/types/types';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ArchiveGroupSettings } from 'aws-sdk/clients/medialive';
@@ -146,7 +146,7 @@ export class NotificationsService {
         },
         (error) => {
           this.changeError.emit(this.error);
-          console.log('query posts error', error);
+          console.log('query notifications error', JSON.stringify(error, null, 2));
         }
       );
   }
@@ -184,6 +184,26 @@ export class NotificationsService {
       .mutate({
         mutation: DELETE_NOTIFICATION,
         variables: { id: id },
+        refetchQueries: [
+          {
+            query: QUERY_NOTIFICATIONS,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('Notification Deleted', result);
+        },
+        (error) => {
+          console.log('delete notification error', JSON.stringify(error, null, 2));
+        }
+      );
+  }
+  deleteNotificationByPostId(id: string) {
+    this.apollo
+      .mutate({
+        mutation: DELETE_NOTIFICATION_BY_POST_ID,
+        variables: { referPost: id },
         refetchQueries: [
           {
             query: QUERY_NOTIFICATIONS,

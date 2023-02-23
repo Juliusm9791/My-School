@@ -173,6 +173,7 @@ const typeDefs = gql`
     addNotification(receiver: ID!, type: String!, referPost: ID!): Notification
     updateNotification(_id: ID!, isRead: Boolean): Notification
     deleteNotification(_id: ID!): Notification
+    deleteNotificationByPostId(referPost: ID!): Notification
   }
 
   type Subscription {
