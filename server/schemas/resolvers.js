@@ -220,21 +220,29 @@ const resolvers = {
     },
     deletePost: async (parent, args, context) => {
       if (context.user) {
-        return await Post.findByIdAndDelete(
-          { _id: args._id },
-          async (err, post) => {
-            await Comment.deleteMany({
-              _id: {
-                $in: post.commentId,
-              },
-            });
-            await Reaction.deleteMany({
-              _id: {
-                $in: post.reactionId,
-              },
-            });
-          }
-        );
+        try {
+          return await Post.findByIdAndDelete(
+            { _id: args._id },
+            async (err, post) => {
+              if (post.commentId.length > 0 && post.commentId !== null) {
+                await Comment.deleteMany({
+                  _id: {
+                    $in: post.commentId,
+                  },
+                });
+              }
+              if (post.reactionId.length > 0 && post.reactionId !== null) {
+                await Reaction.deleteMany({
+                  _id: {
+                    $in: post.reactionId,
+                  },
+                });
+              }
+            }
+          );
+        } catch (err) {
+          console.log("error deleting post", err);
+        }
       }
       throw new AuthenticationError("Not logged in");
     },

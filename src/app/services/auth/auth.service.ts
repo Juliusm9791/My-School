@@ -1,17 +1,20 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Auth, authState } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedIn: EventEmitter<boolean> = new EventEmitter();
+  isLoggedIn: Observable<boolean>;
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private fireAuth: Auth, private router: Router) {
+    this.isLoggedIn = this.isLoggedInSubject.asObservable();
+
     this.fireAuth.onAuthStateChanged((user) => {
-      console.info('AUTH', !!user);
-      this.isLoggedIn.emit(!!user);
+      this.isLoggedInSubject.next(!!user);
     });
   }
 

@@ -39,7 +39,7 @@ export class AppComponent implements OnDestroy, OnInit {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
 
-    !this.authService.isLoggedIn.subscribe((logedIn) => {
+    this.authService.isLoggedIn.subscribe((logedIn) => {
       logedIn ? this.router.navigate(['/']) : this.loginSignupService.queryMe();
       this.isLoggedIn = logedIn;
     });
@@ -58,7 +58,6 @@ export class AppComponent implements OnDestroy, OnInit {
         this.loginSignupService.queryMe();
       } else {
         console.log('session end');
-
         this.authService.logout();
         // user's session has ended, do something here
       }

@@ -43,7 +43,6 @@ export class PostDetailsComponent implements OnInit {
     });
     this.postDetailsService.changePost.subscribe((post) => {
       this.post = post;
-      console.log('post:', post);
       post.pictures.forEach((picture) =>
         this.postPictures.splice(picture.order, 0, picture.location)
       );
@@ -55,7 +54,6 @@ export class PostDetailsComponent implements OnInit {
     this.authService.isLoggedIn.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
-    console.log(this.commentForm.controls.comment);
   }
 
   ngOnInit(): void {
