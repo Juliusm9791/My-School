@@ -250,6 +250,19 @@ app-calendar {
   rotate: 360deg;
 }
 
+@media (min-width: 1400px) {
+  #homeIllustration2 {
+    height: 250px;
+    top: 1400px;
+    right: 500px;
+  }
+
+  #homeIllustration3 {
+    top: 2350px;
+    right: 220px;
+  }
+}
+
 @media (max-width: 1100px) {
   .widget-column {
     display: none;
