@@ -34,7 +34,7 @@ input.example-right-align::-webkit-inner-spin-button {
   font-family: Grotesk;
   font-weight: bolder;
   letter-spacing: 0.1rem;
-  margin-top: 15px;
+  margin: 15px auto 20px auto;
   width: fit-content;
   padding: 10px 15px;
   background-color: #f29c55;
@@ -60,6 +60,10 @@ input.example-right-align::-webkit-inner-spin-button {
   color: #4050b2;
 }
 
+.register-switch,
+.registerForm {
+  margin-top: 10px;
+}
 .register-switch a {
   color: #4050b2;
 }

@@ -1,69 +1,74 @@
 <div class="registerPage">
-  <form class="registerForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="email-field">
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          placeholder="pat@example.com"
-          formControlName="email"
-          required
-        />
-        <mat-error *ngIf="loginForm.controls.email.invalid">{{
-          getErrorMessage("email")
-        }}</mat-error>
-      </mat-form-field>
-    </div>
+  <ng-container *ngIf="!resetEmailInput">
+    <form class="registerForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="email-field">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="loginForm.controls.email.invalid">{{
+            getErrorMessage("email")
+          }}</mat-error>
+        </mat-form-field>
+      </div>
 
-    <div class="password-field">
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          [type]="hide ? 'password' : 'text'"
-          formControlName="password"
-          required
-        />
-        <mat-error *ngIf="loginForm.controls.password.invalid">{{
-          getErrorMessage("password")
-        }}</mat-error>
+      <div class="password-field">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            required
+          />
+          <mat-error *ngIf="loginForm.controls.password.invalid">{{
+            getErrorMessage("password")
+          }}</mat-error>
 
-        <button
-          id="hidePswd"
-          mat-icon-button
-          matSuffix
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-        >
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
+          <button
+            id="hidePswd"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
 
-    <div class="register-switch">
-      <mat-label>
-        No account? Click to
-        <a id="sign-up" routerLink="/account/signup"> sign-up</a>.
-      </mat-label>
-    </div>
+      <div class="register-switch">
+        <mat-label>
+          No account? Click to
+          <a id="sign-up" routerLink="/account/signup"> sign-up</a>.
+        </mat-label>
+      </div>
 
-    <div class="submitBtn">
-      <button type="submit">SUBMIT</button>
-    </div>
-  </form>
-  <div class="register-switch">
-    <mat-label>
-      reset pasw
-      <a
-        (click)="resetEmailInput = !resetEmailInput"
-        (click)="resetEmailForm.reset()"
-      >
-        > reset</a
-      >.
-    </mat-label>
-  </div>
+      <div class="register-switch">
+        <mat-label>
+          Forgot password? Click
+          <a
+            (click)="resetEmailInput = !resetEmailInput"
+            (click)="resetEmailForm.reset()"
+          >
+            here.</a
+          >
+        </mat-label>
+      </div>
+
+      <div class="submitBtn">
+        <button type="submit">SUBMIT</button>
+      </div>
+    </form>
+  </ng-container>
+
   <ng-container *ngIf="resetEmailInput">
+    <mat-label class="resetPrompt"> Enter email to reset password: </mat-label>
     <form
       class="registerForm"
       [formGroup]="resetEmailForm"
