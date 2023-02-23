@@ -38,6 +38,18 @@
       <div class="seeAllBtn">
         <button type="submit" [routerLink]="['departments']">SEE ALL</button>
       </div>
+
+      <br />
+      <br />
+      <h1 id="department-header">FACULTY MEMBERS:</h1>
+      <div>
+        <ng-container *ngFor="let facultyMember of allFacultyMembers">
+          <app-faculty-member [facultyMember]="facultyMember"></app-faculty-member>        
+        </ng-container>
+      </div>
+      <div class="seeAllBtn">
+        <button type="submit" [routerLink]="['faculty']">SEE ALL</button>
+      </div>
     </div>
 
     <div class="widget-column">
