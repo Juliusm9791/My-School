@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import { AuthService } from 'src/app/services//auth/auth.service';
@@ -43,6 +43,7 @@ export class ProfileComponent implements OnInit {
     private postsService: PostsService,
     private notificationsService: NotificationsService,
     private router: Router,
+    private cd: ChangeDetectorRef,
     apollo: Apollo
   ) {
     ////////////////////////////////////

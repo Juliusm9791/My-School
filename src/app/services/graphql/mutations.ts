@@ -80,16 +80,8 @@ export const ADD_POST = gql`
 `;
 
 export const ADD_NOTIFICATION = gql`
-  mutation Mutation(
-    $receiver: ID!
-    $type: String!
-    $referPost: ID!
-  ) {
-    addNotification(
-      receiver: $receiver
-      type: $type
-      referPost: $referPost
-    ) {
+  mutation Mutation($receiver: ID!, $type: String!, $referPost: ID!) {
+    addNotification(receiver: $receiver, type: $type, referPost: $referPost) {
       _id
       createdAt
     }
@@ -165,6 +157,14 @@ export const DELETE_POST = gql`
 export const DELETE_NOTIFICATION = gql`
   mutation Mutation($id: ID!) {
     deleteNotification(_id: $id) {
+      _id
+    }
+  }
+`;
+
+export const DELETE_NOTIFICATION_BY_POST_ID = gql`
+  mutation DeleteNotificationByPostId($referPost: ID!) {
+    deleteNotificationByPostId(referPost: $referPost) {
       _id
     }
   }
