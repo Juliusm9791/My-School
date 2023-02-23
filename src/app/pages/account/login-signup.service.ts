@@ -99,7 +99,6 @@ export class LoginSignupService {
   }
 
   queryMe() {
-    console.log('start query me');
     if (this.isLoggedIn) {
       this.apollo
         .watchQuery({

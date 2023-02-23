@@ -1,5 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginSignupService } from './pages/account/login-signup.service';
@@ -31,7 +32,8 @@ export class AppComponent implements OnDestroy, OnInit {
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
     private postsService: PostsService,
-    private router: Router
+    private router: Router,
+    private fireAuth: Auth
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 900px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -50,7 +52,18 @@ export class AppComponent implements OnDestroy, OnInit {
       this.me = me;
     });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fireAuth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log('still session');
+      } else {
+        console.log('session end');
+
+        this.authService.logout();
+        // user's session has ended, do something here
+      }
+    });
+  }
   onActivate(event: any) {
     document.querySelector<any>('mat-sidenav-content').scroll({
       top: 0,
