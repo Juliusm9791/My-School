@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private token: any;
-  @Output() isLoggedIn: EventEmitter<boolean> = new EventEmitter();
+  isLoggedIn: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private fireAuth: Auth, private router: Router) {
-    authState(this.fireAuth).subscribe((user) => {
+    this.fireAuth.onAuthStateChanged((user) => {
+      console.info('AUTH', !!user);
       this.isLoggedIn.emit(!!user);
     });
   }

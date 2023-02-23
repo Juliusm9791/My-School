@@ -19,12 +19,12 @@ export class AppComponent implements OnDestroy, OnInit {
   ]);
   title = 'client';
   mobileQuery: MediaQueryList;
-  isLoggedIn: boolean = false;
   me: any;
   loading: boolean = true;
   defaultAvatar: string = '../assets/images/account.png';
 
   private _mobileQueryListener: () => void;
+  isLoggedIn: boolean = false;
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
@@ -39,12 +39,11 @@ export class AppComponent implements OnDestroy, OnInit {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
 
-    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
-      this.isLoggedIn = isLoggedIn;
-      !isLoggedIn
-        ? this.router.navigate(['/'])
-        : this.loginSignupService.queryMe();
+    !this.authService.isLoggedIn.subscribe((logedIn) => {
+      logedIn ? this.router.navigate(['/']) : this.loginSignupService.queryMe();
+      this.isLoggedIn = logedIn;
     });
+
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
@@ -54,8 +53,9 @@ export class AppComponent implements OnDestroy, OnInit {
   }
   ngOnInit(): void {
     this.fireAuth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log('still session');
+      if (!!user) {
+        console.log('still session', this.isLoggedIn, user, !!user);
+        this.loginSignupService.queryMe();
       } else {
         console.log('session end');
 
@@ -64,6 +64,7 @@ export class AppComponent implements OnDestroy, OnInit {
       }
     });
   }
+
   onActivate(event: any) {
     document.querySelector<any>('mat-sidenav-content').scroll({
       top: 0,
