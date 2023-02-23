@@ -79,7 +79,6 @@ export const QUERY_ME = gql`
         _id
         groupName
       }
-      password
       phoneNumber
     }
   }
@@ -178,24 +177,24 @@ export const QUERY_POST = gql`
 `;
 
 export const QUERY_NOTIFICATIONS = gql`
-query Query {
-  notifications {
-    _id
-    createdAt
-    isRead
-    type
-    receiver {
+  query Query {
+    notifications {
       _id
-    }
-    sender {
-      _id
-      firstName
-      lastName
-    }
-    referPost {
-      _id
-      title
+      createdAt
+      isRead
+      type
+      receiver {
+        _id
+      }
+      sender {
+        _id
+        firstName
+        lastName
+      }
+      referPost {
+        _id
+        title
+      }
     }
   }
-}
 `;

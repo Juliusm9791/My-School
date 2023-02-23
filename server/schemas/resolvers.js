@@ -8,7 +8,7 @@ const {
   Comment,
   Reaction,
   Grade,
-  Notification
+  Notification,
 } = require("../models");
 const pubsub = new PubSub();
 
@@ -80,6 +80,7 @@ const resolvers = {
     grades: async (parent, args) => {
       return await Grade.find({});
     },
+
     notifications: async (parent, args, context) => {
       if (context.user) {
         const result = await Notification.find({}).populate("sender").populate("receiver").populate("referPost");
@@ -87,6 +88,7 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     }
+
   },
 
   Mutation: {
@@ -156,7 +158,7 @@ const resolvers = {
         sender: context.user._id,
         receiver: args.receiver,
         type: args.type,
-        referPost: args.referPost
+        referPost: args.referPost,
       });
       pubsub.publish("NOTIFICATION_ADDED", {
         notificationAdded: {
@@ -164,7 +166,7 @@ const resolvers = {
           receiver: args.receiver,
           type: args.type,
           isRead: args.isRead,
-          referPostId: args.postId
+          referPostId: args.postId,
         },
       });
       return newNotification;
@@ -205,8 +207,10 @@ const resolvers = {
     updateNotification: async (parent, args, context) => {
       if (context.user) {
         const { _id, ...updateContent } = args;
-        return await Notification.findByIdAndUpdate(_id, updateContent, { new: true })
-      };
+        return await Notification.findByIdAndUpdate(_id, updateContent, {
+          new: true,
+        });
+      }
     },
     deletePhotos: async (parent, args, context) => {
       if (context.user) {
@@ -219,22 +223,37 @@ const resolvers = {
     },
     deletePost: async (parent, args, context) => {
       if (context.user) {
-        const post = await Post.findById(args._id);
-        await Comment.deleteMany({
-          _id: { $in: post.commentId }
-        })
-        await Reaction.deleteMany({
-          _id: {
-            $in: post.reactionId,
-          },
-        });
- 
-        return await Post.findByIdAndDelete(args._id);
+
+        try {
+          return await Post.findByIdAndDelete(
+            { _id: args._id },
+            async (err, post) => {
+              if (post.commentId.length > 0 && post.commentId !== null) {
+                await Comment.deleteMany({
+                  _id: {
+                    $in: post.commentId,
+                  },
+                });
+              }
+              if (post.reactionId.length > 0 && post.reactionId !== null) {
+                await Reaction.deleteMany({
+                  _id: {
+                    $in: post.reactionId,
+                  },
+                });
+              }
+            }
+          );
+        } catch (err) {
+          console.log("error deleting post", err);
+        }
+
       }
       throw new AuthenticationError("Not logged in");
     },
     deleteNotification: async (parent, args, context) => {
       if (context.user) {
+
         return await Notification.findByIdAndDelete({ _id: args._id })
       }
       throw new AuthenticationError("Not logged in");
@@ -244,6 +263,7 @@ const resolvers = {
         return await Notification.deleteMany({
           referPost: args.referPost
         });
+
       }
       throw new AuthenticationError("Not logged in");
     },

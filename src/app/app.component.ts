@@ -1,5 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginSignupService } from './pages/account/login-signup.service';
@@ -18,12 +19,12 @@ export class AppComponent implements OnDestroy, OnInit {
   ]);
   title = 'client';
   mobileQuery: MediaQueryList;
-  isLoggedIn: boolean = false;
   me: any;
   loading: boolean = true;
   defaultAvatar: string = '../assets/images/account.png';
 
   private _mobileQueryListener: () => void;
+  isLoggedIn: boolean = false;
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
@@ -31,14 +32,18 @@ export class AppComponent implements OnDestroy, OnInit {
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
     private postsService: PostsService,
-    private router: Router
+    private router: Router,
+    private fireAuth: Auth
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 900px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-    this.authService.changeLoggedIn.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
+
+    this.authService.isLoggedIn.subscribe((logedIn) => {
+      logedIn ? this.router.navigate(['/']) : this.loginSignupService.queryMe();
+      this.isLoggedIn = logedIn;
     });
+
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
@@ -47,16 +52,18 @@ export class AppComponent implements OnDestroy, OnInit {
     });
   }
   ngOnInit(): void {
-    this.authService.loggedIn();
-    this.isLoggedIn = this.authService.isLoggedIn;
-
-    if (this.isLoggedIn) {
-      this.loginSignupService.queryMe();
-      this.me = this.loginSignupService.me;
-    } else {
-      this.router.navigate(['/']);
-    }
+    this.fireAuth.onAuthStateChanged((user) => {
+      if (!!user) {
+        console.log('still session', this.isLoggedIn, user, !!user);
+        this.loginSignupService.queryMe();
+      } else {
+        console.log('session end');
+        this.authService.logout();
+        // user's session has ended, do something here
+      }
+    });
   }
+
   onActivate(event: any) {
     document.querySelector<any>('mat-sidenav-content').scroll({
       top: 0,
@@ -71,10 +78,14 @@ export class AppComponent implements OnDestroy, OnInit {
       this.router.navigate(['/search']);
     }
   }
+  isUserLoggedIn() {
+    !this.isLoggedIn
+      ? this.router.navigate(['/account/login'])
+      : this.router.navigate(['/account/profile']);
+  }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-    this.loginSignupService.deleteMe();
   }
 
   schoolList: string[] = [
