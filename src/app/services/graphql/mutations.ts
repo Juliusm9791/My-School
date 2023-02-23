@@ -164,6 +164,14 @@ export const DELETE_NOTIFICATION = gql`
   }
 `;
 
+export const DELETE_NOTIFICATION_BY_POST_ID = gql`
+  mutation DeleteNotificationByPostId($referPost: ID!) {
+    deleteNotificationByPostId(referPost: $referPost) {
+      _id
+    }
+  }
+`;
+
 export const UPDATE_ME = gql`
   mutation UpdateMe(
     $firstName: String!

@@ -80,12 +80,15 @@ const resolvers = {
     grades: async (parent, args) => {
       return await Grade.find({});
     },
-    notifications: async (parent, args) => {
-      return await Notification.find({})
-        .populate("sender")
-        .populate("receiver")
-        .populate("referPost");
-    },
+
+    notifications: async (parent, args, context) => {
+      if (context.user) {
+        const result = await Notification.find({}).populate("sender").populate("receiver").populate("referPost");
+        return result;
+      }
+      throw new AuthenticationError("Not logged in");
+    }
+
   },
 
   Mutation: {
@@ -220,6 +223,7 @@ const resolvers = {
     },
     deletePost: async (parent, args, context) => {
       if (context.user) {
+
         try {
           return await Post.findByIdAndDelete(
             { _id: args._id },
@@ -243,12 +247,23 @@ const resolvers = {
         } catch (err) {
           console.log("error deleting post", err);
         }
+
       }
       throw new AuthenticationError("Not logged in");
     },
     deleteNotification: async (parent, args, context) => {
       if (context.user) {
-        return await Notification.findByIdAndDelete({ _id: args._id });
+
+        return await Notification.findByIdAndDelete({ _id: args._id })
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    deleteNotificationByPostId: async (parent, args, context) => {
+      if (context.user) {
+        return await Notification.deleteMany({
+          referPost: args.referPost
+        });
+
       }
       throw new AuthenticationError("Not logged in");
     },
