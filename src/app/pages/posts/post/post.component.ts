@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Me, Post, Reaction } from 'src/app/types/types';
 import { LoginSignupService } from '../../account/login-signup.service';
 import { PostsService } from '../posts.service';
+import { NotificationsService } from 'src/app/services/service';
 
 @Component({
   selector: 'app-post',
@@ -22,6 +23,7 @@ export class PostComponent implements OnInit {
   constructor(
     private router: Router,
     private postsService: PostsService,
+    private notificationsService: NotificationsService,
     private loginSignupService: LoginSignupService
   ) {
     this.loginSignupService.changeMe.subscribe((me) => {
@@ -30,7 +32,6 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.post);
     this.me = this.loginSignupService.me;
   }
 
@@ -75,6 +76,13 @@ export class PostComponent implements OnInit {
   addLike(postId: string) {
     if (this.me._id) {
       this.postsService.addUserLike(this.me._id, postId);
+      if (this.post.userId._id !== this.me._id) {
+        this.notificationsService.addNotification(
+          this.post.userId._id,
+          'Like',
+          this.post._id
+        );
+      }
     }
   }
   isLiked() {

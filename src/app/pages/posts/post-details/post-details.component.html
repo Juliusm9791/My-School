@@ -10,7 +10,10 @@
 
         <div id="gradeDeptBlk">
           <div id="postGrade">
-            <h2 *ngIf="post.gradeId">
+            <h2
+              *ngIf="post.gradeId"
+              (click)="gradeDetails(post.gradeId[0]._id)"
+            >
               {{ post.gradeId[0].gradeName }}
             </h2>
           </div>
@@ -26,13 +29,17 @@
       </mat-card-title>
 
       <div class="post-content">
-        <ng-container *ngIf="post.pictures.length !== 0">
-          <div id="images-block">
-            <ng-container *ngFor="let picture of post.pictures">
-              <img id="defaultImg" [src]="picture.location" />
-            </ng-container>
-          </div>
-        </ng-container>
+        <div class="images-block">
+          <ng-container *ngIf="post.pictures.length !== 0">
+            <div id="images-block">
+              <ng-container *ngFor="let picture of post.pictures">
+                <a [href]="picture.location" alt="post pictures" target="_blank"
+                  ><img id="defaultImg" [src]="picture.location"
+                /></a>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
 
         <div id="post-body">
           <div>
@@ -166,7 +173,7 @@
         <img
           id="commentUserImg"
           [src]="
-            comment.userId.avatar !== '' || null
+            comment.userId.avatar !== '' && comment.userId.avatar
               ? comment.userId.avatar
               : defaultAvatar
           "
@@ -208,5 +215,3 @@
     </ng-container>
   </div>
 </div>
-
-<div id="footer"><h5>My School &reg; 2023</h5></div>

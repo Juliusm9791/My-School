@@ -62,7 +62,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 30px 0px 15px 30px;
+  margin: 30px auto 15px auto;
 }
 
 .profile-col {
@@ -73,14 +73,32 @@
   padding: 0px 20px 10px 20px;
 }
 
+.profileIcons,
 .profile-col h3 {
   color: #4050b2;
   margin-bottom: 0px;
 }
 
-.key {
-  width: 70px;
-  text-align: right;
+mat-icon {
+  margin: 0px;
+}
+
+#deptIcon {
+  margin: 5px;
+  rotate: 90deg;
+}
+
+#groupIcon {
+  rotate: 180deg;
+}
+
+#addressIcon,
+#phoneIcon,
+#mailIcon,
+#bioIcon,
+#groupIcon,
+#gradeIcon {
+  margin: 5px 10px 5px 0px;
 }
 
 .bio {
@@ -90,7 +108,6 @@
 .profile-col div {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
 }
 
 #profile-img {
@@ -98,12 +115,13 @@
   border-radius: 50%;
 }
 
-.profile-col h4 {
+h4 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12pt;
   line-height: 16pt;
   margin: 0px 8px 0px 0px;
   color: rgb(51, 51, 51);
+  padding-top: 8px;
 }
 
 #profile-header a:link,

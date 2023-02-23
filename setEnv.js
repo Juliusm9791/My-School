@@ -12,6 +12,14 @@ const setEnv = () => {
   });
   // `environment.ts` file structure
   const envConfigFile = `export const environment = {
+    firebase: {
+      projectId: 'my-school-app-5384a',
+      appId: '${process.env["APPIDFIRE"]}',
+      storageBucket: 'my-school-app-5384a.appspot.com',
+      apiKey: '${process.env["APIKEYFIRE"]}',
+      authDomain: 'my-school-app-5384a.firebaseapp.com',
+      messagingSenderId: '${process.env["MSIDFIRE"]}',
+    },
         ACCESS: '${process.env["ACCESS"]}',
         SECRET: '${process.env["SECRET"]}',
         BUCKET: '${process.env["BUCKET"]}',
@@ -19,6 +27,14 @@ const setEnv = () => {
   };
   `;
   const envConfigFileProd = `export const environment = {
+    firebase: {
+      projectId: 'my-school-app-5384a',
+      appId: '${process.env["APPIDFIRE"]}',
+      storageBucket: 'my-school-app-5384a.appspot.com',
+      apiKey: '${process.env["APIKEYFIRE"]}',
+      authDomain: 'my-school-app-5384a.firebaseapp.com',
+      messagingSenderId: '${process.env["MSIDFIRE"]}',
+    },
     ACCESS: '${process.env["ACCESS"]}',
     SECRET: '${process.env["SECRET"]}',
     BUCKET: '${process.env["BUCKET"]}',

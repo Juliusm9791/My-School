@@ -65,6 +65,10 @@ const userSchema = new Schema({
       ref: "Grade",
     },
   ],
+  fireUid: {
+    type: String,
+    required: false,
+  },
 });
 
 // set up pre-save middleware to create password

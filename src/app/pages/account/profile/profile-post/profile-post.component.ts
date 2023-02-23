@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostsService } from 'src/app/pages/posts/posts.service';
+import { NotificationsService } from 'src/app/services/service';
 import { Post } from 'src/app/types/types';
 
 @Component({
@@ -12,13 +13,14 @@ export class ProfilePostComponent implements OnInit {
   @Input() post: Post = {} as Post;
   @Input() countLikes: number = 0;
   @Input() isUserPosts: boolean = false;
-  constructor(private router: Router, private postService: PostsService) {}
+  constructor(private router: Router, private postService: PostsService, private notificationsService: NotificationsService) {}
 
   ngOnInit(): void {}
 
   deletePost(id: string) {
     if (confirm('Are you sure to delete this post')) {
       this.postService.deletePost(id);
+      this.notificationsService.deleteNotificationByPostId(id);
     }
   }
   updatePost(id: string) {

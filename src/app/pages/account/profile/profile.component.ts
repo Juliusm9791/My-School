@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import { AuthService } from 'src/app/services//auth/auth.service';
-import { Me, Post } from 'src/app/types/types';
+import { Me, Post, Notification } from 'src/app/types/types';
 import { PostsService } from '../../posts/posts.service';
 import { LoginSignupService } from '../login-signup.service';
+import { NotificationsService } from 'src/app/services/service';
 
 ////////////////////
 const POST_SUB = gql`
@@ -31,14 +32,18 @@ export class ProfileComponent implements OnInit {
   error: any;
   loading: boolean = true;
   postsLoading: boolean = true;
+  notificationsLoading: boolean = true;
   userPosts: Post[] = [];
+  userNotifications: Notification[] = [];
   private _isUserPosts: boolean = true;
 
   constructor(
     private authService: AuthService,
     private loginSignupService: LoginSignupService,
     private postsService: PostsService,
+    private notificationsService: NotificationsService,
     private router: Router,
+    private cd: ChangeDetectorRef,
     apollo: Apollo
   ) {
     ////////////////////////////////////
@@ -60,12 +65,14 @@ export class ProfileComponent implements OnInit {
 
     //////////////////////////////////////
 
-    this.authService.changeLoggedIn.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+      !isLoggedIn
+        ? this.router.navigate(['/'])
+        : this.loginSignupService.queryMe();
     });
     this.loginSignupService.changeMe.subscribe((me) => {
       this.me = me;
-      console.log(this.me.avatar);
     });
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
@@ -78,6 +85,16 @@ export class ProfileComponent implements OnInit {
     this.postsService.changeLoading.subscribe((loading) => {
       this.postsLoading = loading;
     });
+    this.notificationsService.changeNotifications.subscribe(
+      (notifications: Notification[]) => {
+        this.userNotifications = notifications.filter((notification) => {
+          return notification.receiver._id === this.me._id;
+        });
+      }
+    );
+    this.notificationsService.changeLoading.subscribe((loading) => {
+      this.notificationsLoading = loading;
+    });
   }
 
   get isUserPosts() {
@@ -86,19 +103,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.postsService.queryPosts();
-    this.isLoggedIn = this.authService.isLoggedIn;
+    this.notificationsService.queryNotifications();
 
-    if (!this.isLoggedIn) {
-      this.router.navigate(['/']);
-    }
     this.loading = this.loginSignupService.isLoading;
     this.me = this.loginSignupService.me;
-    // this.postsService.subscribeToNewComments()
   }
 
   logout() {
     this.authService.logout();
-    this.loginSignupService.deleteMe();
   }
   likes(post: Post) {
     return this.postsService.countLikes(post);
@@ -106,5 +118,17 @@ export class ProfileComponent implements OnInit {
 
   profileEdit(id: string) {
     this.router.navigate(['/profile/' + id]);
+  }
+
+  action(type: string) {
+    if (type === 'Comment') {
+      return 'commented on';
+    } else {
+      return 'liked';
+    }
+  }
+
+  clearNotification(id: string) {
+    this.notificationsService.deleteNotification(id);
   }
 }

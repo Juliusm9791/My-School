@@ -1,8 +1,8 @@
 import { gql } from 'apollo-angular';
 
 export const LOGIN = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation login($email: String!, $password: String!, $fireUid: String) {
+    login(email: $email, password: $password, fireUid: $fireUid) {
       token
       user {
         _id
@@ -22,6 +22,7 @@ export const SIGNUP = gql`
     $lastName: String!
     $email: String!
     $password: String!
+    $fireUid: String
   ) {
     addUser(
       firstName: $firstName
@@ -29,6 +30,7 @@ export const SIGNUP = gql`
       lastName: $lastName
       email: $email
       password: $password
+      fireUid: $fireUid
     ) {
       user {
         _id
@@ -78,6 +80,15 @@ export const ADD_POST = gql`
     }
   }
 `;
+
+export const ADD_NOTIFICATION = gql`
+  mutation Mutation($receiver: ID!, $type: String!, $referPost: ID!) {
+    addNotification(receiver: $receiver, type: $type, referPost: $referPost) {
+      _id
+      createdAt
+    }
+  }
+`;
 export const UPDATE_POST = gql`
   mutation updatePost(
     $postId: ID!
@@ -116,6 +127,15 @@ export const UPDATE_POST = gql`
   }
 `;
 
+export const UPDATE_NOTIFICATION = gql`
+  mutation UpdateNotification($id: ID!, $isRead: Boolean) {
+    updateNotification(_id: $id, isRead: $isRead) {
+      _id
+      isRead
+    }
+  }
+`;
+
 export const ADD_COMMENT = gql`
   mutation addComment($comment: String!, $postId: ID!) {
     addComment(comment: $comment, postId: $postId) {
@@ -131,6 +151,22 @@ export const ADD_COMMENT = gql`
 export const DELETE_POST = gql`
   mutation deletePost($_id: ID!) {
     deletePost(_id: $_id) {
+      _id
+    }
+  }
+`;
+
+export const DELETE_NOTIFICATION = gql`
+  mutation Mutation($id: ID!) {
+    deleteNotification(_id: $id) {
+      _id
+    }
+  }
+`;
+
+export const DELETE_NOTIFICATION_BY_POST_ID = gql`
+  mutation DeleteNotificationByPostId($referPost: ID!) {
+    deleteNotificationByPostId(referPost: $referPost) {
       _id
     }
   }
@@ -200,10 +236,10 @@ export const DELETE_PHOTOS = gql`
 `;
 
 export const ADD_REACTION_LIKE = gql`
-mutation addReaction( $postId: ID!) {
-  addReactionLike(postId: $postId) {
-   like
-  _id
+  mutation addReaction($postId: ID!) {
+    addReactionLike(postId: $postId) {
+      like
+      _id
+    }
   }
-}
 `;

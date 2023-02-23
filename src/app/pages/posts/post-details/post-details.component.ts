@@ -8,6 +8,7 @@ import { PostsService } from '../posts.service';
 import { PostDetailsService } from './post-details.service';
 import { restrictedWords } from '../../../shared/bad-words-list';
 import { CommentsService } from '../post/comments/comments.service';
+import { NotificationsService } from 'src/app/services/service';
 
 @Component({
   selector: 'app-post-details',
@@ -29,6 +30,7 @@ export class PostDetailsComponent implements OnInit {
 
   constructor(
     private postDetailsService: PostDetailsService,
+    private notificationsService: NotificationsService,
     private route: ActivatedRoute,
     private postsService: PostsService,
     private authService: AuthService,
@@ -41,7 +43,6 @@ export class PostDetailsComponent implements OnInit {
     });
     this.postDetailsService.changePost.subscribe((post) => {
       this.post = post;
-      console.log('post:', post);
       post.pictures.forEach((picture) =>
         this.postPictures.splice(picture.order, 0, picture.location)
       );
@@ -50,16 +51,14 @@ export class PostDetailsComponent implements OnInit {
     this.postDetailsService.changeLoading.subscribe((loading) => {
       this.loading = loading;
     });
-    this.authService.changeLoggedIn.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
     });
-    console.log(this.commentForm.controls.comment);
   }
 
   ngOnInit(): void {
     this.postId = this.route.snapshot.paramMap.get('id');
     this.postDetailsService.queryPost(this.postId);
-    this.isLoggedIn = this.authService.isLoggedIn;
     this.me = this.loginSignupService.me;
   }
 
@@ -74,6 +73,13 @@ export class PostDetailsComponent implements OnInit {
     let comment: any = this.commentForm.controls.comment.value;
     if (comment !== '' || null) {
       this.postDetailsService.addComment(comment, this.postId);
+      if (this.post.userId._id !== this.me._id) {
+        this.notificationsService.addNotification(
+          this.post.userId._id,
+          'Comment',
+          this.post._id
+        );
+      }
       this.commentForm.reset();
     }
   }
@@ -90,6 +96,9 @@ export class PostDetailsComponent implements OnInit {
 
   postPictures: string[] = [];
 
+  gradeDetails(id: string) {
+    this.router.navigate(['/profile/grades/' + id]);
+  }
   deparmentDetails(id: string) {
     this.router.navigate(['/departments/' + id]);
   }
@@ -97,6 +106,13 @@ export class PostDetailsComponent implements OnInit {
   addLike(postId: string) {
     if (this.me._id) {
       this.postsService.addUserLike(this.me._id, postId);
+      if (this.post.userId._id !== this.me._id) {
+        this.notificationsService.addNotification(
+          this.post.userId._id,
+          'Like',
+          this.post._id
+        );
+      }
     }
   }
 

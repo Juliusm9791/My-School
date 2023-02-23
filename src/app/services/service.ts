@@ -4,9 +4,12 @@ import {
   QUERY_GRADES,
   QUERY_FACULTIES,
   QUERY_USER,
+  QUERY_NOTIFICATIONS,
 } from 'src/app/services/graphql/queries';
-import { Grade, Faculty, Me } from 'src/app/types/types';
+import { ADD_NOTIFICATION, DELETE_NOTIFICATION, DELETE_NOTIFICATION_BY_POST_ID, UPDATE_NOTIFICATION } from './graphql/mutations';
+import { Grade, Faculty, Me, Notification } from 'src/app/types/types';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ArchiveGroupSettings } from 'aws-sdk/clients/medialive';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +49,6 @@ export class GradesService {
 @Injectable({
   providedIn: 'root',
 })
-
 export class FacultiesService {
   loading: boolean = true;
   private _faculties: Faculty[] = [];
@@ -82,7 +84,6 @@ export class FacultiesService {
 @Injectable({
   providedIn: 'root',
 })
-
 export class UserService {
   private _user: Me = {} as Me;
   loading: boolean = true;
@@ -114,4 +115,136 @@ export class UserService {
   get user() {
     return this._user;
   }
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class NotificationsService {
+  loading: boolean = true;
+  error: any;
+  errorUserPost: any;
+  private _notifications: Notification[] = [];
+
+  constructor(private apollo: Apollo) {}
+  @Output() changeNotifications: EventEmitter<any> = new EventEmitter();
+  @Output() changeLoading: EventEmitter<boolean> = new EventEmitter();
+  @Output() changeError: EventEmitter<any> = new EventEmitter();
+
+  queryNotifications() {
+    this.apollo
+      .watchQuery({
+        query: QUERY_NOTIFICATIONS
+      })
+      .valueChanges.subscribe(
+        (result: any) => {
+          this._notifications = result?.data?.notifications;
+          console.log('query notifications data ', this._notifications);
+          this.loading = result.loading;
+          this.changeLoading.emit(this.loading);
+          this.changeNotifications.emit(this._notifications);
+        },
+        (error) => {
+          this.changeError.emit(this.error);
+          console.log('query notifications error', JSON.stringify(error, null, 2));
+        }
+      );
+  }
+  addNotification(
+    receiver: string,
+    type: string,
+    referPost: string
+  ) {
+    this.apollo
+      .mutate({
+        mutation: ADD_NOTIFICATION,
+        variables: {
+          receiver: receiver,
+          type: type,
+          referPost: referPost,
+        },
+
+        refetchQueries: [
+          {
+            query: QUERY_NOTIFICATIONS,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('got data', result, result.data.addNotification._id);
+        },
+        (error) => {
+          console.log('add notificaiton error', JSON.stringify(error, null, 2));
+        }
+      );
+  }
+  deleteNotification(id: string) {
+    this.apollo
+      .mutate({
+        mutation: DELETE_NOTIFICATION,
+        variables: { id: id },
+        refetchQueries: [
+          {
+            query: QUERY_NOTIFICATIONS,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('Notification Deleted', result);
+        },
+        (error) => {
+          console.log('delete notification error', JSON.stringify(error, null, 2));
+        }
+      );
+  }
+  deleteNotificationByPostId(id: string) {
+    this.apollo
+      .mutate({
+        mutation: DELETE_NOTIFICATION_BY_POST_ID,
+        variables: { referPost: id },
+        refetchQueries: [
+          {
+            query: QUERY_NOTIFICATIONS,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('Notification Deleted', result);
+        },
+        (error) => {
+          console.log('delete notification error', JSON.stringify(error, null, 2));
+        }
+      );
+  }
+  updatePost(
+    id: string,
+    isRead: boolean
+  ) {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_NOTIFICATION,
+        variables: {
+          id: id,
+          isRead: isRead,
+        },
+        refetchQueries: [
+          {
+            query: QUERY_NOTIFICATIONS,
+          },
+        ],
+      })
+      .subscribe(
+        (result: any) => {
+          console.log('got data', result);
+          this.loading = result.loading;          
+        },
+        (error) => {
+          console.log('Failed to update error', error);
+        }
+      );
+  }
+
 }

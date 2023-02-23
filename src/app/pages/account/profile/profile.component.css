@@ -4,6 +4,7 @@
 }
 
 #profile-container {
+  position: relative;
   background-color: rgb(244, 244, 244);
   border-radius: 5px;
   padding-bottom: 30px;
@@ -12,12 +13,28 @@
   border-radius: 8px;
 }
 
+#profileIllustration {
+  position: absolute;
+  width: 600px;
+  top: 30px;
+  left: 100px;
+  opacity: 30%;
+}
+
+#illustration {
+  z-index: -1;
+}
+
 #groups,
 #grades,
 #departments {
   display: flex !important;
   flex-direction: row !important;
   justify-content: flex-start;
+}
+
+.value h4 {
+  padding-left: 8px;
 }
 
 #profile h1,
@@ -44,10 +61,12 @@
 }
 
 section {
+  position: relative;
   margin: 30px 40px;
   background-color: white;
   min-height: 130px;
   padding-bottom: 1px;
+  z-index: 1;
 }
 
 #profile-header,
@@ -109,18 +128,18 @@ section {
 }
 
 #profile-details {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-top: 20px;
+  z-index: 1;
 }
 
 .notificationRow {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
-  padding: 3px 10px;
   height: 50px;
   width: fit-content;
 }
@@ -145,14 +164,12 @@ h5 {
   cursor: pointer;
 }
 
-h5 span {
+.notificationDetail a {
   color: #3e5bb3 !important;
-  margin-left: 3px;
 }
 
-h5 span:hover {
+.notificationDetail a:hover {
   color: #f98c5a !important;
-  cursor: pointer;
 }
 
 #clear {
@@ -165,6 +182,11 @@ h5 span:hover {
 #clear:hover {
   padding-top: 3px;
   color: #f98c5a;
+}
+
+#clearNotificationButton {
+  border: none;
+  background-color: transparent;
 }
 
 #profile-buttons a,
@@ -189,7 +211,7 @@ h5 span:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 30px 20px 50px;
+  margin: 15px 20px 20px 40px;
 }
 
 .profile-col {
@@ -204,12 +226,10 @@ h5 span:hover {
   margin-bottom: 0px;
 }
 
-.key {
-  width: 80px;
-}
-
+.key,
 #bioKey {
-  width: 40px;
+  width: 60px;
+  justify-content: flex-end;
 }
 
 .profile-col div {
@@ -291,84 +311,110 @@ section h5 {
 }
 
 @media (max-width: 1100px) {
+  #profile-img {
+    width: 110px;
+    height: 110px;
+  }
+
+  #profile-avatar {
+    margin-right: 10px;
+  }
+
+  .key h3,
+  .value h4 {
+    font-size: 10pt;
+    line-height: 18pt;
+  }
+
+  #profileIllustration {
+    width: 400px;
+    top: 60px;
+  }
+}
+
+@media (max-width: 800px) {
+  #profile-details {
+    justify-content: center;
+  }
+
   .profile-body {
     flex-direction: column;
     align-items: flex-start;
     padding: 0px 50px;
   }
 
+  #profile {
+    width: 95%;
+  }
+
+  .profile-body {
+    padding: 0px 20px;
+  }
+
+  #profile-container {
+    padding-bottom: 0px;
+  }
+
   #profile-avatar {
-    margin: 20px 0px;
+    margin: 5px auto 20px auto;
   }
 
-  #bioKey {
-    width: 80px;
+  section {
+    margin: 20px;
   }
 
-  @media (max-width: 800px) {
-    #profile {
-      width: 95%;
-    }
-
-    .profile-body {
-      padding: 0px 20px;
-    }
-
-    #profile-container {
-      padding-bottom: 0px;
-    }
-
-    #profile-avatar {
-      margin-top: 5px;
-    }
-
-    section {
-      margin: 20px;
-    }
-
-    #announcements-body,
-    #notifications-body,
-    #messages-body {
-      width: 90%;
-      margin: 30px auto;
-    }
+  #announcements-body,
+  #notifications-body,
+  #messages-body {
+    width: 90%;
+    margin: 30px auto;
   }
 
-  @media (max-width: 500px) {
-    #profile h1 {
-      font-size: 14pt;
-    }
+  #profileIllustration {
+    top: 200px;
+    left: 50px;
+  }
+}
 
-    #profile-header,
-    #announcements-subheader,
-    #notifications-subheader,
-    #messages-subheader {
-      padding: 10px 5px 10px 10px;
-    }
+@media (max-width: 500px) {
+  #profile h1 {
+    font-size: 14pt;
+  }
 
-    #profile-header h2,
-    #announcements-subheader h2,
-    #notifications-subheader h2,
-    #messages-subheader h2 {
-      font-size: 12pt;
-      margin: 0px;
-    }
+  #profile-header,
+  #announcements-subheader,
+  #notifications-subheader,
+  #messages-subheader {
+    padding: 10px 5px 10px 10px;
+  }
 
-    #profile-header h3,
-    #announcements-subheader h3,
-    .profile-col h3,
-    .mat-typography h3,
-    .profile-col h4 {
-      font-size: 10pt;
-      line-height: 14pt;
-    }
+  #profile-header h2,
+  #announcements-subheader h2,
+  #notifications-subheader h2,
+  #messages-subheader h2 {
+    font-size: 12pt;
+    margin: 0px;
+  }
 
-    #edit {
-      margin-right: 5px;
-    }
+  #profile-header h3,
+  #announcements-subheader h3,
+  .profile-col h3,
+  .mat-typography h3,
+  .profile-col h4 {
+    font-size: 10pt;
+    line-height: 14pt;
+  }
 
-    section {
-      margin: 20px 15px;
-    }
+  #edit {
+    margin-right: 5px;
+  }
+
+  section {
+    margin: 20px 15px;
+  }
+
+  .notificationDetail h4,
+  h5 {
+    font-size: 10pt !important;
   }
 }
