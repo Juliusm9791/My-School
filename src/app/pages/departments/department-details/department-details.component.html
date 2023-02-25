@@ -4,6 +4,12 @@
 
 <div id="deptFilter" *ngIf="departmentPosts.length > 0">
   <h1>{{ departmentPosts[0].departmentId.depName }} ANNOUNCEMENTS:</h1>
+  <div>
+    <h1>Department Faculty</h1>
+    <ng-container *ngFor="let facultyMember of allFacultyMembers">
+      <app-faculty-member [facultyMember]="facultyMember"></app-faculty-member>
+    </ng-container>
+  </div>
   <ng-container *ngFor="let singlepost of departmentPosts">
     <app-post [post]="singlepost" [countLikes]="likes(singlepost)"></app-post>
   </ng-container>
