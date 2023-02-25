@@ -12,7 +12,7 @@ export class FacultyService {
   private _facultyMembers: Me[] = [];
   facultyMembersLoading: boolean = true;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
   @Output() changeFaculties: EventEmitter<any> = new EventEmitter();
 
   @Output() changeFacultyMembersLoading: EventEmitter<boolean> =
@@ -65,6 +65,9 @@ export class FacultyService {
   }
   singleFacultyMember(id: string) {
     return this._facultyMembers.filter((member) => member._id === id)[0];
+  }
+  departmentFaculty(id: string) {
+    return this._facultyMembers.filter((member) => member.departmentId[0]?._id === id && member);
   }
 
   get faculties() {
