@@ -65,12 +65,14 @@ export class ProfileComponent implements OnInit {
 
     //////////////////////////////////////
 
-    this.authService.changeLoggedIn.subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+      !isLoggedIn
+        ? this.router.navigate(['/'])
+        : this.loginSignupService.queryMe();
     });
     this.loginSignupService.changeMe.subscribe((me) => {
       this.me = me;
-      console.log(this.me.avatar);
     });
     this.loginSignupService.changeLoading.subscribe((loading) => {
       this.loading = loading;
@@ -102,19 +104,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.postsService.queryPosts();
     this.notificationsService.queryNotifications();
-    this.isLoggedIn = this.authService.isLoggedIn;
 
-    if (!this.isLoggedIn) {
-      this.router.navigate(['/']);
-    }
     this.loading = this.loginSignupService.isLoading;
     this.me = this.loginSignupService.me;
-    // this.postsService.subscribeToNewComments()
   }
 
   logout() {
     this.authService.logout();
-    this.loginSignupService.deleteMe();
   }
   likes(post: Post) {
     return this.postsService.countLikes(post);

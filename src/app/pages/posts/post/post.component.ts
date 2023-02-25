@@ -32,7 +32,6 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.post);
     this.me = this.loginSignupService.me;
   }
 
@@ -78,7 +77,11 @@ export class PostComponent implements OnInit {
     if (this.me._id) {
       this.postsService.addUserLike(this.me._id, postId);
       if (this.post.userId._id !== this.me._id) {
-        this.notificationsService.addNotification(this.post.userId._id, "Like", this.post._id)
+        this.notificationsService.addNotification(
+          this.post.userId._id,
+          'Like',
+          this.post._id
+        );
       }
     }
   }

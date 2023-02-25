@@ -37,7 +37,11 @@
         <img id="searchIcon2" src="../assets/images/search_icon_circle.png" />
       </button> -->
 
-      <a id="loginLink" routerLink="/account">
+      <a
+        id="loginLink"
+        (click)="isUserLoggedIn()"
+        [ngStyle]="{ cursor: 'pointer' }"
+      >
         <div id="login">
           <ng-container *ngIf="isLoggedIn && !loading">
             <h2>Hello {{ me.firstName }}</h2>

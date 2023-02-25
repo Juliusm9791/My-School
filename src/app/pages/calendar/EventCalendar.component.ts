@@ -25,7 +25,9 @@ export class EventCalendarComponent implements OnInit {
     this.events = this.postsService.filterEvents();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.postsService.queryPosts();
+  }
 
   eventClicked(event: any) {
     this.router.navigate(['/posts/' + event.event.meta.id]);
