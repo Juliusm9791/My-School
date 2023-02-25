@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
 
     this.facultyService.changeFacultyMembers.subscribe((users) => {
       this.allFacultyMembers = users;
-      this.allFacultyMembers = this.allFacultyMembers.slice(0, 6)
+      this.allFacultyMembers = this.allFacultyMembers.filter((member) => member.groupId[0].groupName === 'Faculty');
+      this.allFacultyMembers = this.allFacultyMembers.slice(0, 6);
   });
 
     this.postsService.changePosts.subscribe((posts) => {
