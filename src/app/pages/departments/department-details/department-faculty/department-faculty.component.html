@@ -1,0 +1,19 @@
+<div>
+  <div class="faculty-row">
+    <img
+      (click)="profileFront(facultyMember._id)"
+      id="faculty-avatar"
+      [src]="facultyMember.avatar ? facultyMember.avatar : defaultAvatar"
+    />
+
+    <div class="faculty-column">
+      <h2 (click)="profileFront(facultyMember._id)">
+        {{ facultyMember.firstName }} {{ facultyMember.lastName }}
+      </h2>
+
+      <h3 *ngIf="facultyMember.departmentId.length > 0">
+        {{ facultyMember.departmentId[0].depName }}
+      </h3>
+    </div>
+  </div>
+</div>
