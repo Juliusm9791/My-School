@@ -3,44 +3,43 @@
   background-image: linear-gradient(180deg, #3e5bb3 16%, #2a4fae 100%);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: 0px auto;
-  border-radius: 40px 8px 8px 40px;
-  border: 0.5px solid grey;
-  box-shadow: 0px 1px 1px rgb(84, 84, 84);
-}
-
-.faculty-row-L,
-.faculty-row-R {
-  display: flex;
-  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  border-radius: 8px;
+  border: 0.5px solid grey;
+  box-shadow: 0px 1px 1px rgb(84, 84, 84);
+  margin: 10px 10px 10px 0px;
+  width: 320px;
 }
 
 .faculty-row h2,
 .faculty-row h3,
 .faculty-row h4 {
-  margin: auto 0px;
+  margin: 0px;
+}
+
+.faculty-row h2 {
+  margin-bottom: 5px;
 }
 
 #faculty-avatar {
   width: 65px;
   height: 65px;
   margin-right: 15px;
-  border-radius: 50%;
+  border-radius: 7px 0px 0px 7px;
 }
 
 .faculty-column {
   display: flex;
   flex-direction: column;
   justify-content: left;
+  margin: 0px;
 }
 
 .faculty-row h2 {
   font-family: Grotesk;
-  font-size: 16pt;
-  line-height: 18pt;
+  font-size: 14pt;
+  line-height: 16pt;
   font-weight: bold;
   letter-spacing: 0.1rem;
   color: #ffffff;
@@ -51,41 +50,15 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10pt;
   line-height: 12pt;
-  padding-top: 6px;
   color: rgb(255, 255, 255);
 }
 
-/* #emailIcon,
-  #phoneIcon {
-    width: 55px;
-    height: auto;
-  } */
-
-.contactBtns {
-  border-radius: 4px;
-  background-color: rgb(240, 240, 240);
-  padding: 5px;
-  box-shadow: 0px 1px 1px rgb(124, 124, 124);
-  height: 40px;
-  margin-right: 12px;
-}
-
-#mailIcon,
-#phoneIcon {
-  margin: 3px 6px 0px 6px;
-  scale: 1.2;
-  color: #4050b2;
-  cursor: pointer;
-}
-
-#mailIcon:hover,
-#phoneIcon:hover,
-.faculty-row-L h2:hover {
+.faculty-row h2:hover {
   color: #f98c5a;
 }
 
-.faculty-row-L img,
-.faculty-row-L h2 {
+.faculty-row img,
+.faculty-row h2 {
   cursor: pointer;
 }
 
@@ -104,25 +77,6 @@
   .faculty-row h3 {
     font-size: 8pt;
   }
-
-  .contactBtns {
-    height: 35px;
-    margin-right: 8px;
-  }
-
-  #mailIcon,
-  #phoneIcon {
-    margin: 0 3px;
-    scale: 1;
-  }
-
-  #phoneIcon {
-    margin-top: 1px;
-  }
-
-  .faculty-row h3 {
-    padding-top: 0px;
-  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -135,9 +89,14 @@
   .faculty-row h2 {
     font-size: 10pt;
     margin-right: 6px;
+    margin-bottom: 0px;
   }
 
   .faculty-row h3 {
     font-size: 7pt;
+  }
+
+  .faculty-row {
+    width: 220px;
   }
 }

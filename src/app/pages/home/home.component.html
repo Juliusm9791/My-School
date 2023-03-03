@@ -2,7 +2,7 @@
 <div class="home">
   <div class="home-body">
     <div class="home-column">
-      <h1>LATEST ANNOUNCEMENTS:</h1>
+      <h1>ANNOUNCEMENTS:</h1>
 
       <div *ngIf="loading">Loading...</div>
       <div *ngIf="error">Error :(</div>
@@ -41,10 +41,12 @@
 
       <br />
       <br />
-      <h1 id="department-header">FACULTY MEMBERS:</h1>
-      <div>
+      <h1 id="faculty-header">FACULTY:</h1>
+      <div class="homeFacultyContainer">
         <ng-container *ngFor="let facultyMember of allFacultyMembers">
-          <app-faculty-member [facultyMember]="facultyMember"></app-faculty-member>        
+          <app-faculty-member
+            [facultyMember]="facultyMember"
+          ></app-faculty-member>
         </ng-container>
       </div>
       <div class="seeAllBtn">
@@ -138,6 +140,10 @@
       src="../../../assets/images/FootballPlayer.png"
     />
     <img id="homeIllustration3" src="../../../assets/images/Cheerleader.png" />
+    <img
+      id="homeIllustration4"
+      src="../../../assets/images/BasketballCoach.png"
+    />
   </div>
   <div id="footer"><h5>My School &reg; 2023</h5></div>
 </div>

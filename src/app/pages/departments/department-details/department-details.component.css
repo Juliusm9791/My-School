@@ -11,6 +11,14 @@
   color: #4050b2;
 }
 
+#headerMargin {
+  margin-top: 50px;
+}
+
+#deptFacultyRow {
+  display: inline-block;
+}
+
 #footer {
   text-align: center;
   height: 70px;

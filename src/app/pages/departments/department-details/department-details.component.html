@@ -3,13 +3,18 @@
 </div>
 
 <div id="deptFilter" *ngIf="departmentPosts.length > 0">
-  <h1>{{ departmentPosts[0].departmentId.depName }} ANNOUNCEMENTS:</h1>
   <div>
-    <h1>Department Faculty</h1>
-    <ng-container *ngFor="let facultyMember of allFacultyMembers">
-      <app-faculty-member [facultyMember]="facultyMember"></app-faculty-member>
-    </ng-container>
+    <h1>{{ departmentPosts[0].departmentId.depName }} FACULTY:</h1>
+    <div id="deptFacultyRow" *ngFor="let facultyMember of allFacultyMembers">
+      <app-department-faculty
+        [facultyMember]="facultyMember"
+      ></app-department-faculty>
+    </div>
   </div>
+  <h1 id="headerMargin">
+    {{ departmentPosts[0].departmentId.depName }} ANNOUNCEMENTS:
+  </h1>
+
   <ng-container *ngFor="let singlepost of departmentPosts">
     <app-post [post]="singlepost" [countLikes]="likes(singlepost)"></app-post>
   </ng-container>
