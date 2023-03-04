@@ -143,7 +143,7 @@
               </button>
             </div>
           </div>
-          <ng-container *ngIf="me._id === post.userId._id">
+          <ng-container *ngIf="me._id === post.userId._id && isLoggedIn">
             <div class="reactionSet">
               <div class="delete" title="Delete">
                 <button id="deletePostButton" (click)="deletePost(post._id)">
