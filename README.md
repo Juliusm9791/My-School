@@ -39,17 +39,17 @@ SO THAT I can engage and stay involved
 
 <!--
 [<img src="./assets/demo/youtube.png" width="1100px">](https://youtu.be/Z6M4T_MW84c) -->
-<img width="1100" src="../My-School/src/assets/demo/Desktop_Mock.png">
+<img width="1100" src="./src/assets/demo/Desktop_Mock.png">
 
 <br />
 <br />
 
-<img width="1100" src="../My-School/src/assets/demo/Mobile_Mock.png">
+<img width="1100" src="./src/assets/demo/Mobile_Mock.png">
 
 <br />
 <br />
 
-<img width="1100" src="../My-School/src/assets/demo/My_School_HomePages.png">
+<img width="1100" src="./src/assets/demo/My_School_HomePages.png">
 
 <br />
 <br />
@@ -58,22 +58,22 @@ SO THAT I can engage and stay involved
 
 **Visit My School on Heroku:**
 
-[<img src="../My-School/src/assets/demo/badges/heroku.png" height="80px">](https://myschool-app.herokuapp.com/)
+[<img src="./src/assets/demo/badges/heroku.png" height="80px">](https://myschool-app.herokuapp.com/)
 
 <br />
 
 **Employing the following technology:**
 
-[<img src="../My-School/src/assets/demo/badges/mongo.svg" height="20px">](https://www.mongodb.com/products/compass)
-[<img src="../My-School/src/assets/demo/badges/express.svg" height="20px">](https://expressjs.com/)
-[<img src="../My-School/src/assets/demo/badges/angular.svg" height="20px">](https://angular.io/)
-[<img src="../My-School/src/assets/demo/badges/node.svg">](https://nodejs.org/en/)
-[<img src="../My-School/src/assets/demo/badges/aws.svg" height="20px">](https://aws.amazon.com/s3/)
+[<img src="./src/assets/demo/badges/mongo.svg" height="20px">](https://www.mongodb.com/products/compass)
+[<img src="./src/assets/demo/badges/express.svg" height="20px">](https://expressjs.com/)
+[<img src="./src/assets/demo/badges/angular.svg" height="20px">](https://angular.io/)
+[<img src="./src/assets/demo/badges/node.svg">](https://nodejs.org/en/)
+[<img src="./src/assets/demo/badges/aws.svg" height="20px">](https://aws.amazon.com/s3/)
 
-[<img src="../My-School/src/assets/demo/badges/typescript.svg" height="20px">](https://www.typescriptlang.org/)
-[<img src="../My-School/src/assets/demo/badges/bootstrap.svg" height="20px">](https://getbootstrap.com/)
-[<img src="../My-School/src/assets/demo/badges/css.svg" height="20px">](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[<img src="../My-School/src/assets/demo/badges/firebase.svg" height="20px">](https://firebase.google.com/)
+[<img src="./src/assets/demo/badges/typescript.svg" height="20px">](https://www.typescriptlang.org/)
+[<img src="./src/assets/demo/badges/bootstrap.svg" height="20px">](https://getbootstrap.com/)
+[<img src="./src/assets/demo/badges/css.svg" height="20px">](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[<img src="./src/assets/demo/badges/firebase.svg" height="20px">](https://firebase.google.com/)
 
 <br />
 <br />
