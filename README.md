@@ -115,8 +115,7 @@ Usage is provided under the [MIT License](https://opensource.org/licenses/MIT). 
 
 <br />
 
-Julius Markauskas
-
+Julius Markauskas<br />
 Email: juliusm9791@gmail.com
 
 <a href= "https://github.com/Juliusm9791"><img src=
@@ -124,8 +123,7 @@ Email: juliusm9791@gmail.com
 
 <br />
 
-David Dyer
-
+David Dyer<br />
 Email: davidrossdyer@gmail.com
 
 <a href= "https://github.com/djdyer"><img src=
@@ -133,8 +131,7 @@ Email: davidrossdyer@gmail.com
 
 <br />
 
-Olsen Ogouchi
-
+Olsen Ogouchi<br />
 Email: chrisolsen1993@gmail.com
 
 <a href= "https://github.com/chrisolsen1993"><img src=
@@ -142,8 +139,7 @@ Email: chrisolsen1993@gmail.com
 
 <br />
 
-Shu Yang
-
+Shu Yang<br />
 Email: irisyangshu@gmail.com
 
 <a href= "https://github.com/NewChap2022"><img src=
@@ -151,18 +147,14 @@ Email: irisyangshu@gmail.com
 
 <br />
 
-David Carlin
-
+David Carlin<br />
 Email: dgcarlin123@gmail.com
 
 <a href= "https://github.com/DaveyGBoy"><img src=
 "https://avatars.githubusercontent.com/u/101467265?v=4" width="50px" style="border-radius: 50%;"/></a>
 
 <br />
-
-<br />
 <br />
 
-Please reach us with any questions!
-
+Please reach out to our team with any questions!<br />
 🏫 🔔
