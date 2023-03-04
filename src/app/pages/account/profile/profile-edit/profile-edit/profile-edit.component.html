@@ -49,7 +49,7 @@
 
               <mat-form-field appearance="fill">
                 <mat-label>Role:</mat-label>
-                <mat-select formControlName="groupId" multiple>
+                <mat-select formControlName="groupId">
                   <mat-option
                     *ngFor="let faculty of facultyList"
                     value="{{ faculty._id }}"
@@ -60,7 +60,7 @@
 
               <mat-form-field appearance="fill">
                 <mat-label>Grade:</mat-label>
-                <mat-select formControlName="gradeId" multiple>
+                <mat-select formControlName="gradeId">
                   <mat-option
                     *ngFor="let grade of gradeList"
                     value="{{ grade._id }}"

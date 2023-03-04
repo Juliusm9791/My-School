@@ -322,9 +322,7 @@ input[type="search"]:focus {
   #logoMobile a img {
     margin-left: 10px;
   }
-  /* #smSearchButton {
-    display: inline;
-  } */
+
   #smSearchBar {
     display: inline;
     margin-top: 60px;

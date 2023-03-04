@@ -26,6 +26,7 @@ import { FacultyMemberComponent } from './faculty/faculty-member/faculty-member.
 import { ProfileFrontComponent } from './account/profile/profile-front/profile-front.component';
 import { GradesComponent } from './account/profile/grades/grades.component';
 import { MySchoolComponent } from './my-school/my-school.component';
+import { DepartmentFacultyComponent } from './departments/department-details/department-faculty/department-faculty.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MySchoolComponent } from './my-school/my-school.component';
     ProfileFrontComponent,
     GradesComponent,
     MySchoolComponent,
+    DepartmentFacultyComponent,
   ],
   imports: [CommonModule, SharedModule, AppRoutingModule, EventCalendarModule],
   exports: [
@@ -71,6 +73,7 @@ import { MySchoolComponent } from './my-school/my-school.component';
     ProfileFrontComponent,
     GradesComponent,
     MySchoolComponent,
+    DepartmentFacultyComponent,
   ],
 })
 export class PagesModule {}
