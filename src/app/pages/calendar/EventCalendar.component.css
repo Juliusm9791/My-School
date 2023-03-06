@@ -18,6 +18,10 @@
   width: 80%;
 }
 
+#calPage {
+  position: relative;
+}
+
 pre {
   background-color: #f5f5f5;
   padding: 15px;
@@ -98,6 +102,16 @@ mwl-demo-utils-calendar-header {
   background-color: #f7b47a !important;
 }
 
+#calIllustration {
+  position: absolute;
+  top: -60px;
+  right: 60px;
+  width: 220px;
+  height: auto;
+  z-index: -1;
+  visibility: visible;
+}
+
 @media (max-width: 1200px) {
   #calendar {
     width: 95%;
@@ -139,5 +153,10 @@ mwl-demo-utils-calendar-header {
 
   ::ng-deep .text-center {
     text-align: start !important;
+  }
+
+  #calIllustration {
+    right: 70px;
+    width: 180px;
   }
 }
