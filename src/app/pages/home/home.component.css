@@ -241,41 +241,38 @@ app-calendar {
 #homeIllustration4 {
   z-index: -1;
   position: absolute;
-  height: 260px;
+  height: 420px;
   width: auto;
-  rotate: 270deg;
-  top: 65px;
-  right: 200px;
+  top: -20px;
+  right: 300px;
 }
 
 #homeIllustration2 {
   top: 1500px;
-  right: 450px;
-  height: 250px;
-  width: auto;
-  rotate: 270deg;
+  right: 550px;
+  height: 350px;
 }
 
 #homeIllustration3 {
   top: 2300px;
   right: 740px;
-  height: 440px;
-  width: auto;
-  rotate: 360deg;
+  height: 400px;
 }
 
 #homeIllustration4 {
   top: 2950px;
   left: 160px;
-  width: 260px;
-  height: auto;
-  rotate: 360deg;
+  height: 400px;
 }
 
 @media (min-width: 1400px) {
-  #homeIllustration2 {
-    top: 1570px;
+  #homeIllustration {
+    top: -10px;
     right: 500px;
+  }
+
+  #homeIllustration2 {
+    right: 600px;
   }
 
   #homeIllustration3 {
@@ -284,6 +281,14 @@ app-calendar {
   }
   #homeIllustration4 {
     top: 3000px;
+  }
+
+  .home-body {
+    max-width: 80%;
+  }
+
+  .home-column {
+    width: 80%;
   }
 }
 
@@ -328,50 +333,49 @@ app-calendar {
   }
 
   #homeIllustration1 {
-    height: 180px;
-    top: 25px;
-    right: -40px;
+    height: 350px;
+    top: -50px;
+    right: 100px;
   }
 
   #homeIllustration2 {
     top: 1400px;
-    right: 0px;
-    height: 240px;
+    right: 200px;
+    height: 300px;
   }
 
   #homeIllustration3 {
-    top: 2150px;
+    top: 2350px;
     right: 20px;
+    height: 320px;
   }
 
   #homeIllustration4 {
-    top: 3200px;
-  }
-}
-
-@media (max-width: 1000px) {
-  #homeIllustration4 {
-    top: 2900px;
-  }
-
-  #homeIllustration4 {
-    top: 3050px;
-    width: 220px;
+    top: 3100px;
   }
 }
 
 @media (max-width: 500px) {
+  #homeIllustration1 {
+    height: 250px;
+    top: -20px;
+    right: 20px;
+  }
+
   #homeIllustration2 {
     top: 1700px;
     height: 200px;
+    right: 50px;
   }
   #homeIllustration3 {
     top: 2500px;
-    height: 360px;
+    height: 300px;
+    right: 50px;
   }
 
   #homeIllustration4 {
     top: 3250px;
     left: 40px;
+    height: 350px;
   }
 }
