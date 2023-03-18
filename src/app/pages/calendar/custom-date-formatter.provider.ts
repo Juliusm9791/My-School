@@ -10,7 +10,10 @@ export class CustomDateFormatter extends CalendarDateFormatter {
     date,
     locale,
   }: DateFormatterParams): any {
-    if (locale) return formatDate(date, 'EEE', locale);
+    if (locale) {
+      const dayName = formatDate(date, 'EEE', locale);
+      return dayName.toUpperCase();
+    }
   }
 
   public override monthViewTitle({ date, locale }: DateFormatterParams): any {
@@ -21,7 +24,10 @@ export class CustomDateFormatter extends CalendarDateFormatter {
     date,
     locale,
   }: DateFormatterParams): any {
-    if (locale) return formatDate(date, 'EEE', locale);
+    if (locale) {
+      const dayName = formatDate(date, 'EEE', locale);
+      return dayName.toUpperCase();
+    }
   }
 
   public override dayViewHour({ date, locale }: DateFormatterParams): any {
