@@ -5,15 +5,26 @@ import {
   Input,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
+import {
+  CalendarDateFormatter,
+  CalendarEvent,
+  CalendarView,
+} from 'angular-calendar';
 // import { isSameDay, isSameMonth } from 'date-fns';
 import { PostsService } from '../posts/posts.service';
+import { CustomDateFormatter } from './custom-date-formatter.provider';
 
 @Component({
   selector: 'app-eventCalendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './EventCalendar.component.html',
   styleUrls: ['./EventCalendar.component.css'],
+  providers: [
+    {
+      provide: CalendarDateFormatter,
+      useClass: CustomDateFormatter,
+    },
+  ],
 })
 export class EventCalendarComponent implements OnInit {
   @Input() homeCalendar: boolean = false;
