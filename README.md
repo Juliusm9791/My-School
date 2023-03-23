@@ -37,16 +37,12 @@ SO THAT I can engage and stay involved
 
 ## Demo
 
-<!--
-[<img src="./assets/demo/youtube.png" width="1100px">](https://youtu.be/Z6M4T_MW84c) -->
-<img width="1100" src="./src/assets/demo/Desktop_Mock.png">
+[<img src="./src/assets/demo/my_school_demo_youtube_cover.jpg" width="1100px">](https://youtu.be/WFD5FxGGliA)
 
-<br />
 <br />
 
 <img width="1100" src="./src/assets/demo/Mobile_Mock.png">
 
-<br />
 <br />
 
 <img width="1100" src="./src/assets/demo/My_School_HomePages.png">

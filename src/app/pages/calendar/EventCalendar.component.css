@@ -11,10 +11,11 @@
   font-weight: bold;
   font-size: 16pt;
   color: #4050b2;
+  display: block;
 }
 
 #calendar {
-  margin: 34px auto 80px auto;
+  margin: 95px auto 80px auto;
   width: 80%;
 }
 
