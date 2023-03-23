@@ -17,7 +17,7 @@ export class CustomDateFormatter extends CalendarDateFormatter {
   }
 
   public override monthViewTitle({ date, locale }: DateFormatterParams): any {
-    if (locale) return formatDate(date, 'MMM y', locale);
+    if (locale) return formatDate(date, 'MMMM y', locale);
   }
 
   public override weekViewColumnHeader({
