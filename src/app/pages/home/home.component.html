@@ -22,7 +22,6 @@
       <br />
       <br />
 
-      <h1 id="calendar-header">CALENDAR:</h1>
       <div id="homePageCalendar">
         <app-eventCalendar [homeCalendar]="homeCalendar"></app-eventCalendar>
       </div>
@@ -30,6 +29,13 @@
       <br />
 
       <h1 id="department-header">DEPARTMENTS:</h1>
+      <div id="homeDeptTitle">
+        <img
+          id="deptIllustration"
+          src="../../../assets/images/Cheerleader.png"
+        />
+      </div>
+
       <div class="homeDeptContainer">
         <ng-container *ngFor="let sinleDepartment of departments">
           <app-department [department]="sinleDepartment"></app-department>
@@ -41,8 +47,15 @@
 
       <br />
       <br />
-      <h1 id="faculty-header">FACULTY:</h1>
+
+      <div id="homeFacultyTitle">
+        <img
+          id="facultyIllustration"
+          src="../../../../assets/images/BasketballCoach.png"
+        />
+      </div>
       <div class="homeFacultyContainer">
+        <h1 id="faculty-header">FACULTY:</h1>
         <ng-container *ngFor="let facultyMember of allFacultyMembers">
           <app-faculty-member
             [facultyMember]="facultyMember"
@@ -134,15 +147,6 @@
     <img
       id="homeIllustration1"
       src="../../../assets/images/ScienceTeacher.png"
-    />
-    <!-- <img
-      id="homeIllustration2"
-      src="../../../assets/images/FootballPlayer.png"
-    /> -->
-    <img id="homeIllustration3" src="../../../assets/images/Cheerleader.png" />
-    <img
-      id="homeIllustration4"
-      src="../../../assets/images/BasketballCoach.png"
     />
   </div>
   <div id="footer"><h5>My School &reg; 2023</h5></div>

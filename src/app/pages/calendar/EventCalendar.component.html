@@ -4,8 +4,8 @@
 
   <ng-template #fullCalendar>
     <div id="calendar">
-      <h1>EVENT CALENDAR:</h1>
       <div id="calendarPage">
+        <h1>CALENDAR:</h1>
         <mwl-demo-utils-calendar-header [(view)]="view" [(viewDate)]="viewDate">
         </mwl-demo-utils-calendar-header>
 
@@ -39,7 +39,7 @@
   <img id="calIllustration" src="../../../assets/images/FootballPlayer.png" />
 </div>
 
-<ng-template #smallCalendar>
+<!-- <ng-template #smallCalendar>
   <div [ngSwitch]="view">
     <mwl-calendar-month-view
       *ngSwitchCase="'month'"
@@ -50,4 +50,4 @@
     >
     </mwl-calendar-month-view>
   </div>
-</ng-template>
+</ng-template> -->
