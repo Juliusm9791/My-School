@@ -22,6 +22,11 @@
   width: 70%;
 }
 
+#homeDeptTitle,
+#homeFacultyTitle {
+  position: relative;
+}
+
 .widget-column {
   margin: 0px;
   margin-left: 5%;
@@ -235,10 +240,7 @@ app-calendar {
   font-weight: 300;
 }
 
-#homeIllustration1,
-#homeIllustration2,
-#homeIllustration3,
-#homeIllustration4 {
+#homeIllustration1 {
   z-index: -1;
   position: absolute;
   height: 420px;
@@ -247,40 +249,28 @@ app-calendar {
   right: 300px;
 }
 
-#homeIllustration2 {
-  top: 1500px;
-  right: 550px;
+#deptIllustration {
+  position: absolute;
+  top: -145px;
+  right: 10px;
+  width: 230px;
+  height: auto;
+  z-index: -1;
+}
+
+#facultyIllustration {
+  position: absolute;
   height: 350px;
-}
-
-#homeIllustration3 {
-  top: 2300px;
-  right: 740px;
-  height: 400px;
-}
-
-#homeIllustration4 {
-  top: 2950px;
-  left: 160px;
-  height: 400px;
+  width: auto;
+  top: -60px;
+  left: 70px;
+  z-index: -1;
 }
 
 @media (min-width: 1400px) {
   #homeIllustration {
     top: -10px;
     right: 500px;
-  }
-
-  #homeIllustration2 {
-    right: 600px;
-  }
-
-  #homeIllustration3 {
-    top: 2350px;
-    right: 520px;
-  }
-  #homeIllustration4 {
-    top: 3000px;
   }
 
   .home-body {
@@ -337,22 +327,6 @@ app-calendar {
     top: -50px;
     right: 100px;
   }
-
-  #homeIllustration2 {
-    top: 1400px;
-    right: 200px;
-    height: 300px;
-  }
-
-  #homeIllustration3 {
-    top: 2350px;
-    right: 20px;
-    height: 320px;
-  }
-
-  #homeIllustration4 {
-    top: 3100px;
-  }
 }
 
 @media (max-width: 500px) {
@@ -360,17 +334,6 @@ app-calendar {
     height: 250px;
     top: -20px;
     right: 20px;
-  }
-
-  #homeIllustration2 {
-    top: 1700px;
-    height: 200px;
-    right: 50px;
-  }
-  #homeIllustration3 {
-    top: 2350px;
-    height: 300px;
-    right: 50px;
   }
 
   #homeIllustration4 {

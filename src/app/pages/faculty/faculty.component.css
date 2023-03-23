@@ -3,7 +3,7 @@
   src: url("../../../assets/fonts/TypoGroteskRoundedDemo.otf");
 }
 #faculty {
-  margin: 90px auto 200px auto;
+  margin: 96px auto 200px auto;
   width: 80%;
   position: relative;
 }
@@ -48,7 +48,7 @@
   height: 350px;
   width: auto;
   top: -90px;
-  right: 50px;
+  left: 70px;
   z-index: -1;
 }
 
@@ -56,16 +56,16 @@
   #faculty {
     width: 95%;
   }
-
-  #faculty h1 {
-    font-size: 14pt;
-    margin-left: 5px;
-  }
 }
 
 @media only screen and (max-width: 600px) {
   .facultyContainer {
     margin-top: 20px;
     padding: 10px;
+  }
+
+  #faculty h1 {
+    font-size: 14pt;
+    margin-left: 5px;
   }
 }

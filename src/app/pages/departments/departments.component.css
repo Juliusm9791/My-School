@@ -4,7 +4,7 @@
 }
 
 #departments {
-  margin: 32px auto 200px auto;
+  margin: 95px auto 200px auto;
   width: 85%;
   position: relative;
 }
@@ -46,12 +46,11 @@ app-department {
 
 #deptIllustration {
   position: absolute;
-  top: -55px;
+  top: -105px;
   right: 30px;
-  width: 180px;
+  width: 240px;
   height: auto;
   z-index: -1;
-  visibility: visible;
 }
 
 @media only screen and (max-width: 1000px) {
